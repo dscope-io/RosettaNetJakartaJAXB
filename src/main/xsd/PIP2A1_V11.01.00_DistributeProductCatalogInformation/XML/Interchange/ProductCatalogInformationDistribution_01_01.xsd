@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:rosettanet:specification:interchange:ProductCatalogInformationDistribution:xsd:schema:01.01"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:urss="urn:rosettanet:specification:system:xml:1.0"
+    xmlns:tns="urn:rosettanet:specification:interchange:ProductCatalogInformationDistribution:xsd:schema:01.01"
+    xmlns:dl="urn:rosettanet:specification:domain:Logistics:xsd:schema:02.23"
+    xmlns:uuom="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.04"
+    xmlns:dp="urn:rosettanet:specification:domain:Procurement:xsd:schema:02.29"
+    xmlns:uc="urn:rosettanet:specification:universal:Country:xsd:codelist:01.02"
+    xmlns:updi="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04"
+    xmlns:dppt="urn:rosettanet:specification:domain:Procurement:ProductProcurementType:xsd:codelist:01.03"
+    xmlns:dabcc="urn:rosettanet:specification:domain:Design:ABCCode:xsd:codelist:01.02"
+    xmlns:sha="urn:rosettanet:specification:domain:Shared:xsd:schema:01.17"
+    xmlns:udc="urn:rosettanet:specification:universal:Document:xsd:schema:01.12"
+    xmlns:ud="urn:rosettanet:specification:universal:Dates:xsd:schema:01.03"
+    xmlns:dds="urn:rosettanet:specification:domain:Design:xsd:schema:02.22"
+    xmlns:dmk="urn:rosettanet:specification:domain:Marketing:xsd:schema:02.19"
+    xmlns:dac="urn:rosettanet:specification:domain:Design:ActionCode:xsd:codelist:01.03"
+    xmlns:ddct="urn:rosettanet:specification:domain:Design:CatalogType:xsd:codelist:01.01"
+    xmlns:uci="urn:rosettanet:specification:universal:ContactInformation:xsd:schema:01.04"
+    xmlns:upi="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.16"
+    xmlns:ssdh="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.23" elementFormDefault="qualified" attributeFormDefault="unqualified" version="01.01">
+    <xs:import namespace="urn:rosettanet:specification:domain:Logistics:xsd:schema:02.23" schemaLocation="../Domain/Logistics/Logistics_02_23.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.04" schemaLocation="../Universal/CodeList/RN_UnitOfMeasure_01_04.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:domain:Procurement:xsd:schema:02.29" schemaLocation="../Domain/Procurement/Procurement_02_29.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:universal:Country:xsd:codelist:01.02" schemaLocation="../Universal/CodeList/ISO_Country_01_02.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04" schemaLocation="../Universal/ProductIdentification_01_04.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:domain:Procurement:ProductProcurementType:xsd:codelist:01.03" schemaLocation="../Domain/Procurement/CodeList/RN_ProductProcurementType_01_03.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:domain:Design:ABCCode:xsd:codelist:01.02" schemaLocation="../Domain/Design/CodeList/RN_ABCCode_01_02.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:domain:Shared:xsd:schema:01.17" schemaLocation="../Domain/Shared/Shared_01_17.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:universal:Document:xsd:schema:01.12" schemaLocation="../Universal/Document_01_12.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:universal:Dates:xsd:schema:01.03" schemaLocation="../Universal/Dates_01_03.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:domain:Design:xsd:schema:02.22" schemaLocation="../Domain/Design/Design_02_22.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:domain:Marketing:xsd:schema:02.19" schemaLocation="../Domain/Marketing/Marketing_02_19.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:domain:Design:ActionCode:xsd:codelist:01.03" schemaLocation="../Domain/Design/CodeList/RN_ActionCode_01_03.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:domain:Design:CatalogType:xsd:codelist:01.01" schemaLocation="../Domain/Design/CodeList/RN_CatalogType_01_01.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:universal:ContactInformation:xsd:schema:01.04" schemaLocation="../Universal/ContactInformation_01_04.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.16" schemaLocation="../Universal/PartnerIdentification_01_16.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.23" schemaLocation="../System/StandardDocumentHeader_01_23.xsd"></xs:import>
+    <xs:annotation>
+        <xs:documentation>
+            <urss:Copyright>© 2007 RosettaNet. All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without the inclusion of this copyright notice. Any derivative works must cite the copyright notice. Any public redistribution or sale of this publication or derivative works requires prior written permission of the publisher.</urss:Copyright>
+            <urss:Disclaimer>RosettaNet makes no representation about the suitability of this work for any purpose or regarding any claims made by products which use it. It is provided as is without expressed or implied warranty.</urss:Disclaimer>
+            <urss:Program>Maintenance 2007: Schema To Market 2A1</urss:Program>
+            <urss:Purpose>Collection of all Product Catalog Information structures</urss:Purpose>
+        </xs:documentation>
+        <xs:appinfo>
+            <urss:CreationDate>2007-06-21</urss:CreationDate>
+            <urss:LastUpdatedDate>2012-05-22</urss:LastUpdatedDate>
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:element name="ProductCatalogInformationDistribution" type="tns:ProductCatalogInformationDistributionType"></xs:element>
+    <xs:complexType name="ProductCatalogType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describe one or more products with attributes complete and sufficient to allow the procurement process of the trading partner to take action.</urss:Definition>
+                <urss:CreationDate>2007-06-21</urss:CreationDate>
+                <urss:LastUpdatedDate>2007-06-21</urss:LastUpdatedDate>
+                <urss:TypeVersion>01.00</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="dac:ActionCode"></xs:element>
+            <xs:element ref="udc:BusinessDocumentReference" maxOccurs="unbounded" minOccurs="0"></xs:element>
+            <xs:element name="CatalogDisclaimer" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>A textual description of the disclaimers about the catalog information.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="ddct:CatalogType"></xs:element>
+            <xs:element ref="uci:ContactInformation" minOccurs="0"></xs:element>
+            <xs:element name="Description" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>A textual description of the contents about the catalog information.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="EffectiveDate" type="ud:DatePeriodType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The date information or an activity becomes effective.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="dl:GeographicRegion" minOccurs="0"></xs:element>
+            <xs:element name="OrganizationCoverageIdentifier" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The unique identifier assigned for an organization coverage.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="upi:PartnerIdentification"></xs:element>
+            <xs:element name="ProductLineItem" type="tns:ProductLineItemType" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="ProductCatalogInformationDistributionType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>A wrapper or a root message for PIP2A1.</urss:Definition>
+                <urss:CreationDate>2007-06-21</urss:CreationDate>
+                <urss:LastUpdatedDate>2007-06-21</urss:LastUpdatedDate>
+                <urss:TypeVersion>01.00</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ssdh:DocumentHeader" minOccurs="0"></xs:element>
+            <xs:element name="ProductCatalog" type="tns:ProductCatalogType"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="ProductIdentificationInformationType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes product identification.</urss:Definition>
+                <urss:CreationDate>2007-06-21</urss:CreationDate>
+                <urss:LastUpdatedDate>2007-06-21</urss:LastUpdatedDate>
+                <urss:TypeVersion>01.00</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="dmk:IsDesignWin"></xs:element>
+            <xs:element name="IsGeneric" type="xs:boolean">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>To identify the subsequent product reporting as a product family (generic) reporting.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="dp:IsSoleSource"></xs:element>
+            <xs:element name="ProductClassCode" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>A code for a class of products whose values are the values of the attribute ec.dictionary:class:id in the RosettaNet Technical Dictionary and are defined by the ec.dictionary:class:names:preferred.name and the ec.dictionary:class:definition.short element values in the RosettaNet Technical Dictionary.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="dp:ProductClassification" minOccurs="0"></xs:element>
+            <xs:element ref="updi:ProductDescription"></xs:element>
+            <xs:element name="ProductIdentificationInformation" type="tns:ProductIdentificationInformationType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="ProductInformationType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes attributes of the product.</urss:Definition>
+                <urss:CreationDate>2007-06-21</urss:CreationDate>
+                <urss:LastUpdatedDate>2007-06-21</urss:LastUpdatedDate>
+                <urss:TypeVersion>01.00</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="dmk:MarketingInstruction" minOccurs="0"></xs:element>
+            <xs:element ref="dl:ProductAttribute"></xs:element>
+            <xs:element name="ProductLifeCycle" type="tns:ProductLifeCycleType" minOccurs="0"></xs:element>
+            <xs:element name="ProductPriceAndAvailability" type="tns:ProductPriceAndAvailabilityType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+            <xs:element name="ProductProcurement" type="tns:ProductProcurementType" minOccurs="0"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="ProductLifeCycleType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes lifecycle information about the product.</urss:Definition>
+                <urss:CreationDate>2007-06-21</urss:CreationDate>
+                <urss:LastUpdatedDate>2007-06-21</urss:LastUpdatedDate>
+                <urss:TypeVersion>01.00</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="udc:BusinessDocumentReference" maxOccurs="unbounded" minOccurs="0"></xs:element>
+            <xs:element ref="dds:LifeCycleStatus" maxOccurs="unbounded"></xs:element>
+            <xs:element ref="dl:ManufacturerProfile" maxOccurs="unbounded" minOccurs="0"></xs:element>
+            <xs:element name="OrderAvailability" type="ud:DatePeriodType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The date the product is available for ordering by a partner role.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ShipDate" type="ud:DatePeriodType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The (GMT) local date the product is shipped.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="dp:SubstituteProductReference" maxOccurs="unbounded" minOccurs="0"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="ProductLineItemType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describe a business document entry for a product.</urss:Definition>
+                <urss:CreationDate>2007-06-21</urss:CreationDate>
+                <urss:LastUpdatedDate>2007-06-21</urss:LastUpdatedDate>
+                <urss:TypeVersion>01.00</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="dac:ActionCode"></xs:element>
+            <xs:element name="EffectiveDate" type="ud:DatePeriodType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The date information or an activity becomes effective.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PricingGroup" type="xs:string">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>Clustering of products with similar pricing and/or marketing characteristics so that discounts and promotions can be applied to a group rather than to each individual product. A product might be a member of multiple pricing groups.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="updi:ProductIdentification" minOccurs="0"></xs:element>
+            <xs:element name="ProductIdentificationInformation" type="tns:ProductIdentificationInformationType"></xs:element>
+            <xs:element name="ProductInformation" type="tns:ProductInformationType"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="ProductPriceAndAvailabilityType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describe a product's price and availability.</urss:Definition>
+                <urss:CreationDate>2007-06-21</urss:CreationDate>
+                <urss:LastUpdatedDate>2007-06-21</urss:LastUpdatedDate>
+                <urss:TypeVersion>01.00</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="AvailableQuantity" type="sha:ProductQuantityType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The product quantity available for sale.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="dp:OrderProvision" maxOccurs="unbounded" minOccurs="0"></xs:element>
+            <xs:element ref="dp:ProductPricing" maxOccurs="unbounded" minOccurs="0"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="ProductProcurementType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describe the product procurement.</urss:Definition>
+                <urss:CreationDate>2007-06-21</urss:CreationDate>
+                <urss:LastUpdatedDate>2007-06-21</urss:LastUpdatedDate>
+                <urss:TypeVersion>01.00</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="dabcc:ABCCode" minOccurs="0"></xs:element>
+            <xs:element ref="dl:ExportLicense" maxOccurs="unbounded" minOccurs="0"></xs:element>
+            <xs:element ref="dl:IsHazardousMaterial" minOccurs="0"></xs:element>
+            <xs:element name="IsLeadFree" type="xs:boolean" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>Indicates whether the product is free of lead.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OrderSizeRounding" type="sha:ProductQuantityType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The quantity of products which is a standard ordering unit. Actual order quantities must be multiples of this quantity and is equal to or smaller than the minimum order quantity.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="dl:ProductLicenseRequired" minOccurs="0"></xs:element>
+            <xs:element ref="dppt:ProductProcurementType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+            <xs:element ref="dp:ProductQuantityRange"></xs:element>
+            <xs:element name="RestrictedCountry" type="uc:CountryType" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>Country where product is not destined for shipment.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SampleOrder" type="sha:ProductQuantityType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The maximum ordering quantity for samples of this part.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StandardClassificationIdentification" type="updi:ProductIdentificationType" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The use of a commonly used classification scheme to classify one or more aspects of a product. While these classifications schemes may be widely used, the values for these schemes may change frequently to reflect new information and thus are not suitable to be listed as RosettaNet entitry instances.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="uuom:UnitOfMeasure"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+</xs:schema>

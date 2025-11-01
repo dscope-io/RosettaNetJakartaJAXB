@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Lee Ching Hoe (RosettaNet) -->
+<!--Compliant with BPSS vers 1.01-->
+<ProcessSpecification name="PIP7C7NotifyOfSemiconductorTestData" nameID="urn:rosettanet:specification:interchange:PIP7C7:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>The purpose of this PIP is to improve the timeliness of the semiconductor test data exchange between trading partners, at the same time reduce the IT infrastructure costs from multiple customized data transmission formats to a single standard, as well as promote closer collaboration and on-demand response to data issues between the Customer and their Foundry and Test Services trading partners.</Documentation>
+	<!--REM: Semiconductor Test Data Notification Document-->
+	<BusinessDocument name="Semiconductor Test Data Notification" nameID="PIP7C7SemiconductorTestDataNotification" specificationLocation="urn:rosettanet:specification:interchange:SemiconductorTestDataNotification:xsd:schema:1.0">
+		<Documentation>The document is an XML Schema file that specifies the rules for creating the XML document for the business action of notification of a sales report. The specificationLocation attribute is used for illustrative purposes only.</Documentation>
+	</BusinessDocument>
+	<Package name="Manufacturing" nameID="7">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Distribute Manufacturing Information" nameID="7C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Semiconductor Test Data" nameID="7C7">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Semiconductor Test Data" nameID="NotifyOfSemiconductorTestData_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Semiconductor Test Data Notification" nameID="InitiateSemiconductorTestDataNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Semiconductor Test Data Notification" nameID="SemiconductorTestDataNotification_DE" businessDocument='//BusinessDocument[@name="Semiconductor Test Data Notification"]' businessDocumentIDREF="PIP7C7SemiconductorTestDataNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Semiconductor Test Data Notification" nameID="ProcessSemiconductorTestDataNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Semiconductor Test Data" nameID="NotifyOfSemiconductorTestData_BC" initiatingRoleIDREF="FoundryOrTestServicesID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="FoundryOrTestServices" nameID="FoundryOrTestServicesID"/>
+					<Role name="Customer" nameID="CustomerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Semiconductor Test Data"]' toBusinessStateIDREF="PIP7C7SemiconductorTestDataNotification"/>
+					<BusinessTransactionActivity name="Notify Of Semiconductor Test Data" nameID="NotifyOfSemiconductorTestData_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Semiconductor Test Data"]' businessTransactionIDREF="NotifyOfSemiconductorTestData_BT" fromRole='../Role[@name="FoundryOrTestServices"]' fromRoleIDREF="FoundryOrTestServicesID" toRole='../Role[@name="Customer"]' toRoleIDREF="CustomerID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect 	business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for Notify Of Semiconductor Test Data-->
+					<Success nameID="Start_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Semiconductor Test Data"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for Notify Of Semiconductor Test Data-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Semiconductor Test Data"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

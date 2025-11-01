@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 07/30/07 -->
+<ProcessSpecification name="PIP7B1DistributeWorkInProcess" nameID="urn:rosettanet:specification:interchange:PIP7B1:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP distributes status information about the manufacture or assembly of a product configuration to parties needing such information.</Documentation>
+	<BusinessDocument name="Work In Process Distribution" nameID="PIP7B1WorkInProcessDistribution" specificationLocation="urn:rosettanet:specification:interchange:WorkInProcessDistribution:xsd:schema:01.02">
+		<Documentation>Contains information on the status of a product being manufactured or fabricated.</Documentation>
+	</BusinessDocument>
+	<Package name="Manufacturing" nameID="7">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Manage Manufacturing WO &amp; WIP" nameID="7B">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Distribute Work In Process" nameID="7B1">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Distribute Work In Process" nameID="DistributeWorkInProcess_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Work In Process Distribution" nameID="InitiateWorkInProcessDistribution" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Work In Process Distribution" nameID="WorkInProcessDistribution_DE" businessDocument='//BusinessDocument[@name="Work In Process Distribution"]' businessDocumentIDREF="PIP7B1WorkInProcessDistribution" isAuthenticated="none" isConfidential="transient" isTamperDetectable="none"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Work In Process Distribution" nameID="ProcessWorkInProcessDistribution"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Distribute Work In Process" nameID="DistributeWorkInProcess_BC" initiatingRoleIDREF="SolutionProviderID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System and Valid</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System and Valid b. Receiving Partner Authorized; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Solution Provider" nameID="SolutionProviderID"/>
+					<Role name="Solution Requester" nameID="SolutionRequesterID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Distribute Work In Process"]' toBusinessStateIDREF="PIP7B1DistributeWorkInProcess"/>
+					<BusinessTransactionActivity name="Distribute Work In Process" nameID="DistributeWorkInProcess_BTA" businessTransaction='//BusinessTransaction[@name="Distribute Work In Process"]' businessTransactionIDREF="DistributeWorkInProcess_BT" fromRole='../Role[@name="SolutionProvider"]' fromRoleIDREF="SolutionProviderID" toRole='../Role[@name="SolutionRequester"]' toRoleIDREF="SolutionRequesterID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Distribute Work In Process-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Work In Process"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Distribute Work In Process -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Work In Process"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

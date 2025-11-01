@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with RosettaNet UML2BPSS 01.03 on 02/22/08 -->
+<ProcessSpecification name="PIP2A16DistributeEngineeringInformationInquiry" nameID="urn:rosettanet:specification:interchange:PIP2A16:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a customer to issue a request or enquiry about engineering information from the supplier.</Documentation>
+	<BusinessDocument name="Engineering Information Inquiry Distribution" nameID="PIP2A16EngineeringInformationInquiryDistribution" specificationLocation="urn:rosettanet:specification:interchange:EngineeringInformationInquiryDistribution:xsd:schema:01.02">
+		<Documentation>A business model to request and reply for information availability, formal request and notification of completion of detailed design of engineering information from product design engineer in the case of electric/ electronics part selection for OEM products.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Information" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+	<Package name="Preparation for Distribution" nameID="2A">
+	<Documentation>Defines Segment</Documentation>
+	<Package name="Distribute Engineering Information Inquiry" nameID="2A16">
+		<Documentation>Defines PIP</Documentation>
+			<BusinessTransaction name="Distribute Engineering Information Inquiry" nameID="DistributeEngineeringInformationInquiry_BT" isGuaranteedDeliveryRequired="true">
+				<RequestingBusinessActivity name="Initiate Engineering Information Inquiry Distribution" nameID="InitiateEngineeringInformationInquiryDistribution" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+					<DocumentEnvelope name="Engineering Information Inquiry Distribution" nameID="EngineeringInformationInquiryDistribution_DE" businessDocument='//BusinessDocument[@name="Engineering Information Inquiry Distribution"]' businessDocumentIDREF="PIP2A16EngineeringInformationInquiryDistribution" isAuthenticated="none" isConfidential="transient" isTamperDetectable="none"/>
+				</RequestingBusinessActivity>
+			<RespondingBusinessActivity name="Process Engineering Information Inquiry Distribution" nameID="ProcessEngineeringInformationInquiryDistribution"/>
+		</BusinessTransaction>
+		<!--REM: Binary Collaborations-->
+		<BinaryCollaboration name="Distribute Engineering Information Inquiry" nameID="DistributeEngineeringInformationInquiry_BC" initiatingRoleIDREF="CustomerID" preCondition="true" postCondition="true">
+			<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System and Valid.</Documentation>
+			<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Valid. b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+			<Role name="Customer" nameID="CustomerID"/>
+			<Role name="Supplier" nameID="SupplierID"/>
+			<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Distribute Engineering Information Inquiry"]' toBusinessStateIDREF="PIP2A16DistributeEngineeringInformationInquiry"/>
+			<BusinessTransactionActivity name="Distribute Engineering Information Inquiry" nameID="DistributeEngineeringInformationInquiry_BTA" businessTransaction='//BusinessTransaction[@name="Distribute Engineering Information Inquiry"]' businessTransactionIDREF="DistributeEngineeringInformationInquiry_BT" fromRole='../Role[@name="Customer"]' fromRoleIDREF="CustomerID" toRole='../Role[@name="Supplier"]' toRoleIDREF="SupplierID" isLegallyBinding="true" isConcurrent="false"/>
+			<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+			<!--REM:  Success Condition for  Distribute Engineering Information Inquiry-->
+			<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Engineering Information Inquiry"]' conditionGuard="Success">
+				<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+			</Success>
+			<!--REM:  Failure Condition for  Distribute Engineering Information Inquiry -->
+			<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Engineering Information Inquiry"]' conditionGuard="BusinessFailure">
+				<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+				</Failure>
+			</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

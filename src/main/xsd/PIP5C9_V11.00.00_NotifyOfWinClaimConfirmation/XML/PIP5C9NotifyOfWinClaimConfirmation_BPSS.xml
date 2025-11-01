@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<ProcessSpecification name="PIP5C9NotifyOfWinClaimConfirmation" nameID="urn:rosettanet:specification:interchange:PIP5C9:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a party, for whom design registration win metrics have been met, to offer a Win Claim Confirmation Notification, and a provider to respond to the Win Claim Confirmation Notification.</Documentation>
+	<BusinessDocument name="Win Claim Confirmation Notification" nameID="PIP5C9WinClaimConfirmationNotification" specificationLocation="urn:rosettanet:specification:interchange:WinClaimConfirmationNotification:xsd:schema:01.00">
+		<Documentation>Contains design registration identifying numbers, win type, and a claim status or rejection reason code</Documentation>
+	</BusinessDocument>
+	<Package name="Marketing Information Management" nameID="5">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Design Win Management (EC)" nameID="5C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify of Win Claim Confirmation" nameID="5C9">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify of Win Claim Confirmation" nameID="NotifyOfWinClaimConfirmation_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Win Claim Confirmation Notification" nameID="InitiateWinClaimConfirmationNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Win Claim Confirmation Notification" nameID="WinClaimConfirmationNotification_DE" businessDocument='//BusinessDocument[@name="Win Claim Confirmation Notification"]' businessDocumentIDREF="PIP5C9WinClaimConfirmationNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Win Claim Confirmation Notification" nameID="ProcessWinClaimConfirmationNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify of Win Claim Confirmation" nameID="NotifyOfWinClaimConfirmation_BC" initiatingRoleIDREF="DemandCreatorID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Exist In Backend System b. Sending Partner Approved, Exist as Party and Authorized c. Receiving Partner Approved, Exist as Party d. Business Document Exist In Backend System, Valid and Non-Repudiated.</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized c. Business Document Approved, Exist in Backend System, Valid and Non-Repudiated ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Demand Creator" nameID="DemandCreatorID"/>
+					<Role name="Product Provider" nameID="ProductProviderID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify of Win Claim Confirmation"]' toBusinessStateIDREF="PIP5C9NotifyOfWinClaimConfirmation"/>
+					<BusinessTransactionActivity name="Notify of Win Claim Confirmation" nameID="NotifyOfWinClaimConfirmation_BTA" businessTransaction='//BusinessTransaction[@name="Notify of Win Claim Confirmation"]' businessTransactionIDREF="NotifyOfWinClaimConfirmation_BT" fromRole='../Role[@name="ProductProvider"]' fromRoleIDREF="ProductProviderID" toRole='../Role[@name="DemandCreator"]' toRoleIDREF="DemandCreatorID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT2H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Win Claim Confirmation"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Win Claim Confirmation"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

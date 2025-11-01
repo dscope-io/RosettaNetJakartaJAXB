@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 07/02/07 -->
+<ProcessSpecification name="PIP3A18DistributePriceandAvailabilityResponse" nameID="urn:rosettanet:specification:interchange:PIP3A18:xml:bpss:v11_01" version="V11.01" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP provides a product supplier to respond to a product price and availability request of a customer.</Documentation>
+	<BusinessDocument name="Price and Availability Response Notification" nameID="PIP3A18PriceandAvailabilityResponseNotification" specificationLocation="urn:rosettanet:specification:interchange:PriceandAvailabilityResponseNotification:xsd:schema:02.01">
+		<Documentation>Provides response to Customer's query for price and availability.</Documentation>
+	</BusinessDocument>
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Quote and Order Entry" nameID="3A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Distribute Price and Availability Request" nameID="3A18">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="DistributePriceandAvailabilityResponse" nameID="DistributePriceandAvailabilityResponse_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Price and Availability Response Notification" nameID="InitiatePriceandAvailabilityResponseNotificationt" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Price and Availability Response Notification" nameID="PriceandAvailabilityResponseNotification_DE" businessDocument='//BusinessDocument[@name="Price and Availability Response Notification"]' businessDocumentIDREF="PIP3A18PriceandAvailabilityResponseNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Price and Availability Response Notification" nameID="ProcessPriceandAvailabilityResponseNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Distribute Price and Availability Response" nameID="DistributePriceandAvailabilityResponse_BC" initiatingRoleIDREF="CustomerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid  b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Product Supplier" nameID="ProductSupplierID"/>
+					<Role name="Customer" nameID="CustomerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Distribute Price and Availability Response"]' toBusinessStateIDREF="PIP3A18DistributePriceandAvailabilityResponse"/>
+					<BusinessTransactionActivity name="Distribute Price and Availability Response" nameID="DistributePriceandAvailabilityResponse_BTA" businessTransaction='//BusinessTransaction[@name="Distribute Price and Availability Response"]' businessTransactionIDREF="DistributePriceandAvailabilityResponse_BT" fromRole='../Role[@name="ProductSupplier"]' fromRoleIDREF="ProductSupplierID" toRole='../Role[@name="Customer"]' toRoleIDREF="CustomerID" isLegallyBinding="false" isConcurrent="false" timeToPerform="PT2H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Request Price And Availability -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="DistributePriceandAvailabilityResponse"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Request Price And Availability-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Price and Availability Response"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

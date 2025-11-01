@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with RosettaNet UML2BPSS 01.03 on 07/06/07 -->
+<ProcessSpecification name="PIP2A12DistributeProductMaster" nameID="urn:rosettanet:specification:interchange:PIP2A12:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The document is an XSD file that specifies the rules for creating the XML document for the business action of making a product list distribution. The specificationLocation attribute is used for illustrative purposes only.</Documentation>
+	<BusinessDocument name="Product Master Distribution" nameID="PIP2A12ProductMasterDistribution" specificationLocation="urn:rosettanet:specification:interchange:ProductMasterDistribution:xsd:schema:02.00">
+		<Documentation>An unsolicited notification of the Product Master information.  The status reflects the current state of the Product Master at the specified location at the time of the notification.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Information" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Preparation For Distribution" nameID="2A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Distribute Product Master" nameID="2A12">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Distribute Product Master" nameID="DistributeProductMaster_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Product Master Distribution" nameID="InitiateProductMasterDistribution" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Product Master Distribution" nameID="ProductMasterDistribution_DE" businessDocument='//BusinessDocument[@name="Product Master Distribution"]' businessDocumentIDREF="PIP2A12ProductMasterDistribution" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Product Master Distribution" nameID="ProcessProductMasterDistribution"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Distribute Product Master" nameID="DistributeProductMaster_BC" initiatingRoleIDREF="ProductInformationDistributorID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, and Valid. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System and Valid b. Receiving Partner Authorized; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Product Information Distributor" nameID="ProductInformationDistributorID"/>
+					<Role name="Product Information User" nameID="ProductInformationUserID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Distribute Product Master"]' toBusinessStateIDREF="PIP2A12DistributeProductMaster"/>
+					<BusinessTransactionActivity name="Distribute Product Master" nameID="DistributeProductMaster_BTA" businessTransaction='//BusinessTransaction[@name="Distribute Product Master"]' businessTransactionIDREF="DistributeProductMaster_BT" fromRole='../Role[@name="ProductInformationDistributor"]' fromRoleIDREF="ProductInformationDistributorID" toRole='../Role[@name="ProductInformationUser"]' toRoleIDREF="ProductInformationUserID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Distribute Product Master-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Product Master"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Distribute Product Master -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Product Master"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

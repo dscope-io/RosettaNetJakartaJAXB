@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by Hussam (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.01 on 05/16/12 -->
+<ProcessSpecification name="PIP2C9RequestOfApprovedManufacturerList" nameID="urn:rosettanet:specification:interchange:2C9:xml:bpss:r11_00" version="R11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>This PIP is designed to easily and efficiently communicate AML information about the parts that are approved for a product from engineering to manufacturing. It supports the exchange of mappings from internal part numbers to manufacturer part numbers, where “manufacturer” is loosely defined as the last partner to affect a change to the part. It also supports the mapping of these part numbers to supplier part numbers. The AML solves a variety of problems that impact quality, costing and lead times. Quality is improved by specifying precise definitions of the parts that are approved and the suppliers that are approved to supply them. The AML assists in costing and in planning lead times. The AML provides traceability into the process of part acquisition. The AML also allows the Integrator to respond whether it is able to build the product.</Documentation>
+	<!--REM: Approved Manufacturer List Request Document-->
+	<BusinessDocument name="Approved Manufacturer List Request" nameID="PIP2C9ApprovedManufacturerListRequest" specificationLocation="urn:rosettanet:specification:interchange:ApprovedManufacturerListRequest:xsd:schema:01.00">
+		<Documentation>Allows the sender to request Approved Manufacturer List information for a product.  The product being queried can be identified using a Global Trade Item Number (GTIN) or proprietary product identifier.</Documentation>
+	</BusinessDocument>
+	<!--REM: Approved Manufacturer List Confirmation Document-->
+	<BusinessDocument name="Approved Manufacturer List Confirmation" nameID="PIP2C9ApprovedManufacturerListConfirmation" specificationLocation="urn:rosettanet:specification:interchange:ApprovedManufacturerListConfirmation:xsd:schema:01.00">
+		<Documentation>Contains Approved Manufacturer List data for a given product. The Approved Manufacturer List specifies manufacturer part numbers for parts from approved manufacturers and approved suppliers for the parts.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Information" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Product Design Information" nameID="2C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Request Of Approved Manufacturer List" nameID="2C9">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Request Of Approved Manufacturer List" nameID="RequestOfApprovedManufacturerList_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Approved Manufacturer List Request" nameID="InitiateRequestOfApprovedManufacturerList" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Approved Manufacturer List Request" nameID="ApprovedManufacturerListRequest_DE" businessDocument='//BusinessDocument[@name="Approved Manufacturer List Request"]' businessDocumentIDREF="PIP2C9ApprovedManufacturerListRequest" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Initiate Approved Manufacturer List Confirmation" nameID="InitiateApprovedManufacturerListConfirmation" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H">
+						<DocumentEnvelope name="Approved Manufacturer List Confirmation" nameID="ApprovedManufacturerListConfirmation_DE" businessDocument='//BusinessDocument[@name="Approved Manufacturer List Confirmation"]' businessDocumentIDREF="PIP2C9ApprovedManufacturerListConfirmation" isAuthenticated="persistent" isConfidential="transient" isPositiveResponse="true" isTamperDetectable="persistent"/>
+					</RespondingBusinessActivity>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Request Of Approved Manufacturer List" nameID="RequestOfApprovedManufacturerList_BC" initiatingRoleIDREF="IntegratorID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, and Valid Non-Repudiated and Authorized. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, and Valid b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Integrator" nameID="IntegratorID"/>
+					<Role name="Design Owner" nameID="DesignOwnerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Request Of Approved Manufacturer List"]' toBusinessStateIDREF="PIP2C9RequestOfApprovedManufacturerList"/>
+					<BusinessTransactionActivity name="Request Of Approved Manufacturer List" nameID="RequestOfApprovedManufacturerList_BTA" businessTransaction='//BusinessTransaction[@name="Request Of Approved Manufacturer List"]' businessTransactionIDREF="RequestOfApprovedManufacturerList_BT" fromRole='../Role[@name="Integrator"]' fromRoleIDREF="IntegratorID" toRole='../Role[@name="Design Owner"]' toRoleIDREF="DesignOwnerID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT24H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Request Of Approved Manufacturer List -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="RequestOfApprovedManufacturerList"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for   Request Of Approved Manufacturer List -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Of Approved Manufacturer List"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

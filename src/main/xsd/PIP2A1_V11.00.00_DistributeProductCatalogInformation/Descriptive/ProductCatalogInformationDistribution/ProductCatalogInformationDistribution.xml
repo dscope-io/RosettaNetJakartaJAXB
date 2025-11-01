@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with RosettaNet XSD2ALL 2.3.1 on Wed Jul 25 21:56:26 SGT 2007 -->
+<ProductCatalogInformationDistribution xmlns="urn:rosettanet:specification:interchange:ProductCatalogInformationDistribution:xsd:schema:01.00" xmlns:dabcc="urn:rosettanet:specification:domain:Design:ABCCode:xsd:codelist:01.02" xmlns:dac="urn:rosettanet:specification:domain:Design:ActionCode:xsd:codelist:01.03" xmlns:dacc="urn:rosettanet:specification:domain:Procurement:AccountClassification:xsd:codelist:01.03" xmlns:dbpq="urn:rosettanet:specification:domain:Procurement:BookPriceQualifier:xsd:codelist:01.04" xmlns:dccc="urn:rosettanet:specification:domain:Procurement:CreditCardClassification:xsd:codelist:01.03" xmlns:dcp="urn:rosettanet:specification:domain:Design:Compliant:xsd:codelist:01.02" xmlns:dcrt="urn:rosettanet:specification:domain:Procurement:CustomerType:xsd:codelist:01.03" xmlns:dcst="urn:rosettanet:specification:domain:Logistics:CustomsType:xsd:codelist:01.03" xmlns:dddt="urn:rosettanet:specification:domain:Design:DateType:xsd:codelist:01.00" xmlns:ddp="urn:rosettanet:specification:domain:Marketing:Disposition:xsd:codelist:01.02" xmlns:ddrn="urn:rosettanet:specification:domain:Marketing:DesignRegistrationNotification:xsd:codelist:01.02" xmlns:dds="urn:rosettanet:specification:domain:Design:xsd:schema:02.15" xmlns:ddwsr="urn:rosettanet:specification:domain:Marketing:DesignWinStatusReason:xsd:codelist:01.03" xmlns:dfe="urn:rosettanet:specification:domain:Procurement:ForecastEvent:xsd:codelist:01.03" xmlns:dfpt="urn:rosettanet:specification:domain:Logistics:FreightPaymentTerms:xsd:codelist:01.03" xmlns:dfrt="urn:rosettanet:specification:domain:Procurement:ForecastReferenceType:xsd:codelist:01.03" xmlns:dft="urn:rosettanet:specification:domain:Procurement:FinanceTerms:xsd:codelist:01.03" xmlns:dgrc="urn:rosettanet:specification:domain:Marketing:GeographicRegionCode:xsd:codelist:01.02" xmlns:dit="urn:rosettanet:specification:domain:Procurement:InventoryType:xsd:codelist:01.03" xmlns:dl="urn:rosettanet:specification:domain:Logistics:xsd:schema:02.15" xmlns:dldr="urn:rosettanet:specification:domain:Logistics:LotDiscrepancyReason:xsd:codelist:01.03" xmlns:dlit="urn:rosettanet:specification:domain:Logistics:InstructionType:xsd:codelist:01.00" xmlns:dltcc="urn:rosettanet:specification:domain:Procurement:LeadTimeClassificationCode:xsd:codelist:01.03" xmlns:dlv="urn:rosettanet:specification:domain:Design:Level:xsd:codelist:01.02" xmlns:dmk="urn:rosettanet:specification:domain:Marketing:xsd:schema:02.12" xmlns:dnecc="urn:rosettanet:specification:domain:Logistics:NationalExportControlClassification:xsd:codelist:01.03" xmlns:dp="urn:rosettanet:specification:domain:Procurement:xsd:schema:02.17" xmlns:dpc="urn:rosettanet:specification:domain:Procurement:PaymentCondition:xsd:codelist:01.03" xmlns:dpcm="urn:rosettanet:specification:domain:Procurement:PurchaseMethod:xsd:codelist:01.03" xmlns:dpiac="urn:rosettanet:specification:domain:Logistics:PortIdentifierAuthorityCode:xsd:codelist:01.03" xmlns:dplcs="urn:rosettanet:specification:domain:Design:ProductLifeCycleStatusCode:xsd:codelist:01.03" xmlns:dpms="urn:rosettanet:specification:domain:Marketing:ProjectMarketSegment:xsd:codelist:01.02" xmlns:dppt="urn:rosettanet:specification:domain:Procurement:ProductProcurementType:xsd:codelist:01.03" xmlns:dpsr="urn:rosettanet:specification:domain:Procurement:ProductSubstitutionReason:xsd:codelist:01.03" xmlns:dptt="urn:rosettanet:specification:domain:Logistics:PortType:xsd:codelist:01.03" xmlns:drl="urn:rosettanet:specification:domain:Logistics:RouteLocation:xsd:codelist:01.03" xmlns:drlc="urn:rosettanet:specification:domain:Logistics:ReturnLabelCode:xsd:codelist:01.03" xmlns:drsc="urn:rosettanet:specification:domain:Marketing:RegistrationStatusCode:xsd:codelist:01.03" xmlns:dscd="urn:rosettanet:specification:domain:Logistics:ShipmentChangeDisposition:xsd:codelist:01.03" xmlns:dsd="urn:rosettanet:specification:domain:Logistics:ShippingDocument:xsd:codelist:01.02" xmlns:dsdc="urn:rosettanet:specification:domain:Logistics:ShipDateCode:xsd:codelist:01.03" xmlns:dsfr="urn:rosettanet:specification:domain:Procurement:SpecialFulfillmentRequest:xsd:codelist:01.03" xmlns:dsh="urn:rosettanet:specification:domain:Procurement:SpecialHandling:xsd:codelist:01.04" xmlns:dslt="urn:rosettanet:specification:domain:Procurement:SaleType:xsd:codelist:01.04" xmlns:dsm="urn:rosettanet:specification:domain:Logistics:ShipmentMode:xsd:codelist:01.05" xmlns:dst="urn:rosettanet:specification:domain:Procurement:ShipmentTerms:xsd:codelist:01.03" xmlns:dte="urn:rosettanet:specification:domain:Procurement:TransportEvent:xsd:codelist:01.03" xmlns:dtec="urn:rosettanet:specification:domain:Procurement:TaxExemptionCode:xsd:codelist:01.03" xmlns:dtq="urn:rosettanet:specification:domain:Procurement:TotalQualifier:xsd:codelist:01.03" xmlns:dtrt="urn:rosettanet:specification:domain:Logistics:TrackingReferenceType:xsd:codelist:01.06" xmlns:dtt="urn:rosettanet:specification:domain:Procurement:TransactionType:xsd:codelist:01.04" xmlns:ictc="urn:rosettanet:specification:domain:Design:CatalogType:xsd:codelist:01.00" xmlns:rat="urn:rosettanet:specification:domain:Shared:AmountType:xsd:codelist:01.02" xmlns:rfob="urn:rosettanet:specification:domain:Shared:FreeOnBoard:xsd:codelist:01.01" xmlns:ri="urn:rosettanet:specification:domain:Shared:Interval:xsd:codelist:01.01" xmlns:rict="urn:rosettanet:specification:domain:Shared:InvoiceChargeType:xsd:codelist:01.02" xmlns:rmat="urn:rosettanet:specification:domain:Shared:MonetaryAmountType:xsd:codelist:01.01" xmlns:rpktc="urn:rosettanet:specification:domain:Shared:PackageTypeCode:xsd:codelist:01.01" xmlns:rpm="urn:rosettanet:specification:domain:Shared:PaymentMethod:xsd:codelist:01.02" xmlns:rpmt="urn:rosettanet:specification:domain:Shared:PaymentType:xsd:codelist:01.01" xmlns:rpsc="urn:rosettanet:specification:domain:Shared:ProductStatusCode:xsd:codelist:01.01" xmlns:rptc="urn:rosettanet:specification:domain:Shared:PricingTypeCode:xsd:codelist:01.03" xmlns:rrt="urn:rosettanet:specification:domain:Shared:RateType:xsd:codelist:01.01" xmlns:rssl="urn:rosettanet:specification:domain:Shared:ShippingServiceLevel:xsd:codelist:01.01" xmlns:rwtc="urn:rosettanet:specification:domain:Shared:WarrantyType:xsd:codelist:01.01" xmlns:sft="urn:rosettanet:specification:system:TPIRFileType:xsd:codelist:01.01" xmlns:sha="urn:rosettanet:specification:domain:Shared:xsd:schema:01.10" xmlns:ssdh="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.16" xmlns:st="http://www.ascc.net/xml/schematron" xmlns:uat="urn:rosettanet:specification:universal:AbstractType:xsd:schema:01.02" xmlns:uc="urn:rosettanet:specification:universal:Country:xsd:codelist:01.02" xmlns:uci="urn:rosettanet:specification:universal:ContactInformation:xsd:schema:01.03" xmlns:ucr="urn:rosettanet:specification:universal:Currency:xsd:codelist:01.02" xmlns:ucs="urn:rosettanet:specification:universal:CountrySubdivision:xsd:codelist:01.02" xmlns:ud="urn:rosettanet:specification:universal:Dates:xsd:schema:01.03" xmlns:udc="urn:rosettanet:specification:universal:Document:xsd:schema:01.08" xmlns:udct="urn:rosettanet:specification:universal:DocumentType:xsd:codelist:01.09" xmlns:udt="urn:rosettanet:specification:universal:DataType:xsd:schema:01.04" xmlns:ul="urn:rosettanet:specification:universal:Language:xsd:codelist:01.02" xmlns:ulc="urn:rosettanet:specification:universal:Locations:xsd:schema:01.04" xmlns:ume="urn:rosettanet:specification:universal:MonetaryExpression:xsd:schema:01.04" xmlns:umtq="urn:rosettanet:specification:universal:MimeTypeQualifier:xsd:codelist:01.02" xmlns:upd="urn:rosettanet:specification:universal:PhysicalDimension:xsd:schema:01.05" xmlns:updi="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04" xmlns:upi="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.12" xmlns:upri="urn:rosettanet:specification:universal:ProcessRoleIdentifier:xsd:codelist:01.08" xmlns:urss="urn:rosettanet:specification:system:xml:1.0" xmlns:utt="urn:rosettanet:specification:universal:TaxType:xsd:codelist:01.02" xmlns:uuom="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.03" xmlns:uwt="urn:rosettanet:specification:universal:WeightType:xsd:codelist:01.01" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:rosettanet:specification:interchange:ProductCatalogInformationDistribution:xsd:schema:01.00
+..\..\XML\Interchange\ProductCatalogInformationDistribution_01_00.xsd">
+	<ssdh:DocumentHeader>
+		<ssdh:CorrelationInformation>
+			<ssdh:ContractInformation>
+				<ssdh:ContractIdentifier>String</ssdh:ContractIdentifier>
+				<ssdh:ContractType>String</ssdh:ContractType>
+			</ssdh:ContractInformation>
+			<ssdh:RequestingDocumentInformation>
+				<ssdh:BusinessProcessInstanceIdentifier>String</ssdh:BusinessProcessInstanceIdentifier>
+				<ssdh:RequestingDocumentCreationDateTime>2005-02-15T08:30:00+08:00</ssdh:RequestingDocumentCreationDateTime>
+				<ssdh:RequestingDocumentInstanceIdentifier>String</ssdh:RequestingDocumentInstanceIdentifier>
+				<ssdh:ResponseDateTime>2005-02-15T08:30:00+08:00</ssdh:ResponseDateTime>
+			</ssdh:RequestingDocumentInformation>
+		</ssdh:CorrelationInformation>
+		<ssdh:DocumentInformation>
+			<ssdh:Creation>2005-02-15T08:30:00+08:00</ssdh:Creation>
+			<ssdh:DocumentIdentification>
+				<ssdh:Identifier>String</ssdh:Identifier>
+				<ssdh:Type>String</ssdh:Type>
+				<ssdh:StandardDocumentIdentification>
+					<ssdh:Standard>String</ssdh:Standard>
+					<ssdh:Version>String</ssdh:Version>
+				</ssdh:StandardDocumentIdentification>
+			</ssdh:DocumentIdentification>
+			<ssdh:DocumentManifest>
+				<ssdh:ManifestItem>
+					<ssdh:Description>String</ssdh:Description>
+					<ssdh:Language agency="RosettaNet" codeListVersion="01.01" identifier="Language">EN</ssdh:Language>
+					<ssdh:Length>100</ssdh:Length>
+					<ssdh:MimeTypeQualifier agency="RosettaNet" codeListVersion="01.01" identifier="MimeTypeQualifier">application/activemessage</ssdh:MimeTypeQualifier>
+					<ssdh:UniversalResourceIdentifier>String</ssdh:UniversalResourceIdentifier>
+				</ssdh:ManifestItem>
+				<ssdh:MultipleType>true</ssdh:MultipleType>
+				<ssdh:NumberOfItems>100</ssdh:NumberOfItems>
+			</ssdh:DocumentManifest>
+			<ssdh:DocumentSecurity>
+				<ssdh:NonRepudiableReceipt>true</ssdh:NonRepudiableReceipt>
+				<ssdh:PersistentEncryption>true</ssdh:PersistentEncryption>
+				<ssdh:PersistentSignature>true</ssdh:PersistentSignature>
+			</ssdh:DocumentSecurity>
+		</ssdh:DocumentInformation>
+		<ssdh:HeaderVersion>String</ssdh:HeaderVersion>
+		<ssdh:Receiver>
+			<ssdh:BusinessServiceInformation>
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Receiver>
+		<ssdh:Sender>
+			<ssdh:BusinessServiceInformation>
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Sender>
+	</ssdh:DocumentHeader>
+	<ProductCatalog>
+		<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+		<udc:BusinessDocumentReference>
+			<udc:DateTime>2005-02-15T08:30:00+08:00</udc:DateTime>
+			<udct:DocumentType agency="RosettaNet" codeListVersion="01.08" identifier="DocumentType">ARA</udct:DocumentType>
+			<udc:Identifier>String</udc:Identifier>
+			<udc:Line>String</udc:Line>
+			<udc:Revision>String</udc:Revision>
+			<udc:SubLine>String</udc:SubLine>
+		</udc:BusinessDocumentReference>
+		<CatalogDisclaimer>String</CatalogDisclaimer>
+		<ictc:CatalogType agency="RosettaNet" codeListVersion="01.00" identifier="CatalogType">PAR</ictc:CatalogType>
+		<uci:ContactInformation>
+			<uci:Contact>String</uci:Contact>
+			<uci:Email>String</uci:Email>
+			<uci:Fax>String</uci:Fax>
+			<uci:Identifier>String</uci:Identifier>
+			<uci:Phone>String</uci:Phone>
+		</uci:ContactInformation>
+		<Description>String</Description>
+		<EffectiveDate>
+			<ud:Begin>2002-02-15</ud:Begin>
+			<ud:End>2002-02-15</ud:End>
+		</EffectiveDate>
+		<dl:GeographicRegion>
+			<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country">MG</uc:Country>
+			<dl:RegionIdentifier>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</dl:RegionIdentifier>
+		</dl:GeographicRegion>
+		<OrganizationCoverageIdentifier>String</OrganizationCoverageIdentifier>
+		<upi:PartnerIdentification>
+			<upi:PartnerName>String</upi:PartnerName>
+			<ulc:AlternativeIdentifier>
+				<ulc:Authority>String</ulc:Authority>
+				<ulc:Identifier>String</ulc:Identifier>
+			</ulc:AlternativeIdentifier>
+		</upi:PartnerIdentification>
+		<ProductLineItem>
+			<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+			<EffectiveDate>
+				<ud:Begin>2002-02-15</ud:Begin>
+				<ud:End>2002-02-15</ud:End>
+			</EffectiveDate>
+			<PricingGroup>String</PricingGroup>
+			<updi:ProductIdentification>
+				<updi:ProductName>String</updi:ProductName>
+				<updi:Revision>String</updi:Revision>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</updi:ProductIdentification>
+			<ProductIdentificationInformation>
+				<dmk:IsDesignWin>true</dmk:IsDesignWin>
+				<IsGeneric>true</IsGeneric>
+				<dp:IsSoleSource>true</dp:IsSoleSource>
+				<ProductClassCode>String</ProductClassCode>
+				<dp:ProductClassification>
+					<ulc:AlternativeIdentifier>
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</dp:ProductClassification>
+				<updi:ProductDescription>
+					<updi:ProductIdentification>
+						<updi:ProductName>String</updi:ProductName>
+						<updi:Revision>String</updi:Revision>
+						<ulc:AlternativeIdentifier>
+							<ulc:Authority>String</ulc:Authority>
+							<ulc:Identifier>String</ulc:Identifier>
+						</ulc:AlternativeIdentifier>
+					</updi:ProductIdentification>
+					<updi:TextualDescription>
+						<updi:Detail>String</updi:Detail>
+						<updi:Primary>String</updi:Primary>
+						<updi:Summary>String</updi:Summary>
+					</updi:TextualDescription>
+				</updi:ProductDescription>
+				<ProductIdentificationInformation>
+					<dmk:IsDesignWin>true</dmk:IsDesignWin>
+					<IsGeneric>true</IsGeneric>
+					<dp:IsSoleSource>true</dp:IsSoleSource>
+					<ProductClassCode>String</ProductClassCode>
+					<dp:ProductClassification>
+						<ulc:AlternativeIdentifier>
+							<ulc:Authority>String</ulc:Authority>
+							<ulc:Identifier>String</ulc:Identifier>
+						</ulc:AlternativeIdentifier>
+					</dp:ProductClassification>
+					<updi:ProductDescription>
+						<updi:ProductIdentification>
+							<updi:ProductName>String</updi:ProductName>
+							<updi:Revision>String</updi:Revision>
+							<ulc:AlternativeIdentifier>
+								<ulc:Authority>String</ulc:Authority>
+								<ulc:Identifier>String</ulc:Identifier>
+							</ulc:AlternativeIdentifier>
+						</updi:ProductIdentification>
+						<updi:TextualDescription>
+							<updi:Detail>String</updi:Detail>
+							<updi:Primary>String</updi:Primary>
+							<updi:Summary>String</updi:Summary>
+						</updi:TextualDescription>
+					</updi:ProductDescription>
+				</ProductIdentificationInformation>
+			</ProductIdentificationInformation>
+			<ProductInformation>
+				<dmk:MarketingInstruction>
+					<dmk:ChangeNotification>
+						<dmk:Identifier>String</dmk:Identifier>
+						<dmk:IssueDate>2002-02-15</dmk:IssueDate>
+						<dmk:Text>String</dmk:Text>
+						<dmk:Title>String</dmk:Title>
+						<dmk:Type>String</dmk:Type>
+					</dmk:ChangeNotification>
+					<dmk:PartActivityIndicator>String</dmk:PartActivityIndicator>
+					<sha:Warranty>
+						<ud:DatePeriod>
+							<ud:Begin>2002-02-15</ud:Begin>
+							<ud:End>2002-02-15</ud:End>
+						</ud:DatePeriod>
+						<sha:Description>String</sha:Description>
+						<sha:Duration agency="RosettaNet" codeListVersion="01.00" identifier="Interval">1WM</sha:Duration>
+						<rwtc:WarrantyType agency="RosettaNet" codeListVersion="01.00" identifier="WarrantyType">CRI</rwtc:WarrantyType>
+					</sha:Warranty>
+				</dmk:MarketingInstruction>
+				<dl:ProductAttribute>
+					<rpktc:PackageTypeCode agency="RosettaNet" codeListVersion="01.00" identifier="PackageTypeCode">6PC</rpktc:PackageTypeCode>
+					<dl:PackingQuantity>3.14159</dl:PackingQuantity>
+					<dl:ProductPackaging>
+						<sha:DatePeriodAndDuration>
+							<ud:DatePeriod>
+								<ud:Begin>2002-02-15</ud:Begin>
+								<ud:End>2002-02-15</ud:End>
+							</ud:DatePeriod>
+						</sha:DatePeriodAndDuration>
+						<upd:Linear>
+							<upd:Height>
+								<upd:Unit agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</upd:Unit>
+								<upd:Value>3.14159</upd:Value>
+							</upd:Height>
+							<upd:Length>
+								<upd:Unit agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</upd:Unit>
+								<upd:Value>3.14159</upd:Value>
+							</upd:Length>
+							<upd:Width>
+								<upd:Unit agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</upd:Unit>
+								<upd:Value>3.14159</upd:Value>
+							</upd:Width>
+						</upd:Linear>
+						<dl:MassPhysicalDimension>
+							<upd:Volume>
+								<upd:Unit agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</upd:Unit>
+								<upd:Value>3.14159</upd:Value>
+							</upd:Volume>
+							<upd:Weight>
+								<upd:Unit agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</upd:Unit>
+								<upd:Value>3.14159</upd:Value>
+								<upd:Type agency="RosettaNet" codeListVersion="01.00" identifier="WeightType">GRS</upd:Type>
+							</upd:Weight>
+						</dl:MassPhysicalDimension>
+						<rpktc:PackageTypeCode agency="RosettaNet" codeListVersion="01.00" identifier="PackageTypeCode">6PC</rpktc:PackageTypeCode>
+						<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+					</dl:ProductPackaging>
+					<dl:SmallestPackingQuantity>3.14159</dl:SmallestPackingQuantity>
+					<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+				</dl:ProductAttribute>
+				<ProductLifeCycle>
+					<udc:BusinessDocumentReference>
+						<udc:DateTime>2005-02-15T08:30:00+08:00</udc:DateTime>
+						<udct:DocumentType agency="RosettaNet" codeListVersion="01.08" identifier="DocumentType">ARA</udct:DocumentType>
+						<udc:Identifier>String</udc:Identifier>
+						<udc:Line>String</udc:Line>
+						<udc:Revision>String</udc:Revision>
+						<udc:SubLine>String</udc:SubLine>
+					</udc:BusinessDocumentReference>
+					<dds:LifeCycleStatus>
+						<dds:EffectiveDate>
+							<ud:Begin>2002-02-15</ud:Begin>
+							<ud:End>2002-02-15</ud:End>
+						</dds:EffectiveDate>
+						<dplcs:ProductLifeCycleStatusCode agency="RosettaNet" codeListVersion="01.02" identifier="ProductLifeCycleStatusCode">DCN</dplcs:ProductLifeCycleStatusCode>
+					</dds:LifeCycleStatus>
+					<dl:ManufacturerProfile>
+						<dl:CountryOfOrigin agency="RosettaNet" codeListVersion="01.01" identifier="Country">MG</dl:CountryOfOrigin>
+						<dl:ManufactureDate>2002-02-15</dl:ManufactureDate>
+						<dl:ProductSerialIdentifier>String</dl:ProductSerialIdentifier>
+					</dl:ManufacturerProfile>
+					<OrderAvailability>
+						<ud:Begin>2002-02-15</ud:Begin>
+						<ud:End>2002-02-15</ud:End>
+					</OrderAvailability>
+					<ShipDate>
+						<ud:Begin>2002-02-15</ud:Begin>
+						<ud:End>2002-02-15</ud:End>
+					</ShipDate>
+					<dp:SubstituteProductReference>
+						<updi:ProductIdentification>
+							<updi:ProductName>String</updi:ProductName>
+							<updi:Revision>String</updi:Revision>
+							<ulc:AlternativeIdentifier>
+								<ulc:Authority>String</ulc:Authority>
+								<ulc:Identifier>String</ulc:Identifier>
+							</ulc:AlternativeIdentifier>
+						</updi:ProductIdentification>
+						<dpsr:ProductSubstitutionReason agency="RosettaNet" codeListVersion="01.01" identifier="ProductSubstitutionReason">BEP</dpsr:ProductSubstitutionReason>
+					</dp:SubstituteProductReference>
+				</ProductLifeCycle>
+				<ProductPriceAndAvailability>
+					<AvailableQuantity>3.14159</AvailableQuantity>
+					<dp:OrderProvision>
+						<dp:CountryOfOrigin agency="RosettaNet" codeListVersion="01.01" identifier="Country">MG</dp:CountryOfOrigin>
+						<dp:EstimatedAvailabilityDate>
+							<ud:Begin>2002-02-15</ud:Begin>
+							<ud:End>2002-02-15</ud:End>
+						</dp:EstimatedAvailabilityDate>
+						<sha:ProductQuantity>3.14159</sha:ProductQuantity>
+						<dp:OrderQuantity>
+							<dp:MaximumOrderQuantity>3.14159</dp:MaximumOrderQuantity>
+							<dp:MinimumOrderQuantity>3.14159</dp:MinimumOrderQuantity>
+						</dp:OrderQuantity>
+						<dp:OrderSizeRounding>3.14159</dp:OrderSizeRounding>
+						<dp:ProductLeadTime>
+							<ri:Interval agency="RosettaNet" codeListVersion="01.00" identifier="Interval">1WM</ri:Interval>
+							<dp:IsCallFactory>true</dp:IsCallFactory>
+							<dltcc:LeadTimeClassificationCode agency="RosettaNet" codeListVersion="01.01" identifier="LeadTimeClassificationCode">ASA</dltcc:LeadTimeClassificationCode>
+							<dp:LeadTimeQuantity>
+								<dp:OrderSizeRoundingQuantity>3.14159</dp:OrderSizeRoundingQuantity>
+								<dp:ProductQuantityRange>
+									<dp:MaximumOrderQuantity>3.14159</dp:MaximumOrderQuantity>
+									<dp:MinimumOrderQuantity>3.14159</dp:MinimumOrderQuantity>
+								</dp:ProductQuantityRange>
+							</dp:LeadTimeQuantity>
+							<dp:PeriodNumber>String</dp:PeriodNumber>
+						</dp:ProductLeadTime>
+						<dp:SampleAvailability>2002-02-15</dp:SampleAvailability>
+					</dp:OrderProvision>
+					<dp:ProductPricing>
+						<dp:AssociatedProduct>
+							<updi:ProductIdentification>
+								<updi:ProductName>String</updi:ProductName>
+								<updi:Revision>String</updi:Revision>
+								<ulc:AlternativeIdentifier>
+									<ulc:Authority>String</ulc:Authority>
+									<ulc:Identifier>String</ulc:Identifier>
+								</ulc:AlternativeIdentifier>
+							</updi:ProductIdentification>
+							<dpsr:ProductSubstitutionReason agency="RosettaNet" codeListVersion="01.01" identifier="ProductSubstitutionReason">BEP</dpsr:ProductSubstitutionReason>
+						</dp:AssociatedProduct>
+						<dp:IsCallFactory>true</dp:IsCallFactory>
+						<dp:IsCostChange>true</dp:IsCostChange>
+						<dp:IsPriceProtect>true</dp:IsPriceProtect>
+						<dp:IsSuggestedResaleChange>true</dp:IsSuggestedResaleChange>
+						<dp:PricingDetail>
+							<dp:EffectiveDate>
+								<ud:Begin>2002-02-15</ud:Begin>
+								<ud:End>2002-02-15</ud:End>
+							</dp:EffectiveDate>
+							<dp:OrderSizeRounding>3.14159</dp:OrderSizeRounding>
+							<dp:PreviousUnitPrice>
+								<sha:MonetaryAmount>
+									<rat:AmountType agency="RosettaNet" codeListVersion="01.01" identifier="AmountType">FRE</rat:AmountType>
+									<ume:FinancialAmount>
+										<ume:Amount>3.14159</ume:Amount>
+										<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency">USD</ucr:Currency>
+									</ume:FinancialAmount>
+									<rict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType">ALC</rict:InvoiceChargeType>
+									<rmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.00" identifier="MonetaryAmountType">CRE</rmat:MonetaryAmountType>
+								</sha:MonetaryAmount>
+								<dp:PriceListIdentifier>String</dp:PriceListIdentifier>
+								<rptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.02" identifier="PricingTypeCode">ACR</rptc:PricingTypeCode>
+							</dp:PreviousUnitPrice>
+							<dp:ProductQuantityRange>
+								<dp:MaximumOrderQuantity>3.14159</dp:MaximumOrderQuantity>
+								<dp:MinimumOrderQuantity>3.14159</dp:MinimumOrderQuantity>
+							</dp:ProductQuantityRange>
+							<dp:UnitPrice>
+								<sha:MonetaryAmount>
+									<rat:AmountType agency="RosettaNet" codeListVersion="01.01" identifier="AmountType">FRE</rat:AmountType>
+									<ume:FinancialAmount>
+										<ume:Amount>3.14159</ume:Amount>
+										<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency">USD</ucr:Currency>
+									</ume:FinancialAmount>
+									<rict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType">ALC</rict:InvoiceChargeType>
+									<rmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.00" identifier="MonetaryAmountType">CRE</rmat:MonetaryAmountType>
+								</sha:MonetaryAmount>
+								<dp:PriceListIdentifier>String</dp:PriceListIdentifier>
+								<rptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.02" identifier="PricingTypeCode">ACR</rptc:PricingTypeCode>
+							</dp:UnitPrice>
+						</dp:PricingDetail>
+						<rptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.02" identifier="PricingTypeCode">ACR</rptc:PricingTypeCode>
+						<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+					</dp:ProductPricing>
+				</ProductPriceAndAvailability>
+				<ProductProcurement>
+					<dabcc:ABCCode agency="RosettaNet" codeListVersion="01.01" identifier="ABCCode">CDA</dabcc:ABCCode>
+					<dl:ExportLicense>
+						<dl:Description>String</dl:Description>
+						<dl:ExpiryDate>2002-02-15</dl:ExpiryDate>
+						<dl:LicenseIdentifier>String</dl:LicenseIdentifier>
+						<dnecc:NationalExportControlClassification agency="RosettaNet" codeListVersion="01.01" identifier="NationalExportControlClassification">CLE</dnecc:NationalExportControlClassification>
+					</dl:ExportLicense>
+					<dl:IsHazardousMaterial>true</dl:IsHazardousMaterial>
+					<IsLeadFree>true</IsLeadFree>
+					<OrderSizeRounding>3.14159</OrderSizeRounding>
+					<dl:ProductLicenseRequired>true</dl:ProductLicenseRequired>
+					<dppt:ProductProcurementType agency="RosettaNet" codeListVersion="01.01" identifier="ProductProcurementType">AAP</dppt:ProductProcurementType>
+					<dp:ProductQuantityRange>
+						<dp:MaximumOrderQuantity>3.14159</dp:MaximumOrderQuantity>
+						<dp:MinimumOrderQuantity>3.14159</dp:MinimumOrderQuantity>
+					</dp:ProductQuantityRange>
+					<RestrictedCountry agency="RosettaNet" codeListVersion="01.01" identifier="Country">MG</RestrictedCountry>
+					<SampleOrder>3.14159</SampleOrder>
+					<StandardClassificationIdentification>
+						<updi:ProductName>String</updi:ProductName>
+						<updi:Revision>String</updi:Revision>
+						<ulc:AlternativeIdentifier>
+							<ulc:Authority>String</ulc:Authority>
+							<ulc:Identifier>String</ulc:Identifier>
+						</ulc:AlternativeIdentifier>
+					</StandardClassificationIdentification>
+					<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+				</ProductProcurement>
+			</ProductInformation>
+		</ProductLineItem>
+	</ProductCatalog>
+</ProductCatalogInformationDistribution>

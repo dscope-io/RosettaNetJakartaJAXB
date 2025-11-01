@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created by RosettaNet -->
+<ProcessSpecification name="PIP3C6NotifyOfRemittanceAdvice" nameID="urn:rosettanet:specification:interchange:PIP3C6:xml:bpss:v11_01" version="V11.01" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The purpose of this PIP is to provide a detailed breakdown of a payment amount. It includes all credits, debits, discounts, adjustments taken on an invoice, and adjustment reason codes. A payment can attach a Remittance Advice Notification. Payment can be for products only, transportation, or other services.</Documentation>
+	<BusinessDocument name="Remittance Advice Notification" nameID="PIP3C6RemittanceAdviceNotification" specificationLocation="urn:rosettanet:specification:interchange:RemittanceAdviceNotification:xsd:schema:02.01">
+		<Documentation>Provides a detailed breakdown of a payment amount.  It includes all credits, debits, discounts, adjustments taken on an invoice, and adjustment reason codes.  A payment can attach a Remittance Advice Notification.  Payment can be for products only, transportation, or other services.</Documentation>
+	</BusinessDocument>
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Returns and Finance" nameID="3C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Remittance Advice" nameID="3C6">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Remittance Advice" nameID="NotifyOfRemittanceAdvice_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Remittance Advice Notification" nameID="InitiateRemittanceAdviceNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Remittance Advice Notification" nameID="RemittanceAdviceNotification_DE" businessDocument='//BusinessDocument[@name="Remittance Advice Notification"]' businessDocumentIDREF="PIP3C6RemittanceAdviceNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Remittance Advice Notification" nameID="ProcessRemittanceAdviceNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Remittance Advice" nameID="NotifyOfRemittanceAdvice_BC" initiatingRoleIDREF="PayerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated, and Authorized. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid, and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Payer" nameID="PayerID"/>
+					<Role name="Payee" nameID="PayeeID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Remittance Advice"]' toBusinessStateIDREF="PIP3C6NotifyOfRemittanceAdvice"/>
+					<BusinessTransactionActivity name="Notify Of Remittance Advice" nameID="NotifyOfRemittanceAdvice_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Remittance Advice"]' businessTransactionIDREF="NotifyOfRemittanceAdvice_BT" fromRole='../Role[@name="Payer"]' fromRoleIDREF="PayerID" toRole='../Role[@name="Payee"]' toRoleIDREF="PayeeID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for Notify Of Remittance Advice-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Remittance Advice"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for Notify Of Remittance Advice-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Remittance Advice"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

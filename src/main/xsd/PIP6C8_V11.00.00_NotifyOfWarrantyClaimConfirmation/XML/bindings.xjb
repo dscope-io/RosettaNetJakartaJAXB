@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?><jxb:bindings jxb:extensionBindingPrefixes="xjc annox" version="2.1" xmlns:annox="http://annox.dev.java.net" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jxb="http://java.sun.com/xml/ns/jaxb">
+    <jxb:bindings>
+        <jxb:globalBindings typesafeEnumMaxMembers="2000" generateElementClass="true"/>
+    </jxb:bindings>
+    <jxb:bindings schemaLocation="ebBPSS1.01.xsd" node="/xs:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.ebxml.businessprocess.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/AbstractType_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.abstracttype.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/ProductIdentification_01_04.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.productidentification.v01_04"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/MonetaryExpression_01_06.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.monetaryexpression.v01_06"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/PhysicalDimension_01_07.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.physicaldimension.v01_07"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/Document_01_12.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.document.v01_12"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/DataType_01_04.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.datatype.v01_04"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/Locations_01_04.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.locations.v01_04"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/ContactInformation_01_04.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.contactinformation.v01_04"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/PartnerIdentification_01_16.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.partneridentification.v01_16"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/Dates_01_03.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.dates.v01_03"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="System/StandardDocumentHeader_01_23.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.system.standarddocumentheader.v01_23"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/RN_WeightType_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.weighttype.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/ISO_Language_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.language.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/RN_DocumentType_01_13.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.documenttype.v01_13"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/RN_UnitOfMeasure_01_04.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.unitofmeasure.v01_04"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/ISO_Currency_01_03.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.currency.v01_03"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/ISO_CountrySubdivision_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.countrysubdivision.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/RN_ProcessRoleIdentifier_01_11.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.processroleidentifier.v01_11"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/RN_TaxType_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.taxtype.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/RN_MimeTypeQualifier_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.mimetypequalifier.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/ISO_Country_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.country.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="System/CodeList/RN_TPIRFileType_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.system.codelist.tpirfiletype.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/Shared_01_17.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.shared.v01_17"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/Service_02_20.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.service.v02_20"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_MonetaryAmountType_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.monetaryamounttype.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_PricingTypeCode_01_04.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.pricingtypecode.v01_04"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_FreeOnBoard_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.freeonboard.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_WarrantyType_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.warrantytype.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_RateType_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.ratetype.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_PaymentMethod_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.paymentmethod.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_AmountType_01_03.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.amounttype.v01_03"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_ProductStatusCode_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.productstatuscode.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_InvoiceChargeType_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.invoicechargetype.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_PackageTypeCode_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.packagetypecode.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_Interval_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.interval.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_PackageType_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.packagetype.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_PaymentType_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.paymenttype.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Shared/CodeList/RN_ShippingServiceLevel_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.shared.codelist.shippingservicelevel.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_ComponentRepair_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.componentrepair.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_FailureType_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.failuretype.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_Priority_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.priority.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_RepairType_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.repairtype.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_ClaimStatus_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.claimstatus.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_FailureModifier_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.failuremodifier.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_WarrantyProgram_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.warrantyprogram.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_ReturnProductInstruction_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.returnproductinstruction.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_ServiceDeliveryMethod_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.servicedeliverymethod.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_QualityDisposition_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.qualitydisposition.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_Severity_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.severity.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_FailureObservedCondition_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.failureobservedcondition.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_RequestType_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.requesttype.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_ContactPreference_01_01.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.contactpreference.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_WarrantyMethod_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.warrantymethod.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_FailureAction_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.failureaction.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_ClaimType_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.claimtype.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_ProductReturnReason_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.productreturnreason.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_NotificationCode_01_03.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.notificationcode.v01_03"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/Service/CodeList/RN_OperatingSystem_01_02.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.service.codelist.operatingsystem.v01_02"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Interchange/WarrantyClaimConfirmation_01_00.xsd">
+        <jxb:bindings node="xs:element[@name='WarrantyClaimConfirmation']">
+            <annox:annotate>@jakarta.xml.bind.annotation.XmlRootElement(name="WarrantyClaimConfirmation", namespace="urn:rosettanet:specification:interchange:WarrantyClaimConfirmationNotification:xsd:schema:01.00")</annox:annotate>
+        </jxb:bindings>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.interchange.warrantyclaimconfirmation.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+</jxb:bindings>

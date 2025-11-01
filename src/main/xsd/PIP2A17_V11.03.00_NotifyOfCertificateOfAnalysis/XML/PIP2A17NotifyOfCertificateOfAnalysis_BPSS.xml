@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 06/17/08-->
+<!-- Updated by RosettaNet on 07/02/13-->
+<ProcessSpecification name="PIP2A17NotifyOfCertificateOfAnalysis" nameID="urn:rosettanet:specification:interchange:PIP2A17:xml:bpss:v11_03" version="V11.03" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>A Certificate of Analysis is provided by the seller (supplier) to the buyer (customer) to allow verification that the delivered material meets the agreed upon requirements.  It is provided at the time of delivery, but may be provided prior to delivery to allow pre-shipment approval.  A Certificate of Analysis is used in several industries including, but not limited to, electronic, chemical, industrial gas, petrochemical, textile, etc.</Documentation>
+	<BusinessDocument name="Certificate Of Analysis Notification" nameID="PIP2A17CertificateOfAnalysisNotification" specificationLocation="urn:rosettanet:specification:interchange:CertificateOfAnalysisNotification:xsd:schema:02.05">
+		<Documentation>A request to provided from the seller to the buyer to allow verification that the delivered material meets the agreed upon requirements.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Information" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Preparation for Distribution" nameID="2A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Certificate Of Analysis" nameID="2A17">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Certificate Of Analysis" nameID="NotifyOfCertificateOfAnalysis_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Certificate Of Analysis Notification" nameID="InitiateCertificateOfAnalysisNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Certificate Of Analysis Notification" nameID="CertificateOfAnalysisNotification_DE" businessDocument='//BusinessDocument[@name="Certificate Of Analysis Notification"]' businessDocumentIDREF="PIP2A17CertificateOfAnalysisNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Certificate Of Analysis Notification" nameID="ProcessCertificateOfAnalysisNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Certificate Of Analysis" nameID="NotifyOfCertificateOfAnalysis_BC" initiatingRoleIDREF="SellerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Seller" nameID="SellerID"/>
+					<Role name="Buyer" nameID="BuyerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Certificate Of Analysis"]' toBusinessStateIDREF="PIP2A17NotifyOfCertificateOfAnalysis"/>
+					<BusinessTransactionActivity name="Notify Of Certificate Of Analysis" nameID="NotifyOfCertificateOfAnalysis_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Certificate Of Analysis"]' businessTransactionIDREF="NotifyOfCertificateOfAnalysis_BT" fromRole='../Role[@name="Seller"]' fromRoleIDREF="SellerID" toRole='../Role[@name="Buyer"]' toRoleIDREF="BuyerID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Notify Of Certificate Of Analysis-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Certificate Of Analysis"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Notify Of Certificate Of Analysis -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Certificate Of Analysis"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

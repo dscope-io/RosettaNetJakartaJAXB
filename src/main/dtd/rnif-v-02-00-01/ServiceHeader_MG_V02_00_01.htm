@@ -1,0 +1,2276 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./ServiceHeader_MG_V02_00_01_files/filelist.xml">
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Hussam</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Hussam</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2002-04-10T20:00:00Z</o:Created>
+  <o:LastSaved>2002-04-10T20:01:00Z</o:LastSaved>
+  <o:Pages>4</o:Pages>
+  <o:Words>2185</o:Words>
+  <o:Characters>12456</o:Characters>
+  <o:Company>RosettaNet</o:Company>
+  <o:Lines>103</o:Lines>
+  <o:Paragraphs>24</o:Paragraphs>
+  <o:CharactersWithSpaces>15296</o:CharactersWithSpaces>
+  <o:Version>9.4402</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Courier;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:3 0 0 0 1 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:2.25in;
+	font-size:8.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:Courier;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:70.85pt 70.85pt 56.7pt 70.85pt;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.2in'>
+
+<div class=Section1>
+
+<p class=MsoBodyText>RosettaNet XML Message Guidelines<br>
+ServiceHeader_MG_V02_00_01.htm (10-Apr-2001) </p>
+
+<p class=MsoNormal style='tab-stops:2.25in'><span style='font-size:8.0pt;
+mso-bidi-font-size:12.0pt'>This document has been prepared by RosettaNet
+(http://www.rosettanet.org) from requirements <o:p></o:p></span></p>
+
+<p class=MsoNormal style='tab-stops:2.25in'><span style='font-size:8.0pt;
+mso-bidi-font-size:12.0pt'>gathered during the cluster/segment workshops and in
+conformance with the RosettaNet methodology<o:p></o:p></span></p>
+
+<p style='margin-bottom:12.0pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=0 cellpadding=0 width="100%" style='width:100.0%;mso-cellspacing:
+ 1.5pt'>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p>ServiceHeader</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>2</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|-- ProcessControl</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>3</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |-- ActivityControl</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>4</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |-- BusinessActivityIdentifier</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>5</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |-- MessageControl</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>6</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- fromRole.GlobalPartnerRoleClassificationCode</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>7</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- fromService.GlobalBusinessServiceCode</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>8</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- inReplyTo.ActionControl</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>9</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |-- ActionIdentity</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>10</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- GlobalBusinessActionCode</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>11</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- messageStandard.FreeFormText</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>12</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- standardVersion.VersionIdentifier</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>13</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |--
+  messageTrackingID.InstanceIdentifier</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>14</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- Manifest</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>15</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..n</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |-- Attachment</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>16</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- description.FreeFormText</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>17</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- GlobalMimeTypeQualifierCode</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>18</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- UniversalResourceIdentifier</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>19</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |--
+  numberOfAttachments.CountableAmount</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>20</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |-- ServiceContentControl</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>21</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- <i>Choice</i></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>22</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |-- ActionIdentity</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>23</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- GlobalBusinessActionCode</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>24</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- messageStandard.FreeFormText</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>25</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- standardVersion.VersionIdentifier</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>26</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |-- SignalIdentity</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>27</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- GlobalBusinessSignalCode</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>28</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- VersionIdentifier</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>29</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- toRole.GlobalPartnerRoleClassificationCode</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>30</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- toService.GlobalBusinessServiceCode</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>31</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |-- GlobalUsageCode</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>32</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |--
+  partnerDefinedPIPPayloadBindingId.ProprietaryReferenceIdentifier</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>33</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |--
+  pipCode.GlobalProcessIndicatorCode</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>34</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |--
+  pipInstanceId.InstanceIdentifier</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>35</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |-- pipVersion.VersionIdentifier</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>36</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |--
+  QualityOfServiceSpecification</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>37</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1..n</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |-- QualityOfServiceElement</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>38</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- QualityOfServiceClassificationCode</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>39</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- Value</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>40</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |-- <i>Choice</i></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>41</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |-- KnownInitiatingPartner</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>42</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- PartnerIdentification</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>43</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |-- domain.FreeFormText</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>44</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |-- GlobalBusinessIdentifier</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>45</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |-- locationID.Value</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>46</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |-- UnknownInitiatingPartner</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>47</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- PartnerIdentification</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>48</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |-- domain.FreeFormText</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>49</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |-- GlobalBusinessIdentifier</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>50</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>0..1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |<span style='mso-tab-count:1'>     </span> |-- locationID.Value</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>51</p>
+  </td>
+  <td width=30 style='width:22.5pt;padding:.75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><span style='mso-tab-count:1'>      </span><span style="mso-spacerun:
+  yes"> </span>|<span style='mso-tab-count:1'>     </span> |<span
+  style='mso-tab-count:1'>     </span> |<span style='mso-tab-count:1'>     </span>
+  |-- UniformResourceLocator</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" style='width:100.0%;
+ mso-cellspacing:0in'>
+ <thead>
+  <tr>
+   <td style='border:none;padding:.75pt .75pt .75pt .75pt'>
+   <p style='margin-bottom:12.0pt'><span style='color:black'><br>
+   </span><b><span style='font-family:Arial;color:black'>Guideline Information</span></b></p>
+   </td>
+  </tr>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>4: BusinessActivityIdentifier<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='background:white;padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Constraint:</u> Special Validation and Processing Rules: For the valid
+  value for this element, refer to the corresponding &quot;Activity&quot;
+  element in the PIP Specification corresponding to the currently executing PIP
+  and Activity. In its absence, the value is to be taken from the 'Activity
+  Name' column of the PIP specification's 'Business Activity Descriptions'
+  table.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>5: MessageControl<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> Note that all elements other than those in this group
+  are set by the initiator and MUST remain the same through all messages in
+  that PIP instance.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>6: fromRole.GlobalPartnerRoleClassificationCode<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Constraint:</u> Special Validation and Processing Rules: For the valid
+  value for this element, refer to the corresponding &quot;FromRole&quot;
+  element (or &quot;ToRole&quot; element, as the case may be) in the PIP
+  Specification corresponding to the currently executing PIP, Activity and
+  Action. In its absence, the value is to be taken from the 'Role Name' column
+  of the PIP specification's 'Partner Role Descriptions' table.</p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Constraint:</u> If the current message is a signal, then the value
+  corresponding to the &quot;FromRole&quot; in the signal must be the same as
+  the value of the &quot;ToRole&quot; in the action to which this signal is
+  replying.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>7: fromService.GlobalBusinessServiceCode<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Constraint:</u> Special Validation and Processing Rules: For the valid
+  value for this element, refer to the corresponding &quot;FromService&quot;
+  element (or &quot;ToService&quot; element, as the case may be) in the PIP
+  Specification corresponding to the currently executing PIP, Activity and
+  Action. In its absence, the value is to be taken from the 'Network Component
+  in FSV' column of the PIP specification's 'Network Component Specification'
+  table.</p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Constraint:</u> If the current message is a signal, then the value
+  corresponding to the &quot;FromService&quot; in the signal must be the same
+  as the value of the &quot;ToService&quot; in the action to which this signal
+  is replying.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>8: inReplyTo.ActionControl<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> MUST be present if this is not the first message in an
+  activity. MUST be present for all signals.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>10: GlobalBusinessActionCode<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> For the valid value for this element, refer to the
+  corresponding &quot;inReplyTo.ActionControl&quot; element in the PIP
+  specification corresponding to the currently executing PIP, Activity and
+  Action. In its absence, the value is to be taken from the 'Business Action in
+  FSV' column of the PIP specification's 'Business Action - Business Document
+  Mapping' table.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>11: messageStandard.FreeFormText<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> Must be present if non-RosettaNet-defined service
+  content is carried. Must not be present for RosettaNet-defined service
+  content. Value to be established by partners in the Trading Partner
+  Agreement.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>12: standardVersion.VersionIdentifier<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> Must be present if non-RosettaNet-defined service
+  content is carried. Must not be present for RosettaNet-defined service
+  content. Value to be established by partners in the Trading Partner
+  Agreement.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>17: GlobalMimeTypeQualifierCode<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> This value must be chosen from the MIME content type
+  for the attachment. A list of possible values may be found in the Media Types
+  Directory, maintained by the Internet Assigned Numbers Authority
+  (http://www.iana.org/).</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>18: UniversalResourceIdentifier<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> This value MUST follow the content-ID reference syntax
+  per RFC 2111 and MUST refer to the MIME content-ID of the attachment.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>19: numberOfAttachments.CountableAmount<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> If no attachments, the only allowed value is '0' (i.e.,
+  the number zero).</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>23: GlobalBusinessActionCode<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> For the valid value for this element, refer to the
+  corresponding &quot;inReplyTo.ActionControl&quot; element in the PIP
+  specification corresponding to the currently executing PIP, Activity and
+  Action. In its absence, the value is to be taken from the 'Business Action in
+  FSV' column of the PIP specification's 'Business Action - Business Document
+  Mapping' table.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>24: messageStandard.FreeFormText<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> A value must be specified only for non-RosettaNet
+  entities.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>25: standardVersion.VersionIdentifier<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> A value must be specified only for non-RosettaNet
+  entities.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>27: GlobalBusinessSignalCode<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Entity Instances</u><br>
+  Receipt Acknowledgment: Acknowledge receipt of business message<br>
+  Exception: Processing exception response.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>28: VersionIdentifier<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Constraint:</u> Special Validation and Processing Rules: The value for
+  this element MUST be obtained from the Signal Version Identifier field of the
+  identified Business Signal's Message Guideline.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>29: toRole.GlobalPartnerRoleClassificationCode<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Constraint:</u> Special Validation and Processing Rules: For the valid
+  value for this element, refer to the corresponding &quot;FromRole&quot;
+  element (or &quot;ToRole&quot; element, as the case may be) in the PIP
+  Specification corresponding to the currently executing PIP, Activity and
+  Action. In its absence, the value is to be taken from the 'Role Name' column
+  of the PIP specification's 'Partner Role Descriptions' table.</p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Constraint:</u> If the current message is a signal, then the value
+  corresponding to the &quot;FromRole&quot; in the signal must be the same as
+  the value of the &quot;ToRole&quot; in the action to which this signal is
+  replying.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>30: toService.GlobalBusinessServiceCode<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Constraint:</u> Special Validation and Processing Rules: For the valid
+  value for this element, refer to the corresponding &quot;FromService&quot;
+  element (or &quot;ToService&quot; element, as the case may be) in the PIP
+  Specification corresponding to the currently executing PIP, Activity and
+  Action. In its absence, the value is to be taken from the 'Network Component
+  in FSV' column of the PIP specification's 'Network Component Specification'
+  table.</p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Constraint:</u> If the current message is a signal, then the value
+  corresponding to the &quot;FromService&quot; in the signal must be the same
+  as the value of the &quot;ToService&quot; in the action to which this signal
+  is replying.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>31: GlobalUsageCode<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Entity Instances</u><br>
+  Test: This is a test message.<br>
+  Production: This is a production message.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>32: partnerDefinedPIPPayloadBindingId.ProprietaryReferenceIdentifier<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> Value to be established by partners in the Trading
+  Partner Agreement. Must be present if non-RosettaNet-defined content is
+  carried; must not be present if RosettaNet-defined content is used.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>33: pipCode.GlobalProcessIndicatorCode<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> Alphanumeric designation code of the PIP that is being
+  executed (e.g. '3A4').</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>34: pipInstanceId.InstanceIdentifier<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> MUST be unique within the context of the initiating
+  partner.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>35: pipVersion.VersionIdentifier<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Constraint:</u> Special Validation and Processing Rules: The valid
+  value for this element MUST be obtained from the PIP Version Identifier
+  element in the PIP Specification corresponding to the currently executing
+  PIP.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>38: QualityOfServiceClassificationCode<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>Entity Instances</u></p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>39: Value<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> Valid values are defined within the context of the
+  QualityOfServiceClassificationCode.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+ style='width:100.0%;mso-cellspacing:0in;background:white'>
+ <thead>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p><b>51: UniformResourceLocator<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p><u>User Notes:</u> MUST be specified or further processing may not be
+  possible.</p>
+  </td>
+ </tr>
+</table>
+
+<p><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" style='width:100.0%;
+ mso-cellspacing:0in'>
+ <thead>
+  <tr>
+   <td colspan=2 style='border:none;padding:.75pt .75pt .75pt .75pt'>
+   <p style='margin-bottom:12.0pt'><span style='color:black'><br>
+   </span><b><span style='font-family:Arial;color:black'>Business Properties</span></b></p>
+   </td>
+  </tr>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p align=center style='text-align:center'><b>Name<o:p></o:p></b></p>
+   </td>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p align=center style='text-align:center'><b>Definition<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>fromRole</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The role initiating a business document exchange.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>fromService</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The business service from which a message is being sent.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>inReplyTo</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The business action that this message is replying to.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>messageStandard</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The model of authority used to create the message.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>standardVersion</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The version of the message standard used to create the message.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>messageTrackingID</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Uniquely identifies message for tracking purposes. This value comes from
+  the Message Tracking ID in the Delivery Header of the original received
+  message that is being replied to.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>description</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>A description of a process, thing, action, etc.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>numberOfAttachments</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Number of attachments included as part of a message.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>toRole</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The role receiving the document in a business document exchange.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>toService</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The business service to which a message is being sent.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>partnerDefinedPIPPayloadBindingId</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Agreed-upon ID indicating type of payload included as part of this
+  message.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>pipCode</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>GlobalProcessIndicatorCode indicates the standard business process with
+  which this message is associated.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>pipInstanceId</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Identifier for this message instance, relates to
+  GlobalProcessIndicatorCode.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>pipVersion</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Indicates version of standard that is applicable. This property qualifies
+  'pipCode'.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>domain</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>DUNS.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>locationID</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Identifies a logical business location associated with a trading partner.</p>
+  </td>
+ </tr>
+</table>
+
+<p><span style='display:none;mso-hide:all'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" style='width:100.0%;
+ mso-cellspacing:0in'>
+ <thead>
+  <tr>
+   <td colspan=2 style='border:none;padding:.75pt .75pt .75pt .75pt'>
+   <p style='margin-bottom:12.0pt'><span style='color:black'><br>
+   </span><b><span style='font-family:Arial;color:black'>Business Data Entities</span></b></p>
+   </td>
+  </tr>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p align=center style='text-align:center'><b>Name<o:p></o:p></b></p>
+   </td>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p align=center style='text-align:center'><b>Definition<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>ServiceHeader</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Processing control properties for RosettaNet Business Service messages.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>ProcessControl</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The collection of business properties that describe business process
+  message control.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>ActivityControl</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The collection of business properties that describe control of a specific
+  activity.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>MessageControl</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The collection of business properties specific to each message (within a
+  transaction.)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>ActionControl</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Business action message control properties.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>ActionIdentity</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The collection of business properties that identify a business action.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Manifest</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Specifies ServiceContent, along with number of, and list of items included
+  in message.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Attachment</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>A business property that describes additional information regarding a
+  product or process.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>ServiceContentControl</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Group of properties relating to message standard and version being used,
+  and type of message (Action or Signal).</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>SignalIdentity</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The collection of business properties that are used to identify a business
+  signal.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>QualityOfServiceSpecification</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The collection of business properties that specifies quality of service
+  constraints for this message instance.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>QualityOfServiceElement</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The collection of business properties that specifies a quality of service
+  constraint item.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>KnownInitiatingPartner</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>GlobalBusinessIdentifier of the partner initiating the business process.
+  TPA has been established for this party.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>PartnerIdentification</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The collection of business properties used to identify a business partner.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>UnknownInitiatingPartner</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>GlobalBusinessIdentifier of the partner initiating the business process.
+  TPA has not been established for this party.</p>
+  </td>
+ </tr>
+</table>
+
+<p><span style='display:none;mso-hide:all'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" style='width:100.0%;
+ mso-cellspacing:0in'>
+ <thead>
+  <tr>
+   <td colspan=6 style='border:none;padding:.75pt .75pt .75pt .75pt'>
+   <p style='margin-bottom:12.0pt'><span style='color:black'><br>
+   </span><b><span style='font-family:Arial;color:black'>Fundamental Business
+   Data Entities</span></b></p>
+   </td>
+  </tr>
+  <tr>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p align=center style='text-align:center'><b>Name<o:p></o:p></b></p>
+   </td>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p align=center style='text-align:center'><b>Definition<o:p></o:p></b></p>
+   </td>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p align=center style='text-align:center'><b>Data Type<o:p></o:p></b></p>
+   </td>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p align=center style='text-align:center'><b>Min<o:p></o:p></b></p>
+   </td>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p align=center style='text-align:center'><b>Max<o:p></o:p></b></p>
+   </td>
+   <td style='border:inset black .75pt;background:silver;padding:.75pt .75pt .75pt .75pt'>
+   <p align=center style='text-align:center'><b>Representation<o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>BusinessActivityIdentifier</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>An identifier which specifies a business activity. This code is found in
+  table 3.2 in a PIP specification document.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>255</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>GlobalPartnerRoleClassificationCode</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Code identifying a party's role in the supply chain. This code is found in
+  table 3.1 in a PIP specification document.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>255</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>GlobalBusinessServiceCode</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Code identifying a business service network component. This code is found
+  in table 4.1 in a PIP specification document.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>255</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>GlobalBusinessActionCode</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Code identifying a business action. The identifier is found in table 4.2
+  of the PIP specification document.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>255</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>FreeFormText</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Unformatted text.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>VersionIdentifier</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>A unique identifier specifying the version of an entity e.g. a product, a
+  message format, or a standard.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>255</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>InstanceIdentifier</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>A unique alpha-numeric identifier that represents a specific instance of
+  an business process, business transaction, business action or business
+  signal. The instance identifier must be unique for a particular instance of a
+  business process, business transaction, business action and business signal.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>255</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>GlobalMimeTypeQualifierCode</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The MIME type. Refer to http://www.iana.org for a list of types.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>UniversalResourceIdentifier</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>A network-centric identifier that provides the identity of a resource.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>CountableAmount</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Dimensionless magnitude, e.g. number of products.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>NaturalNumber</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>15</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>9(15)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>GlobalBusinessSignalCode</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Code identifying the business signal message.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>255</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>GlobalUsageCode</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Code identifying the message use specification is either for production or
+  for testing.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>4</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>10</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>ProprietaryReferenceIdentifier</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>A unique reference identifier for goods, services or business documents.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>255</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>GlobalProcessIndicatorCode</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Code identifying the business process.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>255</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>QualityOfServiceClassificationCode</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Identifies the quality of service measurement category.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Value</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>The value for a property e.g. a technical specification.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>1</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>255</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>GlobalBusinessIdentifier</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>A unique business identifier. The DUNS number is specified by RosettaNet.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>Integer</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>9</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>9</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>9(9)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>UniformResourceLocator</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>A network address location for a network resource.</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>String</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>8</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+  <td valign=top style='border:inset silver .75pt;background:white;padding:
+  .75pt .75pt .75pt .75pt'>
+  <p>&nbsp;</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+</body>
+
+</html>

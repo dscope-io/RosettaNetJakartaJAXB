@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with RosettaNet XSD2ALL 2.3.8 on Fri Nov 02 17:56:37 SGT 2007 -->
+<MaterialCompositionInformationDistribution xmlns="urn:rosettanet:specification:interchange:MaterialCompositionInformationDistribution:xsd:schema:02.01" xmlns:dac="urn:rosettanet:specification:domain:Design:ActionCode:xsd:codelist:01.03" xmlns:dcp="urn:rosettanet:specification:domain:Design:Compliant:xsd:codelist:01.03" xmlns:dddt="urn:rosettanet:specification:domain:Design:DateType:xsd:codelist:01.00" xmlns:dds="urn:rosettanet:specification:domain:Design:xsd:schema:02.17" xmlns:dlv="urn:rosettanet:specification:domain:Design:Level:xsd:codelist:01.02" xmlns:dplcs="urn:rosettanet:specification:domain:Design:ProductLifeCycleStatusCode:xsd:codelist:01.03" xmlns:sft="urn:rosettanet:specification:system:TPIRFileType:xsd:codelist:01.01" xmlns:ssdh="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.18" xmlns:uat="urn:rosettanet:specification:universal:AbstractType:xsd:schema:01.02" xmlns:uc="urn:rosettanet:specification:universal:Country:xsd:codelist:01.02" xmlns:uci="urn:rosettanet:specification:universal:ContactInformation:xsd:schema:01.03" xmlns:ucs="urn:rosettanet:specification:universal:CountrySubdivision:xsd:codelist:01.02" xmlns:ud="urn:rosettanet:specification:universal:Dates:xsd:schema:01.03" xmlns:udc="urn:rosettanet:specification:universal:Document:xsd:schema:01.08" xmlns:udct="urn:rosettanet:specification:universal:DocumentType:xsd:codelist:01.09" xmlns:udt="urn:rosettanet:specification:universal:DataType:xsd:schema:01.04" xmlns:ul="urn:rosettanet:specification:universal:Language:xsd:codelist:01.02" xmlns:ulc="urn:rosettanet:specification:universal:Locations:xsd:schema:01.04" xmlns:umtq="urn:rosettanet:specification:universal:MimeTypeQualifier:xsd:codelist:01.02" xmlns:updi="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04" xmlns:upi="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.14" xmlns:upri="urn:rosettanet:specification:universal:ProcessRoleIdentifier:xsd:codelist:01.10" xmlns:urss="urn:rosettanet:specification:system:xml:1.0" xmlns:uuom="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.03" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:rosettanet:specification:interchange:MaterialCompositionInformationDistribution:xsd:schema:02.01
+..\..\XML\Interchange\MaterialCompositionInformationDistribution_02_01.xsd">
+	<AgreementIdentifier>
+		<udc:DateTime>2005-02-15T08:30:00+08:00</udc:DateTime>
+		<udct:DocumentType agency="RosettaNet" codeListVersion="01.08" identifier="DocumentType">ARA</udct:DocumentType>
+		<udc:Identifier>String</udc:Identifier>
+		<udc:Line>String</udc:Line>
+		<udc:Revision>String</udc:Revision>
+		<udc:SubLine>String</udc:SubLine>
+	</AgreementIdentifier>
+	<Authorizer>
+		<uci:Contact>String</uci:Contact>
+		<uci:Email>String</uci:Email>
+		<uci:Fax>String</uci:Fax>
+		<uci:Identifier>String</uci:Identifier>
+		<uci:Phone>String</uci:Phone>
+	</Authorizer>
+	<Creator>
+		<uci:Contact>String</uci:Contact>
+		<uci:Email>String</uci:Email>
+		<uci:Fax>String</uci:Fax>
+		<uci:Identifier>String</uci:Identifier>
+		<uci:Phone>String</uci:Phone>
+	</Creator>
+	<ssdh:DocumentHeader>
+		<ssdh:CorrelationInformation>
+			<ssdh:ContractInformation>
+				<ssdh:ContractIdentifier>String</ssdh:ContractIdentifier>
+				<ssdh:ContractType>String</ssdh:ContractType>
+			</ssdh:ContractInformation>
+			<ssdh:RequestingDocumentInformation>
+				<ssdh:BusinessProcessInstanceIdentifier>String</ssdh:BusinessProcessInstanceIdentifier>
+				<ssdh:RequestingDocumentCreationDateTime>2005-02-15T08:30:00+08:00</ssdh:RequestingDocumentCreationDateTime>
+				<ssdh:RequestingDocumentInstanceIdentifier>String</ssdh:RequestingDocumentInstanceIdentifier>
+				<ssdh:ResponseDateTime>2005-02-15T08:30:00+08:00</ssdh:ResponseDateTime>
+			</ssdh:RequestingDocumentInformation>
+		</ssdh:CorrelationInformation>
+		<ssdh:DocumentInformation>
+			<ssdh:Creation>2005-02-15T08:30:00+08:00</ssdh:Creation>
+			<ssdh:DocumentIdentification>
+				<ssdh:Identifier>String</ssdh:Identifier>
+				<ssdh:Type>String</ssdh:Type>
+				<ssdh:StandardDocumentIdentification>
+					<ssdh:Standard>String</ssdh:Standard>
+					<ssdh:Version>String</ssdh:Version>
+				</ssdh:StandardDocumentIdentification>
+			</ssdh:DocumentIdentification>
+			<ssdh:DocumentManifest>
+				<ssdh:ManifestItem>
+					<ssdh:Description>String</ssdh:Description>
+					<ssdh:Language agency="RosettaNet" codeListVersion="01.01" identifier="Language">EN</ssdh:Language>
+					<ssdh:Length>100</ssdh:Length>
+					<ssdh:MimeTypeQualifier agency="RosettaNet" codeListVersion="01.01" identifier="MimeTypeQualifier">application/activemessage</ssdh:MimeTypeQualifier>
+					<ssdh:UniversalResourceIdentifier>String</ssdh:UniversalResourceIdentifier>
+				</ssdh:ManifestItem>
+				<ssdh:MultipleType>true</ssdh:MultipleType>
+				<ssdh:NumberOfItems>100</ssdh:NumberOfItems>
+			</ssdh:DocumentManifest>
+			<ssdh:DocumentSecurity>
+				<ssdh:NonRepudiableReceipt>true</ssdh:NonRepudiableReceipt>
+				<ssdh:PersistentEncryption>true</ssdh:PersistentEncryption>
+				<ssdh:PersistentSignature>true</ssdh:PersistentSignature>
+			</ssdh:DocumentSecurity>
+		</ssdh:DocumentInformation>
+		<ssdh:HeaderVersion>String</ssdh:HeaderVersion>
+		<ssdh:Receiver>
+			<ssdh:BusinessServiceInformation>
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Receiver>
+		<ssdh:Sender>
+			<ssdh:BusinessServiceInformation>
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Sender>
+	</ssdh:DocumentHeader>
+	<ProductInformation>
+		<AlternativeProductIdentifier>
+			<dds:DateCode>2005-02-15T08:30:00+08:00</dds:DateCode>
+			<dds:ManufacturingSite>String</dds:ManufacturingSite>
+			<dds:Note>String</dds:Note>
+			<updi:ProductDescription>
+				<updi:ProductIdentification>
+					<updi:ProductName>String</updi:ProductName>
+					<updi:Revision>String</updi:Revision>
+					<ulc:AlternativeIdentifier>
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</updi:ProductIdentification>
+				<updi:TextualDescription>
+					<updi:Detail>String</updi:Detail>
+					<updi:Primary>String</updi:Primary>
+					<updi:Summary>String</updi:Summary>
+				</updi:TextualDescription>
+			</updi:ProductDescription>
+		</AlternativeProductIdentifier>
+		<Condition>
+			<dds:ActualValue>
+				<dds:NegativeTolerance>
+					<dds:Absolute>3.141</dds:Absolute>
+					<dds:Percentage>3.141</dds:Percentage>
+				</dds:NegativeTolerance>
+				<dds:PositiveTolerance>
+					<dds:Absolute>3.141</dds:Absolute>
+					<dds:Percentage>3.141</dds:Percentage>
+				</dds:PositiveTolerance>
+				<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+				<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+				<dds:Value>3.14159</dds:Value>
+			</dds:ActualValue>
+			<Name>String</Name>
+		</Condition>
+		<dds:Directive>
+			<dcp:Compliant agency="RosettaNet" codeListVersion="01.01" identifier="Compliant">CEX</dcp:Compliant>
+			<dds:Exemption>String</dds:Exemption>
+			<dds:LegalDefinition>String</dds:LegalDefinition>
+			<dds:LegalType>String</dds:LegalType>
+			<dds:Name>String</dds:Name>
+			<dds:SupplierAcceptance>true</dds:SupplierAcceptance>
+			<dds:Version>String</dds:Version>
+		</dds:Directive>
+		<DistributionNote>String</DistributionNote>
+		<IsGeneric>true</IsGeneric>
+		<upi:KnownPartner>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+			<upri:ProcessRoleIdentifier agency="RosettaNet" codeListVersion="01.09" identifier="ProcessRoleIdentifier">ADM</upri:ProcessRoleIdentifier>
+		</upi:KnownPartner>
+		<dds:ManufacturingProcessInfo>
+			<dds:Note>String</dds:Note>
+			<dds:Process>String</dds:Process>
+			<dds:ProcessValue>
+				<dds:Measurement>
+					<dds:NegativeTolerance>
+						<dds:Absolute>3.141</dds:Absolute>
+						<dds:Percentage>3.141</dds:Percentage>
+					</dds:NegativeTolerance>
+					<dds:PositiveTolerance>
+						<dds:Absolute>3.141</dds:Absolute>
+						<dds:Percentage>3.141</dds:Percentage>
+					</dds:PositiveTolerance>
+					<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+					<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+					<dds:Value>3.14159</dds:Value>
+				</dds:Measurement>
+			</dds:ProcessValue>
+		</dds:ManufacturingProcessInfo>
+		<dds:Material>
+			<dds:Classification>String</dds:Classification>
+			<dds:DependentCondition>
+				<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+				<dds:ActualValue>
+					<dds:NegativeTolerance>
+						<dds:Absolute>3.141</dds:Absolute>
+						<dds:Percentage>3.141</dds:Percentage>
+					</dds:NegativeTolerance>
+					<dds:PositiveTolerance>
+						<dds:Absolute>3.141</dds:Absolute>
+						<dds:Percentage>3.141</dds:Percentage>
+					</dds:PositiveTolerance>
+					<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+					<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+					<dds:Value>3.14159</dds:Value>
+				</dds:ActualValue>
+				<dds:Name>String</dds:Name>
+			</dds:DependentCondition>
+			<dds:Identifier>String</dds:Identifier>
+			<dds:MaterialMass>
+				<dds:Mass>
+					<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+					<dds:Value>999</dds:Value>
+				</dds:Mass>
+				<dds:MassPercentage>
+					<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+					<dds:Value>999999</dds:Value>
+				</dds:MassPercentage>
+				<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+			</dds:MaterialMass>
+			<dds:StandardNumber>String</dds:StandardNumber>
+			<dds:Substance>
+				<dds:Classification>String</dds:Classification>
+				<dds:DependentCondition>
+					<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+					<dds:ActualValue>
+						<dds:NegativeTolerance>
+							<dds:Absolute>3.141</dds:Absolute>
+							<dds:Percentage>3.141</dds:Percentage>
+						</dds:NegativeTolerance>
+						<dds:PositiveTolerance>
+							<dds:Absolute>3.141</dds:Absolute>
+							<dds:Percentage>3.141</dds:Percentage>
+						</dds:PositiveTolerance>
+						<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+						<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+						<dds:Value>3.14159</dds:Value>
+					</dds:ActualValue>
+					<dds:Name>String</dds:Name>
+				</dds:DependentCondition>
+				<dds:Exempt>String</dds:Exempt>
+				<dds:ExemptListVersion>String</dds:ExemptListVersion>
+				<dds:Name>String</dds:Name>
+				<dds:Radioactivity>
+					<dds:IsotopeNameCode>String</dds:IsotopeNameCode>
+					<dds:MaxActivityLevel>3.141</dds:MaxActivityLevel>
+					<dds:RadioactivityNote>String</dds:RadioactivityNote>
+					<dds:TypicalActivityLevel>3.141</dds:TypicalActivityLevel>
+				</dds:Radioactivity>
+				<dds:SubstanceIdentification>
+					<ulc:AlternativeIdentifier>
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</dds:SubstanceIdentification>
+				<dds:SubstanceMass>
+					<dds:Mass>
+						<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+						<dds:Value>999</dds:Value>
+					</dds:Mass>
+					<dds:MassPercentage>
+						<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+						<dds:Value>999999</dds:Value>
+					</dds:MassPercentage>
+					<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+				</dds:SubstanceMass>
+				<dds:SubstanceNote>String</dds:SubstanceNote>
+				<dds:Threshold>
+					<dds:Exceeded>true</dds:Exceeded>
+					<dds:Value>String</dds:Value>
+				</dds:Threshold>
+			</dds:Substance>
+			<dds:TradeName>String</dds:TradeName>
+			<dds:Type>String</dds:Type>
+		</dds:Material>
+		<dds:ProductIdentifier>
+			<dds:DateCode>2005-02-15T08:30:00+08:00</dds:DateCode>
+			<dds:ManufacturingSite>String</dds:ManufacturingSite>
+			<dds:Note>String</dds:Note>
+			<updi:ProductDescription>
+				<updi:ProductIdentification>
+					<updi:ProductName>String</updi:ProductName>
+					<updi:Revision>String</updi:Revision>
+					<ulc:AlternativeIdentifier>
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</updi:ProductIdentification>
+				<updi:TextualDescription>
+					<updi:Detail>String</updi:Detail>
+					<updi:Primary>String</updi:Primary>
+					<updi:Summary>String</updi:Summary>
+				</updi:TextualDescription>
+			</updi:ProductDescription>
+		</dds:ProductIdentifier>
+		<ProductInformationObject>
+			<ContentTypeReference>String</ContentTypeReference>
+			<DescriptionNote>String</DescriptionNote>
+			<EffectiveDate>2005-02-15T08:30:00+08:00</EffectiveDate>
+			<Identifier>10</Identifier>
+			<ModificationDate>2005-02-15T08:30:00+08:00</ModificationDate>
+			<Name>String</Name>
+			<dds:ReferenceLocator>
+				<dds:ContentTypeReference>String</dds:ContentTypeReference>
+				<dds:FileFormatReference>10</dds:FileFormatReference>
+				<dds:FileSize>10</dds:FileSize>
+				<dds:Reference>String</dds:Reference>
+				<dds:UrlLegal>String</dds:UrlLegal>
+				<dds:Attachment href="String"/>
+			</dds:ReferenceLocator>
+			<Version>10</Version>
+		</ProductInformationObject>
+		<dds:ProductMass>
+			<dds:Mass>
+				<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+				<dds:Value>999</dds:Value>
+			</dds:Mass>
+			<dds:MassPercentage>
+				<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+				<dds:Value>999999</dds:Value>
+			</dds:MassPercentage>
+			<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+			<dds:UnitVolume>String</dds:UnitVolume>
+		</dds:ProductMass>
+		<dds:Subpart>
+			<dds:DependentCondition>
+				<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+				<dds:ActualValue>
+					<dds:NegativeTolerance>
+						<dds:Absolute>3.141</dds:Absolute>
+						<dds:Percentage>3.141</dds:Percentage>
+					</dds:NegativeTolerance>
+					<dds:PositiveTolerance>
+						<dds:Absolute>3.141</dds:Absolute>
+						<dds:Percentage>3.141</dds:Percentage>
+					</dds:PositiveTolerance>
+					<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+					<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+					<dds:Value>3.14159</dds:Value>
+				</dds:ActualValue>
+				<dds:Name>String</dds:Name>
+			</dds:DependentCondition>
+			<dds:ManufacturingProcessInfo>
+				<dds:Note>String</dds:Note>
+				<dds:Process>String</dds:Process>
+				<dds:ProcessValue>
+					<dds:Measurement>
+						<dds:NegativeTolerance>
+							<dds:Absolute>3.141</dds:Absolute>
+							<dds:Percentage>3.141</dds:Percentage>
+						</dds:NegativeTolerance>
+						<dds:PositiveTolerance>
+							<dds:Absolute>3.141</dds:Absolute>
+							<dds:Percentage>3.141</dds:Percentage>
+						</dds:PositiveTolerance>
+						<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+						<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+						<dds:Value>3.14159</dds:Value>
+					</dds:Measurement>
+				</dds:ProcessValue>
+			</dds:ManufacturingProcessInfo>
+			<dds:Material>
+				<dds:Classification>String</dds:Classification>
+				<dds:DependentCondition>
+					<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+					<dds:ActualValue>
+						<dds:NegativeTolerance>
+							<dds:Absolute>3.141</dds:Absolute>
+							<dds:Percentage>3.141</dds:Percentage>
+						</dds:NegativeTolerance>
+						<dds:PositiveTolerance>
+							<dds:Absolute>3.141</dds:Absolute>
+							<dds:Percentage>3.141</dds:Percentage>
+						</dds:PositiveTolerance>
+						<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+						<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+						<dds:Value>3.14159</dds:Value>
+					</dds:ActualValue>
+					<dds:Name>String</dds:Name>
+				</dds:DependentCondition>
+				<dds:Identifier>String</dds:Identifier>
+				<dds:MaterialMass>
+					<dds:Mass>
+						<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+						<dds:Value>999</dds:Value>
+					</dds:Mass>
+					<dds:MassPercentage>
+						<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+						<dds:Value>999999</dds:Value>
+					</dds:MassPercentage>
+					<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+				</dds:MaterialMass>
+				<dds:StandardNumber>String</dds:StandardNumber>
+				<dds:Substance>
+					<dds:Classification>String</dds:Classification>
+					<dds:DependentCondition>
+						<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+						<dds:ActualValue>
+							<dds:NegativeTolerance>
+								<dds:Absolute>3.141</dds:Absolute>
+								<dds:Percentage>3.141</dds:Percentage>
+							</dds:NegativeTolerance>
+							<dds:PositiveTolerance>
+								<dds:Absolute>3.141</dds:Absolute>
+								<dds:Percentage>3.141</dds:Percentage>
+							</dds:PositiveTolerance>
+							<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+							<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+							<dds:Value>3.14159</dds:Value>
+						</dds:ActualValue>
+						<dds:Name>String</dds:Name>
+					</dds:DependentCondition>
+					<dds:Exempt>String</dds:Exempt>
+					<dds:ExemptListVersion>String</dds:ExemptListVersion>
+					<dds:Name>String</dds:Name>
+					<dds:Radioactivity>
+						<dds:IsotopeNameCode>String</dds:IsotopeNameCode>
+						<dds:MaxActivityLevel>3.141</dds:MaxActivityLevel>
+						<dds:RadioactivityNote>String</dds:RadioactivityNote>
+						<dds:TypicalActivityLevel>3.141</dds:TypicalActivityLevel>
+					</dds:Radioactivity>
+					<dds:SubstanceIdentification>
+						<ulc:AlternativeIdentifier>
+							<ulc:Authority>String</ulc:Authority>
+							<ulc:Identifier>String</ulc:Identifier>
+						</ulc:AlternativeIdentifier>
+					</dds:SubstanceIdentification>
+					<dds:SubstanceMass>
+						<dds:Mass>
+							<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+							<dds:Value>999</dds:Value>
+						</dds:Mass>
+						<dds:MassPercentage>
+							<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+							<dds:Value>999999</dds:Value>
+						</dds:MassPercentage>
+						<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+					</dds:SubstanceMass>
+					<dds:SubstanceNote>String</dds:SubstanceNote>
+					<dds:Threshold>
+						<dds:Exceeded>true</dds:Exceeded>
+						<dds:Value>String</dds:Value>
+					</dds:Threshold>
+				</dds:Substance>
+				<dds:TradeName>String</dds:TradeName>
+				<dds:Type>String</dds:Type>
+			</dds:Material>
+			<dds:Subpart>
+				<dds:DependentCondition>
+					<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+					<dds:ActualValue>
+						<dds:NegativeTolerance>
+							<dds:Absolute>3.141</dds:Absolute>
+							<dds:Percentage>3.141</dds:Percentage>
+						</dds:NegativeTolerance>
+						<dds:PositiveTolerance>
+							<dds:Absolute>3.141</dds:Absolute>
+							<dds:Percentage>3.141</dds:Percentage>
+						</dds:PositiveTolerance>
+						<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+						<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+						<dds:Value>3.14159</dds:Value>
+					</dds:ActualValue>
+					<dds:Name>String</dds:Name>
+				</dds:DependentCondition>
+				<dds:ManufacturingProcessInfo>
+					<dds:Note>String</dds:Note>
+					<dds:Process>String</dds:Process>
+					<dds:ProcessValue>
+						<dds:Measurement>
+							<dds:NegativeTolerance>
+								<dds:Absolute>3.141</dds:Absolute>
+								<dds:Percentage>3.141</dds:Percentage>
+							</dds:NegativeTolerance>
+							<dds:PositiveTolerance>
+								<dds:Absolute>3.141</dds:Absolute>
+								<dds:Percentage>3.141</dds:Percentage>
+							</dds:PositiveTolerance>
+							<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+							<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+							<dds:Value>3.14159</dds:Value>
+						</dds:Measurement>
+					</dds:ProcessValue>
+				</dds:ManufacturingProcessInfo>
+				<dds:Material>
+					<dds:Classification>String</dds:Classification>
+					<dds:DependentCondition>
+						<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+						<dds:ActualValue>
+							<dds:NegativeTolerance>
+								<dds:Absolute>3.141</dds:Absolute>
+								<dds:Percentage>3.141</dds:Percentage>
+							</dds:NegativeTolerance>
+							<dds:PositiveTolerance>
+								<dds:Absolute>3.141</dds:Absolute>
+								<dds:Percentage>3.141</dds:Percentage>
+							</dds:PositiveTolerance>
+							<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+							<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+							<dds:Value>3.14159</dds:Value>
+						</dds:ActualValue>
+						<dds:Name>String</dds:Name>
+					</dds:DependentCondition>
+					<dds:Identifier>String</dds:Identifier>
+					<dds:MaterialMass>
+						<dds:Mass>
+							<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+							<dds:Value>999</dds:Value>
+						</dds:Mass>
+						<dds:MassPercentage>
+							<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+							<dds:Value>999999</dds:Value>
+						</dds:MassPercentage>
+						<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+					</dds:MaterialMass>
+					<dds:StandardNumber>String</dds:StandardNumber>
+					<dds:Substance>
+						<dds:Classification>String</dds:Classification>
+						<dds:DependentCondition>
+							<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+							<dds:ActualValue>
+								<dds:NegativeTolerance>
+									<dds:Absolute>3.141</dds:Absolute>
+									<dds:Percentage>3.141</dds:Percentage>
+								</dds:NegativeTolerance>
+								<dds:PositiveTolerance>
+									<dds:Absolute>3.141</dds:Absolute>
+									<dds:Percentage>3.141</dds:Percentage>
+								</dds:PositiveTolerance>
+								<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+								<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+								<dds:Value>3.14159</dds:Value>
+							</dds:ActualValue>
+							<dds:Name>String</dds:Name>
+						</dds:DependentCondition>
+						<dds:Exempt>String</dds:Exempt>
+						<dds:ExemptListVersion>String</dds:ExemptListVersion>
+						<dds:Name>String</dds:Name>
+						<dds:Radioactivity>
+							<dds:IsotopeNameCode>String</dds:IsotopeNameCode>
+							<dds:MaxActivityLevel>3.141</dds:MaxActivityLevel>
+							<dds:RadioactivityNote>String</dds:RadioactivityNote>
+							<dds:TypicalActivityLevel>3.141</dds:TypicalActivityLevel>
+						</dds:Radioactivity>
+						<dds:SubstanceIdentification>
+							<ulc:AlternativeIdentifier>
+								<ulc:Authority>String</ulc:Authority>
+								<ulc:Identifier>String</ulc:Identifier>
+							</ulc:AlternativeIdentifier>
+						</dds:SubstanceIdentification>
+						<dds:SubstanceMass>
+							<dds:Mass>
+								<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+								<dds:Value>999</dds:Value>
+							</dds:Mass>
+							<dds:MassPercentage>
+								<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+								<dds:Value>999999</dds:Value>
+							</dds:MassPercentage>
+							<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+						</dds:SubstanceMass>
+						<dds:SubstanceNote>String</dds:SubstanceNote>
+						<dds:Threshold>
+							<dds:Exceeded>true</dds:Exceeded>
+							<dds:Value>String</dds:Value>
+						</dds:Threshold>
+					</dds:Substance>
+					<dds:TradeName>String</dds:TradeName>
+					<dds:Type>String</dds:Type>
+				</dds:Material>
+				<dds:SubpartIdentifier>
+					<updi:ProductIdentification>
+						<updi:ProductName>String</updi:ProductName>
+						<updi:Revision>String</updi:Revision>
+						<ulc:AlternativeIdentifier>
+							<ulc:Authority>String</ulc:Authority>
+							<ulc:Identifier>String</ulc:Identifier>
+						</ulc:AlternativeIdentifier>
+					</updi:ProductIdentification>
+					<updi:TextualDescription>
+						<updi:Detail>String</updi:Detail>
+						<updi:Primary>String</updi:Primary>
+						<updi:Summary>String</updi:Summary>
+					</updi:TextualDescription>
+				</dds:SubpartIdentifier>
+				<dds:Substance>
+					<dds:Classification>String</dds:Classification>
+					<dds:DependentCondition>
+						<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+						<dds:ActualValue>
+							<dds:NegativeTolerance>
+								<dds:Absolute>3.141</dds:Absolute>
+								<dds:Percentage>3.141</dds:Percentage>
+							</dds:NegativeTolerance>
+							<dds:PositiveTolerance>
+								<dds:Absolute>3.141</dds:Absolute>
+								<dds:Percentage>3.141</dds:Percentage>
+							</dds:PositiveTolerance>
+							<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+							<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+							<dds:Value>3.14159</dds:Value>
+						</dds:ActualValue>
+						<dds:Name>String</dds:Name>
+					</dds:DependentCondition>
+					<dds:Exempt>String</dds:Exempt>
+					<dds:ExemptListVersion>String</dds:ExemptListVersion>
+					<dds:Name>String</dds:Name>
+					<dds:Radioactivity>
+						<dds:IsotopeNameCode>String</dds:IsotopeNameCode>
+						<dds:MaxActivityLevel>3.141</dds:MaxActivityLevel>
+						<dds:RadioactivityNote>String</dds:RadioactivityNote>
+						<dds:TypicalActivityLevel>3.141</dds:TypicalActivityLevel>
+					</dds:Radioactivity>
+					<dds:SubstanceIdentification>
+						<ulc:AlternativeIdentifier>
+							<ulc:Authority>String</ulc:Authority>
+							<ulc:Identifier>String</ulc:Identifier>
+						</ulc:AlternativeIdentifier>
+					</dds:SubstanceIdentification>
+					<dds:SubstanceMass>
+						<dds:Mass>
+							<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+							<dds:Value>999</dds:Value>
+						</dds:Mass>
+						<dds:MassPercentage>
+							<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+							<dds:Value>999999</dds:Value>
+						</dds:MassPercentage>
+						<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+					</dds:SubstanceMass>
+					<dds:SubstanceNote>String</dds:SubstanceNote>
+					<dds:Threshold>
+						<dds:Exceeded>true</dds:Exceeded>
+						<dds:Value>String</dds:Value>
+					</dds:Threshold>
+				</dds:Substance>
+			</dds:Subpart>
+			<dds:SubpartIdentifier>
+				<updi:ProductIdentification>
+					<updi:ProductName>String</updi:ProductName>
+					<updi:Revision>String</updi:Revision>
+					<ulc:AlternativeIdentifier>
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</updi:ProductIdentification>
+				<updi:TextualDescription>
+					<updi:Detail>String</updi:Detail>
+					<updi:Primary>String</updi:Primary>
+					<updi:Summary>String</updi:Summary>
+				</updi:TextualDescription>
+			</dds:SubpartIdentifier>
+			<dds:Substance>
+				<dds:Classification>String</dds:Classification>
+				<dds:DependentCondition>
+					<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+					<dds:ActualValue>
+						<dds:NegativeTolerance>
+							<dds:Absolute>3.141</dds:Absolute>
+							<dds:Percentage>3.141</dds:Percentage>
+						</dds:NegativeTolerance>
+						<dds:PositiveTolerance>
+							<dds:Absolute>3.141</dds:Absolute>
+							<dds:Percentage>3.141</dds:Percentage>
+						</dds:PositiveTolerance>
+						<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+						<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+						<dds:Value>3.14159</dds:Value>
+					</dds:ActualValue>
+					<dds:Name>String</dds:Name>
+				</dds:DependentCondition>
+				<dds:Exempt>String</dds:Exempt>
+				<dds:ExemptListVersion>String</dds:ExemptListVersion>
+				<dds:Name>String</dds:Name>
+				<dds:Radioactivity>
+					<dds:IsotopeNameCode>String</dds:IsotopeNameCode>
+					<dds:MaxActivityLevel>3.141</dds:MaxActivityLevel>
+					<dds:RadioactivityNote>String</dds:RadioactivityNote>
+					<dds:TypicalActivityLevel>3.141</dds:TypicalActivityLevel>
+				</dds:Radioactivity>
+				<dds:SubstanceIdentification>
+					<ulc:AlternativeIdentifier>
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</dds:SubstanceIdentification>
+				<dds:SubstanceMass>
+					<dds:Mass>
+						<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+						<dds:Value>999</dds:Value>
+					</dds:Mass>
+					<dds:MassPercentage>
+						<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+						<dds:Value>999999</dds:Value>
+					</dds:MassPercentage>
+					<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+				</dds:SubstanceMass>
+				<dds:SubstanceNote>String</dds:SubstanceNote>
+				<dds:Threshold>
+					<dds:Exceeded>true</dds:Exceeded>
+					<dds:Value>String</dds:Value>
+				</dds:Threshold>
+			</dds:Substance>
+		</dds:Subpart>
+		<dds:Substance>
+			<dds:Classification>String</dds:Classification>
+			<dds:DependentCondition>
+				<dac:ActionCode agency="RosettaNet" codeListVersion="01.02" identifier="ActionCode">ADD</dac:ActionCode>
+				<dds:ActualValue>
+					<dds:NegativeTolerance>
+						<dds:Absolute>3.141</dds:Absolute>
+						<dds:Percentage>3.141</dds:Percentage>
+					</dds:NegativeTolerance>
+					<dds:PositiveTolerance>
+						<dds:Absolute>3.141</dds:Absolute>
+						<dds:Percentage>3.141</dds:Percentage>
+					</dds:PositiveTolerance>
+					<dds:Type agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dds:Type>
+					<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+					<dds:Value>3.14159</dds:Value>
+				</dds:ActualValue>
+				<dds:Name>String</dds:Name>
+			</dds:DependentCondition>
+			<dds:Exempt>String</dds:Exempt>
+			<dds:ExemptListVersion>String</dds:ExemptListVersion>
+			<dds:Name>String</dds:Name>
+			<dds:Radioactivity>
+				<dds:IsotopeNameCode>String</dds:IsotopeNameCode>
+				<dds:MaxActivityLevel>3.141</dds:MaxActivityLevel>
+				<dds:RadioactivityNote>String</dds:RadioactivityNote>
+				<dds:TypicalActivityLevel>3.141</dds:TypicalActivityLevel>
+			</dds:Radioactivity>
+			<dds:SubstanceIdentification>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</dds:SubstanceIdentification>
+			<dds:SubstanceMass>
+				<dds:Mass>
+					<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+					<dds:Value>999</dds:Value>
+				</dds:Mass>
+				<dds:MassPercentage>
+					<dlv:Level agency="RosettaNet" codeListVersion="01.01" identifier="Level">MAX</dlv:Level>
+					<dds:Value>999999</dds:Value>
+				</dds:MassPercentage>
+				<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.02" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+			</dds:SubstanceMass>
+			<dds:SubstanceNote>String</dds:SubstanceNote>
+			<dds:Threshold>
+				<dds:Exceeded>true</dds:Exceeded>
+				<dds:Value>String</dds:Value>
+			</dds:Threshold>
+		</dds:Substance>
+	</ProductInformation>
+	<ProductInformationHeader>
+		<upi:FullPartner>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<ulc:Location>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</ulc:Location>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+			<ulc:PhysicalAddress>
+				<ulc:AddressLine1>String</ulc:AddressLine1>
+				<ulc:AddressLine2>String</ulc:AddressLine2>
+				<ulc:AddressLine3>String</ulc:AddressLine3>
+				<ulc:AddressLine4>String</ulc:AddressLine4>
+				<ulc:AddressLine5>String</ulc:AddressLine5>
+				<ulc:CityName>String</ulc:CityName>
+				<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country">MG</uc:Country>
+				<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision">MG-T</ucs:CountrySubdivision>
+				<ulc:PostalCode>String</ulc:PostalCode>
+				<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+			</ulc:PhysicalAddress>
+			<upri:ProcessRoleIdentifier agency="RosettaNet" codeListVersion="01.09" identifier="ProcessRoleIdentifier">ADM</upri:ProcessRoleIdentifier>
+		</upi:FullPartner>
+		<RequesterNote>String</RequesterNote>
+		<ResponseByDate>2002-02-15</ResponseByDate>
+		<SupplierNote>String</SupplierNote>
+	</ProductInformationHeader>
+</MaterialCompositionInformationDistribution>

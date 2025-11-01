@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!--Compliant with BPSS vers 1.01-->
+<ProcessSpecification name="PIP3A19NotifyOfPurchaseOrderRequest" nameID="urn:rosettanet:specification:interchange:PIP3A19:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a buyer to issue a purchase order.</Documentation>
+	<BusinessDocument name="Purchase Order Request Notification" nameID="PIP3A19PurchaseOrderRequestNotification" specificationLocation="urn:rosettanet:specification:interchange:PurchaseOrderRequest:xsd:schema:01.00">
+		<Documentation>A Request to accept a purchase order for fulfillment.</Documentation>
+	</BusinessDocument>
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Quote and Order Entry" nameID="3A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="NotifyOfPurchaseOrderRequest" nameID="3A19">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify of Purchase Order Request" nameID="NotifyOfPurchaseOrderRequest_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Purchase Order Request Notification" nameID="InitiatePurchaseOrderRequestNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Purchase Order Request Notification" nameID="PurchaseOrderRequestNotification_DE" businessDocument='//BusinessDocument[@name="Purchase Order Request Notification"]' businessDocumentIDREF="PIP3A19PurchaseOrderRequestNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Purchase Order Request Notification" nameID="ProcessPurchaseOrderRequestNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify of Purchase Order Request" nameID="NotifyOfPurchaseOrderRequest_BC" initiatingRoleIDREF="BuyerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party, Authorized and Approved c. Receiving Partner Exist as Party and Approved d. Business Document Exist In Backend System, Valid and Non-Repudiated</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Buyer" nameID="BuyerID"/>
+					<Role name="Seller" nameID="SellerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify of Purchase Order Request"]' toBusinessStateIDREF="PIP3A19NotifyOfPurchaseOrderRequest"/>
+					<BusinessTransactionActivity name="Notify of Purchase Order Request" nameID="NotifyOfPurchaseOrderRequest_BTA" businessTransaction='//BusinessTransaction[@name="Notify of Purchase Order Request"]' businessTransactionIDREF="NotifyOfPurchaseOrderRequest_BT" fromRole='../Role[@name="Buyer"]' fromRoleIDREF="BuyerID" toRole='../Role[@name="Seller"]' toRoleIDREF="SellerID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT2H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Purchase Order Request"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Purchase Order Request"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

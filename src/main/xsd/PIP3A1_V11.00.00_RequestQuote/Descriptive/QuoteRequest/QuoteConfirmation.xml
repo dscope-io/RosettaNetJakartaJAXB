@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by RosettaNet (RosettaNet) -->
+<!-- Created with RosettaNet XSD2ALL 2.3 on Tue Nov 08 09:57:24 GMT+08:00 2005 -->
+<QuoteConfirmation schemaVersion="" xmlns="urn:rosettanet:specification:interchange:QuoteConfirmation:xsd:schema:01.03" xmlns:dacc="urn:rosettanet:specification:domain:Procurement:AccountClassification:xsd:codelist:01.02" xmlns:dbpq="urn:rosettanet:specification:domain:Procurement:BookPriceQualifier:xsd:codelist:01.03" xmlns:dccc="urn:rosettanet:specification:domain:Procurement:CreditCardClassification:xsd:codelist:01.02" xmlns:dcrt="urn:rosettanet:specification:domain:Procurement:CustomerType:xsd:codelist:01.02" xmlns:dfe="urn:rosettanet:specification:domain:Procurement:ForecastEvent:xsd:codelist:01.02" xmlns:dfob="urn:rosettanet:specification:domain:Procurement:FreeOnBoard:xsd:codelist:01.03" xmlns:dfrt="urn:rosettanet:specification:domain:Procurement:ForecastReferenceType:xsd:codelist:01.02" xmlns:dft="urn:rosettanet:specification:domain:Procurement:FinanceTerms:xsd:codelist:01.02" xmlns:dgpr="urn:rosettanet:specification:domain:Procurement:GovernmentPriorityRating:xsd:codelist:01.02" xmlns:di="urn:rosettanet:specification:domain:Procurement:Interval:xsd:codelist:01.02" xmlns:dict="urn:rosettanet:specification:domain:Procurement:InvoiceChargeType:xsd:codelist:01.02" xmlns:dit="urn:rosettanet:specification:domain:Procurement:InventoryType:xsd:codelist:01.02" xmlns:dl="urn:rosettanet:specification:domain:Logistics:xsd:schema:01.09" xmlns:dltcc="urn:rosettanet:specification:domain:Procurement:LeadTimeClassificationCode:xsd:codelist:01.02" xmlns:dm="urn:rosettanet:specification:domain:Manufacturing:xsd:schema:01.07" xmlns:dmat="urn:rosettanet:specification:domain:Procurement:MonetaryAmountType:xsd:codelist:01.02" xmlns:dp="urn:rosettanet:specification:domain:Procurement:xsd:schema:01.15" xmlns:dpc="urn:rosettanet:specification:domain:Procurement:PaymentCondition:xsd:codelist:01.02" xmlns:dpcm="urn:rosettanet:specification:domain:Procurement:PurchaseMethod:xsd:codelist:01.02" xmlns:dpm="urn:rosettanet:specification:domain:Procurement:PaymentMethod:xsd:codelist:01.02" xmlns:dpmt="urn:rosettanet:specification:domain:Procurement:PaymentType:xsd:codelist:01.02" xmlns:dpos="urn:rosettanet:specification:domain:Procurement:PurchaseOrderStatus:xsd:codelist:01.02" xmlns:dpsr="urn:rosettanet:specification:domain:Procurement:ProductSubstitutionReason:xsd:codelist:01.02" xmlns:dptc="urn:rosettanet:specification:domain:Procurement:PricingTypeCode:xsd:codelist:01.03" xmlns:dqar="urn:rosettanet:specification:domain:Procurement:QuoteAcknowledgmentReason:xsd:codelist:01.00" xmlns:dqs="urn:rosettanet:specification:domain:Procurement:QuoteStatus:xsd:codelist:01.01" xmlns:dqt="urn:rosettanet:specification:domain:Procurement:QuoteType:xsd:codelist:01.03" xmlns:dra="urn:rosettanet:specification:domain:Procurement:RequoteAction:xsd:codelist:01.02" xmlns:dro="urn:rosettanet:specification:domain:Procurement:RequestOption:xsd:codelist:01.00" xmlns:dsfr="urn:rosettanet:specification:domain:Procurement:SpecialFulfillmentRequest:xsd:codelist:01.02" xmlns:dsh="urn:rosettanet:specification:domain:Procurement:SpecialHandling:xsd:codelist:01.02" xmlns:dslt="urn:rosettanet:specification:domain:Procurement:SaleType:xsd:codelist:01.02" xmlns:dssl="urn:rosettanet:specification:domain:Procurement:ShippingServiceLevel:xsd:codelist:01.02" xmlns:dst="urn:rosettanet:specification:domain:Procurement:ShipmentTerms:xsd:codelist:01.02" xmlns:dte="urn:rosettanet:specification:domain:Procurement:TransportEvent:xsd:codelist:01.02" xmlns:dtec="urn:rosettanet:specification:domain:Procurement:TaxExemptionCode:xsd:codelist:01.02" xmlns:dtq="urn:rosettanet:specification:domain:Procurement:TotalQualifier:xsd:codelist:01.02" xmlns:dtt="urn:rosettanet:specification:domain:Procurement:TransactionType:xsd:codelist:01.03" xmlns:iltc="urn:rosettanet:specification:interchange:LeadTimeCommencement:xsd:codelist:01.00" xmlns:ipts="urn:rosettanet:specification:interchange:ProductTerms:xsd:codelist:01.00" xmlns:iqlis="urn:rosettanet:specification:interchange:QuoteLineItemStatus:xsd:codelist:01.00" xmlns:isi="urn:rosettanet:specification:interchange:StockIndicator:xsd:codelist:01.00" xmlns:sft="urn:rosettanet:specification:system:TPIRFileType:xsd:codelist:01.00" xmlns:ssdh="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.06" xmlns:st="http://www.ascc.net/xml/schematron" xmlns:uat="urn:rosettanet:specification:universal:AbstractType:xsd:schema:01.01" xmlns:uc="urn:rosettanet:specification:universal:Country:xsd:codelist:01.01" xmlns:uci="urn:rosettanet:specification:universal:ContactInformation:xsd:schema:01.01" xmlns:ucr="urn:rosettanet:specification:universal:Currency:xsd:codelist:01.01" xmlns:ucs="urn:rosettanet:specification:universal:CountrySubdivision:xsd:codelist:01.01" xmlns:ud="urn:rosettanet:specification:universal:Dates:xsd:schema:01.01" xmlns:udc="urn:rosettanet:specification:universal:Document:xsd:schema:01.01" xmlns:udct="urn:rosettanet:specification:universal:DocumentType:xsd:codelist:01.01" xmlns:udt="urn:rosettanet:specification:universal:DataType:xsd:schema:01.02" xmlns:ul="urn:rosettanet:specification:universal:Language:xsd:codelist:01.01" xmlns:ulc="urn:rosettanet:specification:universal:Locations:xsd:schema:01.02" xmlns:ume="urn:rosettanet:specification:universal:MonetaryExpression:xsd:schema:01.01" xmlns:umtq="urn:rosettanet:specification:universal:MimeTypeQualifier:xsd:codelist:01.01" xmlns:updi="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.02" xmlns:upi="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.04" xmlns:upri="urn:rosettanet:specification:universal:ProcessRoleIdentifier:xsd:codelist:01.01" xmlns:urss="urn:rosettanet:specification:system:xml:1.0" xmlns:utt="urn:rosettanet:specification:universal:TaxType:xsd:codelist:01.01" xmlns:uuom="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.01" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:rosettanet:specification:interchange:QuoteConfirmation:xsd:schema:01.03
+..\..\XML\Interchange\QuoteConfirmation_01_03.xsd">
+	<ssdh:DocumentHeader schemaVersion="">
+		<ssdh:CorrelationInformation schemaVersion="">
+			<ssdh:ContractInformation schemaVersion="">
+				<ssdh:ContractIdentifier>String</ssdh:ContractIdentifier>
+				<ssdh:ContractType>String</ssdh:ContractType>
+			</ssdh:ContractInformation>
+			<ssdh:RequestingDocumentInformation schemaVersion="">
+				<ssdh:BusinessProcessInstanceIdentifier>String</ssdh:BusinessProcessInstanceIdentifier>
+				<ssdh:RequestingDocumentCreationDateTime>2004-02-15T08:30:00+08:00</ssdh:RequestingDocumentCreationDateTime>
+				<ssdh:RequestingDocumentInstanceIdentifier>String</ssdh:RequestingDocumentInstanceIdentifier>
+				<ssdh:ResponseDateTime>2004-02-15T08:30:00+08:00</ssdh:ResponseDateTime>
+			</ssdh:RequestingDocumentInformation>
+		</ssdh:CorrelationInformation>
+		<ssdh:DocumentInformation schemaVersion="">
+			<ssdh:Creation>2004-02-15T08:30:00+08:00</ssdh:Creation>
+			<ssdh:DocumentIdentification schemaVersion="">
+				<ssdh:Identifier>String</ssdh:Identifier>
+				<ssdh:Type>String</ssdh:Type>
+				<ssdh:StandardDocumentIdentification schemaVersion="">
+					<ssdh:Standard>String</ssdh:Standard>
+					<ssdh:Version>String</ssdh:Version>
+				</ssdh:StandardDocumentIdentification>
+			</ssdh:DocumentIdentification>
+			<ssdh:DocumentManifest schemaVersion="">
+				<ssdh:ManifestItem schemaVersion="">
+					<ssdh:Description>String</ssdh:Description>
+					<ssdh:Language agency="RosettaNet" codeListVersion="01.01" identifier="Language" schemaVersion="">eng</ssdh:Language>
+					<ssdh:Length>100</ssdh:Length>
+					<ssdh:MimeTypeQualifier agency="RosettaNet" codeListVersion="01.01" identifier="MimeTypeQualifier" schemaVersion="">application/activemessage</ssdh:MimeTypeQualifier>
+					<ssdh:UniversalResourceIdentifier>String</ssdh:UniversalResourceIdentifier>
+				</ssdh:ManifestItem>
+				<ssdh:MultipleType>true</ssdh:MultipleType>
+				<ssdh:NumberOfItems>100</ssdh:NumberOfItems>
+			</ssdh:DocumentManifest>
+			<ssdh:DocumentSecurity schemaVersion="">
+				<ssdh:NonRepudiableReceipt>true</ssdh:NonRepudiableReceipt>
+				<ssdh:PersistentEncryption>true</ssdh:PersistentEncryption>
+				<ssdh:PersistentSignature>true</ssdh:PersistentSignature>
+			</ssdh:DocumentSecurity>
+		</ssdh:DocumentInformation>
+		<ssdh:HeaderVersion>String</ssdh:HeaderVersion>
+		<ssdh:Receiver schemaVersion="">
+			<ssdh:BusinessServiceInformation schemaVersion="">
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation schemaVersion="">
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification schemaVersion="">
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier schemaVersion="">
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Receiver>
+		<ssdh:Sender schemaVersion="">
+			<ssdh:BusinessServiceInformation schemaVersion="">
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation schemaVersion="">
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification schemaVersion="">
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier schemaVersion="">
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Sender>
+	</ssdh:DocumentHeader>
+	<Quote schemaVersion="">
+		<BillTo schemaVersion="">
+			<upi:SpecifiedFullPartner schemaVersion="">
+				<uci:ContactInformation schemaVersion="">
+					<uci:Contact>String</uci:Contact>
+					<uci:Email>String</uci:Email>
+					<uci:Fax>String</uci:Fax>
+					<uci:Identifier>String</uci:Identifier>
+					<uci:Phone>String</uci:Phone>
+				</uci:ContactInformation>
+				<ulc:Location schemaVersion="">
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</ulc:Location>
+				<upi:PartnerIdentification schemaVersion="">
+					<upi:PartnerName>String</upi:PartnerName>
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</upi:PartnerIdentification>
+				<ulc:PhysicalAddress schemaVersion="">
+					<ulc:AddressLine1>String</ulc:AddressLine1>
+					<ulc:AddressLine2>String</ulc:AddressLine2>
+					<ulc:AddressLine3>String</ulc:AddressLine3>
+					<ulc:AddressLine4>String</ulc:AddressLine4>
+					<ulc:AddressLine5>String</ulc:AddressLine5>
+					<ulc:CityName>String</ulc:CityName>
+					<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+					<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision" schemaVersion="">MG-T</ucs:CountrySubdivision>
+					<ulc:PostalCode>String</ulc:PostalCode>
+					<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+				</ulc:PhysicalAddress>
+			</upi:SpecifiedFullPartner>
+		</BillTo>
+		<udc:BusinessDocumentReference schemaVersion="">
+			<udc:DateTime>2004-02-15T08:30:00+08:00</udc:DateTime>
+			<udct:DocumentType agency="RosettaNet" codeListVersion="01.02" identifier="DocumentType" schemaVersion="">CBN</udct:DocumentType>
+			<udc:Identifier>String</udc:Identifier>
+			<udc:Line>String</udc:Line>
+			<udc:Revision>String</udc:Revision>
+			<udc:SubLine>String</udc:SubLine>
+		</udc:BusinessDocumentReference>
+		<dl:CarrierInformation schemaVersion="">
+			<dl:Identifier>String</dl:Identifier>
+			<dl:SCAC>AACR</dl:SCAC>
+		</dl:CarrierInformation>
+		<Comments>String</Comments>
+		<ContractOwner schemaVersion="">
+			<upi:SpecifiedFullPartner schemaVersion="">
+				<uci:ContactInformation schemaVersion="">
+					<uci:Contact>String</uci:Contact>
+					<uci:Email>String</uci:Email>
+					<uci:Fax>String</uci:Fax>
+					<uci:Identifier>String</uci:Identifier>
+					<uci:Phone>String</uci:Phone>
+				</uci:ContactInformation>
+				<ulc:Location schemaVersion="">
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</ulc:Location>
+				<upi:PartnerIdentification schemaVersion="">
+					<upi:PartnerName>String</upi:PartnerName>
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</upi:PartnerIdentification>
+				<ulc:PhysicalAddress schemaVersion="">
+					<ulc:AddressLine1>String</ulc:AddressLine1>
+					<ulc:AddressLine2>String</ulc:AddressLine2>
+					<ulc:AddressLine3>String</ulc:AddressLine3>
+					<ulc:AddressLine4>String</ulc:AddressLine4>
+					<ulc:AddressLine5>String</ulc:AddressLine5>
+					<ulc:CityName>String</ulc:CityName>
+					<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+					<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision" schemaVersion="">MG-T</ucs:CountrySubdivision>
+					<ulc:PostalCode>String</ulc:PostalCode>
+					<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+				</ulc:PhysicalAddress>
+			</upi:SpecifiedFullPartner>
+		</ContractOwner>
+		<DistributedBy schemaVersion="">
+			<upi:SpecifiedFullPartner schemaVersion="">
+				<uci:ContactInformation schemaVersion="">
+					<uci:Contact>String</uci:Contact>
+					<uci:Email>String</uci:Email>
+					<uci:Fax>String</uci:Fax>
+					<uci:Identifier>String</uci:Identifier>
+					<uci:Phone>String</uci:Phone>
+				</uci:ContactInformation>
+				<ulc:Location schemaVersion="">
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</ulc:Location>
+				<upi:PartnerIdentification schemaVersion="">
+					<upi:PartnerName>String</upi:PartnerName>
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</upi:PartnerIdentification>
+				<ulc:PhysicalAddress schemaVersion="">
+					<ulc:AddressLine1>String</ulc:AddressLine1>
+					<ulc:AddressLine2>String</ulc:AddressLine2>
+					<ulc:AddressLine3>String</ulc:AddressLine3>
+					<ulc:AddressLine4>String</ulc:AddressLine4>
+					<ulc:AddressLine5>String</ulc:AddressLine5>
+					<ulc:CityName>String</ulc:CityName>
+					<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+					<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision" schemaVersion="">MG-T</ucs:CountrySubdivision>
+					<ulc:PostalCode>String</ulc:PostalCode>
+					<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+				</ulc:PhysicalAddress>
+			</upi:SpecifiedFullPartner>
+		</DistributedBy>
+		<EffectiveDate schemaVersion="">
+			<ud:Begin>2002-02-15</ud:Begin>
+			<ud:End>2002-02-15</ud:End>
+		</EffectiveDate>
+		<FinancedBy schemaVersion="">
+			<upi:SpecifiedFullPartner schemaVersion="">
+				<uci:ContactInformation schemaVersion="">
+					<uci:Contact>String</uci:Contact>
+					<uci:Email>String</uci:Email>
+					<uci:Fax>String</uci:Fax>
+					<uci:Identifier>String</uci:Identifier>
+					<uci:Phone>String</uci:Phone>
+				</uci:ContactInformation>
+				<ulc:Location schemaVersion="">
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</ulc:Location>
+				<upi:PartnerIdentification schemaVersion="">
+					<upi:PartnerName>String</upi:PartnerName>
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</upi:PartnerIdentification>
+				<ulc:PhysicalAddress schemaVersion="">
+					<ulc:AddressLine1>String</ulc:AddressLine1>
+					<ulc:AddressLine2>String</ulc:AddressLine2>
+					<ulc:AddressLine3>String</ulc:AddressLine3>
+					<ulc:AddressLine4>String</ulc:AddressLine4>
+					<ulc:AddressLine5>String</ulc:AddressLine5>
+					<ulc:CityName>String</ulc:CityName>
+					<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+					<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision" schemaVersion="">MG-T</ucs:CountrySubdivision>
+					<ulc:PostalCode>String</ulc:PostalCode>
+					<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+				</ulc:PhysicalAddress>
+			</upi:SpecifiedFullPartner>
+		</FinancedBy>
+		<FreightCharges schemaVersion="">
+			<ume:FinancialAmount schemaVersion="">
+				<ume:Amount>3.14159</ume:Amount>
+				<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+			</ume:FinancialAmount>
+			<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+			<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+		</FreightCharges>
+		<GovernmentContractIdentifier schemaVersion="">
+			<udc:DateTime>2004-02-15T08:30:00+08:00</udc:DateTime>
+			<udct:DocumentType agency="RosettaNet" codeListVersion="01.02" identifier="DocumentType" schemaVersion="">CBN</udct:DocumentType>
+			<udc:Identifier>String</udc:Identifier>
+			<udc:Line>String</udc:Line>
+			<udc:Revision>String</udc:Revision>
+			<udc:SubLine>String</udc:SubLine>
+		</GovernmentContractIdentifier>
+		<dgpr:GovernmentPriorityRating agency="RosettaNet" codeListVersion="01.01" identifier="GovernmentPriorityRating" schemaVersion="">ATE</dgpr:GovernmentPriorityRating>
+		<HandlingCharges schemaVersion="">
+			<ume:FinancialAmount schemaVersion="">
+				<ume:Amount>3.14159</ume:Amount>
+				<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+			</ume:FinancialAmount>
+			<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+			<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+		</HandlingCharges>
+		<IsPendingItemsExist>true</IsPendingItemsExist>
+		<dp:PriceCondition schemaVersion="">
+			<dp:ContractIdentifier schemaVersion="">
+				<udc:DateTime>2004-02-15T08:30:00+08:00</udc:DateTime>
+				<udct:DocumentType agency="RosettaNet" codeListVersion="01.02" identifier="DocumentType" schemaVersion="">CBN</udct:DocumentType>
+				<udc:Identifier>String</udc:Identifier>
+				<udc:Line>String</udc:Line>
+				<udc:Revision>String</udc:Revision>
+				<udc:SubLine>String</udc:SubLine>
+			</dp:ContractIdentifier>
+			<dp:GeneralServiceAdministrationNumber schemaVersion="">
+				<udc:DateTime>2004-02-15T08:30:00+08:00</udc:DateTime>
+				<udct:DocumentType agency="RosettaNet" codeListVersion="01.02" identifier="DocumentType" schemaVersion="">CBN</udct:DocumentType>
+				<udc:Identifier>String</udc:Identifier>
+				<udc:Line>String</udc:Line>
+				<udc:Revision>String</udc:Revision>
+				<udc:SubLine>String</udc:SubLine>
+			</dp:GeneralServiceAdministrationNumber>
+			<dp:SpecialPriceCondition>String</dp:SpecialPriceCondition>
+			<dp:SpecialPricingDatePeriod schemaVersion="">
+				<ud:Begin>2002-02-15</ud:Begin>
+				<ud:End>2002-02-15</ud:End>
+			</dp:SpecialPricingDatePeriod>
+		</dp:PriceCondition>
+		<dqar:QuoteAcknowledgmentReason agency="RosettaNet" codeListVersion="01.00" identifier="QuoteAcknowledgmentReason" schemaVersion="">IPR</dqar:QuoteAcknowledgmentReason>
+		<QuoteCustomerInformation schemaVersion="">
+			<dcrt:CustomerType agency="RosettaNet" codeListVersion="01.01" identifier="CustomerType" schemaVersion="">ENC</dcrt:CustomerType>
+			<upi:PartnerDescription schemaVersion="">
+				<upi:FullPartner schemaVersion="">
+					<uci:ContactInformation schemaVersion="">
+						<uci:Contact>String</uci:Contact>
+						<uci:Email>String</uci:Email>
+						<uci:Fax>String</uci:Fax>
+						<uci:Identifier>String</uci:Identifier>
+						<uci:Phone>String</uci:Phone>
+					</uci:ContactInformation>
+					<ulc:Location schemaVersion="">
+						<ulc:AlternativeIdentifier schemaVersion="">
+							<ulc:Authority>String</ulc:Authority>
+							<ulc:Identifier>String</ulc:Identifier>
+						</ulc:AlternativeIdentifier>
+					</ulc:Location>
+					<upi:PartnerIdentification schemaVersion="">
+						<upi:PartnerName>String</upi:PartnerName>
+						<ulc:AlternativeIdentifier schemaVersion="">
+							<ulc:Authority>String</ulc:Authority>
+							<ulc:Identifier>String</ulc:Identifier>
+						</ulc:AlternativeIdentifier>
+					</upi:PartnerIdentification>
+					<ulc:PhysicalAddress schemaVersion="">
+						<ulc:AddressLine1>String</ulc:AddressLine1>
+						<ulc:AddressLine2>String</ulc:AddressLine2>
+						<ulc:AddressLine3>String</ulc:AddressLine3>
+						<ulc:AddressLine4>String</ulc:AddressLine4>
+						<ulc:AddressLine5>String</ulc:AddressLine5>
+						<ulc:CityName>String</ulc:CityName>
+						<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+						<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision" schemaVersion="">MG-T</ucs:CountrySubdivision>
+						<ulc:PostalCode>String</ulc:PostalCode>
+						<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+					</ulc:PhysicalAddress>
+					<upri:ProcessRoleIdentifier agency="RosettaNet" codeListVersion="01.01" identifier="ProcessRoleIdentifier" schemaVersion="">ADM</upri:ProcessRoleIdentifier>
+				</upi:FullPartner>
+			</upi:PartnerDescription>
+			<dp:ProjectIdentifier>String</dp:ProjectIdentifier>
+			<dqs:QuoteStatus agency="RosettaNet" codeListVersion="01.01" identifier="QuoteStatus" schemaVersion="">CLO</dqs:QuoteStatus>
+		</QuoteCustomerInformation>
+		<QuoteLineItem schemaVersion="">
+			<ProductLineItem schemaVersion="">
+				<udc:BusinessDocumentReference schemaVersion="">
+					<udc:DateTime>2004-02-15T08:30:00+08:00</udc:DateTime>
+					<udct:DocumentType agency="RosettaNet" codeListVersion="01.02" identifier="DocumentType" schemaVersion="">CBN</udct:DocumentType>
+					<udc:Identifier>String</udc:Identifier>
+					<udc:Line>String</udc:Line>
+					<udc:Revision>String</udc:Revision>
+					<udc:SubLine>String</udc:SubLine>
+				</udc:BusinessDocumentReference>
+				<Comments>String</Comments>
+				<CompetitorReference schemaVersion="">
+					<upi:PartnerDescription schemaVersion="">
+						<upi:FullPartner schemaVersion="">
+							<uci:ContactInformation schemaVersion="">
+								<uci:Contact>String</uci:Contact>
+								<uci:Email>String</uci:Email>
+								<uci:Fax>String</uci:Fax>
+								<uci:Identifier>String</uci:Identifier>
+								<uci:Phone>String</uci:Phone>
+							</uci:ContactInformation>
+							<ulc:Location schemaVersion="">
+								<ulc:AlternativeIdentifier schemaVersion="">
+									<ulc:Authority>String</ulc:Authority>
+									<ulc:Identifier>String</ulc:Identifier>
+								</ulc:AlternativeIdentifier>
+							</ulc:Location>
+							<upi:PartnerIdentification schemaVersion="">
+								<upi:PartnerName>String</upi:PartnerName>
+								<ulc:AlternativeIdentifier schemaVersion="">
+									<ulc:Authority>String</ulc:Authority>
+									<ulc:Identifier>String</ulc:Identifier>
+								</ulc:AlternativeIdentifier>
+							</upi:PartnerIdentification>
+							<ulc:PhysicalAddress schemaVersion="">
+								<ulc:AddressLine1>String</ulc:AddressLine1>
+								<ulc:AddressLine2>String</ulc:AddressLine2>
+								<ulc:AddressLine3>String</ulc:AddressLine3>
+								<ulc:AddressLine4>String</ulc:AddressLine4>
+								<ulc:AddressLine5>String</ulc:AddressLine5>
+								<ulc:CityName>String</ulc:CityName>
+								<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+								<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision" schemaVersion="">MG-T</ucs:CountrySubdivision>
+								<ulc:PostalCode>String</ulc:PostalCode>
+								<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+							</ulc:PhysicalAddress>
+							<upri:ProcessRoleIdentifier agency="RosettaNet" codeListVersion="01.01" identifier="ProcessRoleIdentifier" schemaVersion="">ADM</upri:ProcessRoleIdentifier>
+						</upi:FullPartner>
+					</upi:PartnerDescription>
+					<updi:ProductIdentification schemaVersion="">
+						<updi:ProductName>String</updi:ProductName>
+						<updi:Revision>String</updi:Revision>
+						<ulc:AlternativeIdentifier schemaVersion="">
+							<ulc:Authority>String</ulc:Authority>
+							<ulc:Identifier>String</ulc:Identifier>
+						</ulc:AlternativeIdentifier>
+					</updi:ProductIdentification>
+					<UnitPrice schemaVersion="">
+						<dp:MonetaryAmount schemaVersion="">
+							<ume:FinancialAmount schemaVersion="">
+								<ume:Amount>3.14159</ume:Amount>
+								<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+							</ume:FinancialAmount>
+							<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+							<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+						</dp:MonetaryAmount>
+						<dptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.03" identifier="PricingTypeCode" schemaVersion="">ACR</dptc:PricingTypeCode>
+					</UnitPrice>
+				</CompetitorReference>
+				<CountryOfOrigin agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</CountryOfOrigin>
+				<DesignRegistrationIdentifier>String</DesignRegistrationIdentifier>
+				<EstimatedAvailableQuantity schemaVersion="">
+					<ManufacturerMinimumPackageQuantity>3.14159</ManufacturerMinimumPackageQuantity>
+					<MinimumOrderQuantity>3.14159</MinimumOrderQuantity>
+					<TransportationSchedule schemaVersion="">
+						<Quantity schemaVersion="">
+							<dp:ProductQuantity>3.14159</dp:ProductQuantity>
+							<ScheduleDate>2002-02-15</ScheduleDate>
+						</Quantity>
+						<dte:TransportEvent agency="RosettaNet" codeListVersion="01.01" identifier="TransportEvent" schemaVersion="">DOC</dte:TransportEvent>
+					</TransportationSchedule>
+				</EstimatedAvailableQuantity>
+				<GovernmentContractIdentifier schemaVersion="">
+					<udc:DateTime>2004-02-15T08:30:00+08:00</udc:DateTime>
+					<udct:DocumentType agency="RosettaNet" codeListVersion="01.02" identifier="DocumentType" schemaVersion="">CBN</udct:DocumentType>
+					<udc:Identifier>String</udc:Identifier>
+					<udc:Line>String</udc:Line>
+					<udc:Revision>String</udc:Revision>
+					<udc:SubLine>String</udc:SubLine>
+				</GovernmentContractIdentifier>
+				<dgpr:GovernmentPriorityRating agency="RosettaNet" codeListVersion="01.01" identifier="GovernmentPriorityRating" schemaVersion="">ATE</dgpr:GovernmentPriorityRating>
+				<Identifier>String</Identifier>
+				<LineNumber>String</LineNumber>
+				<OrderLeadTime schemaVersion="">
+					<dp:DatePeriodAndDuration schemaVersion="">
+						<ud:DatePeriod schemaVersion="">
+							<ud:Begin>2002-02-15</ud:Begin>
+							<ud:End>2002-02-15</ud:End>
+						</ud:DatePeriod>
+					</dp:DatePeriodAndDuration>
+					<dltcc:LeadTimeClassificationCode agency="RosettaNet" codeListVersion="01.01" identifier="LeadTimeClassificationCode" schemaVersion="">ASA</dltcc:LeadTimeClassificationCode>
+					<iltc:LeadTimeCommencement agency="RosettaNet" codeListVersion="00.00.01" identifier="LeadTimeCommencement" schemaVersion="">ACO</iltc:LeadTimeCommencement>
+				</OrderLeadTime>
+				<updi:ProductIdentification schemaVersion="">
+					<updi:ProductName>String</updi:ProductName>
+					<updi:Revision>String</updi:Revision>
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</updi:ProductIdentification>
+				<ipts:ProductTerms agency="RosettaNet" codeListVersion="00.00.01" identifier="ProductTerms" schemaVersion="">EOL</ipts:ProductTerms>
+				<QuoteReference schemaVersion="">
+					<udc:DateTime>2004-02-15T08:30:00+08:00</udc:DateTime>
+					<udct:DocumentType agency="RosettaNet" codeListVersion="01.02" identifier="DocumentType" schemaVersion="">CBN</udct:DocumentType>
+					<udc:Identifier>String</udc:Identifier>
+					<udc:Line>String</udc:Line>
+					<udc:Revision>String</udc:Revision>
+					<udc:SubLine>String</udc:SubLine>
+				</QuoteReference>
+				<dqar:QuoteAcknowledgmentReason agency="RosettaNet" codeListVersion="01.00" identifier="QuoteAcknowledgmentReason" schemaVersion="">IPR</dqar:QuoteAcknowledgmentReason>
+				<QuoteCustomerInformation schemaVersion="">
+					<dcrt:CustomerType agency="RosettaNet" codeListVersion="01.01" identifier="CustomerType" schemaVersion="">ENC</dcrt:CustomerType>
+					<upi:PartnerDescription schemaVersion="">
+						<upi:FullPartner schemaVersion="">
+							<uci:ContactInformation schemaVersion="">
+								<uci:Contact>String</uci:Contact>
+								<uci:Email>String</uci:Email>
+								<uci:Fax>String</uci:Fax>
+								<uci:Identifier>String</uci:Identifier>
+								<uci:Phone>String</uci:Phone>
+							</uci:ContactInformation>
+							<ulc:Location schemaVersion="">
+								<ulc:AlternativeIdentifier schemaVersion="">
+									<ulc:Authority>String</ulc:Authority>
+									<ulc:Identifier>String</ulc:Identifier>
+								</ulc:AlternativeIdentifier>
+							</ulc:Location>
+							<upi:PartnerIdentification schemaVersion="">
+								<upi:PartnerName>String</upi:PartnerName>
+								<ulc:AlternativeIdentifier schemaVersion="">
+									<ulc:Authority>String</ulc:Authority>
+									<ulc:Identifier>String</ulc:Identifier>
+								</ulc:AlternativeIdentifier>
+							</upi:PartnerIdentification>
+							<ulc:PhysicalAddress schemaVersion="">
+								<ulc:AddressLine1>String</ulc:AddressLine1>
+								<ulc:AddressLine2>String</ulc:AddressLine2>
+								<ulc:AddressLine3>String</ulc:AddressLine3>
+								<ulc:AddressLine4>String</ulc:AddressLine4>
+								<ulc:AddressLine5>String</ulc:AddressLine5>
+								<ulc:CityName>String</ulc:CityName>
+								<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+								<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision" schemaVersion="">MG-T</ucs:CountrySubdivision>
+								<ulc:PostalCode>String</ulc:PostalCode>
+								<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+							</ulc:PhysicalAddress>
+							<upri:ProcessRoleIdentifier agency="RosettaNet" codeListVersion="01.01" identifier="ProcessRoleIdentifier" schemaVersion="">ADM</upri:ProcessRoleIdentifier>
+						</upi:FullPartner>
+					</upi:PartnerDescription>
+					<dp:ProjectIdentifier>String</dp:ProjectIdentifier>
+					<dqs:QuoteStatus agency="RosettaNet" codeListVersion="01.01" identifier="QuoteStatus" schemaVersion="">CLO</dqs:QuoteStatus>
+				</QuoteCustomerInformation>
+				<iqlis:QuoteLineItemStatus agency="RosettaNet" codeListVersion="00.00.01" identifier="QuoteLineItemStatus" schemaVersion="">BID</iqlis:QuoteLineItemStatus>
+				<QuoteStatus agency="RosettaNet" codeListVersion="01.01" identifier="PurchaseOrderStatus" schemaVersion="">ACC</QuoteStatus>
+				<RequestedQuantity schemaVersion="">
+					<ManufacturerMinimumPackageQuantity>3.14159</ManufacturerMinimumPackageQuantity>
+					<MinimumOrderQuantity>3.14159</MinimumOrderQuantity>
+					<TransportationSchedule schemaVersion="">
+						<Quantity schemaVersion="">
+							<dp:ProductQuantity>3.14159</dp:ProductQuantity>
+							<ScheduleDate>2002-02-15</ScheduleDate>
+						</Quantity>
+						<dte:TransportEvent agency="RosettaNet" codeListVersion="01.01" identifier="TransportEvent" schemaVersion="">DOC</dte:TransportEvent>
+					</TransportationSchedule>
+				</RequestedQuantity>
+				<RequestedShipFrom schemaVersion="">
+					<upi:SpecifiedFullPartner schemaVersion="">
+						<uci:ContactInformation schemaVersion="">
+							<uci:Contact>String</uci:Contact>
+							<uci:Email>String</uci:Email>
+							<uci:Fax>String</uci:Fax>
+							<uci:Identifier>String</uci:Identifier>
+							<uci:Phone>String</uci:Phone>
+						</uci:ContactInformation>
+						<ulc:Location schemaVersion="">
+							<ulc:AlternativeIdentifier schemaVersion="">
+								<ulc:Authority>String</ulc:Authority>
+								<ulc:Identifier>String</ulc:Identifier>
+							</ulc:AlternativeIdentifier>
+						</ulc:Location>
+						<upi:PartnerIdentification schemaVersion="">
+							<upi:PartnerName>String</upi:PartnerName>
+							<ulc:AlternativeIdentifier schemaVersion="">
+								<ulc:Authority>String</ulc:Authority>
+								<ulc:Identifier>String</ulc:Identifier>
+							</ulc:AlternativeIdentifier>
+						</upi:PartnerIdentification>
+						<ulc:PhysicalAddress schemaVersion="">
+							<ulc:AddressLine1>String</ulc:AddressLine1>
+							<ulc:AddressLine2>String</ulc:AddressLine2>
+							<ulc:AddressLine3>String</ulc:AddressLine3>
+							<ulc:AddressLine4>String</ulc:AddressLine4>
+							<ulc:AddressLine5>String</ulc:AddressLine5>
+							<ulc:CityName>String</ulc:CityName>
+							<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+							<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision" schemaVersion="">MG-T</ucs:CountrySubdivision>
+							<ulc:PostalCode>String</ulc:PostalCode>
+							<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+						</ulc:PhysicalAddress>
+					</upi:SpecifiedFullPartner>
+				</RequestedShipFrom>
+				<RequestedUnitPrice schemaVersion="">
+					<dp:MonetaryAmount schemaVersion="">
+						<ume:FinancialAmount schemaVersion="">
+							<ume:Amount>3.14159</ume:Amount>
+							<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+						</ume:FinancialAmount>
+						<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+						<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+					</dp:MonetaryAmount>
+					<dptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.03" identifier="PricingTypeCode" schemaVersion="">ACR</dptc:PricingTypeCode>
+				</RequestedUnitPrice>
+				<RequoteLineStatus schemaVersion="">
+					<dra:RequoteAction agency="RosettaNet" codeListVersion="01.01" identifier="RequoteAction" schemaVersion="">ADD</dra:RequoteAction>
+					<RequoteReference schemaVersion="">
+						<udc:DateTime>2004-02-15T08:30:00+08:00</udc:DateTime>
+						<udct:DocumentType agency="RosettaNet" codeListVersion="01.02" identifier="DocumentType" schemaVersion="">CBN</udct:DocumentType>
+						<udc:Identifier>String</udc:Identifier>
+						<udc:Line>String</udc:Line>
+						<udc:Revision>String</udc:Revision>
+						<udc:SubLine>String</udc:SubLine>
+					</RequoteReference>
+				</RequoteLineStatus>
+				<ResponseDescription>String</ResponseDescription>
+				<ScheduledQuantity schemaVersion="">
+					<ManufacturerMinimumPackageQuantity>3.14159</ManufacturerMinimumPackageQuantity>
+					<MinimumOrderQuantity>3.14159</MinimumOrderQuantity>
+					<TransportationSchedule schemaVersion="">
+						<Quantity schemaVersion="">
+							<dp:ProductQuantity>3.14159</dp:ProductQuantity>
+							<ScheduleDate>2002-02-15</ScheduleDate>
+						</Quantity>
+						<dte:TransportEvent agency="RosettaNet" codeListVersion="01.01" identifier="TransportEvent" schemaVersion="">DOC</dte:TransportEvent>
+					</TransportationSchedule>
+				</ScheduledQuantity>
+				<ShipFrom schemaVersion="">
+					<upi:SpecifiedFullPartner schemaVersion="">
+						<uci:ContactInformation schemaVersion="">
+							<uci:Contact>String</uci:Contact>
+							<uci:Email>String</uci:Email>
+							<uci:Fax>String</uci:Fax>
+							<uci:Identifier>String</uci:Identifier>
+							<uci:Phone>String</uci:Phone>
+						</uci:ContactInformation>
+						<ulc:Location schemaVersion="">
+							<ulc:AlternativeIdentifier schemaVersion="">
+								<ulc:Authority>String</ulc:Authority>
+								<ulc:Identifier>String</ulc:Identifier>
+							</ulc:AlternativeIdentifier>
+						</ulc:Location>
+						<upi:PartnerIdentification schemaVersion="">
+							<upi:PartnerName>String</upi:PartnerName>
+							<ulc:AlternativeIdentifier schemaVersion="">
+								<ulc:Authority>String</ulc:Authority>
+								<ulc:Identifier>String</ulc:Identifier>
+							</ulc:AlternativeIdentifier>
+						</upi:PartnerIdentification>
+						<ulc:PhysicalAddress schemaVersion="">
+							<ulc:AddressLine1>String</ulc:AddressLine1>
+							<ulc:AddressLine2>String</ulc:AddressLine2>
+							<ulc:AddressLine3>String</ulc:AddressLine3>
+							<ulc:AddressLine4>String</ulc:AddressLine4>
+							<ulc:AddressLine5>String</ulc:AddressLine5>
+							<ulc:CityName>String</ulc:CityName>
+							<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+							<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision" schemaVersion="">MG-T</ucs:CountrySubdivision>
+							<ulc:PostalCode>String</ulc:PostalCode>
+							<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+						</ulc:PhysicalAddress>
+					</upi:SpecifiedFullPartner>
+				</ShipFrom>
+				<ShipTo schemaVersion="">
+					<upi:SpecifiedFullPartner schemaVersion="">
+						<uci:ContactInformation schemaVersion="">
+							<uci:Contact>String</uci:Contact>
+							<uci:Email>String</uci:Email>
+							<uci:Fax>String</uci:Fax>
+							<uci:Identifier>String</uci:Identifier>
+							<uci:Phone>String</uci:Phone>
+						</uci:ContactInformation>
+						<ulc:Location schemaVersion="">
+							<ulc:AlternativeIdentifier schemaVersion="">
+								<ulc:Authority>String</ulc:Authority>
+								<ulc:Identifier>String</ulc:Identifier>
+							</ulc:AlternativeIdentifier>
+						</ulc:Location>
+						<upi:PartnerIdentification schemaVersion="">
+							<upi:PartnerName>String</upi:PartnerName>
+							<ulc:AlternativeIdentifier schemaVersion="">
+								<ulc:Authority>String</ulc:Authority>
+								<ulc:Identifier>String</ulc:Identifier>
+							</ulc:AlternativeIdentifier>
+						</upi:PartnerIdentification>
+						<ulc:PhysicalAddress schemaVersion="">
+							<ulc:AddressLine1>String</ulc:AddressLine1>
+							<ulc:AddressLine2>String</ulc:AddressLine2>
+							<ulc:AddressLine3>String</ulc:AddressLine3>
+							<ulc:AddressLine4>String</ulc:AddressLine4>
+							<ulc:AddressLine5>String</ulc:AddressLine5>
+							<ulc:CityName>String</ulc:CityName>
+							<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+							<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision" schemaVersion="">MG-T</ucs:CountrySubdivision>
+							<ulc:PostalCode>String</ulc:PostalCode>
+							<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+						</ulc:PhysicalAddress>
+					</upi:SpecifiedFullPartner>
+				</ShipTo>
+				<dp:SpecialDiscount schemaVersion="">
+					<dp:DiscountedPrice schemaVersion="">
+						<dp:MonetaryAmount schemaVersion="">
+							<ume:FinancialAmount schemaVersion="">
+								<ume:Amount>3.14159</ume:Amount>
+								<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+							</ume:FinancialAmount>
+							<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+							<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+						</dp:MonetaryAmount>
+						<dptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.03" identifier="PricingTypeCode" schemaVersion="">ACR</dptc:PricingTypeCode>
+					</dp:DiscountedPrice>
+					<dp:Identifier>String</dp:Identifier>
+					<dp:Percentage>3.14159</dp:Percentage>
+				</dp:SpecialDiscount>
+				<dp:StepPricing schemaVersion="">
+					<ud:DatePeriod schemaVersion="">
+						<ud:Begin>2002-02-15</ud:Begin>
+						<ud:End>2002-02-15</ud:End>
+					</ud:DatePeriod>
+					<dp:MonetaryAmount schemaVersion="">
+						<ume:FinancialAmount schemaVersion="">
+							<ume:Amount>3.14159</ume:Amount>
+							<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+						</ume:FinancialAmount>
+						<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+						<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+					</dp:MonetaryAmount>
+					<dptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.03" identifier="PricingTypeCode" schemaVersion="">ACR</dptc:PricingTypeCode>
+					<dp:ProductQuantityRange schemaVersion="">
+						<dp:MaximumOrderQuantity>3.14159</dp:MaximumOrderQuantity>
+						<dp:MinimumOrderQuantity>3.14159</dp:MinimumOrderQuantity>
+					</dp:ProductQuantityRange>
+				</dp:StepPricing>
+				<isi:StockIndicator agency="RosettaNet" codeListVersion="00.00.01" identifier="StockIndicator" schemaVersion="">DIS</isi:StockIndicator>
+				<dp:SubstituteProductReference schemaVersion="">
+					<updi:ProductIdentification schemaVersion="">
+						<updi:ProductName>String</updi:ProductName>
+						<updi:Revision>String</updi:Revision>
+						<ulc:AlternativeIdentifier schemaVersion="">
+							<ulc:Authority>String</ulc:Authority>
+							<ulc:Identifier>String</ulc:Identifier>
+						</ulc:AlternativeIdentifier>
+					</updi:ProductIdentification>
+					<dpsr:ProductSubstitutionReason agency="RosettaNet" codeListVersion="01.01" identifier="ProductSubstitutionReason" schemaVersion="">BEP</dpsr:ProductSubstitutionReason>
+				</dp:SubstituteProductReference>
+				<dp:TaxExemptStatus schemaVersion="">
+					<dp:IsTaxExempt>true</dp:IsTaxExempt>
+					<dp:TaxExemption schemaVersion="">
+						<dp:CertificationIdentifier>String</dp:CertificationIdentifier>
+						<dtec:TaxExemptionCode agency="RosettaNet" codeListVersion="01.01" identifier="TaxExemptionCode" schemaVersion="">AGR</dtec:TaxExemptionCode>
+					</dp:TaxExemption>
+				</dp:TaxExemptStatus>
+				<dp:TaxSummary schemaVersion="">
+					<dp:CityTax schemaVersion="">
+						<dp:EffectiveDate>2002-02-15</dp:EffectiveDate>
+						<dp:MonetaryAmount schemaVersion="">
+							<ume:FinancialAmount schemaVersion="">
+								<ume:Amount>3.14159</ume:Amount>
+								<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+							</ume:FinancialAmount>
+							<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+							<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+						</dp:MonetaryAmount>
+						<dp:Rate>3.14159</dp:Rate>
+						<ume:TaxJurisdiction schemaVersion="">
+							<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+							<ume:Identifier>String</ume:Identifier>
+							<ume:Location>String</ume:Location>
+							<ume:Rate>3.14159</ume:Rate>
+						</ume:TaxJurisdiction>
+					</dp:CityTax>
+					<dp:CurrencyConversion schemaVersion="">
+						<dp:Date>2002-02-15</dp:Date>
+						<dp:Factor>3.14159</dp:Factor>
+						<dp:FromCurrency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</dp:FromCurrency>
+						<dp:Source>String</dp:Source>
+						<dp:ToCurrency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</dp:ToCurrency>
+					</dp:CurrencyConversion>
+					<dp:MonetaryAmount schemaVersion="">
+						<ume:FinancialAmount schemaVersion="">
+							<ume:Amount>3.14159</ume:Amount>
+							<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+						</ume:FinancialAmount>
+						<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+						<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+					</dp:MonetaryAmount>
+					<dp:NationalTax schemaVersion="">
+						<dp:EffectiveDate>2002-02-15</dp:EffectiveDate>
+						<dp:MonetaryAmount schemaVersion="">
+							<ume:FinancialAmount schemaVersion="">
+								<ume:Amount>3.14159</ume:Amount>
+								<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+							</ume:FinancialAmount>
+							<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+							<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+						</dp:MonetaryAmount>
+						<dp:Rate>3.14159</dp:Rate>
+						<ume:TaxJurisdiction schemaVersion="">
+							<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+							<ume:Identifier>String</ume:Identifier>
+							<ume:Location>String</ume:Location>
+							<ume:Rate>3.14159</ume:Rate>
+						</ume:TaxJurisdiction>
+					</dp:NationalTax>
+					<dp:RegionalTax schemaVersion="">
+						<dp:EffectiveDate>2002-02-15</dp:EffectiveDate>
+						<dp:MonetaryAmount schemaVersion="">
+							<ume:FinancialAmount schemaVersion="">
+								<ume:Amount>3.14159</ume:Amount>
+								<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+							</ume:FinancialAmount>
+							<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+							<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+						</dp:MonetaryAmount>
+						<dp:Rate>3.14159</dp:Rate>
+						<ume:TaxJurisdiction schemaVersion="">
+							<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+							<ume:Identifier>String</ume:Identifier>
+							<ume:Location>String</ume:Location>
+							<ume:Rate>3.14159</ume:Rate>
+						</ume:TaxJurisdiction>
+					</dp:RegionalTax>
+					<dp:TaxPhrase schemaVersion="">
+						<dp:IsTaxTriangulationApplicable>true</dp:IsTaxTriangulationApplicable>
+						<dp:Phrase>String</dp:Phrase>
+					</dp:TaxPhrase>
+				</dp:TaxSummary>
+				<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.01" identifier="UnitOfMeasure" schemaVersion="">1BF</uuom:UnitOfMeasure>
+				<UnitPrice schemaVersion="">
+					<dp:MonetaryAmount schemaVersion="">
+						<ume:FinancialAmount schemaVersion="">
+							<ume:Amount>3.14159</ume:Amount>
+							<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+						</ume:FinancialAmount>
+						<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+						<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+					</dp:MonetaryAmount>
+					<dptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.03" identifier="PricingTypeCode" schemaVersion="">ACR</dptc:PricingTypeCode>
+				</UnitPrice>
+			</ProductLineItem>
+		</QuoteLineItem>
+		<QuoteStatus agency="RosettaNet" codeListVersion="01.01" identifier="PurchaseOrderStatus" schemaVersion="">ACC</QuoteStatus>
+		<dqt:QuoteType agency="RosettaNet" codeListVersion="01.03" identifier="QuoteType" schemaVersion="">BFB</dqt:QuoteType>
+		<ReferQuoteTo schemaVersion="">
+			<upi:SpecifiedFullPartner schemaVersion="">
+				<uci:ContactInformation schemaVersion="">
+					<uci:Contact>String</uci:Contact>
+					<uci:Email>String</uci:Email>
+					<uci:Fax>String</uci:Fax>
+					<uci:Identifier>String</uci:Identifier>
+					<uci:Phone>String</uci:Phone>
+				</uci:ContactInformation>
+				<ulc:Location schemaVersion="">
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</ulc:Location>
+				<upi:PartnerIdentification schemaVersion="">
+					<upi:PartnerName>String</upi:PartnerName>
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</upi:PartnerIdentification>
+				<ulc:PhysicalAddress schemaVersion="">
+					<ulc:AddressLine1>String</ulc:AddressLine1>
+					<ulc:AddressLine2>String</ulc:AddressLine2>
+					<ulc:AddressLine3>String</ulc:AddressLine3>
+					<ulc:AddressLine4>String</ulc:AddressLine4>
+					<ulc:AddressLine5>String</ulc:AddressLine5>
+					<ulc:CityName>String</ulc:CityName>
+					<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+					<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision" schemaVersion="">MG-T</ucs:CountrySubdivision>
+					<ulc:PostalCode>String</ulc:PostalCode>
+					<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+				</ulc:PhysicalAddress>
+			</upi:SpecifiedFullPartner>
+		</ReferQuoteTo>
+		<RequestedResponseDate schemaVersion="">
+			<ud:Begin>2002-02-15</ud:Begin>
+			<ud:End>2002-02-15</ud:End>
+		</RequestedResponseDate>
+		<RequoteReference schemaVersion="">
+			<udc:DateTime>2004-02-15T08:30:00+08:00</udc:DateTime>
+			<udct:DocumentType agency="RosettaNet" codeListVersion="01.02" identifier="DocumentType" schemaVersion="">CBN</udct:DocumentType>
+			<udc:Identifier>String</udc:Identifier>
+			<udc:Line>String</udc:Line>
+			<udc:Revision>String</udc:Revision>
+			<udc:SubLine>String</udc:SubLine>
+		</RequoteReference>
+		<RespondTo schemaVersion="">
+			<upi:SpecifiedFullPartner schemaVersion="">
+				<uci:ContactInformation schemaVersion="">
+					<uci:Contact>String</uci:Contact>
+					<uci:Email>String</uci:Email>
+					<uci:Fax>String</uci:Fax>
+					<uci:Identifier>String</uci:Identifier>
+					<uci:Phone>String</uci:Phone>
+				</uci:ContactInformation>
+				<ulc:Location schemaVersion="">
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</ulc:Location>
+				<upi:PartnerIdentification schemaVersion="">
+					<upi:PartnerName>String</upi:PartnerName>
+					<ulc:AlternativeIdentifier schemaVersion="">
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</upi:PartnerIdentification>
+				<ulc:PhysicalAddress schemaVersion="">
+					<ulc:AddressLine1>String</ulc:AddressLine1>
+					<ulc:AddressLine2>String</ulc:AddressLine2>
+					<ulc:AddressLine3>String</ulc:AddressLine3>
+					<ulc:AddressLine4>String</ulc:AddressLine4>
+					<ulc:AddressLine5>String</ulc:AddressLine5>
+					<ulc:CityName>String</ulc:CityName>
+					<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country" schemaVersion="">MG</uc:Country>
+					<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision" schemaVersion="">MG-T</ucs:CountrySubdivision>
+					<ulc:PostalCode>String</ulc:PostalCode>
+					<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+				</ulc:PhysicalAddress>
+			</upi:SpecifiedFullPartner>
+		</RespondTo>
+		<ResponseDescription>String</ResponseDescription>
+		<dp:SpecialDiscount schemaVersion="">
+			<dp:DiscountedPrice schemaVersion="">
+				<dp:MonetaryAmount schemaVersion="">
+					<ume:FinancialAmount schemaVersion="">
+						<ume:Amount>3.14159</ume:Amount>
+						<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+					</ume:FinancialAmount>
+					<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+					<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+				</dp:MonetaryAmount>
+				<dptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.03" identifier="PricingTypeCode" schemaVersion="">ACR</dptc:PricingTypeCode>
+			</dp:DiscountedPrice>
+			<dp:Identifier>String</dp:Identifier>
+			<dp:Percentage>3.14159</dp:Percentage>
+		</dp:SpecialDiscount>
+		<dp:TaxExemptStatus schemaVersion="">
+			<dp:IsTaxExempt>true</dp:IsTaxExempt>
+			<dp:TaxExemption schemaVersion="">
+				<dp:CertificationIdentifier>String</dp:CertificationIdentifier>
+				<dtec:TaxExemptionCode agency="RosettaNet" codeListVersion="01.01" identifier="TaxExemptionCode" schemaVersion="">AGR</dtec:TaxExemptionCode>
+			</dp:TaxExemption>
+		</dp:TaxExemptStatus>
+		<TermsAndConditions schemaVersion="">
+			<Description>String</Description>
+			<GuaranteedPeriod schemaVersion="">
+				<ud:Begin>2002-02-15</ud:Begin>
+				<ud:End>2002-02-15</ud:End>
+			</GuaranteedPeriod>
+		</TermsAndConditions>
+		<TotalPrice schemaVersion="">
+			<ume:FinancialAmount schemaVersion="">
+				<ume:Amount>3.14159</ume:Amount>
+				<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency" schemaVersion="">USD</ucr:Currency>
+			</ume:FinancialAmount>
+			<dict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType" schemaVersion="">ALC</dict:InvoiceChargeType>
+			<dmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.01" identifier="MonetaryAmountType" schemaVersion="">CRE</dmat:MonetaryAmountType>
+		</TotalPrice>
+	</Quote>
+</QuoteConfirmation>

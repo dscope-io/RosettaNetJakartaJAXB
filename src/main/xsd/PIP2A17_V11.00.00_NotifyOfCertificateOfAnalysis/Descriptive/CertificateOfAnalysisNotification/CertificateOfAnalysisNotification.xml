@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Created with RosettaNet XSD2ALL 2.3.9 on Mon Jun 16 09:55:47 SGT 2008 -->
+<CertificateOfAnalysisNotification xmlns="urn:rosettanet:specification:interchange:CertificateOfAnalysisNotification:xsd:schema:02.02" xmlns:da="urn:rosettanet:specification:domain:Manufacturing:Axis:xsd:codelist:01.03" xmlns:dad="urn:rosettanet:specification:domain:Manufacturing:AttachmentDescription:xsd:codelist:01.03" xmlns:dcr="urn:rosettanet:specification:domain:Manufacturing:ChangeReason:xsd:codelist:01.04" xmlns:ddpt="urn:rosettanet:specification:domain:Manufacturing:DevicePackageType:xsd:codelist:01.03" xmlns:dds="urn:rosettanet:specification:domain:Design:xsd:schema:02.21" xmlns:det="urn:rosettanet:specification:domain:Manufacturing:EquipmentType:xsd:codelist:01.03" xmlns:dlqc="urn:rosettanet:specification:domain:Manufacturing:LotQuantityClassification:xsd:codelist:01.04" xmlns:dlt="urn:rosettanet:specification:domain:Manufacturing:LotType:xsd:codelist:01.04" xmlns:dlv="urn:rosettanet:specification:domain:Design:Level:xsd:codelist:01.03" xmlns:dm="urn:rosettanet:specification:domain:Manufacturing:xsd:schema:02.26" xmlns:dmct="urn:rosettanet:specification:domain:Manufacturing:ComponentType:xsd:codelist:01.02" xmlns:dmrcc="urn:rosettanet:specification:domain:Manufacturing:ReplacementCompatibilityCode:xsd:codelist:01.01" xmlns:dms="urn:rosettanet:specification:domain:Manufacturing:MarkSide:xsd:codelist:01.03" xmlns:dmt="urn:rosettanet:specification:domain:Manufacturing:MarkType:xsd:codelist:01.03" xmlns:dpcmp="urn:rosettanet:specification:domain:Manufacturing:PCMParmType:xsd:codelist:01.04" xmlns:dprt="urn:rosettanet:specification:domain:Manufacturing:ProcessType:xsd:codelist:01.03" xmlns:drwt="urn:rosettanet:specification:domain:Manufacturing:RawWaferType:xsd:codelist:01.03" xmlns:dsic="urn:rosettanet:specification:domain:Manufacturing:SpecialInstructionCategory:xsd:codelist:01.04" xmlns:dwbsf="urn:rosettanet:specification:domain:Manufacturing:WaferBackSideFinish:xsd:codelist:01.04" xmlns:dwipl="urn:rosettanet:specification:domain:Manufacturing:WorkInProcessLocation:xsd:codelist:01.03" xmlns:dwp="urn:rosettanet:specification:domain:Manufacturing:WaferPassivation:xsd:codelist:01.04" xmlns:dwqr="urn:rosettanet:specification:domain:Manufacturing:WaferQualityRating:xsd:codelist:01.03" xmlns:idit="urn:rosettanet:specification:interchange:DocumentIssuanceType:xsd:codelist:02.00" xmlns:ilt="urn:rosettanet:specification:interchange:LotType:xsd:codelist:01.00" xmlns:ip="urn:rosettanet:specification:interchange:Plan:xsd:codelist:02.00" xmlns:iph="urn:rosettanet:specification:interchange:Phase:xsd:codelist:01.00" xmlns:rpkt="urn:rosettanet:specification:domain:Shared:PackageType:xsd:codelist:01.01" xmlns:sft="urn:rosettanet:specification:system:TPIRFileType:xsd:codelist:01.01" xmlns:ssdh="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.22" xmlns:uat="urn:rosettanet:specification:universal:AbstractType:xsd:schema:01.02" xmlns:uc="urn:rosettanet:specification:universal:Country:xsd:codelist:01.02" xmlns:uci="urn:rosettanet:specification:universal:ContactInformation:xsd:schema:01.03" xmlns:ucs="urn:rosettanet:specification:universal:CountrySubdivision:xsd:codelist:01.02" xmlns:ud="urn:rosettanet:specification:universal:Dates:xsd:schema:01.03" xmlns:udc="urn:rosettanet:specification:universal:Document:xsd:schema:01.11" xmlns:udct="urn:rosettanet:specification:universal:DocumentType:xsd:codelist:01.12" xmlns:udt="urn:rosettanet:specification:universal:DataType:xsd:schema:01.04" xmlns:ul="urn:rosettanet:specification:universal:Language:xsd:codelist:01.02" xmlns:ulc="urn:rosettanet:specification:universal:Locations:xsd:schema:01.04" xmlns:umtq="urn:rosettanet:specification:universal:MimeTypeQualifier:xsd:codelist:01.02" xmlns:upd="urn:rosettanet:specification:universal:PhysicalDimension:xsd:schema:01.07" xmlns:updi="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04" xmlns:upi="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.15" xmlns:upri="urn:rosettanet:specification:universal:ProcessRoleIdentifier:xsd:codelist:01.11" xmlns:urss="urn:rosettanet:specification:system:xml:1.0" xmlns:uuom="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.04" xmlns:uwt="urn:rosettanet:specification:universal:WeightType:xsd:codelist:01.02" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:rosettanet:specification:interchange:CertificateOfAnalysisNotification:xsd:schema:02.02
+..\..\XML\Interchange\CertificateOfAnalysisNotification_02_02.xsd">
+	<CertificateOfAnalysis>
+		<udc:BusinessDocumentReference>
+			<udc:DateTime>2005-02-15T08:30:00+08:00</udc:DateTime>
+			<udct:DocumentType agency="RosettaNet" codeListVersion="01.11" identifier="DocumentType">ARA</udct:DocumentType>
+			<udc:Identifier>String</udc:Identifier>
+			<udc:Line>String</udc:Line>
+			<udc:Revision>String</udc:Revision>
+			<udc:SubLine>String</udc:SubLine>
+		</udc:BusinessDocumentReference>
+		<Comment>String</Comment>
+		<idit:DocumentIssuanceType agency="RosettaNet" codeListVersion="02.00" identifier="DocumentIssuanceType">ORI</idit:DocumentIssuanceType>
+		<LotIdentification>
+			<CountryOfOrigin agency="RosettaNet" codeListVersion="01.01" identifier="Country">MG</CountryOfOrigin>
+			<dm:LotQuantity>
+				<dm:BinNumber>100</dm:BinNumber>
+				<dlqc:LotQuantityClassification agency="RosettaNet" codeListVersion="01.02" identifier="LotQuantityClassification">ACC</dlqc:LotQuantityClassification>
+				<dm:Quantity>3.14159</dm:Quantity>
+				<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.03" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+			</dm:LotQuantity>
+			<ilt:LotType agency="RosettaNet" codeListVersion="01.00" identifier="LotType">PRI</ilt:LotType>
+			<Primary>String</Primary>
+			<Secondary>String</Secondary>
+		</LotIdentification>
+		<Material>
+			<AnalysisDate>2002-02-15</AnalysisDate>
+			<Characteristic>
+				<Code>100</Code>
+				<CodeDescription>String</CodeDescription>
+				<QualityData>
+					<LowerTolerance>
+						<dds:Absolute>3.141</dds:Absolute>
+						<dds:Percentage>3.141</dds:Percentage>
+					</LowerTolerance>
+					<NegativeTolerance>
+						<dds:Absolute>3.141</dds:Absolute>
+						<dds:Percentage>3.141</dds:Percentage>
+					</NegativeTolerance>
+					<PositiveTolerance>
+						<dds:Absolute>3.141</dds:Absolute>
+						<dds:Percentage>3.141</dds:Percentage>
+					</PositiveTolerance>
+					<Result>String</Result>
+					<Type agency="RosettaNet" codeListVersion="01.02" identifier="Level">ACT</Type>
+					<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.03" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+					<UpperTolerance>
+						<dds:Absolute>3.141</dds:Absolute>
+						<dds:Percentage>3.141</dds:Percentage>
+					</UpperTolerance>
+				</QualityData>
+				<SubCode>String</SubCode>
+				<SubCodeDescription>String</SubCodeDescription>
+				<TestingData>
+					<Method>String</Method>
+					<iph:Phase agency="RosettaNet" codeListVersion="01.00" identifier="Phase">GAS</iph:Phase>
+					<Repetition>String</Repetition>
+					<Sample>
+						<ip:Plan agency="RosettaNet" codeListVersion="02.00" identifier="Plan">BAM</ip:Plan>
+						<Size>String</Size>
+					</Sample>
+					<SourceComponent>100</SourceComponent>
+					<SourceComponentDescription>String</SourceComponentDescription>
+				</TestingData>
+			</Characteristic>
+			<ContainerIdentifier>String</ContainerIdentifier>
+			<Description>String</Description>
+			<Grade>String</Grade>
+			<ManufacturedBy>
+				<uci:ContactInformation>
+					<uci:Contact>String</uci:Contact>
+					<uci:Email>String</uci:Email>
+					<uci:Fax>String</uci:Fax>
+					<uci:Identifier>String</uci:Identifier>
+					<uci:Phone>String</uci:Phone>
+				</uci:ContactInformation>
+				<ulc:Location>
+					<ulc:AlternativeIdentifier>
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</ulc:Location>
+				<upi:PartnerIdentification>
+					<upi:PartnerName>String</upi:PartnerName>
+					<ulc:AlternativeIdentifier>
+						<ulc:Authority>String</ulc:Authority>
+						<ulc:Identifier>String</ulc:Identifier>
+					</ulc:AlternativeIdentifier>
+				</upi:PartnerIdentification>
+				<ulc:PhysicalAddress>
+					<ulc:AddressLine1>String</ulc:AddressLine1>
+					<ulc:AddressLine2>String</ulc:AddressLine2>
+					<ulc:AddressLine3>String</ulc:AddressLine3>
+					<ulc:AddressLine4>String</ulc:AddressLine4>
+					<ulc:AddressLine5>String</ulc:AddressLine5>
+					<ulc:CityName>String</ulc:CityName>
+					<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country">MG</uc:Country>
+					<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision">MG-T</ucs:CountrySubdivision>
+					<ulc:PostalCode>String</ulc:PostalCode>
+					<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+				</ulc:PhysicalAddress>
+				<upri:ProcessRoleIdentifier agency="RosettaNet" codeListVersion="01.10" identifier="ProcessRoleIdentifier">ADM</upri:ProcessRoleIdentifier>
+			</ManufacturedBy>
+			<ManufacturedDate>2002-02-15</ManufacturedDate>
+			<Packaging>
+				<BackFillGas>String</BackFillGas>
+				<ChemicalFormula>String</ChemicalFormula>
+				<Container>
+					<Material>String</Material>
+					<Size>String</Size>
+					<Type>String</Type>
+					<uuom:UnitOfMeasure agency="RosettaNet" codeListVersion="01.03" identifier="UnitOfMeasure">10P</uuom:UnitOfMeasure>
+				</Container>
+				<Pressure>
+					<upd:UnitOfMeasure agency="RosettaNet" codeListVersion="01.03" identifier="UnitOfMeasure">10P</upd:UnitOfMeasure>
+					<upd:Value>3.14159</upd:Value>
+				</Pressure>
+				<Valve>
+					<GovernanceBody>String</GovernanceBody>
+					<Material>String</Material>
+					<OutletConnection>String</OutletConnection>
+					<RFOSize>String</RFOSize>
+				</Valve>
+				<upd:Volume>
+					<upd:UnitOfMeasure agency="RosettaNet" codeListVersion="01.03" identifier="UnitOfMeasure">10P</upd:UnitOfMeasure>
+					<upd:Value>3.14159</upd:Value>
+					<upd:Type agency="RosettaNet" codeListVersion="01.01" identifier="WeightType">CHR</upd:Type>
+				</upd:Volume>
+				<upd:Weight>
+					<upd:UnitOfMeasure agency="RosettaNet" codeListVersion="01.03" identifier="UnitOfMeasure">10P</upd:UnitOfMeasure>
+					<upd:Value>3.14159</upd:Value>
+					<upd:Type agency="RosettaNet" codeListVersion="01.01" identifier="WeightType">CHR</upd:Type>
+				</upd:Weight>
+			</Packaging>
+			<PartNumber>String</PartNumber>
+			<Requirement>
+				<BuyerProjectedExpiryDate>2002-02-15</BuyerProjectedExpiryDate>
+				<MaterialSpecification>
+					<Date>2002-02-15</Date>
+					<Identifier>String</Identifier>
+					<RevisionNumber>String</RevisionNumber>
+				</MaterialSpecification>
+				<MaterialType>String</MaterialType>
+				<OverallShelfLife>P1Y2M3DT10H30M</OverallShelfLife>
+				<PartNumber>String</PartNumber>
+				<RemainingShelfLife>P1Y2M3DT10H30M</RemainingShelfLife>
+				<RevisionNumber>String</RevisionNumber>
+				<SellerProjectedExpiryDate>2002-02-15</SellerProjectedExpiryDate>
+			</Requirement>
+			<SerialIdentifier>String</SerialIdentifier>
+		</Material>
+	</CertificateOfAnalysis>
+	<ssdh:DocumentHeader>
+		<ssdh:CorrelationInformation>
+			<ssdh:ContractInformation>
+				<ssdh:ContractIdentifier>String</ssdh:ContractIdentifier>
+				<ssdh:ContractType>String</ssdh:ContractType>
+			</ssdh:ContractInformation>
+			<ssdh:RequestingDocumentInformation>
+				<ssdh:BusinessProcessInstanceIdentifier>String</ssdh:BusinessProcessInstanceIdentifier>
+				<ssdh:RequestingDocumentCreationDateTime>2005-02-15T08:30:00+08:00</ssdh:RequestingDocumentCreationDateTime>
+				<ssdh:RequestingDocumentInstanceIdentifier>String</ssdh:RequestingDocumentInstanceIdentifier>
+				<ssdh:ResponseDateTime>2005-02-15T08:30:00+08:00</ssdh:ResponseDateTime>
+			</ssdh:RequestingDocumentInformation>
+		</ssdh:CorrelationInformation>
+		<ssdh:DocumentInformation>
+			<ssdh:Creation>2005-02-15T08:30:00+08:00</ssdh:Creation>
+			<ssdh:DocumentIdentification>
+				<ssdh:Identifier>String</ssdh:Identifier>
+				<ssdh:Type>String</ssdh:Type>
+				<ssdh:StandardDocumentIdentification>
+					<ssdh:Standard>String</ssdh:Standard>
+					<ssdh:Version>String</ssdh:Version>
+				</ssdh:StandardDocumentIdentification>
+			</ssdh:DocumentIdentification>
+			<ssdh:DocumentManifest>
+				<ssdh:ManifestItem>
+					<ssdh:Description>String</ssdh:Description>
+					<ssdh:Language agency="RosettaNet" codeListVersion="01.01" identifier="Language">EN</ssdh:Language>
+					<ssdh:Length>100</ssdh:Length>
+					<ssdh:MimeTypeQualifier agency="RosettaNet" codeListVersion="01.01" identifier="MimeTypeQualifier">application/activemessage</ssdh:MimeTypeQualifier>
+					<ssdh:UniversalResourceIdentifier>String</ssdh:UniversalResourceIdentifier>
+				</ssdh:ManifestItem>
+				<ssdh:MultipleType>true</ssdh:MultipleType>
+				<ssdh:NumberOfItems>100</ssdh:NumberOfItems>
+			</ssdh:DocumentManifest>
+			<ssdh:DocumentSecurity>
+				<ssdh:NonRepudiableReceipt>true</ssdh:NonRepudiableReceipt>
+				<ssdh:PersistentEncryption>true</ssdh:PersistentEncryption>
+				<ssdh:PersistentSignature>true</ssdh:PersistentSignature>
+			</ssdh:DocumentSecurity>
+		</ssdh:DocumentInformation>
+		<ssdh:HeaderVersion>String</ssdh:HeaderVersion>
+		<ssdh:Receiver>
+			<ssdh:BusinessServiceInformation>
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Receiver>
+		<ssdh:Sender>
+			<ssdh:BusinessServiceInformation>
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Sender>
+	</ssdh:DocumentHeader>
+</CertificateOfAnalysisNotification>

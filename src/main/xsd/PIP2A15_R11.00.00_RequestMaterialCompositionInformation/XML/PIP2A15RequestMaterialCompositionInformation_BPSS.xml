@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Compliant with BPSS vers 1.01-->
+<ProcessSpecification name="PIP2A15RequestMaterialCompositionInformation" nameID="urn:rosettanet:specification:interchange:PIP2A15:xml:bpss:r11_00a" version="R11.00A" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a customer to issue a request to obtain material composition information from the supplier.</Documentation>
+	<BusinessDocument name="Material Composition Information Request " nameID="PIP2A15MaterialCompositionInformationRequest " specificationLocation="MaterialCompositionInformationRequest .xsd">
+		<Documentation>The document is an XML Schema file that specifies the rules for creating the XML document for the distribution business action of material composition information. The specificationLocation attribute is used for illustrative purposes only.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Information" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Preparation for Distribution" nameID="2A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Request Material Composition Information" nameID="2A15">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Request Material Composition Information" nameID="RequestMaterialCompositionInformation_BT" isGuaranteedDeliveryRequired="false">
+					<RequestingBusinessActivity name="Request Material Composition Information" nameID="RequestMaterialCompositionInformation" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Material Composition Information Request " nameID="MaterialCompositionInformationRequest _DE" businessDocument='//BusinessDocument[@name="Material Composition Information Request "]' businessDocumentIDREF="PIP2A15MaterialCompositionInformationRequest " isAuthenticated="none" isConfidential="none" isTamperDetectable="none"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Respond Material Composition Information" nameID="RespondMaterialCompositionInformation"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Request Material Composition Information" nameID="RequestMaterialCompositionInformation_BC" initiatingRoleIDREF="CustomerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist in Backend System b. Sending Partner Valid and Exist c. Receiving Partner Exist d. Business Document Exist in Backend System e. Business Document is Valid and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of one or more conditions: END a. Acknowledgment of Receipt Exist in Backend System b. Acknowledgment of Receipt Valid ; FAILED a. Retry Count Exceeded b. NOT Success</Documentation>
+					<Role name="Customer" nameID="CustomerID"/>
+					<Role name="Supplier" nameID="SupplierID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Request Material Composition Information"]' toBusinessStateIDREF="PIP2A15RequestMaterialCompositionInformation"/>
+					<BusinessTransactionActivity name="Request Material Composition Information" nameID="RequestMaterialCompositionInformation_BTA" businessTransaction='//BusinessTransaction[@name="Request Material Composition Information"]' businessTransactionIDREF="RequestMaterialCompositionInformation_BT" fromRole='../Role[@name="Customer"]' fromRoleIDREF="CustomerID" toRole='../Role[@name="Supplier"]' toRoleIDREF="SupplierID" isLegallyBinding="false" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, with one success and a failure representing Requesting Business Activity.  					These are designed to reflect business level conditions only and not message level  conditions such as Receipt Acknowledgements (ReceiptAck) 
+					and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for Request Material Composition Information-->
+					<Success nameID="Start_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Material Composition Information"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//DocumentHeader/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for Request Material Composition Information-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Material Composition Information"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//DocumentHeader/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by SS (RosettaNet) -->
+<xs:schema targetNamespace="urn:rosettanet:specification:interchange:PlanningReleaseForecastTransportEvent:xsd:codelist:01.02" xmlns:dte="urn:rosettanet:specification:domain:Procurement:TransportEvent:xsd:codelist:01.03" xmlns:tns="urn:rosettanet:specification:interchange:PlanningReleaseForecastTransportEvent:xsd:codelist:01.02" xmlns:urss="urn:rosettanet:specification:system:xml:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="01.02">
+	<xs:import namespace="urn:rosettanet:specification:domain:Procurement:TransportEvent:xsd:codelist:01.03" schemaLocation="../../Domain/Procurement/CodeList/RN_TransportEvent_01_03.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+			<urss:Copyright>© 2006 RosettaNet. All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without the inclusion of this copyright notice. Any derivative works must cite the copyright notice. Any public redistribution or sale of this publication or derivative works requires prior written permission of the publisher.</urss:Copyright>
+			<urss:Disclaimer>RosettaNet makes no representation about the suitability of this work for any purpose or regarding any claims made by products which use it. It is provided as is without expressed or implied warranty.</urss:Disclaimer>
+			<urss:Program>e-Distribution Milestone Program</urss:Program>
+			<urss:Purpose>Provide the list of codes for product forecast specific RosettaNet planning release forecast transport event.</urss:Purpose>
+		</xs:documentation>
+		<xs:appinfo>
+			<urss:CreationDate>2005-06-30</urss:CreationDate>
+			<urss:LastUpdatedDate>2005-06-30</urss:LastUpdatedDate>
+		</xs:appinfo>
+	</xs:annotation>
+	<xs:element name="PlanningReleaseForecastTransportEvent" type="tns:PlanningReleaseForecastTransportEventType" substitutionGroup="dte:TransportEventA"/>
+	<xs:simpleType name="PlanningReleaseForecastTransportEventContentType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>Code identifying an event during the transportation of a shipment. Restricted to 2 code.</urss:Definition>
+				<urss:Identifier>iprfte:PlanningReleaseForecastTransportEventType</urss:Identifier>
+				<urss:RegisteredBy>RosettaNet</urss:RegisteredBy>
+				<urss:CreationDate>2005-06-30</urss:CreationDate>
+				<urss:LastUpdatedDate>2005-06-30</urss:LastUpdatedDate>
+				<urss:TypeVersion>01.01</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="dte:TransportEventContentType">
+			<xs:enumeration value="DOC">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Dock</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SHP">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Ship</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="PlanningReleaseForecastTransportEventType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Identifier>PlanningReleaseForecastTransportEventType</urss:Identifier>
+				<urss:RegisteredBy>RosettaNet</urss:RegisteredBy>
+				<urss:CreationDate>2005-06-30</urss:CreationDate>
+				<urss:LastUpdatedDate>2005-06-30</urss:LastUpdatedDate>
+				<urss:TypeVersion>01.01</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="tns:PlanningReleaseForecastTransportEventContentType">
+				<xs:attribute name="identifier" type="xs:token" fixed="PlanningReleaseForecastTransportEvent"/>
+				<xs:attribute name="codeListVersion" type="xs:token" fixed="01.01"/>
+				<xs:attribute name="agency" type="xs:token" fixed="RosettaNet"/>
+				<xs:attribute name="schemaVersion" type="xs:token"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

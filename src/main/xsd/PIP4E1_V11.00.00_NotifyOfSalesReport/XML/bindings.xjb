@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><jxb:bindings jxb:extensionBindingPrefixes="xjc annox" version="2.1" xmlns:annox="http://annox.dev.java.net" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jxb="http://java.sun.com/xml/ns/jaxb">
+    <jxb:bindings>
+        <jxb:globalBindings typesafeEnumMaxMembers="2000" generateElementClass="true"/>
+    </jxb:bindings>
+    <jxb:bindings schemaLocation="ebBPSS1.01.xsd" node="/xs:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.ebxml.businessprocess.v01_01"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/PartnerIdentification.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.partneridentification.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/AbstractType.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.abstracttype.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/DataType.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.datatype.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/Document.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.document.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/Dates.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.dates.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/MonetaryExpression.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.monetaryexpression.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/ContactInformation.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.contactinformation.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/Locations.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.locations.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/ProductIdentification.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.productidentification.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Interchange/SalesReportNotification.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.interchange.salesreportnotification.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="System/StandardDocumentHeader.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.system.standarddocumentheader.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/ISO_CountrySubdivision.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.countrysubdivision.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/RN_UnitOfMeasure.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.unitofmeasure.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/RN_ProcessRoleIdentifier.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.processroleidentifier.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/ISO_Currency.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.currency.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/ISO_Country.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.country.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/ISO_Language.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.language.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/RN_DocumentType.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.documenttype.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Universal/CodeList/RN_MimeTypeQualifier.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.universal.codelist.mimetypequalifier.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/SalesReporting/SalesReporting.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.salesreporting.salesreporting.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/SalesReporting/CodeList/RN_TotalQualifier.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.salesreporting.codelist.totalqualifier.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/SalesReporting/CodeList/RN_TransactionType.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.salesreporting.codelist.transactiontype.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/SalesReporting/CodeList/RN_PaymentMethod.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.salesreporting.codelist.paymentmethod.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/SalesReporting/CodeList/RN_PurchaseMethod.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.salesreporting.codelist.purchasemethod.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/SalesReporting/CodeList/RN_BookPriceQualifier.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.salesreporting.codelist.bookpricequalifier.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/SalesReporting/CodeList/RN_ReportType.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.salesreporting.codelist.reporttype.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+    <jxb:bindings node="/xs:schema" schemaLocation="Domain/SalesReporting/CodeList/RN_SaleType.xsd">
+        <jxb:bindings/>
+        <jxb:schemaBindings>
+            <jxb:package name="io.dscope.rosettanet.domain.salesreporting.codelist.saletype.v01_00"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+</jxb:bindings>

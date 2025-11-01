@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:rosettanet:specification:interchange:SelfBillingInvoiceNotification:xsd:schema:01.10" xmlns:ssdh="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.23" xmlns:dpts="urn:rosettanet:specification:domain:Procurement:PaymentTerms:xsd:codelist:01.04" xmlns:upi="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.16" xmlns:dslt="urn:rosettanet:specification:domain:Procurement:SaleType:xsd:codelist:01.04" xmlns:udct="urn:rosettanet:specification:universal:DocumentType:xsd:codelist:01.13" xmlns:dst="urn:rosettanet:specification:domain:Procurement:ShipmentTerms:xsd:codelist:01.03" xmlns:sha="urn:rosettanet:specification:domain:Shared:xsd:schema:01.17" xmlns:ume="urn:rosettanet:specification:universal:MonetaryExpression:xsd:schema:01.06" xmlns:uuom="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.04" xmlns:udc="urn:rosettanet:specification:universal:Document:xsd:schema:01.12" xmlns:rssl="urn:rosettanet:specification:domain:Shared:ShippingServiceLevel:xsd:codelist:01.01" xmlns:updi="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04" xmlns:dnecc="urn:rosettanet:specification:domain:Logistics:NationalExportControlClassification:xsd:codelist:01.03" xmlns:dp="urn:rosettanet:specification:domain:Procurement:xsd:schema:02.29" xmlns:uc="urn:rosettanet:specification:universal:Country:xsd:codelist:01.02" xmlns:tns="urn:rosettanet:specification:interchange:SelfBillingInvoiceNotification:xsd:schema:01.10" xmlns:urss="urn:rosettanet:specification:system:xml:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="01.10">
+	<xs:import namespace="urn:rosettanet:specification:universal:Country:xsd:codelist:01.02" schemaLocation="../Universal/CodeList/ISO_Country_01_02.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Procurement:xsd:schema:02.29" schemaLocation="../Domain/Procurement/Procurement_02_29.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Logistics:NationalExportControlClassification:xsd:codelist:01.03" schemaLocation="../Domain/Logistics/CodeList/RN_NationalExportControlClassification_01_03.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04" schemaLocation="../Universal/ProductIdentification_01_04.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Shared:ShippingServiceLevel:xsd:codelist:01.01" schemaLocation="../Domain/Shared/CodeList/RN_ShippingServiceLevel_01_01.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:Document:xsd:schema:01.12" schemaLocation="../Universal/Document_01_12.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.04" schemaLocation="../Universal/CodeList/RN_UnitOfMeasure_01_04.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:MonetaryExpression:xsd:schema:01.06" schemaLocation="../Universal/MonetaryExpression_01_06.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Shared:xsd:schema:01.17" schemaLocation="../Domain/Shared/Shared_01_17.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Procurement:ShipmentTerms:xsd:codelist:01.03" schemaLocation="../Domain/Procurement/CodeList/RN_ShipmentTerms_01_03.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:DocumentType:xsd:codelist:01.13" schemaLocation="../Universal/CodeList/RN_DocumentType_01_13.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Procurement:SaleType:xsd:codelist:01.04" schemaLocation="../Domain/Procurement/CodeList/RN_SaleType_01_04.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.16" schemaLocation="../Universal/PartnerIdentification_01_16.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Procurement:PaymentTerms:xsd:codelist:01.04" schemaLocation="../Domain/Procurement/CodeList/RN_PaymentTerms_01_04.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.23" schemaLocation="../System/StandardDocumentHeader_01_23.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+			<urss:Copyright>© 2007 RosettaNet. All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without the inclusion of this copyright notice. Any derivative works must cite the copyright notice. Any public redistribution or sale of this publication or derivative works requires prior written permission of the publisher.</urss:Copyright>
+			<urss:Disclaimer>RosettaNet makes no representation about the suitability of this work for any purpose or regarding any claims made by products which use it. It is provided as is without expressed or implied warranty.</urss:Disclaimer>
+			<urss:Program>Schema2Market/3C7</urss:Program>
+			<urss:Purpose>This PIP enables customer to send self-billing invoice to supplier for authorizing consolidated payment for received goods based on received or used/consumed quantities of goods.</urss:Purpose>
+		</xs:documentation>
+		<xs:appinfo>
+			<urss:CreationDate>2005-04-20</urss:CreationDate>
+			<urss:LastUpdatedDate>2012-11-06</urss:LastUpdatedDate>
+		</xs:appinfo>
+	</xs:annotation>
+	<xs:element name="SelfBillingInvoiceNotification" type="tns:SelfBillingInvoiceNotificationType"/>
+	<xs:complexType name="InvoiceType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>An itemized list of goods or services specifying the price and the terms of sale.
+
+The recommended ProcessRoleIdentifier in PartnerDescription are PUR - Purchased By, SHF - Ship From, SHT - Ship To, SOB - Sold By.</urss:Definition>
+				<urss:CreationDate>2005-04-20</urss:CreationDate>
+				<urss:LastUpdatedDate>2007-08-29</urss:LastUpdatedDate>
+				<urss:TypeVersion>01.04</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AncillaryAmount" type="sha:MonetaryAmountType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Ancillary costs that are not included in the line items.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BillToAccount" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The account number of the party that pays the invoice.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="udct:DocumentType"/>
+			<xs:element ref="dp:Financing" minOccurs="0"/>
+			<xs:element name="InvoiceLineItem" type="tns:InvoiceLineItemType" maxOccurs="unbounded"/>
+			<xs:element name="IsLockBoxUsed" type="xs:boolean">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Indicates the appearance of a lock box number on an applicable address line and subsequent requirement.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IsRebill" type="xs:boolean">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Indicates whether the business document is being resent.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="upi:PartnerDescription" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="PaymentTerms" type="dpts:PaymentTermsType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Code identifying the terms that govern the payment for goods and services.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dp:PaymentTerms" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="RemitTo" type="upi:SpecifiedPartnerDescriptionType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The partner to which payment for a business document is sent.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RemitToAccount" type="dp:AccountSummaryType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The account number of the party to whom payment is sent.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RemitToTax" type="dp:TaxSummaryType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The total tax liability of the party to whom payment is sent.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dslt:SaleType" minOccurs="0"/>
+			<xs:element name="SelfBillingFrom" type="upi:SpecifiedPartnerDescriptionType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The party who initiates the billing in self-billing scenario.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SelfBillingTo" type="upi:SpecifiedPartnerDescriptionType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The party whom the invoice is addressed to.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SoldToAccount" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The account number of the party that purchases of the product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SoldToTax" type="dp:TaxSummaryType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The total tax liability of the party that purchases the product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TotalInvoiceAmount" type="sha:MonetaryAmountType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The total amount on an invoice.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TransferToAccount" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The account number of the party that transfers the product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="InvoiceLineItemType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of business properties that describe an invoice entry.</urss:Definition>
+				<urss:CreationDate>2005-04-20</urss:CreationDate>
+				<urss:LastUpdatedDate>2006-04-05</urss:LastUpdatedDate>
+				<urss:TypeVersion>01.01</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="dp:FeeInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="GovernmentContractIdentifier" type="udc:BusinessDocumentReferenceType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The unique number that identifies a government contract.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LineNumber" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Number of the line in the document.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PreTaxAmount" type="sha:MonetaryAmountType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The gross amount prior to calculating taxes.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PrimaryIdentifier" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>A unique tracking number (assigned by the carrier) to a package for the duration of a shipment, through all intermediaries.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductDescription" type="tns:ProductDescriptionType"/>
+			<xs:element ref="updi:ProductIdentification" minOccurs="0"/>
+			<xs:element name="SecondaryIdentifier" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>A tracking number that will generally be carrier specific and will not be bound to a particular format.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dst:ShipmentTerms" minOccurs="0"/>
+			<xs:element name="TotalLineItemAmount" type="sha:MonetaryAmountType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The monetary total associated with a line item.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="ProductDescriptionType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of business properties that describe a shipment receipt notification entry.</urss:Definition>
+				<urss:CreationDate>2005-04-20</urss:CreationDate>
+				<urss:LastUpdatedDate>2006-04-18</urss:LastUpdatedDate>
+				<urss:TypeVersion>01.02</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CountryOfOrigin" type="uc:CountryType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Country where product originates.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dp:LotIdentification" minOccurs="0"/>
+			<xs:element ref="dnecc:NationalExportControlClassification" minOccurs="0"/>
+			<xs:element name="NationalHarmonizedTariffScheduleCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Code identifying product classification or procedure classification for international shipping.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductMovement" type="tns:ProductMovementType" maxOccurs="unbounded"/>
+			<xs:element ref="updi:ProductSerialIdentification" minOccurs="0"/>
+			<xs:element name="ProprietaryInformation" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>A free form textual description of information, relating to a product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RemitToTax" type="dp:TaxSummaryType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The total tax liability of the party to whom payment is sent.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="rssl:ShippingServiceLevel" minOccurs="0"/>
+			<xs:element name="SoldToTax" type="dp:TaxSummaryType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The total tax liability of the party that purchases the product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dp:TaxSummary" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="ProductMovementType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of business properties that describes the log of usage or consumption or arrival of a product.</urss:Definition>
+				<urss:CreationDate>2005-04-20</urss:CreationDate>
+				<urss:LastUpdatedDate>2012-11-06</urss:LastUpdatedDate>
+				<urss:TypeVersion>01.03</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="udc:BusinessDocumentReference" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="DateTimeStamp" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Specifies an instance in time. Based on the ISO 8601 specification where "YYYY" represents the year, "MM" the month and "DD" the day. The letter "T" is the date/time separator and "hh", "mm", "ss.sss" represent hour, minute and second respectively. This representation is immediately followed by a "Z" to indicate Coordinated Universal Time. Informal format: YYYYMMDDThhmmss.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Types of possible goods movements and code value set to be agreed between parties. Material consumption from consignment stock can happen under the following scenarios:
+· when material is taken into use on the production line,
+· when material is send to subcontractor,
+· when material is taken to cost center i.e for sample purposes or
+· when material is required for delivery.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LineItemAmount" type="sha:MonetaryAmountType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The monetary value of line item (unit price * qty) or line item allowance.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LineNumber" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Number of the line in the document.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="sha:ProductQuantity"/>
+			<xs:element name="ShipDate" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The (GMT) local date and time the product is shipped.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="uuom:UnitOfMeasure"/>
+			<xs:element name="UnitPrice" type="ume:FinancialAmountType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Agreed upon sale price for each unit ordered.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="SelfBillingInvoiceNotificationType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>A message wrapper for 3C7.</urss:Definition>
+				<urss:CreationDate>2005-04-20</urss:CreationDate>
+				<urss:LastUpdatedDate>2007-08-29</urss:LastUpdatedDate>
+				<urss:TypeVersion>01.04</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ssdh:DocumentHeader" minOccurs="0"/>
+			<xs:element name="Invoice" type="tns:InvoiceType"/>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+</xs:schema>

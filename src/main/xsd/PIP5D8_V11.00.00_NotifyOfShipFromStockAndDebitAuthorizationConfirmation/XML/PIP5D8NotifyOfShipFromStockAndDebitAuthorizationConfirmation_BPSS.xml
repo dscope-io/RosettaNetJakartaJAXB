@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<ProcessSpecification name="PIP5D8NotifyOfShipFromStockAndDebitAuthorizationConfirmation" nameID="urn:rosettanet:specification:interchange:PIP5D8:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a supplier to respond to the request of a distributor.</Documentation>
+	<BusinessDocument name="Ship From Stock And Debit Authorization Confirmation Notification" nameID="PIP5D8ShipFromStockAndDebitAuthorizationConfirmationNotification" specificationLocation="urn:rosettanet:specification:interchange:ShipFromStockAndDebitAuthorizationConfirmationNotification:xsd:schema:01.00">
+		<Documentation>Returns an authorization status and details from applicable line items per the quote number provided in the authorization request.</Documentation>
+	</BusinessDocument>
+	<Package name="Marketing Information Management" nameID="5">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Ship from Stock and Debit (EC)" nameID="5D">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify of Ship From Stock And Debit Authorization Confirmation" nameID="5D8">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify of Ship From Stock And Debit Authorization Confirmation" nameID="NotifyOfShipFromStockAndDebitAuthorizationConfirmation_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Ship From Stock And Debit Authorization Confirmation Notification" nameID="InitiateShipFromStockAndDebitAuthorizationConfirmationNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Ship From Stock And Debit Authorization Confirmation Notification" nameID="ShipFromStockAndDebitAuthorizationConfirmationNotification_DE" businessDocument='//BusinessDocument[@name="Ship From Stock And Debit Authorization Confirmation Notification"]' businessDocumentIDREF="PIP5D8ShipFromStockAndDebitAuthorizationConfirmationNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Ship From Stock And Debit Authorization Confirmation Notification" nameID="ProcessShipFromStockAndDebitAuthorizationConfirmationNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify of Ship From Stock And Debit Authorization Confirmation" nameID="NotifyOfShipFromStockAndDebitAuthorizationConfirmation_BC" initiatingRoleIDREF="ProductDistributorID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Product Distributor" nameID="ProductDistributorID"/>
+					<Role name="Product Supplier" nameID="ProductSupplierID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify of Ship From Stock And Debit Authorization Confirmation"]' toBusinessStateIDREF="PIP5D8NotifyOfShipFromStockAndDebitAuthorizationConfirmation"/>
+					<BusinessTransactionActivity name="Notify of Ship From Stock And Debit Authorization Confirmation" nameID="NotifyOfShipFromStockAndDebitAuthorizationConfirmation_BTA" businessTransaction='//BusinessTransaction[@name="Notify of Ship From Stock And Debit Authorization Confirmation"]' businessTransactionIDREF="NotifyOfShipFromStockAndDebitAuthorizationConfirmation_BT" fromRole='../Role[@name="ProductSupplier"]' fromRoleIDREF="ProductSupplierID" toRole='../Role[@name="ProductDistributor"]' toRoleIDREF="ProductDistributorID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT2H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="NotifyOfShipFromStockAndDebitAuthorizationConfirmation"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Ship From Stock And Debit Authorization Confirmation"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

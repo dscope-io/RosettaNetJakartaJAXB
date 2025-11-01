@@ -1,0 +1,182 @@
+
+package io.dscope.rosettanet.domain.manufacturing.manufacturing.v01_04;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlSchemaType;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import io.dscope.rosettanet.domain.manufacturing.codelist.rawwafertype.v01_02.RawWaferType;
+import io.dscope.rosettanet.domain.manufacturing.codelist.waferqualityrating.v01_02.WaferQualityRatingType;
+
+
+/**
+ * <p>Java class for WaferInformationType complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="WaferInformationType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="Grade" type="{urn:rosettanet:specification:domain:Manufacturing:WaferQualityRating:xsd:codelist:01.02}WaferQualityRatingType"/&gt;
+ *         &lt;element name="MappingFileName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element ref="{urn:rosettanet:specification:domain:Manufacturing:RawWaferType:xsd:codelist:01.02}RawWaferType" minOccurs="0"/&gt;
+ *         &lt;element name="WaferUniqueID" type="{urn:rosettanet:specification:universal:DataType:xsd:schema:01.02}GTINType"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="schemaVersion" type="{http://www.w3.org/2001/XMLSchema}token" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "WaferInformationType", propOrder = {
+    "grade",
+    "mappingFileName",
+    "rawWaferType",
+    "waferUniqueID"
+})
+public class WaferInformationType {
+
+    @XmlElement(name = "Grade", required = true)
+    protected WaferQualityRatingType grade;
+    @XmlElement(name = "MappingFileName")
+    protected String mappingFileName;
+    @XmlElementRef(name = "RawWaferType", namespace = "urn:rosettanet:specification:domain:Manufacturing:RawWaferType:xsd:codelist:01.02", type = RawWaferType.class, required = false)
+    protected RawWaferType rawWaferType;
+    @XmlElement(name = "WaferUniqueID", required = true)
+    protected String waferUniqueID;
+    @XmlAttribute(name = "schemaVersion")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "token")
+    protected String schemaVersion;
+
+    /**
+     * Gets the value of the grade property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link WaferQualityRatingType }
+     *     
+     */
+    public WaferQualityRatingType getGrade() {
+        return grade;
+    }
+
+    /**
+     * Sets the value of the grade property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link WaferQualityRatingType }
+     *     
+     */
+    public void setGrade(WaferQualityRatingType value) {
+        this.grade = value;
+    }
+
+    /**
+     * Gets the value of the mappingFileName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getMappingFileName() {
+        return mappingFileName;
+    }
+
+    /**
+     * Sets the value of the mappingFileName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setMappingFileName(String value) {
+        this.mappingFileName = value;
+    }
+
+    /**
+     * Gets the value of the rawWaferType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RawWaferType }
+     *     
+     */
+    public RawWaferType getRawWaferType() {
+        return rawWaferType;
+    }
+
+    /**
+     * Sets the value of the rawWaferType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RawWaferType }
+     *     
+     */
+    public void setRawWaferType(RawWaferType value) {
+        this.rawWaferType = value;
+    }
+
+    /**
+     * Gets the value of the waferUniqueID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getWaferUniqueID() {
+        return waferUniqueID;
+    }
+
+    /**
+     * Sets the value of the waferUniqueID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setWaferUniqueID(String value) {
+        this.waferUniqueID = value;
+    }
+
+    /**
+     * Gets the value of the schemaVersion property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSchemaVersion() {
+        return schemaVersion;
+    }
+
+    /**
+     * Sets the value of the schemaVersion property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSchemaVersion(String value) {
+        this.schemaVersion = value;
+    }
+
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with RosettaNet UML2BPSS 01.03 on 11/29/06 -->
+<ProcessSpecification name="PIP2B8NotifyOfProductChangeQuery" nameID="urn:rosettanet:specification:interchange:PIP2B8:xml:bpss:r11_00a" version="R11.00A" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The purpose of this PIP is to notify supplier that the customer cannot proceed with an accept / reject decision on a PCN or EOL until the query has been satisfied.</Documentation>
+	<BusinessDocument name="Product Change Query Notification" nameID="PIP2B8ProductChangeQueryNotification" specificationLocation="urn:rosettanet:specification:interchange:ProductChangeQueryNotification:xsd:schema:01.00">
+		<Documentation>Allow customers to request clarification, additional documentation or samples.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Information" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Product Change Notification" nameID="2B">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Product Change Query" nameID="2B8">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Product Change Query" nameID="NotifyOfProductChangeQuery_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Product Change Query Notification" nameID="InitiateProductChangeQueryNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Product Change Query Notification" nameID="ProductChangeQueryNotification_DE" businessDocument='//BusinessDocument[@name="Product Change Query Notification"]' businessDocumentIDREF="PIP2B8ProductChangeQueryNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Product Change Query Notification" nameID="ProcessProductChangeQueryNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Product Change Query" nameID="NotifyOfProductChangeQuery_BC" initiatingRoleIDREF="CustomerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Customer" nameID="CustomerID"/>
+					<Role name="Supplier" nameID="SupplierID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Product Change Query"]' toBusinessStateIDREF="PIP2B8NotifyOfProductChangeQuery"/>
+					<BusinessTransactionActivity name="Notify Of Product Change Query" nameID="NotifyOfProductChangeQuery_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Product Change Query"]' businessTransactionIDREF="NotifyOfProductChangeQuery_BT" fromRole='../Role[@name="Customer"]' fromRoleIDREF="CustomerID" toRole='../Role[@name="Supplier"]' toRoleIDREF="SupplierID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Notify Of Product Change Query-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Product Change Query"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Notify Of Product Change Query -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Product Change Query"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

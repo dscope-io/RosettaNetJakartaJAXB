@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<ProcessSpecification name="PIP6C6DistributeServiceEntitlementStatusResponse" nameID="urn:rosettanet:specification:interchange:PIP6C6:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP answers an Authorized Service Provider's query for the determination of warranty service entitlement from a Warranty Provider.</Documentation>
+	<BusinessDocument name="Service Entitlement Status Response Notification" nameID="PIP6C6ServiceEntitlementStatusResponseNotification" specificationLocation="urn:rosettanet:specification:interchange:ServiceEntitlementStatusResponseNotification:xsd:schema:01.00">
+		<Documentation>A response to a query requesting the warranty status of a defective unit. The status reflects the current state of the service entitlement at the time of the request.</Documentation>
+	</BusinessDocument>
+	<Package name="Service and Support" nameID="6">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Technical Support and Service Management" nameID="6C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Distribute Service Entitlement Status Response" nameID="6C6">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Distribute Service Entitlement Status Response" nameID="DistributeServiceEntitlementStatusResponse_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Service Entitlement Query" nameID="InitiateServiceEntitlementQuery" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Service Entitlement Query" nameID="ServiceEntitlementQuery_DE" businessDocument='//BusinessDocument[@name="Service Entitlement Query"]' businessDocumentIDREF="PIP6C6ServiceEntitlementQuery" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Service Entitlement Status Response Notification" nameID="ProcessServiceEntitlementStatusResponseNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Distribute Service Entitlement Status Response" nameID="DistributeServiceEntitlementStatusResponse_BC" initiatingRoleIDREF="AuthorizedServiceProviderID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System and Valid.</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System and Valid  b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Warranty Provider" nameID="WarrantyProviderID"/>
+					<Role name="Authorized Service Provider" nameID="AuthorizedServiceProviderID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Distribute Service Entitlement Status Response"]' toBusinessStateIDREF="PIP6C6DistributeServiceEntitlementStatusResponse"/>
+					<BusinessTransactionActivity name="Distribute Service Entitlement Status Response" nameID="DistributeServiceEntitlementStatusResponse_BTA" businessTransaction='//BusinessTransaction[@name="Distribute Service Entitlement Status Response"]' businessTransactionIDREF="DistributeServiceEntitlementStatusResponse_BT" fromRole='../Role[@name="WarrantyProvider"]' fromRoleIDREF="WarrantyProviderID" toRole='../Role[@name="AuthorizedServiceProvider"]' toRoleIDREF="AuthorizedServiceProviderID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT2H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="DistributeServiceEntitlementStatusResponse"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Service Entitlement Status Response"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by RosettaNet (RosettaNet) -->
+<!--Compliant with BPSS vers 1.01-->
+<ProcessSpecification name="PIP4E2NotifyOfSalesReportAcknowledgement" nameID="urn:rosettanet:specification:interchange:PIP4E2:xml:bpss:r11_10c" version="R11.10C" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The purpose of this PIP is to acknowledge any data discrepancies found and confirmation of special pricing claims in a 4E1, “Notify of Sales Report” PIP.</Documentation>
+	<BusinessDocument name="Sales Report Acknowledgement Notification" nameID="PIP4E2SalesReportAcknowledgementNotification" specificationLocation="urn:rosettanet:specification:interchange:SalesReportAcknowledgementNotification:xsd:schema:02.00">
+		<Documentation>The document is an XML Schema file that specifies the rules for creating the XML document for the business action of notification of a sales report acknowledgement. The specificationLocation attribute is used for illustrative purposes only.</Documentation>
+	</BusinessDocument>
+	<Package name="Inventory Management" nameID="4">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Sales Reporting" nameID="4E">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify of Sales Report Acknowledgement" nameID="4E2">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Sales Report Acknowledgement" nameID="NotifyOfSalesReportAcknowledgement_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Sales Report Acknowledgement Notification" nameID="InitiateSalesReportAcknowledgementNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Sales Report Acknowledgement Notification" nameID="SalesReportAcknowledgementNotification_DE" businessDocument='//BusinessDocument[@name="Sales Report Acknowledgement Notification"]' businessDocumentIDREF="PIP4E2SalesReportAcknowledgementNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Sales Report Acknowledgement Notification" nameID="ProcessSalesReportAcknowledgementNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Sales Report Acknowledgement" nameID="NotifyOfSalesReportAcknowledgement_BC" initiatingRoleIDREF="SenderID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated, and Authorized. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid, and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Sender" nameID="SenderID"/>
+					<Role name="Receiver" nameID="ReceiverID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Sales Report Acknowledgement"]' toBusinessStateIDREF="PIP4E2NotifyOfSalesReportAcknowledgement"/>
+					<BusinessTransactionActivity name="Notify Of Sales Report Acknowledgement" nameID="NotifyOfSalesReportAcknowledgement_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Sales Report Acknowledgement"]' businessTransactionIDREF="NotifyOfSalesReportAcknowledgement_BT" fromRole='../Role[@name="Sender"]' fromRoleIDREF="SenderID" toRole='../Role[@name="Receiver"]' toRoleIDREF="ReceiverID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, with one success and a failure representing Requesting Business Activity. These are designed to reflect business level conditions only and not message level  conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for Notify Of Sales Report Acknowledgement-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Sales Report Acknowledgement"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for Notify Of Sales Report Acknowledgement-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Sales Report Acknowledgement"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

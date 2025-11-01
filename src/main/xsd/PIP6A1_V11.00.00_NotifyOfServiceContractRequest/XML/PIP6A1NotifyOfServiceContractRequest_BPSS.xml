@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by RosettaNet (RosettaNet) -->
+<!-- Created by RosettaNet -->
+<ProcessSpecification name="PIP6A1NotifyOfServiceContractRequest" nameID="urn:rosettanet:specification:interchange:PIP6A1:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a buyer request for change or query a service contract from a service contract issuer. The buyer plays the role as service contract requester.</Documentation>
+	<BusinessDocument name="Service Contract Request Notification" nameID="PIP6A1ServiceContractRequestNotification" specificationLocation="urn:rosettanet:specification:interchange:ServiceContractRequestNotification:xsd:schema:1.0">
+		<Documentation>A request to notify a service Service Contract Issuer for service contract change request or query.</Documentation>
+	</BusinessDocument>
+	<Package name="Service and Support" nameID="6">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Provide and Administer Warranties, Service Packages, and Contract Services" nameID="6A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Service Contract Request" nameID="6A1">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Service Contract Request" nameID="NotifyOfServiceContractRequest_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiating Service Contract Request Notification" nameID="InitiatingServiceContractRequestNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" retryCount="3" timeToAcknowledgeReceipt="PT2H">
+						<DocumentEnvelope name="Service Contract Request Notification" nameID="ServiceContractRequestNotification_DE" businessDocument='//BusinessDocument[@name="Service Contract Request Notification"]' businessDocumentIDREF="PIP6A1ServiceContractRequestNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Service Contract Request Notification" nameID="Process Service Contract Request Notification"/>
+				</BusinessTransaction>
+				<BinaryCollaboration name="Notify Of Service Contract Request" nameID="NotifyOfServiceContractRequest_BC" initiatingRoleIDREF="ServiceContractRequesterID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, and Valid. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, and Valid b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Service Contract Requester" nameID="ServiceContractRequesterID"/>
+					<Role name="Service Contract Issuer" nameID="ServiceContractIssuerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Service Contract Request"]' toBusinessStateIDREF="PIP6A1ServiceContractRequestNotification"/>
+					<BusinessTransactionActivity name="Notify Of Service Contract Request" nameID="NotifyOfServiceContractRequest_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Service Contract Request"]' businessTransactionIDREF="NotifyOfServiceContractRequest_BT" fromRole='../Role[@name="ServiceContractRequester"]' fromRoleIDREF="ServiceContractRequesterID" toRole='../Role[@name="ServiceContractIssuer"]' toRoleIDREF="ServiceContractIssuerID" isLegallyBinding="true" isConcurrent="false"/>
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Service Contract Request"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Service Contract Request"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

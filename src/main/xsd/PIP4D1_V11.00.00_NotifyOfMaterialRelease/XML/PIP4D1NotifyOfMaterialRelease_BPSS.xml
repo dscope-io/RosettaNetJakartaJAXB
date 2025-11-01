@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created by RosettaNet -->
+<ProcessSpecification name="PIP4D1NotifyOfMaterialRelease" nameID="urn:rosettanet:specification:interchange:PIP4D1:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>Provides a mechanism for replenishment managers to trigger inventory replenishment.</Documentation>
+	<BusinessDocument name="Material Release Notification" nameID="PIP4D1MaterialReleaseNotification" specificationLocation="urn:rosettanet:specification:interchange:MaterialReleaseNotification:xsd:schema:02.00">
+		<Documentation>Contains product identifier, quantity, delivery location, date(s), purchase order or contractual reference and material release reference number.</Documentation>
+	</BusinessDocument>
+	<Package name="Inventory Management" nameID="4">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Inventory Replenishment" nameID="4D">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Material Release" nameID="4D1">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Material Release" nameID="NotifyOfMaterialRelease_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Material Release Notification" nameID="InitiateMaterialReleaseNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Material Release Notification" nameID="MaterialReleaseNotification_DE" businessDocument='//BusinessDocument[@name="Material Release Notification"]' businessDocumentIDREF="PIP4D1MaterialReleaseNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Material Release Notification" nameID="ProcessMaterialReleaseNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Material Release" nameID="NotifyOfMaterialRelease_BC" initiatingRoleIDREF="MaterialReleaseInformationProviderID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party, Approved and Valid c. Receiving Partner Exist as Party and Approved d. Business Document Exist In Backend System, Valid and Non-Repudiated. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Material Release Information Provider" nameID="MaterialReleaseInformationProviderID"/>
+					<Role name="Material Release Information User" nameID="MaterialReleaseInformationUserID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Material Release"]' toBusinessStateIDREF="PIP4D1MaterialReleaseNotification"/>
+					<BusinessTransactionActivity name="Notify Of Material Release" nameID="NotifyOfMaterialRelease_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Material Release"]' businessTransactionIDREF="NotifyOfMaterialRelease_BT" fromRole='../Role[@name="MaterialReleaseInformationProvider"]' fromRoleIDREF="MaterialReleaseInformationProviderID" toRole='../Role[@name="MaterialReleaseInformationUser"]' toRoleIDREF="MaterialReleaseInformationUserID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for Notify Of Material Release-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Material Release"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for Notify Of Material Release-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Material Release"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

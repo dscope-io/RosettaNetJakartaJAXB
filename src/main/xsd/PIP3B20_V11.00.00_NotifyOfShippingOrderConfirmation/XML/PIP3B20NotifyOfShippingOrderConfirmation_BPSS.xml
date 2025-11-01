@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by RosettaNet (RosettaNet) -->
+<!--Compliant with BPSS vers 1.01-->
+<ProcessSpecification name="PIP3B20NotifyOfShippingOrderConfirmation" nameID="urn:rosettanet:specification:interchange:PIP3B20:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP is designed to the Shipping Provider to respond to a Shipping Order Request with a Shipping Order Confirmation Notification.</Documentation>
+	<!--REM: Notify of Shipping Order Confirmation Document-->
+	<BusinessDocument name="Notify of Shipping Order Confirmation" nameID="PIP3B20NotifyOfShippingOrderConfirmation" specificationLocation="urn:rosettanet:specification:interchange:ShippingOrderConfirmationNotification:xsd:schema:01.00">
+		<Documentation>Contains either an acceptance or rejection of the shipping order request, with status information to support this.</Documentation>
+	</BusinessDocument>
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Transportation and Distribution" nameID="3B">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify of Shipping Order Confirmation" nameID="3B20">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify of Shipping Order Confirmation" nameID="NotifyOfShippingOrderConfirmation_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Shipping Order Confirmation Notification" nameID="InitiateShippingOrderConfirmation" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Shipping Order Confirmation Notification" nameID="ShippingOrderConfirmationNotification_DE" businessDocument='//BusinessDocument[@name="Shipping Order Confirmation Notification"]' businessDocumentIDREF="PIP3B20ShippingOrderConfirmationNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Shipping Order Confirmation Notification" nameID="ProcessShippingOrderConfirmationNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify of Shipping Order Confirmation" nameID="NotifyOfShippingOrderConfirmation_BC" initiatingRoleIDREF="ShipperID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Shipping Provider" nameID="ShippingProviderID"/>
+					<Role name="Shipper" nameID="ShipperID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify of Shipping Order Confirmation"]' toBusinessStateIDREF="PIP3B20NotifyOfShippingOrderConfirmation"/>
+					<BusinessTransactionActivity name="Notify of Shipping Order Confirmation" nameID="NotifyOfShippingOrderConfirmation_BTA" businessTransaction='//BusinessTransaction[@name="Notify of Shipping Order Confirmation"]' businessTransactionIDREF="NotifyOfShippingOrderConfirmation_BT" fromRole='../Role[@name="Shipping Provider"]' fromRoleIDREF="Shipping ProviderID" toRole='../Role[@name="Shipper"]' toRoleIDREF="ShipperID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT2H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Shipping Order Confirmation"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM: Failure Condition -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Shipping Order Confirmation"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

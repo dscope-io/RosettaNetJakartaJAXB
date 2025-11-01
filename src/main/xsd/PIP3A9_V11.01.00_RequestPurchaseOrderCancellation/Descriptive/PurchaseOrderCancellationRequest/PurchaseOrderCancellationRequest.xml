@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Created with RosettaNet XSD2ALL 2.3.9 on Wed Feb 03 09:28:14 PST 2010 -->
+<PurchaseOrderCancellationRequest xmlns="urn:rosettanet:specification:interchange:PurchaseOrderCancellationRequest:xsd:schema:02.01" xmlns:dpocr="urn:rosettanet:specification:domain:Procurement:PurchaseOrderCancellationReason:xsd:codelist:01.03" xmlns:sft="urn:rosettanet:specification:system:TPIRFileType:xsd:codelist:01.01" xmlns:ssdh="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.23" xmlns:uat="urn:rosettanet:specification:universal:AbstractType:xsd:schema:01.02" xmlns:uci="urn:rosettanet:specification:universal:ContactInformation:xsd:schema:01.04" xmlns:udc="urn:rosettanet:specification:universal:Document:xsd:schema:01.12" xmlns:udct="urn:rosettanet:specification:universal:DocumentType:xsd:codelist:01.13" xmlns:udt="urn:rosettanet:specification:universal:DataType:xsd:schema:01.04" xmlns:ul="urn:rosettanet:specification:universal:Language:xsd:codelist:01.02" xmlns:ulc="urn:rosettanet:specification:universal:Locations:xsd:schema:01.04" xmlns:umtq="urn:rosettanet:specification:universal:MimeTypeQualifier:xsd:codelist:01.02" xmlns:upi="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.16" xmlns:upri="urn:rosettanet:specification:universal:ProcessRoleIdentifier:xsd:codelist:01.11" xmlns:urss="urn:rosettanet:specification:system:xml:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:rosettanet:specification:interchange:PurchaseOrderCancellationRequest:xsd:schema:02.01
+..\..\XML\Interchange\PurchaseOrderCancellationRequest_02_01.xsd">
+	<ssdh:DocumentHeader>
+		<ssdh:CorrelationInformation>
+			<ssdh:ContractInformation>
+				<ssdh:ContractIdentifier>String</ssdh:ContractIdentifier>
+				<ssdh:ContractType>String</ssdh:ContractType>
+			</ssdh:ContractInformation>
+			<ssdh:RequestingDocumentInformation>
+				<ssdh:BusinessProcessInstanceIdentifier>String</ssdh:BusinessProcessInstanceIdentifier>
+				<ssdh:RequestingDocumentCreationDateTime>2005-02-15T08:30:00+08:00</ssdh:RequestingDocumentCreationDateTime>
+				<ssdh:RequestingDocumentInstanceIdentifier>String</ssdh:RequestingDocumentInstanceIdentifier>
+				<ssdh:ResponseDateTime>2005-02-15T08:30:00+08:00</ssdh:ResponseDateTime>
+			</ssdh:RequestingDocumentInformation>
+		</ssdh:CorrelationInformation>
+		<ssdh:DocumentInformation>
+			<ssdh:Creation>2005-02-15T08:30:00+08:00</ssdh:Creation>
+			<ssdh:DocumentIdentification>
+				<ssdh:Identifier>String</ssdh:Identifier>
+				<ssdh:Type>String</ssdh:Type>
+				<ssdh:StandardDocumentIdentification>
+					<ssdh:Standard>String</ssdh:Standard>
+					<ssdh:Version>String</ssdh:Version>
+				</ssdh:StandardDocumentIdentification>
+			</ssdh:DocumentIdentification>
+			<ssdh:DocumentManifest>
+				<ssdh:ManifestItem>
+					<ssdh:Description>String</ssdh:Description>
+					<ssdh:Language agency="RosettaNet" codeListVersion="01.01" identifier="Language">NO_ENUMERATION_FOUND_IN_SCHEMA</ssdh:Language>
+					<ssdh:Length>100</ssdh:Length>
+					<ssdh:MimeTypeQualifier agency="RosettaNet" codeListVersion="01.01" identifier="MimeTypeQualifier">application/activemessage</ssdh:MimeTypeQualifier>
+					<ssdh:UniversalResourceIdentifier>String</ssdh:UniversalResourceIdentifier>
+				</ssdh:ManifestItem>
+				<ssdh:ManifestItem>
+					<ssdh:Description>String</ssdh:Description>
+					<ssdh:Language agency="RosettaNet" codeListVersion="01.01" identifier="Language">NO_ENUMERATION_FOUND_IN_SCHEMA</ssdh:Language>
+					<ssdh:Length>100</ssdh:Length>
+					<ssdh:MimeTypeQualifier agency="RosettaNet" codeListVersion="01.01" identifier="MimeTypeQualifier">application/activemessage</ssdh:MimeTypeQualifier>
+					<ssdh:UniversalResourceIdentifier>String</ssdh:UniversalResourceIdentifier>
+				</ssdh:ManifestItem>
+				<ssdh:MultipleType>true</ssdh:MultipleType>
+				<ssdh:NumberOfItems>100</ssdh:NumberOfItems>
+			</ssdh:DocumentManifest>
+			<ssdh:DocumentSecurity>
+				<ssdh:NonRepudiableReceipt>true</ssdh:NonRepudiableReceipt>
+				<ssdh:PersistentEncryption>true</ssdh:PersistentEncryption>
+				<ssdh:PersistentSignature>true</ssdh:PersistentSignature>
+			</ssdh:DocumentSecurity>
+		</ssdh:DocumentInformation>
+		<ssdh:HeaderVersion>String</ssdh:HeaderVersion>
+		<ssdh:Receiver>
+			<ssdh:BusinessServiceInformation>
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:IdentifierCode>String</uci:IdentifierCode>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Receiver>
+		<ssdh:Sender>
+			<ssdh:BusinessServiceInformation>
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:IdentifierCode>String</uci:IdentifierCode>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Sender>
+	</ssdh:DocumentHeader>
+	<PurchaseOrderCancellation>
+		<dpocr:PurchaseOrderCancellationReason agency="RosettaNet" codeListVersion="01.01" identifier="PurchaseOrderCancellationReason">CBT</dpocr:PurchaseOrderCancellationReason>
+		<PurchaseOrderIdentifier>
+			<udc:DateTime>2005-02-15T08:30:00+08:00</udc:DateTime>
+			<udct:DocumentType agency="RosettaNet" codeListVersion="01.12" identifier="DocumentType">APM</udct:DocumentType>
+			<udc:Identifier>String</udc:Identifier>
+			<udc:Line>String</udc:Line>
+			<udc:Revision>String</udc:Revision>
+			<udc:SubLine>String</udc:SubLine>
+		</PurchaseOrderIdentifier>
+		<RevisionNumber>String</RevisionNumber>
+	</PurchaseOrderCancellation>
+</PurchaseOrderCancellationRequest>

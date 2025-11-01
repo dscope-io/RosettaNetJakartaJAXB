@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with RosettaNet UML2BPSS 01.01 on 08/30/06 -->
+<ProcessSpecification name="PIP2A13DistributeMaterialCompositionInformation" nameID="urn:rosettanet:specification:interchange:PIP2A13:xml:bpss:v11_03" version="V11.03" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The purpose of this PIP is to 1) automate product material composition information exchanges between the supply chain partners, 2) improve information exchange quality and efficiency when gathering product material compostion data, 3) save time and reduce processing costs, 4) reduce workload in supply chain by introducing a common global approach for sharing product material composition information across the full high-tech supply chain.</Documentation>
+	<BusinessDocument name="Material Composition Information Distribution" nameID="PIP2A13MaterialCompositionInformationDistribution" specificationLocation="urn:rosettanet:specification:interchange:MaterialCompositionInformationDistribution:xsd:schema:02.00">
+		<Documentation>Contains detailed product material composition information and references required to identify the reporting. Information in this document is mainly used to make design, manufacturing and recycling decisions. It is also used to ascertain whether suppliers are complying with those requirements, and stores and maintains the data.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Information" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Preparation for Distribution" nameID="2A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Distribute Material Composition Information" nameID="2A13">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Distribute Material Composition Information" nameID="DistributeMaterialCompositionInformation_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Material Composition Information Distribution" nameID="InitiateMaterialCompositionInformationDistribution" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Material Composition Information Distribution" nameID="MaterialCompositionInformationDistribution_DE" businessDocument='//BusinessDocument[@name="Material Composition Information Distribution"]' businessDocumentIDREF="PIP2A13MaterialCompositionInformationDistribution" isAuthenticated="none" isConfidential="transient" isTamperDetectable="none"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Material Composition Information Distribution" nameID="ProcessMaterialCompositionInformationDistribution"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Distribute Material Composition Information" nameID="DistributeMaterialCompositionInformation_BC" initiatingRoleIDREF="SupplierID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid and Authorized. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, and Valid b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Supplier" nameID="SupplierID"/>
+					<Role name="Buyer" nameID="BuyerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Distribute Material Composition Information"]' toBusinessStateIDREF="PIP2A13MaterialCompositionInformationDistribution"/>
+					<BusinessTransactionActivity name="Distribute Material Composition Information" nameID="DistributeMaterialCompositionInformation_BTA" businessTransaction='//BusinessTransaction[@name="Distribute Material Composition Information"]' businessTransactionIDREF="DistributeMaterialCompositionInformation_BT" fromRole='../Role[@name="Supplier"]' fromRoleIDREF="SupplierID" toRole='../Role[@name="Buyer"]' toRoleIDREF="BuyerID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Distribute Material Composition Information-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Material Composition Information"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Distribute Material Composition Information -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Material Composition Information"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

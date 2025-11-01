@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<ProcessSpecification name="PIP5C6NotifyOfDesignRegistrationRequest" nameID="urn:rosettanet:specification:interchange:PIP5C6:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a party needing a differentiated product (demand creator) to request that a design registration be created or changed.</Documentation>
+	<BusinessDocument name="Design Registration Request Notification" nameID="PIP5C6DesignRegistrationRequestNotification" specificationLocation="urn:rosettanet:specification:interchange:DesignRegistrationRequestNotification:xsd:schema:01.00">
+		<Documentation>Contains a hierarchically-structured project assembly registration that identifies detailed project/assembly/product part/customer layers. The request also identifies the part, design request business opportunity, and design registration.</Documentation>
+	</BusinessDocument>
+	<Package name="Marketing Information Management" nameID="5">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Design Win Management (EC)" nameID="5C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify of Design Registration Request" nameID="5C6">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify of Design Registration Request" nameID="NotifyOfDesignRegistrationRequest_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Design Registration Request Notification" nameID="InitiateDesignRegistrationRequestNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Design Registration Request Notification" nameID="DesignRegistrationRequestNotification_DE" businessDocument='//BusinessDocument[@name="Design Registration Request Notification"]' businessDocumentIDREF="PIP5C6DesignRegistrationRequestNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Design Registration Request Notification" nameID="ProcessDesignRegistrationRequestNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify of Design Registration Request" nameID="NotifyOfDesignRegistrationRequest_BC" initiatingRoleIDREF="DemandCreatorID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Approved, Exist as Party and Valid c. Receiving Partner Approved, Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Demand Creator" nameID="DemandCreatorID"/>
+					<Role name="Product Provider" nameID="ProductProviderID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify of Design Registration Request"]' toBusinessStateIDREF="PIP5C6NotifyOfDesignRegistrationRequest"/>
+					<BusinessTransactionActivity name="Notify of Design Registration Request" nameID="NotifyOfDesignRegistrationRequest_BTA" businessTransaction='//BusinessTransaction[@name="Notify of Design Registration Request"]' businessTransactionIDREF="NotifyOfDesignRegistrationRequest_BT" fromRole='../Role[@name="DemandCreator"]' fromRoleIDREF="DemandCreatorID" toRole='../Role[@name="ProductProvider"]' toRoleIDREF="ProductProviderID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT2H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="NotifyOfDesignRegistrationRequest"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Design Registration Request"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

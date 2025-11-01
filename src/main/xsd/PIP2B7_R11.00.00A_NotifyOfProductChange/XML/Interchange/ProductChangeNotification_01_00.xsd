@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:rosettanet:specification:interchange:ProductChangeNotification:xsd:schema:01.00" xmlns:ssdh="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.15" xmlns:dnc="urn:rosettanet:specification:domain:Service:NotificationCode:xsd:codelist:01.03" xmlns:dds="urn:rosettanet:specification:domain:Design:xsd:schema:02.12" xmlns:dm="urn:rosettanet:specification:domain:Manufacturing:xsd:schema:02.15" xmlns:upi="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.11" xmlns:updi="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04" xmlns:rpkt="urn:rosettanet:specification:domain:Shared:PackageType:xsd:codelist:01.01" xmlns:udc="urn:rosettanet:specification:universal:Document:xsd:schema:01.08" xmlns:tns="urn:rosettanet:specification:interchange:ProductChangeNotification:xsd:schema:01.00" xmlns:urss="urn:rosettanet:specification:system:xml:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="01.00">
+	<xs:import namespace="urn:rosettanet:specification:universal:Document:xsd:schema:01.08" schemaLocation="../Universal/Document_01_08.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Shared:PackageType:xsd:codelist:01.01" schemaLocation="../Domain/Shared/CodeList/RN_PackageType_01_01.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04" schemaLocation="../Universal/ProductIdentification_01_04.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.11" schemaLocation="../Universal/PartnerIdentification_01_11.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Manufacturing:xsd:schema:02.15" schemaLocation="../Domain/Manufacturing/Manufacturing_02_15.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Design:xsd:schema:02.12" schemaLocation="../Domain/Design/Design_02_12.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Service:NotificationCode:xsd:codelist:01.03" schemaLocation="../Domain/Service/CodeList/RN_NotificationCode_01_03.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.15" schemaLocation="../System/StandardDocumentHeader_01_15.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+			<urss:Copyright>© 2006 RosettaNet. All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without the inclusion of this copyright notice. Any derivative works must cite the copyright notice. Any public redistribution or sale of this publication or derivative works requires prior written permission of the publisher.</urss:Copyright>
+			<urss:Disclaimer>RosettaNet makes no representation about the suitability of this work for any purpose or regarding any claims made by products which use it. It is provided as is without expressed or implied warranty.</urss:Disclaimer>
+			<urss:Program>Product Change Notification Milestone Program</urss:Program>
+			<urss:Purpose>Provides the RosettaNet 2B7 Product Change Notification classes.</urss:Purpose>
+		</xs:documentation>
+		<xs:appinfo>
+			<urss:CreationDate>2006-11-20</urss:CreationDate>
+			<urss:LastUpdatedDate>2006-11-20</urss:LastUpdatedDate>
+		</xs:appinfo>
+	</xs:annotation>
+	<xs:element name="ProductChangeNotification" type="tns:ProductChangeNotificationType"/>
+	<xs:complexType name="DocumentChangedType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>A business property that describes document change in product change or end of life.</urss:Definition>
+				<urss:CreationDate>2006-11-20</urss:CreationDate>
+				<urss:LastUpdatedDate>2006-11-20</urss:LastUpdatedDate>
+				<urss:TypeVersion>01.00</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IsDocumentChanged" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>This object represents whether there are document Does the change, as described, result in a change to the supplier datasheet. Yes/No.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RelatedDocument" type="udc:BusinessDocumentReferenceType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The object represent the list of documents which are affected by the change.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="ProductChangeType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of business properties that describe the nature and contents of a product change.</urss:Definition>
+				<urss:CreationDate>2006-11-20</urss:CreationDate>
+				<urss:LastUpdatedDate>2006-11-20</urss:LastUpdatedDate>
+				<urss:TypeVersion>01.00</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AffectedCustomerProduct" type="tns:ProductDescriptionType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Customer part number of affected product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AffectedProduct" type="tns:ProductDescriptionType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Affected product refers to the supplier.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dm:Attachment" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="udc:BusinessDocumentReference"/>
+			<xs:element ref="dm:ChangeDescription" minOccurs="0"/>
+			<xs:element ref="dds:DateReference" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="DocumentChanged" type="tns:DocumentChangedType" minOccurs="0"/>
+			<xs:element ref="dnc:NotificationCode" minOccurs="0"/>
+			<xs:element name="PreviousDocumentReference" type="udc:BusinessDocumentReferenceType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Reference to related notifications and previously published notices.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductIdentificationMethod" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>This object represents the method of identifiying change product by date code, lot trace code, part numbe or other nomenclature change that allows customer to distinguish change product from unchanged.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="QualData" type="tns:QualDataType" minOccurs="0"/>
+			<xs:element name="ReplacementProduct" type="tns:ProductDescriptionType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Replacement parts for the products affected by the notice.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SuppliedBy" type="upi:SpecifiedFullPartnerType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The party responsible for supplying the product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="ProductChangeNotificationType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of business properties that describe the changes made to a product/process. </urss:Definition>
+				<urss:CreationDate>2006-11-20</urss:CreationDate>
+				<urss:LastUpdatedDate>2006-11-20</urss:LastUpdatedDate>
+				<urss:TypeVersion>01.00</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ssdh:DocumentHeader" minOccurs="0"/>
+			<xs:element name="ProductChange" type="tns:ProductChangeType"/>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="ProductDescriptionType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of business properties that describe the nature and contents of a product descriptions.</urss:Definition>
+				<urss:CreationDate>2006-11-20</urss:CreationDate>
+				<urss:LastUpdatedDate>2006-11-20</urss:LastUpdatedDate>
+				<urss:TypeVersion>01.00</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Category" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>This object represents the which category or group of the product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DeliveryHistory" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>This object represents the history/summary of information regarding number of units purchased in last two years can help customer with analysis of PCN or EOL.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Line" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>This object represents a line or families of a product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ManufacturedBy" type="upi:SpecifiedFullPartnerType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The party responsible for manufactured the product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="rpkt:PackageType" minOccurs="0"/>
+			<xs:element name="PartNumber" type="updi:ProductIdentificationType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>A unique part number to identify a product.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="QualDataType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of qual data sent by supplier  to demonstrate conclusively that the product or process change in question does not adversely impact the reliability or the functionality of the device.</urss:Definition>
+				<urss:CreationDate>2006-11-20</urss:CreationDate>
+				<urss:LastUpdatedDate>2006-11-20</urss:LastUpdatedDate>
+				<urss:TypeVersion>01.00</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Plan" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>This object represents the qualification plan of a product change.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="QualificationStatus" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>This object represents the summary of the current status of the qualification of the change.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Result" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>This object represents the qualification results of a product change.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Schedule" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>This object represents the qualification schedule of a product change.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with RosettaNet UML2BPSS 01.03 on 08/03/07 -->
+<ProcessSpecification name="PIP5D10NotifyOfShipFromStockAndDebitClaimConfirmation" nameID="urn:rosettanet:specification:interchange:PIP5D10:xml:bpss:V11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP is used to submit a claim for a debit against an authorization program, and to receive a claim response.  The Product Supplier may edit the product quantities, date of sale, and other information in the claim.  The claim is then accepted, rejected or placed in "Pending" status.  A disposition is generated for each line item. If accepted, the Product Supplier's financial system generates a credit to the Product Distributor. Rejected lines are reported with multiple reason codes, allowing the Product Distributor to close out the item or to fix the problem and resubmit the claim.
+This PIP is executed when the product fulfillment status is known and the customer has been billed.</Documentation>
+	<BusinessDocument name="Ship From Stock And Debit Claim Confirmation Notification" nameID="PIP5D10ShipFromStockAndDebitClaimConfirmationNotification" specificationLocation="urn:rosettanet:specification:interchange:ShipFromStockAndDebitClaimConfirmationNotification:xsd:schema:01.00">
+		<Documentation>Replies to a claim submission. A confirmation for each claim line is provided. Each claim line can be approved, pended, or rejected.  If the claim is accepted, a Credit Reference Identifier is provided, which can contain a credit memo number. If the line is rejected, multiple reason codes can be provided.</Documentation>
+	</BusinessDocument>
+	<Package name="Marketing Information Management" nameID="5">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Ship from Stock and Debit (EC)" nameID="5D">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify of Ship From Stock And Debit Claim Confirmation" nameID="5D10">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify of Ship From Stock And Debit Claim Confirmation" nameID="NotifyOfShipFromStockAndDebitClaimConfirmation_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Ship From Stock And Debit Claim Confirmation Notification" nameID="InitiateShipFromStockAndDebitClaimConfirmationNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Ship From Stock And Debit Claim Confirmation Notification" nameID="ShipFromStockAndDebitClaimConfirmationNotification_DE" businessDocument='//BusinessDocument[@name="Ship From Stock And Debit Claim Confirmation Notification"]' businessDocumentIDREF="PIP5D10ShipFromStockAndDebitClaimConfirmationNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Ship From Stock And Debit Claim Confirmation Notification" nameID="ProcessShipFromStockAndDebitClaimConfirmationNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify of Ship From Stock And Debit Claim Confirmation" nameID="NotifyOfShipFromStockAndDebitClaimConfirmation_BC" initiatingRoleIDREF="ProductDistributorID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Product Distributor" nameID="ProductDistributorID"/>
+					<Role name="Product Supplier" nameID="ProductSupplierID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify of Ship From Stock And Debit Claim Confirmation"]' toBusinessStateIDREF="PIP5D10NotifyOfShipFromStockAndDebitClaimConfirmation"/>
+					<BusinessTransactionActivity name="Notify of Ship From Stock And Debit Claim Confirmation" nameID="NotifyOfShipFromStockAndDebitClaimConfirmation_BTA" businessTransaction='//BusinessTransaction[@name="Notify of Ship From Stock And Debit Claim Confirmation"]' businessTransactionIDREF="NotifyOfShipFromStockAndDebitClaimConfirmation_BT" fromRole='../Role[@name="ProductDistributor"]' fromRoleIDREF="ProductDistributorID" toRole='../Role[@name="ProductSupplier"]' toRoleIDREF="ProductSupplierID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT48H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="NotifyOfShipFromStockAndDebitClaimConfirmation"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Ship From Stock And Debit Claim Confirmation"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessSpecification name="PIP3C3NotifyOfInvoice" nameID="urn:rosettanet:specification:interchange:PIP3C3:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01
+ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a provider to send an original invoice to another party, such as a buyer or financing processor.</Documentation>
+	<!--REM: Invoice Notification Document-->
+	<BusinessDocument name="Invoice Notification" nameID="PIP3C3InvoiceNotification" specificationLocation="urn:rosettanet:specification:
+interchange:InvoiceNotificationt:xsd:schema:1.0">
+		<Documentation>Presents an invoice for products purchased and shipped or for services that have been purchased or contracted. The invoice may be either a credit or a debit memo The conditions that trigger the generation of an invoice may vary by organization.</Documentation>
+	</BusinessDocument>
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Returns and Finance Management" nameID="3C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Invoice" nameID="3C3">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Invoice" nameID="NotifyOfInvoice_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Invoice Notification" nameID="InitiateInvoiceNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Invoice Notification" nameID="InvoiceNotification_DE" businessDocument='//BusinessDocument[@name="Invoice Notification"]' businessDocumentIDREF="PIP3C3InvoiceNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Invoice Notification" nameID="ProcessInvoiceNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Invoice" nameID="NotifyOfInvoice_BC" initiatingRoleIDREF="SellerID" preCondition="true" postCondition="true">
+					<Role name="Seller" nameID="SellerID"/>
+					<Role name="Buyer" nameID="BuyerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Invoice"]' toBusinessStateIDREF="PIP3C3NotifyOfInvoice"/>
+					<BusinessTransactionActivity name="Notify Of Invoice" nameID="NotifyOfInvoice_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Invoice"]' businessTransactionIDREF="NotifyOfInvoice_BT" fromRole='../Role[@name="Seller"]' fromRoleIDREF="SellerID" toRole='../Role[@name="Buyer"]' toRoleIDREF="BuyerID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect 	business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for Notify Of Invoice-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Invoice"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for Notify Of Invoice-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Invoice"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

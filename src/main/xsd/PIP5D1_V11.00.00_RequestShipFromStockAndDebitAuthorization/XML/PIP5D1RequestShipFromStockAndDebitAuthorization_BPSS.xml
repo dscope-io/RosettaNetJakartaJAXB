@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 07/31/07 -->
+<ProcessSpecification name="PIP5D1RequestShipFromStockAndDebitAuthorization" nameID="urn:rosettanet:specification:interchange:PIP5D1:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP enables (1) a distributor to request authorization to sell stock at a new buy price and claim reimbursement for the difference between the original price and the new price, and (2) a supplier to respond to the request.</Documentation>
+	<BusinessDocument name="Ship From Stock And Debit Authorization Request" nameID="PIP5D1ShipFromStockAndDebitAuthorizationRequest" specificationLocation="urn:rosettanet:specification:interchange:ShipFromStockAndDebitAuthorizationRequest:xsd:schema:01.00">
+		<Documentation>References an existing quote and specific line items.  This is the only information needed to make the authorization request, as customer or project details are expected to be documented in the actual quote.</Documentation>
+	</BusinessDocument>
+	<BusinessDocument name="Ship From Stock And Debit Authorization Confirmation" nameID="PIP5D1ShipFromStockAndDebitAuthorizationConfirmation" specificationLocation="urn:rosettanet:specification:interchange:ShipFromStockAndDebitAuthorizationConfirmation:xsd:schema:01.00">
+		<Documentation>Returns an authorization status and details from applicable line items per the quote number provided in the authorization request.</Documentation>
+	</BusinessDocument>
+	<Package name="Marketing Information Management" nameID="5">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Ship from Stock and Debit (EC)" nameID="5D">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Request Ship From Stock And Debit Authorization" nameID="5D1">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Request Ship From Stock And Debit Authorization" nameID="RequestShipFromStockAndDebitAuthorization_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Ship From Stock And Debit Authorization Request" nameID="InitiateShipFromStockAndDebitAuthorizationRequest" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Ship From Stock And Debit Authorization Request" nameID="ShipFromStockAndDebitAuthorizationRequest_DE" businessDocument='//BusinessDocument[@name="Ship From Stock And Debit Authorization Request"]' businessDocumentIDREF="PIP5D1ShipFromStockAndDebitAuthorizationRequest" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Initiate Ship From Stock And Debit Authorization Confirmation" nameID="InitiateShipFromStockAndDebitAuthorizationConfirmation" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H">
+						<DocumentEnvelope name="Ship From Stock And Debit Authorization Confirmation" nameID="ShipFromStockAndDebitAuthorizationConfirmation_DE" businessDocument='//BusinessDocument[@name="Ship From Stock And Debit Authorization Confirmation"]' businessDocumentIDREF="PIP5D1ShipFromStockAndDebitAuthorizationConfirmation" isAuthenticated="persistent" isConfidential="transient" isPositiveResponse="true" isTamperDetectable="persistent"/>
+					</RespondingBusinessActivity>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Request Ship From Stock And Debit Authorization" nameID="RequestShipFromStockAndDebitAuthorization_BC" initiatingRoleIDREF="ProductDistributorID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Product Distributor" nameID="ProductDistributorID"/>
+					<Role name="Product Supplier" nameID="ProductSupplierID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Request Ship From Stock And Debit Authorization"]' toBusinessStateIDREF="PIP5D1RequestShipFromStockAndDebitAuthorization"/>
+					<BusinessTransactionActivity name="Request Ship From Stock And Debit Authorization" nameID="RequestShipFromStockAndDebitAuthorization_BTA" businessTransaction='//BusinessTransaction[@name="Request Ship From Stock And Debit Authorization"]' businessTransactionIDREF="RequestShipFromStockAndDebitAuthorization_BT" fromRole='../Role[@name="ProductDistributor"]' fromRoleIDREF="ProductDistributorID" toRole='../Role[@name="ProductSupplier"]' toRoleIDREF="ProductSupplierID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT24H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Request Ship From Stock And Debit Authorization -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="RequestShipFromStockAndDebitAuthorization"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Request Ship From Stock And Debit Authorization-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Ship From Stock And Debit Authorization"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

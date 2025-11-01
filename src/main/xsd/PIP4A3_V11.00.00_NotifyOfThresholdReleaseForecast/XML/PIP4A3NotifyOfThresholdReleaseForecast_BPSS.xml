@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 10/29/07 -->
+<ProcessSpecification name="PIP4A3NotifyOfThresholdReleaseForecast" nameID="urn:rosettanet:specification:interchange:PIP4A3:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The "Notify of Threshold Release Forecast" Partner Interface Process (PIP) supports a process in which a forecast owner sends an order forecast to a forecast recipient. The threshold release forecast contains product demand information (planning demand), current product inventory levels (on-hand quantity), and target product inventory levels (minimum/maximum). The forecast also contains optional shipment receipt information.</Documentation>
+	<BusinessDocument name="Threshold Release Forecast Notification" nameID="PIP4A3ThresholdReleaseForecastNotification" specificationLocation="urn:rosettanet:specification:interchange:ThresholdReleaseForecastNotification:xsd:schema:02.01">
+		<Documentation>Contains detailed order forecast information and references required to identify this forecast instance in the forecast cycle. Forecast quantity (as qualified by type) is projected at the product level for a certain location, customer and timeframe, and </Documentation>
+	</BusinessDocument>
+	<Package name="Inventory Management" nameID="4">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Collaborative Forecasting" nameID="4A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Threshold Release Forecast" nameID="4A3">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Threshold Release Forecast" nameID="NotifyOfThresholdReleaseForecast_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Threshold Release Forecast Notification" nameID="InitiateThresholdReleaseForecastNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Threshold Release Forecast Notification" nameID="ThresholdReleaseForecastNotification_DE" businessDocument='//BusinessDocument[@name="Threshold Release Forecast Notification"]' businessDocumentIDREF="PIP4A3ThresholdReleaseForecastNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Threshold Release Forecast Notification" nameID="ProcessThresholdReleaseForecastNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Threshold Release Forecast" nameID="NotifyOfThresholdReleaseForecast_BC" initiatingRoleIDREF="ForecastOwnerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Forecast Owner" nameID="ForecastOwnerID"/>
+					<Role name="Forecast Recipient" nameID="ForecastRecipientID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Threshold Release Forecast"]' toBusinessStateIDREF="PIP4A3NotifyOfThresholdReleaseForecast"/>
+					<BusinessTransactionActivity name="Notify Of Threshold Release Forecast" nameID="NotifyOfThresholdReleaseForecast_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Threshold Release Forecast"]' businessTransactionIDREF="NotifyOfThresholdReleaseForecast_BT" fromRole='../Role[@name="ForecastOwner"]' fromRoleIDREF="ForecastOwnerID" toRole='../Role[@name="ForecastRecipient"]' toRoleIDREF="ForecastRecipientID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM:  Success Condition for  Notify Of Threshold Release Forecast-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Threshold Release Forecast"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Notify Of Threshold Release Forecast -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Threshold Release Forecast"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>
+<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->

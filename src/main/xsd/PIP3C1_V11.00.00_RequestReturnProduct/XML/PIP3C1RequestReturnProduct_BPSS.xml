@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<ProcessSpecification name="PIP3C1RequestReturnProduct" nameID="urn:rosettanet:specification:interchange:PIP3C1:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a party to notify the OEM of a product return or request authorization to return a product to a supplier. The message exchanges enable a provider/supplier to respond to the return product request.</Documentation>
+	<!--REM: Return Product Request Document-->
+	<BusinessDocument name="Return Product Request" nameID="PIP3C1ReturnProductRequest" specificationLocation="urn:rosettanet:specification:interchange:ReturnProductRequest:xsd:schema:01.01">
+		<Documentation>Contains product information including product identification, purchase and/or sales order information.</Documentation>
+	</BusinessDocument>
+	<!--REM: Return Product Confirmation Document-->
+	<BusinessDocument name="Return Product Confirmation" nameID="PIP3C1ReturnProductConfirmation" specificationLocation="urn:rosettanet:specification:interchange:ReturnProductConfirmation:xsd:schema:01.01">
+		<Documentation>Contains return location information, and/or RMA information or rejection reason.</Documentation>
+	</BusinessDocument>
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Returns and Finance" nameID="3C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Request Return Product" nameID="3C1">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Request Return Product" nameID="RequestReturnProduct_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Return Product Request" nameID="InitiateReturnProductRequest" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT1H" retryCount="3">
+						<DocumentEnvelope name="Return Product Request" nameID="ReturnProductRequest_DE" businessDocument='//BusinessDocument[@name="Return Product Request"]' businessDocumentIDREF="PIP3C1ReturnProductRequest" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Initiate Return Product Confirmation" nameID="InitiateReturnProductConfirmation" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT1H">
+						<DocumentEnvelope name="Return Product Confirmation" nameID="ReturnProductConfirmation_DE" businessDocument='//BusinessDocument[@name="Return Product Confirmation"]' businessDocumentIDREF="PIP3C1ReturnProductConfirmation" isAuthenticated="persistent" isConfidential="transient" isPositiveResponse="true" isTamperDetectable="persistent"/>
+					</RespondingBusinessActivity>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Request Return Product" nameID="RequestReturnProduct_BC" initiatingRoleIDREF="ReturnRequesterID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist in Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Authorized and Non-Repudiated</Documentation>
+					<Documentation>The PIP End State is comprised of the following conditions: a. Acknowledgement of Receipt Exist in Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Return Requester" nameID="ReturnRequesterID"/>
+					<Role name="Return Provider" nameID="ReturnProviderID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Request Return Product"]' toBusinessStateIDREF="PIP3C1RequestReturnProduct"/>
+					<BusinessTransactionActivity name="Request Return Product" nameID="RequestReturnProduct_BTA" businessTransaction='//BusinessTransaction[@name="Request Return Product"]' businessTransactionIDREF="RequestReturnProduct_BT" fromRole='../Role[@name="ReturnRequester"]' fromRoleIDREF="ReturnRequesterID" toRole='../Role[@name="ReturnProvider"]' toRoleIDREF="ReturnProviderID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT1H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Request Return Product-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Return Product"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Request Return Product -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Return Product"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

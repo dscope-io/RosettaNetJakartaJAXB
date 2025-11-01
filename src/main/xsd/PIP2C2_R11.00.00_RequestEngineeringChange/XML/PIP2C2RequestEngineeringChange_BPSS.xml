@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by Hussam (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.01 on 05/16/12 -->
+<ProcessSpecification name="PIP2C2RequestEngineeringChange" nameID="urn:rosettanet:specification:interchange:PIP2C2:xml:bpss:r11_00" version="R11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a party proposing an engineering change (change requester) to send an engineering change request to a change review forum, and the change review forum to respond to the request.</Documentation>
+	<!--REM: Engineering Change Request Document-->
+	<BusinessDocument name="Engineering Change Request" nameID="PIP2C2EngineeringChangeRequest" specificationLocation="urn:rosettanet:specification:interchange:EngineeringChangeRequest:xsd:schema:01.00">
+		<Documentation>Contains the necessary information for a stakeholder to convey a need for consideration of engineering action. This document is simply a request for a possible engineering action and not an instruction for change.</Documentation>
+	</BusinessDocument>
+	<!--REM: Engineering Change Confirmation Document-->
+	<BusinessDocument name="Engineering Change Confirmation" nameID="PIP2C2EngineeringChangeConfirmation" specificationLocation="urn:rosettanet:specification:interchange:EngineeringChangeConfirmation:xsd:schema:01.00">
+		<Documentation>Contains the disposition for the requested engineering change. It contains the Engineering Change proprietary request number, response code that could be approve, reject or pending, and appropriate comments.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Introduction" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Engineering Change Management" nameID="2C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Request Engineering Change" nameID="2C2">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Request Engineering Change" nameID="RequestEngineeringChange_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Engineering Change Request" nameID="InitiateEngineeringChangeRequest" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Engineering Change Request" nameID="EngineeringChangeRequest_DE" businessDocument='//BusinessDocument[@name="Engineering Change Request"]' businessDocumentIDREF="PIP2C2EngineeringChangeRequest" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Initiate Engineering Change Confirmation" nameID="InitiateEngineeringChangeConfirmation" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H">
+						<DocumentEnvelope name="Engineering Change Confirmation" nameID="EngineeringChangeConfirmation_DE" businessDocument='//BusinessDocument[@name="Engineering Change Confirmation"]' businessDocumentIDREF="PIP2C2EngineeringChangeConfirmation" isAuthenticated="persistent" isConfidential="transient" isPositiveResponse="true" isTamperDetectable="persistent"/>
+					</RespondingBusinessActivity>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Request Engineering Change" nameID="RequestEngineeringChange_BC" initiatingRoleIDREF="ChangeRequesterID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, and Valid Non-Repudiated and Authorized. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, and Valid b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Change Requester" nameID="ChangeRequesterID"/>
+					<Role name="Change Review Forum" nameID="ChangeReviewForumID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Request Engineering Change"]' toBusinessStateIDREF="2C2RequestEngineeringChange"/>
+					<BusinessTransactionActivity name="Request Engineering Change" nameID="RequestEngineeringChange_BTA" businessTransaction='//BusinessTransaction[@name="Request Engineering Change"]' businessTransactionIDREF="RequestEngineeringChange_BT" fromRole='../Role[@name="Change Requester"]' fromRoleIDREF="ChangeRequesterID" toRole='../Role[@name="Change Review Forum"]' toRoleIDREF="ChangeReviewForumID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT24H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Request Engineering Change -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Engineering Change"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Request Engineering Change-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Engineering Change"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

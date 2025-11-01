@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 07/25/07 -->
+<ProcessSpecification name="PIP5D3DistributeOpenShipFromStockAndDebitAuthorizationStatus" nameID="urn:rosettanet:specification:interchange:PIP5D3:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The "Distribute Open Ship from Stock and Debit Authorization Status" Partner Interface Process (PIP®) enables a Product Supplier to send a Product Distributor a detailed report (list) of existing Open Ship from Stock and Debit Authorizations.</Documentation>
+	<BusinessDocument name="Open Ship From Stock And Debit Authorization Status Distribution" nameID="PIP5D3OpenShipFromStockAndDebitAuthorizationStatusDistribution" specificationLocation="urn:rosettanet:specification:interchange:OpenShipFromStockAndDebitAuthorizationStatusDistribution:xsd:schema:01.00">
+		<Documentation>This is a master-status Notification of an existing Ship from Stock and Debit Authorization that contains: single or multiple distributor branch(es), single or multiple end customers, all related debit authorization numbers, rejection reasons, part and pricing information, quoted quantity, remaining quantity, critical dates and authorization status code.</Documentation>
+	</BusinessDocument>
+	<Package name="Marketing Information Management" nameID="5">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Ship from Stock and Debit (EC)" nameID="5D">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Distribute Open Ship From Stock And Debit Authorization Status" nameID="5D3">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Distribute Open Ship From Stock And Debit Authorization Status" nameID="DistributeOpenShipFromStockAndDebitAuthorizationStatus_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Open Ship From Stock And Debit Authorization Status Distribution" nameID="InitiateOpenShipFromStockAndDebitAuthorizationStatusDistribution" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Open Ship From Stock And Debit Authorization Status Distribution" nameID="OpenShipFromStockAndDebitAuthorizationStatusDistribution_DE" businessDocument='//BusinessDocument[@name="Open Ship From Stock And Debit Authorization Status Distribution"]' businessDocumentIDREF="PIP5D3OpenShipFromStockAndDebitAuthorizationStatusDistribution" isAuthenticated="none" isConfidential="transient" isTamperDetectable="none"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Open Ship From Stock And Debit Authorization Status Distribution" nameID="ProcessOpenShipFromStockAndDebitAuthorizationStatusDistribution"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Distribute Open Ship From Stock And Debit Authorization Status" nameID="DistributeOpenShipFromStockAndDebitAuthorizationStatus_BC" initiatingRoleIDREF="ProductSupplierID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System and Valid</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System and Valid b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Product Supplier" nameID="ProductSupplierID"/>
+					<Role name="Product Distributor" nameID="ProductDistributorID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Distribute Open Ship From Stock And Debit Authorization Status"]' toBusinessStateIDREF="PIP5D3DistributeOpenShipFromStockAndDebitAuthorizationStatus"/>
+					<BusinessTransactionActivity name="Distribute Open Ship From Stock And Debit Authorization Status" nameID="DistributeOpenShipFromStockAndDebitAuthorizationStatus_BTA" businessTransaction='//BusinessTransaction[@name="Distribute Open Ship From Stock And Debit Authorization Status"]' businessTransactionIDREF="DistributeOpenShipFromStockAndDebitAuthorizationStatus_BT" fromRole='../Role[@name="ProductSupplier"]' fromRoleIDREF="ProductSupplierID" toRole='../Role[@name="ProductDistributor"]' toRoleIDREF="ProductDistributorID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Distribute Open Ship From Stock And Debit Authorization Status-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Open Ship From Stock And Debit Authorization Status"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Distribute Open Ship From Stock And Debit Authorization Status -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Open Ship From Stock And Debit Authorization Status"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

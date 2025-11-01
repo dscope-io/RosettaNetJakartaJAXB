@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with RosettaNet XSD2ALL 2.3.8 on Wed Jul 25 15:45:57 SGT 2007 -->
+<RegistrationStatusDistribution xmlns="urn:rosettanet:specification:interchange:RegistrationStatusDistribution:xsd:schema:01.00" xmlns:ddp="urn:rosettanet:specification:domain:Marketing:Disposition:xsd:codelist:01.02" xmlns:ddrn="urn:rosettanet:specification:domain:Marketing:DesignRegistrationNotification:xsd:codelist:01.02" xmlns:ddwsr="urn:rosettanet:specification:domain:Marketing:DesignWinStatusReason:xsd:codelist:01.03" xmlns:dgrc="urn:rosettanet:specification:domain:Marketing:GeographicRegionCode:xsd:codelist:01.02" xmlns:dmk="urn:rosettanet:specification:domain:Marketing:xsd:schema:02.12" xmlns:dpms="urn:rosettanet:specification:domain:Marketing:ProjectMarketSegment:xsd:codelist:01.02" xmlns:dps="urn:rosettanet:specification:domain:Marketing:ProjectStatus:xsd:codelist:01.02" xmlns:drcl="urn:rosettanet:specification:domain:Marketing:RegistrationComplexityLevel:xsd:codelist:01.02" xmlns:dril="urn:rosettanet:specification:domain:Marketing:RegistrationInvolvementLevel:xsd:codelist:01.02" xmlns:drsc="urn:rosettanet:specification:domain:Marketing:RegistrationStatusCode:xsd:codelist:01.03" xmlns:ift="urn:rosettanet:specification:interchange:FileTransmission:xsd:codelist:01.00" xmlns:rat="urn:rosettanet:specification:domain:Shared:AmountType:xsd:codelist:01.02" xmlns:ri="urn:rosettanet:specification:domain:Shared:Interval:xsd:codelist:01.01" xmlns:rict="urn:rosettanet:specification:domain:Shared:InvoiceChargeType:xsd:codelist:01.02" xmlns:rmat="urn:rosettanet:specification:domain:Shared:MonetaryAmountType:xsd:codelist:01.01" xmlns:rpmt="urn:rosettanet:specification:domain:Shared:PaymentType:xsd:codelist:01.01" xmlns:rptc="urn:rosettanet:specification:domain:Shared:PricingTypeCode:xsd:codelist:01.03" xmlns:rrt="urn:rosettanet:specification:domain:Shared:RateType:xsd:codelist:01.01" xmlns:rwtc="urn:rosettanet:specification:domain:Shared:WarrantyType:xsd:codelist:01.01" xmlns:sft="urn:rosettanet:specification:system:TPIRFileType:xsd:codelist:01.01" xmlns:sha="urn:rosettanet:specification:domain:Shared:xsd:schema:01.10" xmlns:ssdh="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.16" xmlns:uat="urn:rosettanet:specification:universal:AbstractType:xsd:schema:01.02" xmlns:uc="urn:rosettanet:specification:universal:Country:xsd:codelist:01.02" xmlns:uci="urn:rosettanet:specification:universal:ContactInformation:xsd:schema:01.03" xmlns:ucr="urn:rosettanet:specification:universal:Currency:xsd:codelist:01.02" xmlns:ud="urn:rosettanet:specification:universal:Dates:xsd:schema:01.03" xmlns:udc="urn:rosettanet:specification:universal:Document:xsd:schema:01.08" xmlns:udct="urn:rosettanet:specification:universal:DocumentType:xsd:codelist:01.09" xmlns:udt="urn:rosettanet:specification:universal:DataType:xsd:schema:01.04" xmlns:ul="urn:rosettanet:specification:universal:Language:xsd:codelist:01.02" xmlns:ulc="urn:rosettanet:specification:universal:Locations:xsd:schema:01.04" xmlns:ume="urn:rosettanet:specification:universal:MonetaryExpression:xsd:schema:01.04" xmlns:umtq="urn:rosettanet:specification:universal:MimeTypeQualifier:xsd:codelist:01.02" xmlns:updi="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04" xmlns:upi="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.12" xmlns:upri="urn:rosettanet:specification:universal:ProcessRoleIdentifier:xsd:codelist:01.08" xmlns:urss="urn:rosettanet:specification:system:xml:1.0" xmlns:utt="urn:rosettanet:specification:universal:TaxType:xsd:codelist:01.02" xmlns:uuom="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.03" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:rosettanet:specification:interchange:RegistrationStatusDistribution:xsd:schema:01.00
+..\..\XML\Interchange\RegistrationStatusDistribution_01_00.xsd">
+	<DesignStatusNotification>
+		<DesignRegistrationInformation>
+			<EngagementDate>
+				<ud:Begin>2002-02-15</ud:Begin>
+				<ud:End>2002-02-15</ud:End>
+			</EngagementDate>
+			<PreviousSubmission>
+				<udc:DateTime>2005-02-15T08:30:00+08:00</udc:DateTime>
+				<udct:DocumentType agency="RosettaNet" codeListVersion="01.08" identifier="DocumentType">ARA</udct:DocumentType>
+				<udc:Identifier>String</udc:Identifier>
+				<udc:Line>String</udc:Line>
+				<udc:Revision>String</udc:Revision>
+				<udc:SubLine>String</udc:SubLine>
+			</PreviousSubmission>
+			<ProjectInformation>
+				<AssemblyInformation>
+					<Comments>String</Comments>
+					<dmk:DemandCreatorTrackingIdentifier>String</dmk:DemandCreatorTrackingIdentifier>
+					<dmk:DesignRegistrationIdentification>
+						<dmk:DesignRegistrationIdentifier>String</dmk:DesignRegistrationIdentifier>
+						<ddrn:DesignRegistrationNotification agency="RosettaNet" codeListVersion="01.01" identifier="DesignRegistrationNotification">CAN</ddrn:DesignRegistrationNotification>
+						<dmk:DesignRegistrationRevision>String</dmk:DesignRegistrationRevision>
+						<dmk:EffectiveRegistrationDate>
+							<ud:Begin>2002-02-15</ud:Begin>
+							<ud:End>2002-02-15</ud:End>
+						</dmk:EffectiveRegistrationDate>
+					</dmk:DesignRegistrationIdentification>
+					<dmk:GeographicRegion>
+						<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country">MG</uc:Country>
+						<dgrc:GeographicRegionCode agency="RosettaNet" codeListVersion="01.01" identifier="GeographicRegionCode">GLO</dgrc:GeographicRegionCode>
+					</dmk:GeographicRegion>
+					<PartInformation>
+						<dmk:DemandCreatorTrackingIdentifier>String</dmk:DemandCreatorTrackingIdentifier>
+						<dmk:DesignRegistrationIdentification>
+							<dmk:DesignRegistrationIdentifier>String</dmk:DesignRegistrationIdentifier>
+							<ddrn:DesignRegistrationNotification agency="RosettaNet" codeListVersion="01.01" identifier="DesignRegistrationNotification">CAN</ddrn:DesignRegistrationNotification>
+							<dmk:DesignRegistrationRevision>String</dmk:DesignRegistrationRevision>
+							<dmk:EffectiveRegistrationDate>
+								<ud:Begin>2002-02-15</ud:Begin>
+								<ud:End>2002-02-15</ud:End>
+							</dmk:EffectiveRegistrationDate>
+						</dmk:DesignRegistrationIdentification>
+						<dmk:GeographicRegion>
+							<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country">MG</uc:Country>
+							<dgrc:GeographicRegionCode agency="RosettaNet" codeListVersion="01.01" identifier="GeographicRegionCode">GLO</dgrc:GeographicRegionCode>
+						</dmk:GeographicRegion>
+						<ProductProviderInformation>
+							<Comments>String</Comments>
+							<FieldApplicationEngineer>
+								<uci:Contact>String</uci:Contact>
+								<uci:Email>String</uci:Email>
+								<uci:Fax>String</uci:Fax>
+								<uci:Identifier>String</uci:Identifier>
+								<uci:Phone>String</uci:Phone>
+							</FieldApplicationEngineer>
+							<SalesRepresentative>
+								<uci:Contact>String</uci:Contact>
+								<uci:Email>String</uci:Email>
+								<uci:Fax>String</uci:Fax>
+								<uci:Identifier>String</uci:Identifier>
+								<uci:Phone>String</uci:Phone>
+							</SalesRepresentative>
+							<TrackingIdentifier>String</TrackingIdentifier>
+						</ProductProviderInformation>
+						<dmk:CoreProductRegistration>
+							<ulc:AlternativeIdentifier>
+								<ulc:Authority>String</ulc:Authority>
+								<ulc:Identifier>String</ulc:Identifier>
+							</ulc:AlternativeIdentifier>
+							<udc:BusinessDocumentReference>
+								<udc:DateTime>2005-02-15T08:30:00+08:00</udc:DateTime>
+								<udct:DocumentType agency="RosettaNet" codeListVersion="01.08" identifier="DocumentType">ARA</udct:DocumentType>
+								<udc:Identifier>String</udc:Identifier>
+								<udc:Line>String</udc:Line>
+								<udc:Revision>String</udc:Revision>
+								<udc:SubLine>String</udc:SubLine>
+							</udc:BusinessDocumentReference>
+							<dmk:DebitAuthorizationNumber>String</dmk:DebitAuthorizationNumber>
+							<dmk:DesignCompetitorInformation>
+								<dmk:Comment>String</dmk:Comment>
+								<dmk:Name>String</dmk:Name>
+								<dmk:PartNumber>String</dmk:PartNumber>
+								<dmk:TargetResaleAmount>
+									<rat:AmountType agency="RosettaNet" codeListVersion="01.01" identifier="AmountType">FRE</rat:AmountType>
+									<ume:FinancialAmount>
+										<ume:Amount>3.14159</ume:Amount>
+										<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency">USD</ucr:Currency>
+									</ume:FinancialAmount>
+									<rict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType">ALC</rict:InvoiceChargeType>
+									<rmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.00" identifier="MonetaryAmountType">CRE</rmat:MonetaryAmountType>
+								</dmk:TargetResaleAmount>
+							</dmk:DesignCompetitorInformation>
+							<dmk:DeviceProductRegistration>
+								<ulc:AlternativeIdentifier>
+									<ulc:Authority>String</ulc:Authority>
+									<ulc:Identifier>String</ulc:Identifier>
+								</ulc:AlternativeIdentifier>
+								<udc:BusinessDocumentReference>
+									<udc:DateTime>2005-02-15T08:30:00+08:00</udc:DateTime>
+									<udct:DocumentType agency="RosettaNet" codeListVersion="01.08" identifier="DocumentType">ARA</udct:DocumentType>
+									<udc:Identifier>String</udc:Identifier>
+									<udc:Line>String</udc:Line>
+									<udc:Revision>String</udc:Revision>
+									<udc:SubLine>String</udc:SubLine>
+								</udc:BusinessDocumentReference>
+								<dmk:DebitAuthorizationNumber>String</dmk:DebitAuthorizationNumber>
+								<dmk:DesignCompetitorInformation>
+									<dmk:Comment>String</dmk:Comment>
+									<dmk:Name>String</dmk:Name>
+									<dmk:PartNumber>String</dmk:PartNumber>
+									<dmk:TargetResaleAmount>
+										<rat:AmountType agency="RosettaNet" codeListVersion="01.01" identifier="AmountType">FRE</rat:AmountType>
+										<ume:FinancialAmount>
+											<ume:Amount>3.14159</ume:Amount>
+											<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency">USD</ucr:Currency>
+										</ume:FinancialAmount>
+										<rict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType">ALC</rict:InvoiceChargeType>
+										<rmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.00" identifier="MonetaryAmountType">CRE</rmat:MonetaryAmountType>
+									</dmk:TargetResaleAmount>
+								</dmk:DesignCompetitorInformation>
+								<dmk:IsDeveloperToolKit>true</dmk:IsDeveloperToolKit>
+								<dmk:IsPartSelected>true</dmk:IsPartSelected>
+								<dmk:IsRegisterable>true</dmk:IsRegisterable>
+								<dmk:MinimumOrderQuantity>3.14159</dmk:MinimumOrderQuantity>
+								<updi:ProductIdentification>
+									<updi:ProductName>String</updi:ProductName>
+									<updi:Revision>String</updi:Revision>
+									<ulc:AlternativeIdentifier>
+										<ulc:Authority>String</ulc:Authority>
+										<ulc:Identifier>String</ulc:Identifier>
+									</ulc:AlternativeIdentifier>
+								</updi:ProductIdentification>
+								<dmk:ProductProviderLeadDescription>String</dmk:ProductProviderLeadDescription>
+								<dmk:ProductProviderLeadTrackingIdentifier>String</dmk:ProductProviderLeadTrackingIdentifier>
+								<dmk:RegistrationBonusPercent>999999</dmk:RegistrationBonusPercent>
+								<dmk:RegistrationStatus>
+									<ddwsr:DesignWinStatusReason agency="RosettaNet" codeListVersion="01.03" identifier="DesignWinStatusReason">CAP</ddwsr:DesignWinStatusReason>
+									<dmk:DesignWinStatusReasonCodeExplanation>String</dmk:DesignWinStatusReasonCodeExplanation>
+									<drsc:RegistrationStatusCode agency="RosettaNet" codeListVersion="01.02" identifier="RegistrationStatusCode">APP</drsc:RegistrationStatusCode>
+									<dmk:RegistrationStatusDate>2002-02-15</dmk:RegistrationStatusDate>
+								</dmk:RegistrationStatus>
+								<dmk:SuggestedResalePrice>
+									<sha:MonetaryAmount>
+										<rat:AmountType agency="RosettaNet" codeListVersion="01.01" identifier="AmountType">FRE</rat:AmountType>
+										<ume:FinancialAmount>
+											<ume:Amount>3.14159</ume:Amount>
+											<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency">USD</ucr:Currency>
+										</ume:FinancialAmount>
+										<rict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType">ALC</rict:InvoiceChargeType>
+										<rmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.00" identifier="MonetaryAmountType">CRE</rmat:MonetaryAmountType>
+									</sha:MonetaryAmount>
+									<rptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.02" identifier="PricingTypeCode">ACR</rptc:PricingTypeCode>
+								</dmk:SuggestedResalePrice>
+								<updi:TextualDescription>
+									<updi:Detail>String</updi:Detail>
+									<updi:Primary>String</updi:Primary>
+									<updi:Summary>String</updi:Summary>
+								</updi:TextualDescription>
+								<dmk:UnitPrice>
+									<sha:MonetaryAmount>
+										<rat:AmountType agency="RosettaNet" codeListVersion="01.01" identifier="AmountType">FRE</rat:AmountType>
+										<ume:FinancialAmount>
+											<ume:Amount>3.14159</ume:Amount>
+											<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency">USD</ucr:Currency>
+										</ume:FinancialAmount>
+										<rict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType">ALC</rict:InvoiceChargeType>
+										<rmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.00" identifier="MonetaryAmountType">CRE</rmat:MonetaryAmountType>
+									</sha:MonetaryAmount>
+									<rptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.02" identifier="PricingTypeCode">ACR</rptc:PricingTypeCode>
+								</dmk:UnitPrice>
+							</dmk:DeviceProductRegistration>
+							<dmk:IsDeveloperToolKit>true</dmk:IsDeveloperToolKit>
+							<dmk:MinimumOrderQuantity>3.14159</dmk:MinimumOrderQuantity>
+							<updi:ProductIdentification>
+								<updi:ProductName>String</updi:ProductName>
+								<updi:Revision>String</updi:Revision>
+								<ulc:AlternativeIdentifier>
+									<ulc:Authority>String</ulc:Authority>
+									<ulc:Identifier>String</ulc:Identifier>
+								</ulc:AlternativeIdentifier>
+							</updi:ProductIdentification>
+							<dmk:ProductProviderLeadDescription>String</dmk:ProductProviderLeadDescription>
+							<dmk:ProductProviderLeadTrackingIdentifier>String</dmk:ProductProviderLeadTrackingIdentifier>
+							<dmk:RegistrationBonusPercent>999999</dmk:RegistrationBonusPercent>
+							<dmk:RegistrationStatus>
+								<ddwsr:DesignWinStatusReason agency="RosettaNet" codeListVersion="01.03" identifier="DesignWinStatusReason">CAP</ddwsr:DesignWinStatusReason>
+								<dmk:DesignWinStatusReasonCodeExplanation>String</dmk:DesignWinStatusReasonCodeExplanation>
+								<drsc:RegistrationStatusCode agency="RosettaNet" codeListVersion="01.02" identifier="RegistrationStatusCode">APP</drsc:RegistrationStatusCode>
+								<dmk:RegistrationStatusDate>2002-02-15</dmk:RegistrationStatusDate>
+							</dmk:RegistrationStatus>
+							<dmk:SuggestedResalePrice>
+								<sha:MonetaryAmount>
+									<rat:AmountType agency="RosettaNet" codeListVersion="01.01" identifier="AmountType">FRE</rat:AmountType>
+									<ume:FinancialAmount>
+										<ume:Amount>3.14159</ume:Amount>
+										<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency">USD</ucr:Currency>
+									</ume:FinancialAmount>
+									<rict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType">ALC</rict:InvoiceChargeType>
+									<rmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.00" identifier="MonetaryAmountType">CRE</rmat:MonetaryAmountType>
+								</sha:MonetaryAmount>
+								<rptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.02" identifier="PricingTypeCode">ACR</rptc:PricingTypeCode>
+							</dmk:SuggestedResalePrice>
+							<updi:TextualDescription>
+								<updi:Detail>String</updi:Detail>
+								<updi:Primary>String</updi:Primary>
+								<updi:Summary>String</updi:Summary>
+							</updi:TextualDescription>
+							<dmk:UnitPrice>
+								<sha:MonetaryAmount>
+									<rat:AmountType agency="RosettaNet" codeListVersion="01.01" identifier="AmountType">FRE</rat:AmountType>
+									<ume:FinancialAmount>
+										<ume:Amount>3.14159</ume:Amount>
+										<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency">USD</ucr:Currency>
+									</ume:FinancialAmount>
+									<rict:InvoiceChargeType agency="RosettaNet" codeListVersion="01.01" identifier="InvoiceChargeType">ALC</rict:InvoiceChargeType>
+									<rmat:MonetaryAmountType agency="RosettaNet" codeListVersion="01.00" identifier="MonetaryAmountType">CRE</rmat:MonetaryAmountType>
+								</sha:MonetaryAmount>
+								<rptc:PricingTypeCode agency="RosettaNet" codeListVersion="01.02" identifier="PricingTypeCode">ACR</rptc:PricingTypeCode>
+							</dmk:UnitPrice>
+						</dmk:CoreProductRegistration>
+					</PartInformation>
+					<ProductProviderLead>
+						<Description>String</Description>
+						<TrackingIdentifier>String</TrackingIdentifier>
+					</ProductProviderLead>
+					<drcl:RegistrationComplexityLevel agency="RosettaNet" codeListVersion="01.01" identifier="RegistrationComplexityLevel">AAV</drcl:RegistrationComplexityLevel>
+					<dril:RegistrationInvolvementLevel agency="RosettaNet" codeListVersion="01.01" identifier="RegistrationInvolvementLevel">AAV</dril:RegistrationInvolvementLevel>
+					<dmk:RegistrationStatus>
+						<ddwsr:DesignWinStatusReason agency="RosettaNet" codeListVersion="01.03" identifier="DesignWinStatusReason">CAP</ddwsr:DesignWinStatusReason>
+						<dmk:DesignWinStatusReasonCodeExplanation>String</dmk:DesignWinStatusReasonCodeExplanation>
+						<drsc:RegistrationStatusCode agency="RosettaNet" codeListVersion="01.02" identifier="RegistrationStatusCode">APP</drsc:RegistrationStatusCode>
+						<dmk:RegistrationStatusDate>2002-02-15</dmk:RegistrationStatusDate>
+					</dmk:RegistrationStatus>
+				</AssemblyInformation>
+				<dmk:DesignProjectDescription>
+					<dmk:ProjectComments>String</dmk:ProjectComments>
+					<dpms:ProjectMarketSegment agency="RosettaNet" codeListVersion="01.01" identifier="ProjectMarketSegment">UCT</dpms:ProjectMarketSegment>
+					<dmk:ProjectName>String</dmk:ProjectName>
+					<updi:TextualDescription>
+						<updi:Detail>String</updi:Detail>
+						<updi:Primary>String</updi:Primary>
+						<updi:Summary>String</updi:Summary>
+					</updi:TextualDescription>
+				</dmk:DesignProjectDescription>
+				<ProductProviderLead>
+					<Description>String</Description>
+					<TrackingIdentifier>String</TrackingIdentifier>
+				</ProductProviderLead>
+				<dmk:ProjectIdentifier>String</dmk:ProjectIdentifier>
+				<dps:ProjectStatus agency="RosettaNet" codeListVersion="01.01" identifier="ProjectStatus">CON</dps:ProjectStatus>
+			</ProjectInformation>
+			<RenewableStatus>
+				<dmk:IsRegistrationRenewable>true</dmk:IsRegistrationRenewable>
+				<dmk:RegistrationRenewableDate>2002-02-15</dmk:RegistrationRenewableDate>
+			</RenewableStatus>
+			<SubmissionDate>2002-02-15</SubmissionDate>
+		</DesignRegistrationInformation>
+		<ift:FileTransmission agency="RosettaNet" codeListVersion="01.00" identifier="FileTransmission">CON</ift:FileTransmission>
+	</DesignStatusNotification>
+	<ssdh:DocumentHeader>
+		<ssdh:CorrelationInformation>
+			<ssdh:ContractInformation>
+				<ssdh:ContractIdentifier>String</ssdh:ContractIdentifier>
+				<ssdh:ContractType>String</ssdh:ContractType>
+			</ssdh:ContractInformation>
+			<ssdh:RequestingDocumentInformation>
+				<ssdh:BusinessProcessInstanceIdentifier>String</ssdh:BusinessProcessInstanceIdentifier>
+				<ssdh:RequestingDocumentCreationDateTime>2005-02-15T08:30:00+08:00</ssdh:RequestingDocumentCreationDateTime>
+				<ssdh:RequestingDocumentInstanceIdentifier>String</ssdh:RequestingDocumentInstanceIdentifier>
+				<ssdh:ResponseDateTime>2005-02-15T08:30:00+08:00</ssdh:ResponseDateTime>
+			</ssdh:RequestingDocumentInformation>
+		</ssdh:CorrelationInformation>
+		<ssdh:DocumentInformation>
+			<ssdh:Creation>2005-02-15T08:30:00+08:00</ssdh:Creation>
+			<ssdh:DocumentIdentification>
+				<ssdh:Identifier>String</ssdh:Identifier>
+				<ssdh:Type>String</ssdh:Type>
+				<ssdh:StandardDocumentIdentification>
+					<ssdh:Standard>String</ssdh:Standard>
+					<ssdh:Version>String</ssdh:Version>
+				</ssdh:StandardDocumentIdentification>
+			</ssdh:DocumentIdentification>
+			<ssdh:DocumentManifest>
+				<ssdh:ManifestItem>
+					<ssdh:Description>String</ssdh:Description>
+					<ssdh:Language agency="RosettaNet" codeListVersion="01.01" identifier="Language">EN</ssdh:Language>
+					<ssdh:Length>100</ssdh:Length>
+					<ssdh:MimeTypeQualifier agency="RosettaNet" codeListVersion="01.01" identifier="MimeTypeQualifier">application/activemessage</ssdh:MimeTypeQualifier>
+					<ssdh:UniversalResourceIdentifier>String</ssdh:UniversalResourceIdentifier>
+				</ssdh:ManifestItem>
+				<ssdh:MultipleType>true</ssdh:MultipleType>
+				<ssdh:NumberOfItems>100</ssdh:NumberOfItems>
+			</ssdh:DocumentManifest>
+			<ssdh:DocumentSecurity>
+				<ssdh:NonRepudiableReceipt>true</ssdh:NonRepudiableReceipt>
+				<ssdh:PersistentEncryption>true</ssdh:PersistentEncryption>
+				<ssdh:PersistentSignature>true</ssdh:PersistentSignature>
+			</ssdh:DocumentSecurity>
+		</ssdh:DocumentInformation>
+		<ssdh:HeaderVersion>String</ssdh:HeaderVersion>
+		<ssdh:Receiver>
+			<ssdh:BusinessServiceInformation>
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Receiver>
+		<ssdh:Sender>
+			<ssdh:BusinessServiceInformation>
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Sender>
+	</ssdh:DocumentHeader>
+</RegistrationStatusDistribution>

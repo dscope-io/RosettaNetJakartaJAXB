@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:rosettanet:specification:interchange:CertificateOfAnalysisNotification:xsd:schema:02.06"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:urss="urn:rosettanet:specification:system:xml:1.0"
+    xmlns:tns="urn:rosettanet:specification:interchange:CertificateOfAnalysisNotification:xsd:schema:02.06"
+    xmlns:dlv="urn:rosettanet:specification:domain:Design:Level:xsd:codelist:01.03"
+    xmlns:dds="urn:rosettanet:specification:domain:Design:xsd:schema:02.23"
+    xmlns:uuom="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.05"
+    xmlns:iclt="urn:rosettanet:specification:interchange:ControlLimitType:xsd:codelist:1.0"
+    xmlns:uc="urn:rosettanet:specification:universal:Country:xsd:codelist:01.02"
+    xmlns:dm="urn:rosettanet:specification:domain:Manufacturing:xsd:schema:02.28"
+    xmlns:ilt="urn:rosettanet:specification:interchange:LotType:xsd:codelist:01.00"
+    xmlns:udc="urn:rosettanet:specification:universal:Document:xsd:schema:01.12"
+    xmlns:idit="urn:rosettanet:specification:interchange:DocumentIssuanceType:xsd:codelist:02.00"
+    xmlns:ip="urn:rosettanet:specification:interchange:Plan:xsd:codelist:02.00"
+    xmlns:iph="urn:rosettanet:specification:interchange:Phase:xsd:codelist:01.00"
+    xmlns:upd="urn:rosettanet:specification:universal:PhysicalDimension:xsd:schema:01.07"
+    xmlns:upi="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.16"
+    xmlns:ssdh="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.24" elementFormDefault="qualified" attributeFormDefault="unqualified" version="02.06">
+    <xs:import namespace="urn:rosettanet:specification:domain:Design:Level:xsd:codelist:01.03" schemaLocation="../Domain/Design/CodeList/RN_Level_01_03.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:domain:Design:xsd:schema:02.23" schemaLocation="../Domain/Design/Design_02_23.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.05" schemaLocation="../Universal/CodeList/RN_UnitOfMeasure_01_05.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:interchange:ControlLimitType:xsd:codelist:1.0" schemaLocation="CodeList/RN_ControlLimitType.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:universal:Country:xsd:codelist:01.02" schemaLocation="../Universal/CodeList/ISO_Country_01_02.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:domain:Manufacturing:xsd:schema:02.28" schemaLocation="../Domain/Manufacturing/Manufacturing_02_28.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:interchange:LotType:xsd:codelist:01.00" schemaLocation="CodeList/RN_LotType_01_00.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:universal:Document:xsd:schema:01.12" schemaLocation="../Universal/Document_01_12.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:interchange:DocumentIssuanceType:xsd:codelist:02.00" schemaLocation="CodeList/RN_DocumentIssuanceType_02_00.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:interchange:Plan:xsd:codelist:02.00" schemaLocation="CodeList/RN_Plan_02_00.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:interchange:Phase:xsd:codelist:01.00" schemaLocation="CodeList/RN_Phase_01_00.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:universal:PhysicalDimension:xsd:schema:01.07" schemaLocation="../Universal/PhysicalDimension_01_07.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.16" schemaLocation="../Universal/PartnerIdentification_01_16.xsd"></xs:import>
+    <xs:import namespace="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.24" schemaLocation="../System/StandardDocumentHeader_01_24.xsd"></xs:import>
+    <xs:annotation>
+        <xs:documentation>
+            <urss:Copyright>© 2008 RosettaNet. All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without the inclusion of this copyright notice. Any derivative works must cite the copyright notice. Any public redistribution or sale of this publication or derivative works requires prior written permission of the publisher.</urss:Copyright>
+            <urss:Disclaimer>RosettaNet makes no representation about the suitability of this work for any purpose or regarding any claims made by products which use it. It is provided as is without expressed or implied warranty.</urss:Disclaimer>
+            <urss:Program>Certificate of Analysis Notification Milestone Program</urss:Program>
+            <urss:Purpose>Provides the RosettaNet 2A17 Certificate of Analysis Notification classes.</urss:Purpose>
+        </xs:documentation>
+        <xs:appinfo>
+            <urss:CreationDate>2007-09-24</urss:CreationDate>
+            <urss:LastUpdatedDate>2016-03-03</urss:LastUpdatedDate>
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:element name="CertificateOfAnalysisNotification" type="tns:CertificateOfAnalysisNotificationType"></xs:element>
+    <xs:complexType name="CertificateOfAnalysisType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes the content of a Certificate of Analysis.</urss:Definition>
+                <urss:CreationDate>2007-09-24</urss:CreationDate>
+                <urss:LastUpdatedDate>2013-07-01</urss:LastUpdatedDate>
+                <urss:TypeVersion>02.03</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="udc:BusinessDocumentReference" maxOccurs="unbounded" minOccurs="0"></xs:element>
+            <xs:element name="Comment" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the free form text of comment.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="idit:DocumentIssuanceType"></xs:element>
+            <xs:element name="LotIdentification" type="tns:LotIdentificationType" maxOccurs="unbounded"></xs:element>
+            <xs:element name="Material" type="tns:MaterialType"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="CertificateOfAnalysisNotificationType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The message wrapper for 2A17.</urss:Definition>
+                <urss:CreationDate>2007-09-24</urss:CreationDate>
+                <urss:LastUpdatedDate>2013-09-04</urss:LastUpdatedDate>
+                <urss:TypeVersion>02.04</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CertificateOfAnalysis" type="tns:CertificateOfAnalysisType" maxOccurs="unbounded"></xs:element>
+            <xs:element ref="ssdh:DocumentHeader" minOccurs="0"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="CharacteristicType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes chemical or physical properties of components or contaminants and its related testing information.</urss:Definition>
+                <urss:CreationDate>2007-09-24</urss:CreationDate>
+                <urss:LastUpdatedDate>2013-07-01</urss:LastUpdatedDate>
+                <urss:TypeVersion>02.02</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Code" type="xs:positiveInteger">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the characteristics of a material.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CodeDescription" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the free form text description of characteristic.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="QualityData" type="tns:QualityDataType" maxOccurs="unbounded"></xs:element>
+            <xs:element name="SubCode" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>For Characteristics that have many variations, the SubCode will provide a more detailed definition of the exact test or parameter that is being reported. The receiver's back-end system may require more information than is given by the characteristic alone to correctly process the associated quality value. The SubCode provides the additional information required for correct processing of the submitted value.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SubCodeDescription" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The textual description of the SubCode. In the event that a message fails validation or is rejected by the receiver's system due to the value held in SubCode, the information provided in SubCode Description may aid in diagnosing and correcting the error.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TestingData" type="tns:TestingDataType"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="ContainerType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes the container of the package.</urss:Definition>
+                <urss:CreationDate>2007-09-24</urss:CreationDate>
+                <urss:LastUpdatedDate>2013-07-01</urss:LastUpdatedDate>
+                <urss:TypeVersion>02.02</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Material" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the material of construction of a container.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Size" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the capacity of the container.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Type" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object the type of container.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="uuom:UnitOfMeasure" minOccurs="0"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="LotIdentificationType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>This object identifies a lot which associates the product with a specific group of products with some similar attributes.</urss:Definition>
+                <urss:CreationDate>2007-12-29</urss:CreationDate>
+                <urss:LastUpdatedDate>2013-07-01</urss:LastUpdatedDate>
+                <urss:TypeVersion>02.02</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CountryOfOrigin" type="uc:CountryType" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the country where the product originates.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="dm:LotQuantity" maxOccurs="unbounded" minOccurs="0"></xs:element>
+            <xs:element ref="ilt:LotType" minOccurs="0"></xs:element>
+            <xs:element name="Primary" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The primary lot identifier (Lot Number).</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Secondary" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The secondary lot identifier (Batch Number).</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="MaterialType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes a material. Material is the combination of substance &amp; package e.g. substance is Helium, package is container &amp; valve used.</urss:Definition>
+                <urss:CreationDate>2007-09-24</urss:CreationDate>
+                <urss:LastUpdatedDate>2013-07-01</urss:LastUpdatedDate>
+                <urss:TypeVersion>02.01</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="AnalysisDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the date the analytical qualifications testing of the material is completed.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Characteristic" type="tns:CharacteristicType" maxOccurs="unbounded"></xs:element>
+            <xs:element name="ContainerIdentifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the unique identifier for a material's container.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Description" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the free form text description of a material.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Grade" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the grade of the material which is used by the material provider to succinctly describe the material quality. The grade code is typically comprised of many more attributes which specifically define the material's quality.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ManufacturedBy" type="upi:FullPartnerType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>Manufactured by - The party who creates, processes or produces goods especially in large quantities and by means of industrial machines.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ManufacturedDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the date the substance was packaged as a final shippable material.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Packaging" type="tns:PackagingType" minOccurs="0"></xs:element>
+            <xs:element name="PartNumber" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the unique identifier for a material.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Requirement" type="tns:RequirementType"></xs:element>
+            <xs:element name="SerialIdentifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the unique serialized identifier for a material.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="MaterialSpecificationType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes the material's specification.</urss:Definition>
+                <urss:CreationDate>2007-09-24</urss:CreationDate>
+                <urss:LastUpdatedDate>2008-02-12</urss:LastUpdatedDate>
+                <urss:TypeVersion>02.00</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Date" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the date that the last material specification revision was implemented.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Identifier" type="xs:string">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object identifying the material specification.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RevisionNumber" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the number of times a buyer has altered of modified the details which describe the material specification number.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="PackagingType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes the packaging of a substance.</urss:Definition>
+                <urss:CreationDate>2007-09-24</urss:CreationDate>
+                <urss:LastUpdatedDate>2013-07-01</urss:LastUpdatedDate>
+                <urss:TypeVersion>02.02</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="BackFillGas" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents a substance added to the container which is not part of the finished end item but is necessary to extract or remove the finished item from the container.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ChemicalFormula" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the chemical formula for the substance.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Container" type="tns:ContainerType" minOccurs="0"></xs:element>
+            <xs:element name="Pressure" type="upd:MeasureType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The business document must be able to express the pressure of an object.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Valve" type="tns:ValveType" minOccurs="0"></xs:element>
+            <xs:element ref="upd:Volume" minOccurs="0"></xs:element>
+            <xs:element ref="upd:Weight" maxOccurs="unbounded" minOccurs="0"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="QualityDataType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that captures value and type for Quality Data (Testing Result) for a material's characteristic.</urss:Definition>
+                <urss:CreationDate>2008-02-12</urss:CreationDate>
+                <urss:LastUpdatedDate>2016-03-03</urss:LastUpdatedDate>
+                <urss:TypeVersion>01.03</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="iclt:ControlLimitType" minOccurs="0"></xs:element>
+            <xs:element name="LowerControlLimit" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The minimum value of the parameter the supplier expects to see during normal operations; many expected to be one-sided and bounded at 0.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LowerTolerance" type="dds:ToleranceType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>A lower tolerance expressed as a non-negative real number to be subtracted from the current value and as a non-negative percent of the current value that served as lower specification limit.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MethodDetectionLimit" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The lowest high-confidence analytical reading for the parameter of interest; values below this level may be reported but have less precision.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="NegativeTolerance" type="dds:ToleranceType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>A negative tolerance expressed as a non-negative real number to be subtracted from the current value and as a non-negative percent of the current value.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PositiveTolerance" type="dds:ToleranceType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>A positive tolerance expressed as a non-negative real number to be added to the current value and as a non-negative percent of the current value.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Result" type="xs:string">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The actual or defined quality value associated with a specific measurement.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Type" type="dlv:LevelType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>A qualifier describing the kind of measurement a value represents.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="uuom:UnitOfMeasure"></xs:element>
+            <xs:element name="UpperControlLimit" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>The maximum value of the parameter the supplier expects to see during normal operations; some may be one-sided or bounded at 100%.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="UpperTolerance" type="dds:ToleranceType" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>A upper tolerance expressed as a non-negative real number to be subtracted from the current value and as a non-negative percent of the current value that served as upper specification limit.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="RequirementType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes the buyer's requirement.</urss:Definition>
+                <urss:CreationDate>2007-09-24</urss:CreationDate>
+                <urss:LastUpdatedDate>2008-02-12</urss:LastUpdatedDate>
+                <urss:TypeVersion>02.00</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="BuyerProjectedExpiryDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the buyer-specified projected date when material shelf life expires.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MaterialSpecification" type="tns:MaterialSpecificationType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+            <xs:element name="MaterialType" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the information provided by the buyer to the seller used to categorize materials.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OverallShelfLife" type="xs:duration" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object is provided by the buyer to the seller that defines the overall useable life of the material from the receiver's perspective.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PartNumber" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the identifier provided by the buyer to the seller of the identifier used within the buyer's system to define a material.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RemainingShelfLife" type="xs:duration" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object is provided by the buyer to the seller that defines the useable life of the material from the buyer's perspective which must remain on the material when the material is received by the buyer.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RevisionNumber" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the number of times a buyer has altered of modified the details which describe their part number.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SellerProjectedExpiryDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the seller-specified projected date when material shelf life expires.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="SampleType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes the sampling for a material's characteristic.</urss:Definition>
+                <urss:CreationDate>2007-09-24</urss:CreationDate>
+                <urss:LastUpdatedDate>2008-02-12</urss:LastUpdatedDate>
+                <urss:TypeVersion>02.00</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ip:Plan"></xs:element>
+            <xs:element name="Size" type="xs:string">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This objects represents the size of the sample used to report the quality data of the characteristic.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="TestingDataType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes the testing data for a material's characteristic.</urss:Definition>
+                <urss:CreationDate>2007-09-24</urss:CreationDate>
+                <urss:LastUpdatedDate>2008-05-14</urss:LastUpdatedDate>
+                <urss:TypeVersion>02.01</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Method" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the analytical technique used to measure the quality data of the characteristic.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="iph:Phase" minOccurs="0"></xs:element>
+            <xs:element name="Repetition" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the number of times that the test was run on the sample or multiple samples of the same lot.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Sample" type="tns:SampleType" minOccurs="0"></xs:element>
+            <xs:element name="SourceComponent" type="xs:positiveInteger" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the component that is the source of the individual characteristics. In the case of mixtures (muliple chemical substances combined into a single material), the testing equipment cannot test some aspects of the substance (the material characteristic; the test) when is it combined. Therefore, the tests must be run on the individual substances prior to combination. The source component identifies each of those substances on which the tests where run. The same test can be run on each of the individual substances as well as on the combined substance.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SourceComponentDescription" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>In the event that a message fails validation or is rejected by the receiver's system due to the value held in Source Component, the information provided in Source Component Description may aid in diagnosing and correcting the error.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="ValveType">
+        <xs:annotation>
+            <xs:appinfo>
+                <urss:Definition>The collection of business properties that describes the control device or tap of the package.</urss:Definition>
+                <urss:CreationDate>2007-09-24</urss:CreationDate>
+                <urss:LastUpdatedDate>2008-02-12</urss:LastUpdatedDate>
+                <urss:TypeVersion>02.00</urss:TypeVersion>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="GovernanceBody" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the regulatory body to which the valve conforms.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Material" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the material of construction of the valve which may be part of the package.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OutletConnection" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the valve type that defines the specific threaded connection of the valve which is used to convey the proper fitting to extract product from a container.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RFOSize" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <urss:Definition>This object represents the size of the Restrictive Flow Orifice inserted into a valve.</urss:Definition>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="schemaVersion" type="xs:token"></xs:attribute>
+    </xs:complexType>
+</xs:schema>

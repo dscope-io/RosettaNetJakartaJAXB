@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by RosettaNet (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 10/23/07 -->
+<ProcessSpecification name="PIP6C4NotifyOfCaseConfirmation" nameID="urn:rosettanet:specification:interchange:PIP6C4:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP will provide B2B automation for the creation, updating and closing of technical support cases between a case sender (e.i.:service requestor) and a case receiver (e.i.:service provider).</Documentation>
+	<BusinessDocument name="Case Confirmation Notification" nameID="PIP6C4CaseConfirmationNotification" specificationLocation="urn:rosettanet:specification:interchange:CaseConfirmationNotification:xsd:schema:02.02">
+		<Documentation>The Automated Ticketing process will provide B2B automation for the creation, updating and closing of technical support cases between a case sender (i.e.:service requestor) and a case receiver (i.e.:service provider).</Documentation>
+	</BusinessDocument>
+	<Package name="Service and Support" nameID="6">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Technical Support and Service Management" nameID="6C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Case Confirmation" nameID="6C4">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Case Confirmation" nameID="NotifyOfCaseConfirmation_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Case Confirmation Notification" nameID="InitiateCaseConfirmationNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Case Confirmation Notification" nameID="CaseConfirmationNotification_DE" businessDocument='//BusinessDocument[@name="Case Confirmation Notification"]' businessDocumentIDREF="PIP6C4CaseConfirmationNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Case Confirmation Notification" nameID="ProcessCaseConfirmationNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Case Confirmation" nameID="NotifyOfCaseConfirmation_BC" initiatingRoleIDREF="CaseReceiverID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Case Receiver" nameID="CaseReceiverID"/>
+					<Role name="Case Sender" nameID="CaseSenderID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Case Confirmation"]' toBusinessStateIDREF="PIP6C4NotifyOfCaseConfirmation"/>
+					<BusinessTransactionActivity name="Notify Of Case Confirmation" nameID="NotifyOfCaseConfirmation_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Case Confirmation"]' businessTransactionIDREF="NotifyOfCaseConfirmation_BT" fromRole='../Role[@name="CaseReceiver"]' fromRoleIDREF="CaseReceiverID" toRole='../Role[@name="CaseSender"]' toRoleIDREF="CaseSenderID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Notify Of Case Confirmation-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Case Confirmation"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Notify Of Case Confirmation -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Case Confirmation"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

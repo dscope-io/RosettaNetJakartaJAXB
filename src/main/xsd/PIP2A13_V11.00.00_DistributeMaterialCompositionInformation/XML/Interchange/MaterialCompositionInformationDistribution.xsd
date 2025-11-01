@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:rosettanet:specification:interchange:MaterialCompositionInformationDistribution:xsd:schema:1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:urss="urn:rosettanet:specification:system:xml:1.0" xmlns:tns="urn:rosettanet:specification:interchange:MaterialCompositionInformationDistribution:xsd:schema:1.0" xmlns:drnct="urn:rosettanet:specification:domain:Design:ActionCode:xsd:codelist:1.0" xmlns:dsgn="urn:rosettanet:specification:domain:Design:xsd:schema:1.0" xmlns:updtn="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:1.0" xmlns:uptrn="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:1.0" xmlns:sdctr="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:1.0" xmlns:udcmn="urn:rosettanet:specification:universal:Document:xsd:schema:1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:import namespace="urn:rosettanet:specification:domain:Design:ActionCode:xsd:codelist:1.0" schemaLocation="../Domain/Design/CodeList/RN_ActionCode.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:domain:Design:xsd:schema:1.0" schemaLocation="../Domain/Design/Design.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:1.0" schemaLocation="../Universal/ProductIdentification.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:1.0" schemaLocation="../Universal/PartnerIdentification.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:1.0" schemaLocation="../System/StandardDocumentHeader.xsd"/>
+	<xs:import namespace="urn:rosettanet:specification:universal:Document:xsd:schema:1.0" schemaLocation="../Universal/Document.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+			<urss:Copyright>© 2004 - 2005 RosettaNet. All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without the inclusion of this copyright notice. Any derivative works must cite the copyright notice. Any public redistribution or sale of this publication or derivative works requires prior written permission of the publisher.</urss:Copyright>
+			<urss:Disclaimer>RosettaNet makes no representation about the suitability of this work for any purpose or regarding any claims made by products which use it.  It is provided as is without expressed or implied warranty.</urss:Disclaimer>
+			<urss:Program>Material Composition(MatComp) </urss:Program>
+			<urss:Purpose>The purpose of this PIP is to report material composition information within the supply chain companies.</urss:Purpose>
+		</xs:documentation>
+		<xs:appinfo>
+			<urss:CreationDate>08/01/2005</urss:CreationDate>
+			<urss:LastUpdatedDate>08/01/2005</urss:LastUpdatedDate>
+		</xs:appinfo>
+	</xs:annotation>
+	<xs:element name="MaterialCompositionInformationDistribution" type="tns:MaterialCompositionInformationDistributionType"/>
+	<xs:complexType name="MaterialCompositionInformationDistributionType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>A message wrapper or root element for PIP2A13</urss:Definition>
+				<urss:CreationDate>08/01/2005</urss:CreationDate>
+				<urss:LastUpdatedDate>08/01/2005</urss:LastUpdatedDate>
+				<urss:TypeVersion>1.0</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AgreementIdentifier" type="udcmn:BusinessDocumentReferenceType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Known as IDA (Information Distribution Agreement) requirement for the purpose of cross-reference to a specifing line/position in the agreement/contract.
+
+A mutually agreed identifier assgined to the Information Distribution Agreement under which ths information distribution is taking place. Preferable document identifier should be contract (COT).
+</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="sdctr:DocumentHeader"/>
+			<xs:element name="ProductInformation" type="tns:ProductInformationType" maxOccurs="unbounded"/>
+			<xs:element name="ProductInformationHeader" type="tns:ProductInformationHeaderType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="ProductInformationType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of information related to a product or a product family.</urss:Definition>
+				<urss:CreationDate>08/01/2005</urss:CreationDate>
+				<urss:LastUpdatedDate>08/01/2005</urss:LastUpdatedDate>
+				<urss:TypeVersion>1.0</urss:TypeVersion>
+				<urss:Constraint>
+					<st:pattern xmlns:st="http://www.ascc.net/xml/schematron" name="Cardinality2Content">
+						<st:rule context="*">
+							<st:assert test="not (count(ProductInformation/isGeneric) &gt;= 1 and Count(ProductInformation/isGeneric) &lt;= 1) or (normalize-space(ProductInformation/isGeneric)='true')">If the occurence of ProductInformation/isGeneric is between 1 and 1 then the value of ProductInformation/isGeneric MUST be 'true'.</st:assert>
+						</st:rule>
+					</st:pattern>
+				</urss:Constraint>
+				<urss:Constraint>
+					<st:pattern xmlns:st="http://www.ascc.net/xml/schematron" name="Cardinality2Content">
+						<st:rule context="*">
+							<st:assert test="not (count(ProductInformation/KnownPartner) &gt;= 1 and Count(ProductInformation/KnownPartner) &lt;= 1) or (normalize-space(ProductInformation/KnownPartner/ProcessRoleIdentifier)='MFG')">If the occurence of ProductInformation/KnownPartner is between 1 and 1 then the value of ProductInformation/KnownPartner/ProcessRoleIdentifier MUST be 'MFG'.</st:assert>
+						</st:rule>
+					</st:pattern>
+				</urss:Constraint>
+			</xs:appinfo>
+			<xs:documentation>
+				<urss:Constraint>If the occurence of ProductInformation/isGeneric is between 1 and 1 then the value of ProductInformation/isGeneric MUST be 'true'.</urss:Constraint>
+				<urss:Constraint>If the occurence of ProductInformation/KnownPartner is between 1 and 1 then the value of ProductInformation/KnownPartner/ProcessRoleIdentifier MUST be 'MFG'.</urss:Constraint>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="dsgn:DependentCondition" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="DistributionNote" type="dsgn:NoteType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Distribution specific notations. Additonal notation for the distribution, product information, substance or radioactivity.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IsGeneric" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>To identify the subsequent product reporting as a product family (generic) reporting.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="uptrn:KnownPartner" minOccurs="0"/>
+			<xs:element ref="dsgn:Material" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ProductActionCode" type="drnct:ActionCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition> An action code is for each product or product family.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductIdentifier" type="updtn:ProductDescriptionType">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>An exact key-ID for product. Depending on B2B decision it can be one of the following:
+- Notification Sender Product Name
+- Notification Sender Product Number
+- Notification Receiver Product Name
+- Notification Receiver Product Number</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductInformationObject" type="tns:ProductInformationObjectType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="dsgn:ProductMass"/>
+			<xs:element ref="dsgn:Subpart" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="dsgn:Substance" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="ProductInformationHeaderType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>The collection of header information(s) related to one or more product.</urss:Definition>
+				<urss:CreationDate>08/01/2005</urss:CreationDate>
+				<urss:LastUpdatedDate>08/01/2005</urss:LastUpdatedDate>
+				<urss:TypeVersion>1.0</urss:TypeVersion>
+				<urss:Constraint>
+					<st:pattern xmlns:st="http://www.ascc.net/xml/schematron" name="Cardinality2Content">
+						<st:rule context="*">
+							<st:assert test="not (count(ProductInformationHeader) &gt;= 1 and Count(ProductInformationHeader) &lt;= 1) or (normalize-space(ProductInformationHeader/KnownPartner/ProcessRoleIdentifier)='MFG')">If the occurence of ProductInformationHeader is between 1 and 1 then the value of ProductInformationHeader/KnownPartner/ProcessRoleIdentifier MUST be 'MFG'.</st:assert>
+						</st:rule>
+					</st:pattern>
+				</urss:Constraint>
+			</xs:appinfo>
+			<xs:documentation>
+				<urss:Constraint>If the occurence of ProductInformationHeader is between 1 and 1 then the value of ProductInformationHeader/KnownPartner/ProcessRoleIdentifier MUST be 'MFG'.</urss:Constraint>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="uptrn:KnownPartner" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+	<xs:complexType name="ProductInformationObjectType">
+		<xs:annotation>
+			<xs:appinfo>
+				<urss:Definition>A Meta data structure used to describe a logical representation of arbitrary data.  This is also known as Attachments. This will be used as a sub-class subordinate to the ProductInformation data structure.</urss:Definition>
+				<urss:CreationDate>08/01/2005</urss:CreationDate>
+				<urss:LastUpdatedDate>08/01/2005</urss:LastUpdatedDate>
+				<urss:TypeVersion>1.0</urss:TypeVersion>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ContentTypeReference" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>A unique identifier that defines the category of information provided by this ProductInformationObject.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DescriptionNote" type="dsgn:NoteType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>Additonal notation that characterizes or otherwise identifies this ProductInformationObject.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EffectiveDate" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The date when the information becomes effective.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Identifier" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The identifier for a ProductInformationObject unique in the namespace of the notification.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ModificationDate" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The last time a change was made.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="xs:string">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>The name of the ProductInformationObject, also known as Attachment.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PIOActionCode" type="drnct:ActionCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>An action code is for each Product Information Object.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="dsgn:ReferenceLocator" minOccurs="0"/>
+			<xs:element name="Version" type="xs:nonNegativeInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<urss:Definition>An arbitrary identifier indicating a content revision level.</urss:Definition>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="schemaVersion" type="xs:token"/>
+	</xs:complexType>
+</xs:schema>

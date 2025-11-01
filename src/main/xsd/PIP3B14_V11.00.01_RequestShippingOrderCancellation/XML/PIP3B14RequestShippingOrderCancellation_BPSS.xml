@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Compliant with BPSS vers 1.01-->
+<ProcessSpecification name="PIP3B14RequestShippingOrderCancellation" nameID="urn:rosettanet:specification:interchange:PIP3B14:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP supports a process between two of these parties, in which a Shipper cancels a shipping order that has been sent previously to a Shipping Provider.</Documentation>
+	<!--REM: Shipping Order Cancellation Request Document-->
+	<BusinessDocument name="Shipping Order Cancellation Request" nameID="PIP3B14ShippingOrderCancellationRequest" specificationLocation="urn:rosettanet:specification:interchange:ShippingOrderCancellationRequest:xsd:schema:02.00">
+		<Documentation>Contains information requesting cancellation of a previously requested shipping order</Documentation>
+	</BusinessDocument>
+	<!--REM: Shipping Order Cancellation Confirmation Document-->
+	<BusinessDocument name="Shipping Order Cancellation Confirmation" nameID="PIP3B14ShippingOrderCancellationConfirmation" specificationLocation="urn:rosettanet:specification:interchange:ShippingOrderCancellationConfirmation:xsd:schema:02.00">
+		<Documentation>Contains either an acceptance or rejection of the shipping order cancellation request, with status information to support this</Documentation>
+	</BusinessDocument>
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Transportation and Distribution" nameID="3B">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="RequestShippingOrderCancellation" nameID="3B14">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Request Shipping Order Cancellation" nameID="RequestShippingOrderCancellation_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Shipping Order Cancellation Request" nameID="InitiateShippingOrderCancellationRequest" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Shipping Order Cancellation Request" nameID="ShippingOrderCancellationRequest_DE" businessDocument='//BusinessDocument[@name="Shipping Order Cancellation Request"]' businessDocumentIDREF="PIP3B14ShippingOrderCancellationRequest" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Initiate Shipping Order Cancellation Confirmation" nameID="InitiateShippingOrderCancellationConfirmation" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H">
+						<DocumentEnvelope name="Shipping Order Cancellation Confirmation" nameID="ShippingOrderCancellationConfirmation_DE" businessDocument='//BusinessDocument[@name="Shipping Order Cancellation Confirmation"]' businessDocumentIDREF="PIP3B14ShippingOrderCancellationConfirmation" isAuthenticated="persistent" isConfidential="transient" isPositiveResponse="true" isTamperDetectable="persistent"/>
+					</RespondingBusinessActivity>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Request Shipping Order Cancellation" nameID="RequestShippingOrderCancellation_BC" initiatingRoleIDREF="ShipperID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Shipper" nameID="ShipperID"/>
+					<Role name="Shipping Provider" nameID="ShippingProviderID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Request Shipping Order Cancellation"]' toBusinessStateIDREF="PIP3B14RequestShippingOrderCancellation"/>
+					<BusinessTransactionActivity name="Request Shipping Order Cancellation" nameID="RequestShippingOrderCancellation_BTA" businessTransaction='//BusinessTransaction[@name="Request Shipping Order Cancellation"]' businessTransactionIDREF="RequestShippingOrderCancellation_BT" fromRole='../Role[@name="Shipper"]' fromRoleIDREF="ShipperID" toRole='../Role[@name="ShippingProvider"]' toRoleIDREF="ShippingProviderID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT4H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect 
+					business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for Request Shipping Order Cancellation-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Shipping Order Cancellation"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM: Failure Condition for Request Shippping Order Cancellation-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Shipping Order Cancellation"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

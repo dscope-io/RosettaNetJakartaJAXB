@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by RosettaNet (RosettaNet) -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by RosettaNet -->
+<!--Compliant with BPSS vers 1.01-->
+<ProcessSpecification name="PIP3A4RequestPurchaseOrder" nameID="urn:rosettanet:specification:interchange:PIP3A4:xml:bpss:v11_10" version="V11.10" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a buyer to issue a purchase order and obtain a quick response from the provider that acknowledges which of the purchase order product line items are accepted, rejected, or pending</Documentation>
+	<!--REM: Purchase Order Request Document-->
+	<BusinessDocument name="Purchase Order Request" nameID="PIP3A4PurchaseOrderRequest" specificationLocation="urn:rosettanet:specification:interchange:PurchaseOrderRequest:xsd:schema:1.0">
+		<Documentation>The document is an XSD file that specifies the rules for creating the XML document for the business action of requesting a purchase order. The specificationLocation attribute is used for illustrative purposes only.</Documentation>
+	</BusinessDocument>
+	<!--REM: Purchase Order Confirmation Document-->
+	<BusinessDocument name="Purchase Order Confirmation" nameID="PIP3A4PurchaseOrderConfirmation" specificationLocation="urn:rosettanet:specification:interchange:PurchaseOrderConfirmation:xsd:schema:1.0">
+		<Documentation>The document is an XSD file that specifies the rules for creating the XML document for the business action of making a purchase order confirmation. The specificationLocation attribute is used for illustrative purposes only.</Documentation>
+	</BusinessDocument>
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Quote and Order Entry" nameID="3A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="RequestPurchaseOrder" nameID="3A4">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Request Purchase Order" nameID="RequestPurchaseOrder_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Purchase Order Request" nameID="InitiatePurchaseOrderRequest" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Purchase Order Request" nameID="PurchaseOrderRequest_DE" businessDocument='//BusinessDocument[@name="Purchase Order Request"]' businessDocumentIDREF="PIP3A4PurchaseOrderRequest" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Initiate Purchase Order Confirmation" nameID="InitiatePurchaseOrderConfirmation" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H">
+						<DocumentEnvelope name="Purchase Order Confirmation" nameID="PurchaseOrderConfirmation_DE" businessDocument='//BusinessDocument[@name="Purchase Order Confirmation"]' businessDocumentIDREF="PIP3A4PurchaseOrderConfirmation" isAuthenticated="persistent" isConfidential="transient" isPositiveResponse="true" isTamperDetectable="persistent"/>
+					</RespondingBusinessActivity>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Request Purchase Order" nameID="RequestPurchaseOrder_BC" initiatingRoleIDREF="BuyerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Buyer" nameID="BuyerID"/>
+					<Role name="Seller" nameID="SellerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Request Purchase Order"]' toBusinessStateIDREF="PIP3A4RequestPurchaseOrder"/>
+					<BusinessTransactionActivity name="Request Purchase Order" nameID="RequestPurchaseOrder_BTA" businessTransaction='//BusinessTransaction[@name="Request Purchase Order"]' businessTransactionIDREF="RequestPurchaseOrder_BT" fromRole='../Role[@name="Buyer"]' fromRoleIDREF="BuyerID" toRole='../Role[@name="Seller"]' toRoleIDREF="SellerID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT24H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect 
+					business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for Request Purchase Order-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Purchase Order"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM: Failure Condition for Request Purchase Order-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Purchase Order"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

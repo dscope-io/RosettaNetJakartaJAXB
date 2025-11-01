@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Created with RosettaNet XSD2ALL 2.3.8 on Mon Jul 30 08:39:07 SGT 2007 -->
+<ServiceEntitlementStatusResponse xmlns="urn:rosettanet:specification:interchange:ServiceEntitlementStatusResponse:xsd:schema:01.00" xmlns:dfa="urn:rosettanet:specification:domain:Service:FailureAction:xsd:codelist:01.02" xmlns:dflt="urn:rosettanet:specification:domain:Service:FailureType:xsd:codelist:01.02" xmlns:dfm="urn:rosettanet:specification:domain:Service:FailureModifier:xsd:codelist:01.02" xmlns:dfoc="urn:rosettanet:specification:domain:Service:FailureObservedCondition:xsd:codelist:01.02" xmlns:dnc="urn:rosettanet:specification:domain:Service:NotificationCode:xsd:codelist:01.03" xmlns:dos="urn:rosettanet:specification:domain:Service:OperatingSystem:xsd:codelist:01.02" xmlns:drpt="urn:rosettanet:specification:domain:Service:RepairType:xsd:codelist:01.02" xmlns:dsdm="urn:rosettanet:specification:domain:Service:ServiceDeliveryMethod:xsd:codelist:01.02" xmlns:dsv="urn:rosettanet:specification:domain:Service:xsd:schema:02.12" xmlns:dwm="urn:rosettanet:specification:domain:Service:WarrantyMethod:xsd:codelist:01.02" xmlns:dwrp="urn:rosettanet:specification:domain:Service:WarrantyProgram:xsd:codelist:01.02" xmlns:rat="urn:rosettanet:specification:domain:Shared:AmountType:xsd:codelist:01.02" xmlns:ri="urn:rosettanet:specification:domain:Shared:Interval:xsd:codelist:01.01" xmlns:rict="urn:rosettanet:specification:domain:Shared:InvoiceChargeType:xsd:codelist:01.02" xmlns:rmat="urn:rosettanet:specification:domain:Shared:MonetaryAmountType:xsd:codelist:01.01" xmlns:rpmt="urn:rosettanet:specification:domain:Shared:PaymentType:xsd:codelist:01.01" xmlns:rptc="urn:rosettanet:specification:domain:Shared:PricingTypeCode:xsd:codelist:01.03" xmlns:rrt="urn:rosettanet:specification:domain:Shared:RateType:xsd:codelist:01.01" xmlns:rssl="urn:rosettanet:specification:domain:Shared:ShippingServiceLevel:xsd:codelist:01.01" xmlns:rwtc="urn:rosettanet:specification:domain:Shared:WarrantyType:xsd:codelist:01.01" xmlns:sft="urn:rosettanet:specification:system:TPIRFileType:xsd:codelist:01.01" xmlns:sha="urn:rosettanet:specification:domain:Shared:xsd:schema:01.10" xmlns:ssdh="urn:rosettanet:specification:system:StandardDocumentHeader:xsd:schema:01.16" xmlns:uat="urn:rosettanet:specification:universal:AbstractType:xsd:schema:01.02" xmlns:uc="urn:rosettanet:specification:universal:Country:xsd:codelist:01.02" xmlns:uci="urn:rosettanet:specification:universal:ContactInformation:xsd:schema:01.03" xmlns:ucr="urn:rosettanet:specification:universal:Currency:xsd:codelist:01.02" xmlns:ucs="urn:rosettanet:specification:universal:CountrySubdivision:xsd:codelist:01.02" xmlns:ud="urn:rosettanet:specification:universal:Dates:xsd:schema:01.03" xmlns:udt="urn:rosettanet:specification:universal:DataType:xsd:schema:01.04" xmlns:ul="urn:rosettanet:specification:universal:Language:xsd:codelist:01.02" xmlns:ulc="urn:rosettanet:specification:universal:Locations:xsd:schema:01.04" xmlns:ume="urn:rosettanet:specification:universal:MonetaryExpression:xsd:schema:01.04" xmlns:umtq="urn:rosettanet:specification:universal:MimeTypeQualifier:xsd:codelist:01.02" xmlns:updi="urn:rosettanet:specification:universal:ProductIdentification:xsd:schema:01.04" xmlns:upi="urn:rosettanet:specification:universal:PartnerIdentification:xsd:schema:01.12" xmlns:upri="urn:rosettanet:specification:universal:ProcessRoleIdentifier:xsd:codelist:01.08" xmlns:urss="urn:rosettanet:specification:system:xml:1.0" xmlns:utt="urn:rosettanet:specification:universal:TaxType:xsd:codelist:01.02" xmlns:uuom="urn:rosettanet:specification:universal:UnitOfMeasure:xsd:codelist:01.03" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:rosettanet:specification:interchange:ServiceEntitlementStatusResponse:xsd:schema:01.00
+..\..\XML\Interchange\ServiceEntitlementStatusResponse_01_00.xsd">
+	<ssdh:DocumentHeader>
+		<ssdh:CorrelationInformation>
+			<ssdh:ContractInformation>
+				<ssdh:ContractIdentifier>String</ssdh:ContractIdentifier>
+				<ssdh:ContractType>String</ssdh:ContractType>
+			</ssdh:ContractInformation>
+			<ssdh:RequestingDocumentInformation>
+				<ssdh:BusinessProcessInstanceIdentifier>String</ssdh:BusinessProcessInstanceIdentifier>
+				<ssdh:RequestingDocumentCreationDateTime>2005-02-15T08:30:00+08:00</ssdh:RequestingDocumentCreationDateTime>
+				<ssdh:RequestingDocumentInstanceIdentifier>String</ssdh:RequestingDocumentInstanceIdentifier>
+				<ssdh:ResponseDateTime>2005-02-15T08:30:00+08:00</ssdh:ResponseDateTime>
+			</ssdh:RequestingDocumentInformation>
+		</ssdh:CorrelationInformation>
+		<ssdh:DocumentInformation>
+			<ssdh:Creation>2005-02-15T08:30:00+08:00</ssdh:Creation>
+			<ssdh:DocumentIdentification>
+				<ssdh:Identifier>String</ssdh:Identifier>
+				<ssdh:Type>String</ssdh:Type>
+				<ssdh:StandardDocumentIdentification>
+					<ssdh:Standard>String</ssdh:Standard>
+					<ssdh:Version>String</ssdh:Version>
+				</ssdh:StandardDocumentIdentification>
+			</ssdh:DocumentIdentification>
+			<ssdh:DocumentManifest>
+				<ssdh:ManifestItem>
+					<ssdh:Description>String</ssdh:Description>
+					<ssdh:Language agency="RosettaNet" codeListVersion="01.01" identifier="Language">EN</ssdh:Language>
+					<ssdh:Length>100</ssdh:Length>
+					<ssdh:MimeTypeQualifier agency="RosettaNet" codeListVersion="01.01" identifier="MimeTypeQualifier">application/activemessage</ssdh:MimeTypeQualifier>
+					<ssdh:UniversalResourceIdentifier>String</ssdh:UniversalResourceIdentifier>
+				</ssdh:ManifestItem>
+				<ssdh:MultipleType>true</ssdh:MultipleType>
+				<ssdh:NumberOfItems>100</ssdh:NumberOfItems>
+			</ssdh:DocumentManifest>
+			<ssdh:DocumentSecurity>
+				<ssdh:NonRepudiableReceipt>true</ssdh:NonRepudiableReceipt>
+				<ssdh:PersistentEncryption>true</ssdh:PersistentEncryption>
+				<ssdh:PersistentSignature>true</ssdh:PersistentSignature>
+			</ssdh:DocumentSecurity>
+		</ssdh:DocumentInformation>
+		<ssdh:HeaderVersion>String</ssdh:HeaderVersion>
+		<ssdh:Receiver>
+			<ssdh:BusinessServiceInformation>
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Receiver>
+		<ssdh:Sender>
+			<ssdh:BusinessServiceInformation>
+				<ssdh:ActionName>String</ssdh:ActionName>
+				<ssdh:ProcessIdentifier>String</ssdh:ProcessIdentifier>
+				<ssdh:ProcessReference>String</ssdh:ProcessReference>
+				<ssdh:ProcessState>String</ssdh:ProcessState>
+				<ssdh:ServiceName>String</ssdh:ServiceName>
+			</ssdh:BusinessServiceInformation>
+			<uci:ContactInformation>
+				<uci:Contact>String</uci:Contact>
+				<uci:Email>String</uci:Email>
+				<uci:Fax>String</uci:Fax>
+				<uci:Identifier>String</uci:Identifier>
+				<uci:Phone>String</uci:Phone>
+			</uci:ContactInformation>
+			<upi:PartnerIdentification>
+				<upi:PartnerName>String</upi:PartnerName>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</upi:PartnerIdentification>
+		</ssdh:Sender>
+	</ssdh:DocumentHeader>
+	<UnitInformation>
+		<ContractInformation>
+			<ContractType agency="RosettaNet" codeListVersion="01.00" identifier="WarrantyType">CRI</ContractType>
+			<EffectiveDate>2002-02-15</EffectiveDate>
+			<ExpiryDate>2002-02-15</ExpiryDate>
+			<Identifier>String</Identifier>
+			<upi:PartnerDescription>
+				<upi:FullPartner>
+					<uci:ContactInformation>
+						<uci:Contact>String</uci:Contact>
+						<uci:Email>String</uci:Email>
+						<uci:Fax>String</uci:Fax>
+						<uci:Identifier>String</uci:Identifier>
+						<uci:Phone>String</uci:Phone>
+					</uci:ContactInformation>
+					<ulc:Location>
+						<ulc:AlternativeIdentifier>
+							<ulc:Authority>String</ulc:Authority>
+							<ulc:Identifier>String</ulc:Identifier>
+						</ulc:AlternativeIdentifier>
+					</ulc:Location>
+					<upi:PartnerIdentification>
+						<upi:PartnerName>String</upi:PartnerName>
+						<ulc:AlternativeIdentifier>
+							<ulc:Authority>String</ulc:Authority>
+							<ulc:Identifier>String</ulc:Identifier>
+						</ulc:AlternativeIdentifier>
+					</upi:PartnerIdentification>
+					<ulc:PhysicalAddress>
+						<ulc:AddressLine1>String</ulc:AddressLine1>
+						<ulc:AddressLine2>String</ulc:AddressLine2>
+						<ulc:AddressLine3>String</ulc:AddressLine3>
+						<ulc:AddressLine4>String</ulc:AddressLine4>
+						<ulc:AddressLine5>String</ulc:AddressLine5>
+						<ulc:CityName>String</ulc:CityName>
+						<uc:Country agency="RosettaNet" codeListVersion="01.01" identifier="Country">MG</uc:Country>
+						<ucs:CountrySubdivision agency="RosettaNet" codeListVersion="01.01" identifier="CountrySubdivision">MG-T</ucs:CountrySubdivision>
+						<ulc:PostalCode>String</ulc:PostalCode>
+						<ulc:PostOfficeBox>String</ulc:PostOfficeBox>
+					</ulc:PhysicalAddress>
+					<upri:ProcessRoleIdentifier agency="RosettaNet" codeListVersion="01.07" identifier="ProcessRoleIdentifier">ADM</upri:ProcessRoleIdentifier>
+				</upi:FullPartner>
+			</upi:PartnerDescription>
+		</ContractInformation>
+		<EndUser>
+			<uci:Contact>String</uci:Contact>
+			<uci:Email>String</uci:Email>
+			<uci:Fax>String</uci:Fax>
+			<uci:Identifier>String</uci:Identifier>
+			<uci:Phone>String</uci:Phone>
+		</EndUser>
+		<EventInformation>
+			<IsRequestedDeliveryMethodAllowed>true</IsRequestedDeliveryMethodAllowed>
+			<RecommendedDeliveryMethod agency="RosettaNet" codeListVersion="01.01" identifier="ServiceDeliveryMethod">AON</RecommendedDeliveryMethod>
+			<dsv:ReimbursementInformation>
+				<dsv:IsEntitledToReimbursement>true</dsv:IsEntitledToReimbursement>
+				<sha:PaymentInformation>
+					<ume:FinancialAmount>
+						<ume:Amount>3.14159</ume:Amount>
+						<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency">USD</ucr:Currency>
+					</ume:FinancialAmount>
+					<rpmt:PaymentType agency="RosettaNet" codeListVersion="01.00" identifier="PaymentType">CUR</rpmt:PaymentType>
+				</sha:PaymentInformation>
+			</dsv:ReimbursementInformation>
+			<RequestedDeliveryMethod agency="RosettaNet" codeListVersion="01.01" identifier="ServiceDeliveryMethod">AON</RequestedDeliveryMethod>
+			<TotalReimbursement>
+				<ume:Amount>3.14159</ume:Amount>
+				<ucr:Currency agency="RosettaNet" codeListVersion="01.01" identifier="Currency">USD</ucr:Currency>
+			</TotalReimbursement>
+			<dwm:WarrantyMethod agency="RosettaNet" codeListVersion="01.01" identifier="WarrantyMethod">MDA</dwm:WarrantyMethod>
+			<dwrp:WarrantyProgram agency="RosettaNet" codeListVersion="01.01" identifier="WarrantyProgram">DMA</dwrp:WarrantyProgram>
+		</EventInformation>
+		<IsRequiredContractServiceProvider>true</IsRequiredContractServiceProvider>
+		<ManufactureDate>2002-02-15</ManufactureDate>
+		<PartInformation>
+			<IsPartValidForThisUnit>true</IsPartValidForThisUnit>
+			<ManufacturingDateCode>String</ManufacturingDateCode>
+			<updi:ProductIdentification>
+				<updi:ProductName>String</updi:ProductName>
+				<updi:Revision>String</updi:Revision>
+				<ulc:AlternativeIdentifier>
+					<ulc:Authority>String</ulc:Authority>
+					<ulc:Identifier>String</ulc:Identifier>
+				</ulc:AlternativeIdentifier>
+			</updi:ProductIdentification>
+			<dsv:PurchaseDate>2005-02-15T08:30:00+08:00</dsv:PurchaseDate>
+			<StatusInformation>
+				<dnc:NotificationCode agency="RosettaNet" codeListVersion="01.02" identifier="NotificationCode">AME</dnc:NotificationCode>
+				<WarrantyNotes>String</WarrantyNotes>
+			</StatusInformation>
+			<dsv:WarrantyInformation>
+				<dsv:ExpiryDate>2005-02-15T08:30:00+08:00</dsv:ExpiryDate>
+				<dsv:IsEntitledToWarranty>true</dsv:IsEntitledToWarranty>
+				<rssl:ShippingServiceLevel agency="RosettaNet" codeListVersion="01.00" identifier="ShippingServiceLevel">1BD</rssl:ShippingServiceLevel>
+				<rwtc:WarrantyType agency="RosettaNet" codeListVersion="01.00" identifier="WarrantyType">CRI</rwtc:WarrantyType>
+			</dsv:WarrantyInformation>
+		</PartInformation>
+		<ProductClassification>String</ProductClassification>
+		<ProductConfiguration>String</ProductConfiguration>
+		<updi:ProductIdentification>
+			<updi:ProductName>String</updi:ProductName>
+			<updi:Revision>String</updi:Revision>
+			<ulc:AlternativeIdentifier>
+				<ulc:Authority>String</ulc:Authority>
+				<ulc:Identifier>String</ulc:Identifier>
+			</ulc:AlternativeIdentifier>
+		</updi:ProductIdentification>
+		<dsv:PurchaseDate>2005-02-15T08:30:00+08:00</dsv:PurchaseDate>
+		<SerialIdentifier>String</SerialIdentifier>
+		<StatusInformation>
+			<dnc:NotificationCode agency="RosettaNet" codeListVersion="01.02" identifier="NotificationCode">AME</dnc:NotificationCode>
+			<WarrantyNotes>String</WarrantyNotes>
+		</StatusInformation>
+		<dsv:WarrantyInformation>
+			<dsv:ExpiryDate>2005-02-15T08:30:00+08:00</dsv:ExpiryDate>
+			<dsv:IsEntitledToWarranty>true</dsv:IsEntitledToWarranty>
+			<rssl:ShippingServiceLevel agency="RosettaNet" codeListVersion="01.00" identifier="ShippingServiceLevel">1BD</rssl:ShippingServiceLevel>
+			<rwtc:WarrantyType agency="RosettaNet" codeListVersion="01.00" identifier="WarrantyType">CRI</rwtc:WarrantyType>
+		</dsv:WarrantyInformation>
+	</UnitInformation>
+</ServiceEntitlementStatusResponse>

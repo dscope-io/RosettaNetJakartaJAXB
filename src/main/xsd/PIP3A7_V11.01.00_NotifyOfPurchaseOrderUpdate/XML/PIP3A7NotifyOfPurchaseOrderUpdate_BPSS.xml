@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with RosettaNet UML2BPSS 01.01 on 07/19/06 -->
+<ProcessSpecification name="PIP3A7NotifyOfPurchaseOrderUpdate" nameID="urn:rosettanet:specification:interchange:PIP3A7:xml:bpss:v11_01" version="V11.01" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>The Notify of Purchase Order Update Partner Interface Process enables a seller to acknowledge acceptance or rejection of a pending line in a purchase order or a purchase order change. This PIP can also be used by the seller to initiate changes to a purchase order. In the event of seller-initiated changes, the requirement for a response document from the buyer can be predetermined within the Trading Partner Agreement. Typically, the buyer must respond with PIP3A8, Request Purchase Order Change, to accept the proposed changes. If the changes are not accepted, PIP3A9, Request Purchase Order Cancel must be sent by the buyer.</Documentation>
+	<BusinessDocument name="Purchase Order Update Notification" nameID="PIP3A7PurchaseOrderUpdateNotification" specificationLocation="urn:rosettanet:specification:interchange:PurchaseOrderUpdateNotification:xsd:schema:02.02">
+		<Documentation>An unsolicited, formal acknowledgment of the acceptance or rejection of a line item in a Purchase Order or a Purchase Order Change, or as a means to communicate Seller initiated changes to the Purchase Order.</Documentation>
+	</BusinessDocument>
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Quote and Order Entry" nameID="3A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Purchase Order Update" nameID="3A7">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Purchase Order Update" nameID="NotifyOfPurchaseOrderUpdate_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Purchase Order Update Notification" nameID="InitiatePurchaseOrderUpdateNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Purchase Order Update Notification" nameID="PurchaseOrderUpdateNotification_DE" businessDocument='//BusinessDocument[@name="Purchase Order Update Notification"]' businessDocumentIDREF="PIP3A7PurchaseOrderUpdateNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Purchase Order Update Notification" nameID="ProcessPurchaseOrderUpdateNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Purchase Order Update" nameID="NotifyOfPurchaseOrderUpdate_BC" initiatingRoleIDREF="SellerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Seller" nameID="SellerID"/>
+					<Role name="Buyer" nameID="BuyerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Purchase Order Update"]' toBusinessStateIDREF="PIP3A7NotifyOfPurchaseOrderUpdate"/>
+					<BusinessTransactionActivity name="Notify Of Purchase Order Update" nameID="NotifyOfPurchaseOrderUpdate_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Purchase Order Update"]' businessTransactionIDREF="NotifyOfPurchaseOrderUpdate_BT" fromRole='../Role[@name="Seller"]' fromRoleIDREF="SellerID" toRole='../Role[@name="Buyer"]' toRoleIDREF="BuyerID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Notify Of Purchase Order Update-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Purchase Order Update"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Notify Of Purchase Order Update -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Purchase Order Update"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

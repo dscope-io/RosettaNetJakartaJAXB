@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 07/19/07 -->
+<ProcessSpecification name="PIP4B3NotifyOfConsumption" nameID="urn:rosettanet:specification:interchange:PIP4B3:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The purpose of this PIP is to communicate material consumption to the supplier allowing the supplier to trigger invoicing for the consumed material.</Documentation>
+	<BusinessDocument name="Consumption Notification" nameID="PIP4B3ConsumptionNotification" specificationLocation="urn:rosettanet:specification:interchange:ConsumptionNotification:xsd:schema:01.00">
+		<Documentation>Supports consumption notification within a consignment inventory management to communicate material consumption to the supplier allowing the supplier to trigger invoicing for the consumed material.</Documentation>
+	</BusinessDocument>
+	<Package name="Inventory Management" nameID="4">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Inventory Allocation" nameID="4B">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Consumption" nameID="4B3">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Consumption" nameID="NotifyOfConsumption_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Consumption Notification" nameID="InitiateConsumptionNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Consumption Notification" nameID="ConsumptionNotification_DE" businessDocument='//BusinessDocument[@name="Consumption Notification"]' businessDocumentIDREF="PIP4B3ConsumptionNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Consumption Notification" nameID="ProcessConsumptionNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Consumption" nameID="NotifyOfConsumption_BC" initiatingRoleIDREF="ConsumptionNotificationProviderID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Consumption Notification Provider" nameID="ConsumptionNotificationProviderID"/>
+					<Role name="Consumption Notification User" nameID="ConsumptionNotificationUserID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Consumption"]' toBusinessStateIDREF="PIP4B3NotifyOfConsumption"/>
+					<BusinessTransactionActivity name="Notify Of Consumption" nameID="NotifyOfConsumption_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Consumption"]' businessTransactionIDREF="NotifyOfConsumption_BT" fromRole='../Role[@name="ConsumptionNotificationProvider"]' fromRoleIDREF="ConsumptionNotificationProviderID" toRole='../Role[@name="ConsumptionNotificationUser"]' toRoleIDREF="ConsumptionNotificationUserID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Notify Of Consumption-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Consumption"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Notify Of Consumption -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Consumption"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

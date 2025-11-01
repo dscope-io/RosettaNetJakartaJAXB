@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 02/13/08 -->
+<ProcessSpecification name="PIP2A18NotifyOfCertificateOfAnalysisResponse" nameID="urn:rosettanet:specification:interchange:PIP2A18:xml:bpss:v11_01" version="V11.01" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>A Certificate of Analysis Response is provided by the buyer (customer) to the seller (supplier) to confirm the acceptance or rejection on the verification done against the delivered material meeting the agreed upon requirements during the time of delivery or prior to delivery.</Documentation>
+	<BusinessDocument name="Certificate Of Analysis Response Notification" nameID="PIP2A18CertificateOfAnalysisResponseNotification" specificationLocation="urn:rosettanet:specification:interchange:CertificateOfAnalysisResponseNotification:xsd:schema:01.03">
+		<Documentation>A response to provided from the buyer (certificate receiver) to the seller (certificate provider) to allow the verification process complete for the delivered material, whether it meets the agreed upon requirements.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Information" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Preparation for Distribution" nameID="2A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Certificate Of Analysis Response" nameID="2A18">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Certificate Of Analysis Response" nameID="NotifyOfCertificateOfAnalysisResponse_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Certificate Of Analysis Response Notification" nameID="InitiateCertificateOfAnalysisResponseNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Certificate Of Analysis Response Notification" nameID="CertificateOfAnalysisResponseNotification_DE" businessDocument='//BusinessDocument[@name="Certificate Of Analysis Response Notification"]' businessDocumentIDREF="PIP2A18CertificateOfAnalysisResponseNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Certificate Of Analysis Response Notification" nameID="ProcessCertificateOfAnalysisResponseNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Certificate Of Analysis Response" nameID="NotifyOfCertificateOfAnalysisResponse_BC" initiatingRoleIDREF="BuyerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Buyer" nameID="BuyerID"/>
+					<Role name="Seller" nameID="SellerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Certificate Of Analysis Response"]' toBusinessStateIDREF="PIP2A18NotifyOfCertificateOfAnalysisResponse"/>
+					<BusinessTransactionActivity name="Notify Of Certificate Of Analysis Response" nameID="NotifyOfCertificateOfAnalysisResponse_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Certificate Of Analysis Response"]' businessTransactionIDREF="NotifyOfCertificateOfAnalysisResponse_BT" fromRole='../Role[@name="Buyer"]' fromRoleIDREF="BuyerID" toRole='../Role[@name="Seller"]' toRoleIDREF="SellerID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Notify Of Certificate Of Analysis Response-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Certificate Of Analysis Response"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Notify Of Certificate Of Analysis Response -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Certificate Of Analysis Response"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

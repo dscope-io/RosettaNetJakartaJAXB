@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!--Compliant with BPSS vers 1.01-->
+<ProcessSpecification name="PIP3A20NotifyOfPurchaseOrderConfirmation" nameID="urn:rosettanet:specification:interchange:PIP3A20:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a seller to issue a quick response to the buyer that acknowledges which of the purchase order product line items are accepted, rejected, or pending.</Documentation>
+	<BusinessDocument name="Purchase Order Confirmation" nameID="PIP3A20PurchaseOrderConfirmation" specificationLocation="urn:rosettanet:specification:interchange:PurchaseOrderConfirmation:xsd:schema:02.05">
+		<Documentation>Formally confirms the status of line item(s) in a Purchase Order. A Purchase Order line item may have one of the following states: accepted, rejected, or pending.</Documentation>
+	</BusinessDocument>
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Quote and Order Entry" nameID="3A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="NotifyOfPurchaseOrderConfirmation" nameID="3A20">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify of Purchase Order Confirmation" nameID="NotifyOfPurchaseOrderConfirmation_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Purchase Order Confirmation Notification" nameID="InitiatePurchaseOrderConfirmationNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Purchase Order Confirmation Notification" nameID="PurchaseOrderConfirmationNotification_DE" businessDocument='//BusinessDocument[@name="Purchase Order Confirmation Notification"]' businessDocumentIDREF="PIP3A20PurchaseOrderConfirmationNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Purchase Order Confirmation Notification" nameID="ProcessPurchaseOrderConfirmationNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify of Purchase Order Confirmation" nameID="NotifyOfPurchaseOrderConfirmation_BC" initiatingRoleIDREF="SellerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party, Authorized and Approved c. Receiving Partner Exist as Party and Approved d. Business Document Exist In Backend System, Valid and Non-Repudiated</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Seller" nameID="SellerID"/>
+					<Role name="Buyer" nameID="BuyerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify of Purchase Order Confirmation"]' toBusinessStateIDREF="PIP3A20NotifyOfPurchaseOrderConfirmation"/>
+					<BusinessTransactionActivity name="Notify of Purchase Order Confirmation" nameID="NotifyOfPurchaseOrderConfirmation_BTA" businessTransaction='//BusinessTransaction[@name="Notify of Purchase Order Confirmation"]' businessTransactionIDREF="NotifyOfPurchaseOrderConfirmation_BT" fromRole='../Role[@name="Seller"]' fromRoleIDREF="SellerID" toRole='../Role[@name="Buyer"]' toRoleIDREF="BuyerID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT2H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Purchase Order Confirmation"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Purchase Order Confirmation"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

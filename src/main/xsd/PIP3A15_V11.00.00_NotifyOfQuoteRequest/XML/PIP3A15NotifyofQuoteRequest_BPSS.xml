@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by RosettaNet (RosettaNet) -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Lee Ching Hoe (RosettaNet) -->
+<!--Compliant with BPSS vers 1.01-->
+<ProcessSpecification name="PIP3A15NotifyOfQuoteRequest" nameID="urn:rosettanet:specification:interchange:PIP3A15:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>This PIP provides a buyer with quotes and referrals used to select suppliers and prepare purchase orders.</Documentation>
+	<!--REM: Quote Request Document-->
+	<BusinessDocument name="Quote Request" nameID="PIP3A15QuoteRequest" specificationLocation="urn:rosettanet:specification:interchange:QuoteRequest:xsd:schema:1.0">
+		<Documentation>A Buyer's request for a quote sent to a Seller for response.</Documentation>
+	</BusinessDocument>
+	<!--REM: Quote Confirmation Document-->
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Quote and Order Entry" nameID="3A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="NotifyOfQuoteRequest" nameID="3A15">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify of Quote Request" nameID="NotifyOfQuoteRequest_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Quote Request" nameID="InitiateQuoteRequest" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Quote Request" nameID="QuoteRequest_DE" businessDocument='//BusinessDocument[@name="Quote Request"]' businessDocumentIDREF="PIP3A15QuoteRequest" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Initiate Quote Confirmation" nameID="InitiateQuoteConfirmation"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify of Quote Request" nameID="NotifyOfQuoteRequest_BC" initiatingRoleIDREF="BuyerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Buyer" nameID="BuyerID"/>
+					<Role name="Seller" nameID="SellerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify of Quote Request"]' toBusinessStateIDREF="PIP3A15NotifyOfQuoteRequest"/>
+					<BusinessTransactionActivity name="Notify of Quote Request" nameID="NotifyOfQuoteRequest_BTA" businessTransaction='//BusinessTransaction[@name="Notify of Quote Request"]' businessTransactionIDREF="NotifyOfQuoteRequest_BT" fromRole='../Role[@name="Buyer"]' fromRoleIDREF="BuyerID" toRole='../Role[@name="Seller"]' toRoleIDREF="SellerID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT2H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect 
+					business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for Notify of Quote Request-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Quote Request"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM: Failure Condition for Notify of Quote Request-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Quote Request"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

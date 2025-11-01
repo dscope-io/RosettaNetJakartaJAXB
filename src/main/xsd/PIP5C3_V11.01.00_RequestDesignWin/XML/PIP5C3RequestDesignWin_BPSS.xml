@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 07/19/07 -->
+<ProcessSpecification name="PIP5C3RequestDesignWin" nameID="urn:rosettanet:specification:interchange:PIP5C3:xml:bpss:v11_01" version="V11.01" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a party, for whom design registration win metrics have been met, to offer a win claim request, and a provider to respond to the win claim request.</Documentation>
+	<BusinessDocument name="Win Claim Request" nameID="PIP5C3WinClaimRequest" specificationLocation="urn:rosettanet:specification:interchange:WinClaimRequest:xsd:schema:02.01">
+		<Documentation>Contains design registration identifying numbers, win type, quantity and financial value of units shipped, and corresponding invoice numbers.</Documentation>
+	</BusinessDocument>
+	<BusinessDocument name="Win Claim Confirmation" nameID="PIP5C3WinClaimConfirmation" specificationLocation="urn:rosettanet:specification:interchange:WinClaimConfirmation:xsd:schema:02.01">
+		<Documentation>Contains design registration identifying numbers, win type, and a claim status or rejection reason code</Documentation>
+	</BusinessDocument>
+	<Package name="Marketing Information Management" nameID="5">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Design Win Management (EC)" nameID="5C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Request Design Win" nameID="5C3">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Request Design Win" nameID="RequestDesignWin_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Win Claim Request" nameID="InitiateWinClaimRequest" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Win Claim Request" nameID="WinClaimRequest_DE" businessDocument='//BusinessDocument[@name="Win Claim Request"]' businessDocumentIDREF="PIP5C3WinClaimRequest" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Initiate Win Claim Confirmation" nameID="InitiateWinClaimConfirmation" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H">
+						<DocumentEnvelope name="Win Claim Confirmation" nameID="WinClaimConfirmation_DE" businessDocument='//BusinessDocument[@name="Win Claim Confirmation"]' businessDocumentIDREF="PIP5C3WinClaimConfirmation" isAuthenticated="persistent" isConfidential="transient" isPositiveResponse="true" isTamperDetectable="persistent"/>
+					</RespondingBusinessActivity>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Request Design Win" nameID="RequestDesignWin_BC" initiatingRoleIDREF="DemandCreatorID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Exist In Backend System b. Sending Partner Approved, Exist as Party and Authorized c. Receiving Partner Approved, Exist as Party d. Business Document Exist In Backend System, Valid and Non-Repudiated.</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized c. Business Document Approved, Exist in Backend System, Valid and Non-Repudiated ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Demand Creator" nameID="DemandCreatorID"/>
+					<Role name="Product Provider" nameID="ProductProviderID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Request Design Win"]' toBusinessStateIDREF="PIP5C3RequestDesignWin"/>
+					<BusinessTransactionActivity name="Request Design Win" nameID="RequestDesignWin_BTA" businessTransaction='//BusinessTransaction[@name="Request Design Win"]' businessTransactionIDREF="RequestDesignWin_BT" fromRole='../Role[@name="DemandCreator"]' fromRoleIDREF="DemandCreatorID" toRole='../Role[@name="ProductProvider"]' toRoleIDREF="ProductProviderID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT24H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Request Design Win -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Design Win"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Request Design Win-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Design Win"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

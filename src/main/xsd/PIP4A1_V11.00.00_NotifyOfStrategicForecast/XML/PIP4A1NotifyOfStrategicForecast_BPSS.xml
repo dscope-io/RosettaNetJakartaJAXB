@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!--Compliant with BPSS vers 1.01-->
+<ProcessSpecification name="PIP4A1NotifyOfStrategicForecast" nameID="urn:rosettanet:specification:interchange:PIP4A1:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The purpose of this PIP is to communicate informational strategic forecast data to a forecast recipient. The forecast recipient uses this information in their capacity or other planning related activities.</Documentation>
+	<!--REM: Strategic Forecast Notification Document-->
+	<BusinessDocument name="Strategic Forecast Notification" nameID="PIP4A1StrategicForecastNotification" specificationLocation="urn:rosettanet:specification:interchange:StrategicForecastNotification:xsd:schema:02.00">
+		<Documentation>Contains the Forecast Owner's anticipated product demand, and when this demand is expected to occur. Specific Global Trade Item Numbers (GTIN), or more general product groupings can be specified. The source of the demand (promotion, advertisement, etc.) can be identified. Strategic forecast could be in an initial, revised, or final stage.</Documentation>
+	</BusinessDocument>
+	<Package name="Inventory Management" nameID="4">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Collaborative Forecasting" nameID="4A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Strategic Forecast" nameID="4A1">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Strategic Forecast" nameID="NotifyOfStrategicForecast_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Strategic Forecast Notification" nameID="InitiateStrategicForecastNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Strategic Forecast Notification" nameID="StrategicForecastNotification_DE" businessDocument='//BusinessDocument[@name="Strategic Forecast Notification"]' businessDocumentIDREF="PIP4A1StrategicForecastNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Strategic Forecast Notification" nameID="ProcessStrategicForecastNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Strategic Forecast" nameID="NotifyOfStrategicForecast_BC" initiatingRoleIDREF="ForecastOwnerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Approved, Exist as Party, Valid and Authorized c. Receiving Partner Approved and Exist as Party d. Business Document Exist In Backend System, Valid and Non-Repudiated. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Forecast Owner" nameID="ForecastOwnerID"/>
+					<Role name="Forecast Recipient" nameID="ForecastRecipientID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Strategic Forecast"]' toBusinessStateIDREF="PIP4A1NotifyOfStrategicForecast"/>
+					<BusinessTransactionActivity name="Notify Of Strategic Forecast" nameID="NotifyOfStrategicForecast_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Strategic Forecast"]' businessTransactionIDREF="NotifyOfStrategicForecast_BT" fromRole='../Role[@name="ForecastOwner"]' fromRoleIDREF="ForecastOwnerID" toRole='../Role[@name="ForecastRecipient"]' toRoleIDREF="ForecastRecipientID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for Notify Of Strategic Forecast-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Strategic Forecast"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for Notify Of Strategic Forecast-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Strategic Forecast"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

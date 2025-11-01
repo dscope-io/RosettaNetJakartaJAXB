@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 07/08/07 -->
+<ProcessSpecification name="PIP7B6NotifyOfManufacturingWorkOrderReply" nameID="urn:rosettanet:specification:interchange:PIP7B6:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The purpose of this PIP is to allow an optional reply to a previous manufacturing work order request.</Documentation>
+	<BusinessDocument name="Manufacturing Work Order Reply Notification" nameID="PIP7B6ManufacturingWorkOrderReplyNotification" specificationLocation="urn:rosettanet:specification:interchange:ManufacturingWorkOrderReplyNotification:xsd:schema:02.00">
+		<Documentation>Contains the Seller's changes including ability to perform type, quantity and meet schedule of Buyer.</Documentation>
+	</BusinessDocument>
+	<Package name="Manufacturing" nameID="7">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Manage Manufacturing WO &amp; WIP" nameID="7B">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Manufacturing Work Order Reply" nameID="7B6">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Manufacturing Work Order Reply" nameID="NotifyOfManufacturingWorkOrderReply_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Manufacturing Work Order Reply Notification" nameID="InitiateManufacturingWorkOrderReplyNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Manufacturing Work Order Reply Notification" nameID="ManufacturingWorkOrderReplyNotification_DE" businessDocument='//BusinessDocument[@name="Manufacturing Work Order Reply Notification"]' businessDocumentIDREF="PIP7B6ManufacturingWorkOrderReplyNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Manufacturing Work Order Reply Notification" nameID="ProcessManufacturingWorkOrderReplyNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Manufacturing Work Order Reply" nameID="NotifyOfManufacturingWorkOrderReply_BC" initiatingRoleIDREF="SellerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Seller" nameID="SellerID"/>
+					<Role name="Buyer" nameID="BuyerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Manufacturing Work Order Reply"]' toBusinessStateIDREF="PIP7B6NotifyOfManufacturingWorkOrderReply"/>
+					<BusinessTransactionActivity name="Notify Of Manufacturing Work Order Reply" nameID="NotifyOfManufacturingWorkOrderReply_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Manufacturing Work Order Reply"]' businessTransactionIDREF="NotifyOfManufacturingWorkOrderReply_BT" fromRole='../Role[@name="Seller"]' fromRoleIDREF="SellerID" toRole='../Role[@name="Buyer"]' toRoleIDREF="BuyerID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Notify Of Manufacturing Work Order Reply-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Manufacturing Work Order Reply"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Notify Of Manufacturing Work Order Reply -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Manufacturing Work Order Reply"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

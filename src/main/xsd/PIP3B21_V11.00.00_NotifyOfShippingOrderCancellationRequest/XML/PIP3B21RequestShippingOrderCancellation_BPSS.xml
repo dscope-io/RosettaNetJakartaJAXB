@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Hussam El-Leithy (RosettaNet) -->
+<!--Compliant with BPSS vers 1.01-->
+<ProcessSpecification name="PIP3B21NotifyOfShippingOrderCancellationRequest" nameID="urn:rosettanet:specification:interchange:PIP3B21:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP supports a process between two of these parties, in which a Shipper cancels a shipping order that has been sent previously to a Shipping Provider.</Documentation>
+	<BusinessDocument name="Shipping Order Cancellation Request" nameID="PIP3B21ShippingOrderCancellationRequest" specificationLocation="urn:rosettanet:specification:interchange:ShippingOrderCancellationRequest:xsd:schema:01.00">
+		<Documentation>Contains information requesting cancellation of a previously requested shipping order</Documentation>
+	</BusinessDocument>
+	<BusinessDocument name="Shipping Order Cancellation Notification Request" nameID="PIP3B21ShippingOrderCancellationNotificationRequest" specificationLocation="urn:rosettanet:specification:interchange:ShippingOrderCancellationNotificationRequest:xsd:schema:02.02">
+		<Documentation>Contains either an acceptance or rejection of the shipping order cancellation request, with status information to support this</Documentation>
+	</BusinessDocument>
+	<Package name="Order Management" nameID="3">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Transportation and Distribution" nameID="3B">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="NotifyOfShippingOrderCancellationRequest" nameID="3B21">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify of Shipping Order Cancellation Request" nameID="NotifyOfShippingOrderCancellationRequest_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Shipping Order Cancellation Request" nameID="InitiateShippingOrderCancellationRequest" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Shipping Order Cancellation Request Notification" nameID="ShippingOrderCancellationRequestNotification_DE" businessDocument='//BusinessDocument[@name="Shipping Order Cancellation Request Notification"]' businessDocumentIDREF="PIP3B21ShippingOrderCancellationRequestNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Shipping Order Cancellation Request Notification" nameID="ProcessShippingOrderCancellationRequestNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify of Shipping Order Cancellation Request" nameID="NotifyOfShippingOrderCancellationRequest_BC" initiatingRoleIDREF="ShipperID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Shipper" nameID="ShipperID"/>
+					<Role name="Shipping Provider" nameID="ShippingProviderID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify of Shipping Order Cancellation Request"]' toBusinessStateIDREF="PIP3B14NotifyOfShippingOrderCancellationRequest"/>
+					<BusinessTransactionActivity name="Notify of Shipping Order Cancellation Request" nameID="NotifyOfShippingOrderCancellationRequest_BTA" businessTransaction='//BusinessTransaction[@name="Notify of Shipping Order Cancellation Request"]' businessTransactionIDREF="NotifyOfShippingOrderCancellationRequest_BT" fromRole='../Role[@name="Shipper"]' fromRoleIDREF="ShipperID" toRole='../Role[@name="ShippingProvider"]' toRoleIDREF="ShippingProviderID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT2H"/>
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Shipping Order Cancellation Request"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Shipping Order Cancellation Request"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 07/17/07 -->
+<ProcessSpecification name="PIP5C2RequestDesignRegistration" nameID="urn:rosettanet:specification:interchange:PIP5C2:xml:bpss:v11_01" version="V11.01" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP enables a party needing a differentiated product (demand creator) to request that a design registration be created or changed, and a product provider to respond to the request.</Documentation>
+	<BusinessDocument name="Design Registration Request" nameID="PIP5C2DesignRegistrationRequest" specificationLocation="urn:rosettanet:specification:interchange:DesignRegistrationRequest:xsd:schema:02.01">
+		<Documentation>Contains a hierarchically-structured project assembly registration that identifies detailed project/assembly/product part/customer layers. The request also identifies the part, design request business opportunity, and design registration.</Documentation>
+	</BusinessDocument>
+	<BusinessDocument name="Design Registration Confirmation" nameID="PIP5C2DesignRegistrationConfirmation" specificationLocation="urn:rosettanet:specification:interchange:DesignRegistrationConfirmation:xsd:schema:02.01">
+		<Documentation>Confirms the registration status of a Design Registration Request.  The status indicates the stage of the design win process (e.g., accepted, rejected, win, revoked or pended).</Documentation>
+	</BusinessDocument>
+	<Package name="Marketing Information Management" nameID="5">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Design Win Management (EC)" nameID="5C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Request Design Registration" nameID="5C2">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Request Design Registration" nameID="RequestDesignRegistration_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Design Registration Request" nameID="InitiateDesignRegistrationRequest" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Design Registration Request" nameID="DesignRegistrationRequest_DE" businessDocument='//BusinessDocument[@name="Design Registration Request"]' businessDocumentIDREF="PIP5C2DesignRegistrationRequest" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Initiate Design Registration Confirmation" nameID="InitiateDesignRegistrationConfirmation" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H">
+						<DocumentEnvelope name="Design Registration Confirmation" nameID="DesignRegistrationConfirmation_DE" businessDocument='//BusinessDocument[@name="Design Registration Confirmation"]' businessDocumentIDREF="PIP5C2DesignRegistrationConfirmation" isAuthenticated="persistent" isConfidential="transient" isPositiveResponse="true" isTamperDetectable="persistent"/>
+					</RespondingBusinessActivity>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Request Design Registration" nameID="RequestDesignRegistration_BC" initiatingRoleIDREF="DemandCreatorID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Approved, Exist as Party and Valid c. Receiving Partner Approved, Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Demand Creator" nameID="DemandCreatorID"/>
+					<Role name="Product Provider" nameID="ProductProviderID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Request Design Registration"]' toBusinessStateIDREF="PIP5C2RequestDesignRegistration"/>
+					<BusinessTransactionActivity name="Request Design Registration" nameID="RequestDesignRegistration_BTA" businessTransaction='//BusinessTransaction[@name="Request Design Registration"]' businessTransactionIDREF="RequestDesignRegistration_BT" fromRole='../Role[@name="DemandCreator"]' fromRoleIDREF="DemandCreatorID" toRole='../Role[@name="ProductProvider"]' toRoleIDREF="ProductProviderID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT72H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Request Design Registration -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="RequestDesignRegistration"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Request Design Registration-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Design Registration"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

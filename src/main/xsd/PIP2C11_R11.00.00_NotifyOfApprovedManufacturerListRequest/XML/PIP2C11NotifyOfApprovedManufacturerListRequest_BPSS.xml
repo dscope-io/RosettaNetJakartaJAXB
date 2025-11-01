@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by Hussam (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.01 on 05/16/12 -->
+<ProcessSpecification name="PIP2C10NotifyOfApprovedManufacturerListRequest" nameID="urn:rosettanet:specification:interchange:2C10:xml:bpss:r11_00" version="R11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>This PIP is designed to easily and efficiently communicate AML information about the parts that are approved for a product from engineering to manufacturing. It supports the exchange of mappings from internal part numbers to manufacturer part numbers, where “manufacturer” is loosely defined as the last partner to affect a change to the part. It also supports the mapping of these part numbers to supplier part numbers. The AML solves a variety of problems that impact quality, costing and lead times. Quality is improved by specifying precise definitions of the parts that are approved and the suppliers that are approved to supply them. The AML assists in costing and in planning lead times. The AML provides traceability into the process of part acquisition. The AML also allows the Integrator to respond whether it is able to build the product.</Documentation>
+	<!--REM: Shipping Order Request Document-->
+	<BusinessDocument name="Approved Manufacturer List Request Notification" nameID="PIP2C11ApprovedManufacturerListRequestNotification" specificationLocation="urn:rosettanet:specification:interchange:ApprovedManufacturerListRequestNotification:xsd:schema:01.00">
+		<Documentation>Contains Approved Manufacturer List data for a given product. The Approved Manufacturer List specifies manufacturer part numbers for parts from approved manufacturers and approved suppliers for the parts.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Information" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Product Design Information" nameID="2C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify Of Approved Manufacturer List Request" nameID="2C11">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify Of Approved Manufacturer List Request" nameID="NotifyOfApprovedManufacturerListRequest_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Approved Manufacturer List Request Notification" nameID="InitiateApprovedManufacturerListRequestNotification" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Approved Manufacturer List Request Notification" nameID="Approved ManufacturerListRequestNotification_DE" businessDocument='//BusinessDocument[@name="Approved Manufacturer List Request Notification"]' businessDocumentIDREF="PIP2C10ApprovedManufacturerListRequestNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Approved Manufacturer List Request Notification" nameID="ProcessApprovedManufacturerListRequestNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify Of Approved Manufacturer List Request" nameID="NotifyOfApprovedManufacturerListRequest_BC" initiatingRoleIDREF="QualificationOwnerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, and Valid. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, and Valid b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Qualification Owner" nameID="QualificationOwnerID"/>
+					<Role name="Integrator" nameID="IntegratorID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify Of Approved Manufacturer List Request"]' toBusinessStateIDREF="PIP2C10ApprovedManufacturerListNotification"/>
+					<BusinessTransactionActivity name="Notify Of Approved Manufacturer List Request" nameID="NotifyOfApprovedManufacturerListRequest_BTA" businessTransaction='//BusinessTransaction[@name="Notify Of Approved Manufacturer List Request"]' businessTransactionIDREF="NotifyOfApprovedManufacturerListRequest_BT" fromRole='../Role[@name="Qualification Owner"]' fromRoleIDREF="QualificationOwnerID" toRole='../Role[@name="Integrator"]' toRoleIDREF="IntegratorID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Notify Of Approved Manufacturer List-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Approved Manufacturer List Request"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Notify Of Approved Manufacturer List -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify Of Approved Manufacturer List Request"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

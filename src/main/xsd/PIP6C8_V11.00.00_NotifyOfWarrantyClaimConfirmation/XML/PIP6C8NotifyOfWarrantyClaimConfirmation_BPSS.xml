@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<ProcessSpecification name="PIP6C8NotifyOfWarrantyClaimConfirmation" nameID="urn:rosettanet:specification:interchange:PIP6C8:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>This PIP enables an Authorized Service Provider to submit a warranty claim and obtain a quick response from the Warranty Provider that acknowledges the receipt of warranty claim data for work completed on a service event.</Documentation>
+	<BusinessDocument name="Warranty Claim Confirmation Notification" nameID="PIP6C8WarrantyClaimConfirmationNotification" specificationLocation="urn:rosettanet:specification:interchange:WarrantyClaimConfirmationNotification:xsd:schema:01.00">
+		<Documentation>Response concerning the status of a Warranty Claim.</Documentation>
+	</BusinessDocument>
+	<Package name="Service and Support" nameID="6">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Technical Support and Service Management" nameID="6C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify of Warranty Claim Confirmation" nameID="6C8">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify of Warranty Claim Confirmation" nameID="NotifyOfWarrantyClaimConfirmation_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Warranty Claim Request" nameID="InitiateWarrantyClaimRequest" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Warranty Claim Request" nameID="WarrantyClaimRequest_DE" businessDocument='//BusinessDocument[@name="Warranty Claim Request"]' businessDocumentIDREF="PIP6C8WarrantyClaimRequest" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Warranty Claim Confirmation Notification" nameID="ProcessWarrantyClaimConfirmationNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Notify of Warranty Claim Confirmation" nameID="NotifyOfWarrantyClaimConfirmation_BC" initiatingRoleIDREF="AuthorizedServiceProviderID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Approved, Exist as Party, Valid and Authorized c. Receiving Partner Approved and Exist as Party d. Business Document Exist In Backend System, Valid, Non-Repudiated and Authorized</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, Valid and Non-Repudiated b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Warranty Provider" nameID="WarrantyProviderID"/>
+					<Role name="Authorized Service Provider" nameID="AuthorizedServiceProviderID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Notify of Warranty Claim Confirmation"]' toBusinessStateIDREF="PIP6C8NotifyOfWarrantyClaimConfirmation"/>
+					<BusinessTransactionActivity name="Notify of Warranty Claim Confirmation" nameID="NotifyOfWarrantyClaimConfirmation_BTA" businessTransaction='//BusinessTransaction[@name="Notify of Warranty Claim Confirmation"]' businessTransactionIDREF="NotifyOfWarrantyClaimConfirmation_BT" fromRole='../Role[@name="WarrantyProvider"]' fromRoleIDREF="WarrantyProviderID" toRole='../Role[@name="AuthorizedServiceProvider"]' toRoleIDREF="AuthorizedServiceProviderID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT2H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Warranty Claim Confirmation"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Notify of Warranty Claim Confirmation"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

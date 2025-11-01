@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 07/25/07 -->
+<ProcessSpecification name="PIP7C6DistributeProductQualityEventData" nameID="urn:rosettanet:specification:interchange:PIP7C6:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The purpose of the "Distribute Product Quality Event Data" Partner Interface Process  (PIP®) is to enable partners in a manufacturing/repair supply chain to share data related to the quality of services provided.</Documentation>
+	<BusinessDocument name="Product Quality Event Data Distribution" nameID="PIP7C6ProductQualityEventDataDistribution" specificationLocation="urn:rosettanet:specification:interchange:ProductQualityEventDataDistribution:xsd:schema:01.00">
+		<Documentation>Contains information dealing with: Defective products and/or product components, Root cause analysis of defective products/components, and Testing procedures used during defect analysis.</Documentation>
+	</BusinessDocument>
+	<Package name="Manufacturing" nameID="7">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Distribute Manufacturing Information" nameID="7C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Distribute Product Quality Event Data" nameID="7C6">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Distribute Product Quality Event Data" nameID="DistributeProductQualityEventData_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Product Quality Event Data Distribution" nameID="InitiateProductQualityEventDataDistribution" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Product Quality Event Data Distribution" nameID="ProductQualityEventDataDistribution_DE" businessDocument='//BusinessDocument[@name="Product Quality Event Data Distribution"]' businessDocumentIDREF="PIP7C6ProductQualityEventDataDistribution" isAuthenticated="none" isConfidential="transient" isTamperDetectable="none"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Product Quality Event Data Distribution" nameID="ProcessProductQualityEventDataDistribution"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Distribute Product Quality Event Data" nameID="DistributeProductQualityEventData_BC" initiatingRoleIDREF="QualityDataProviderID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System and Valid</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System and Valid b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Quality Data Provider" nameID="QualityDataProviderID"/>
+					<Role name="Quality Data User" nameID="QualityDataUserID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Distribute Product Quality Event Data"]' toBusinessStateIDREF="PIP7C6DistributeProductQualityEventData"/>
+					<BusinessTransactionActivity name="Distribute Product Quality Event Data" nameID="DistributeProductQualityEventData_BTA" businessTransaction='//BusinessTransaction[@name="Distribute Product Quality Event Data"]' businessTransactionIDREF="DistributeProductQualityEventData_BT" fromRole='../Role[@name="QualityDataProvider"]' fromRoleIDREF="QualityDataProviderID" toRole='../Role[@name="QualityDataUser"]' toRoleIDREF="QualityDataUserID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Distribute Product Quality Event Data-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Product Quality Event Data"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Distribute Product Quality Event Data -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Product Quality Event Data"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

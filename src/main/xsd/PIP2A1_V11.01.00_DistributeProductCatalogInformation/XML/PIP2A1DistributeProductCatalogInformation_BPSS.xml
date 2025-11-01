@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.03 on 07/25/07-->
+<ProcessSpecification name="PIP2A1DistributeProductCatalogInformation" nameID="urn:rosettanet:specification:interchange:PIP2A1:xml:bpss:v11_01" version="V11.01" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The purpose of this PIP is to convey a list of one or more products with attributes complete and sufficient to allow the procurement process of the trading partner to take action. It will only include procurement data not technical data.</Documentation>
+	<BusinessDocument name="Product Information Catalog Distribution" nameID="PIP2A1ProductInformationCatalogDistribution" specificationLocation="urn:rosettanet:specification:interchange:ProductInformationCatalogDistribution:xsd:schema:01.01">
+		<Documentation>A product catalog information notification that contains procurement information.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Information" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Preparation for Distribution" nameID="2A">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Distribute Product Catalog Information" nameID="2A1">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Distribute Product Catalog Information" nameID="DistributeProductCatalogInformation_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Product Information Catalog Distribution" nameID="InitiateProductInformationCatalogDistribution" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Product Information Catalog Distribution" nameID="ProductInformationCatalogDistribution_DE" businessDocument='//BusinessDocument[@name="Product Information Catalog Distribution"]' businessDocumentIDREF="PIP2A1ProductInformationCatalogDistribution" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Product Information Catalog Distribution" nameID="ProcessProductInformationCatalogDistribution"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Distribute Product Catalog Information" nameID="DistributeProductCatalogInformation_BC" initiatingRoleIDREF="ProductInformationDistributorID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System and Valid</Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System and Valid b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Product Information Distributor" nameID="ProductInformationDistributorID"/>
+					<Role name="Product Information User" nameID="ProductInformationUserID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Distribute Product Catalog Information"]' toBusinessStateIDREF="PIP2A1DistributeProductCatalogInformation"/>
+					<BusinessTransactionActivity name="Distribute Product Catalog Information" nameID="DistributeProductCatalogInformation_BTA" businessTransaction='//BusinessTransaction[@name="Distribute Product Catalog Information"]' businessTransactionIDREF="DistributeProductCatalogInformation_BT" fromRole='../Role[@name="ProductInformationDistributor"]' fromRoleIDREF="ProductInformationDistributorID" toRole='../Role[@name="ProductInformationUser"]' toRoleIDREF="ProductInformationUserID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Distribute Product Catalog Information-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Product Catalog Information"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Distribute Product Catalog Information -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Product Catalog Information"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

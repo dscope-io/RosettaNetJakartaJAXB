@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by N/A (RosettaNet) -->
+<!--Compliant with BPSS vers 1.01-->
+<ProcessSpecification name="PIP5C1DistributeProductList" nameID="urn:rosettanet:specification:interchange:PIP5C1:xml:bpss:v11_00" version="V11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess/1.01 ebBPSS1.01.xsd">
+	<Documentation>The purpose of this PIP is to enables a provider to inform a party needing differentiated products (demand creator) of products eligible for design registration.</Documentation>
+	<!--REM: Planning Release Forecast Notification Document-->
+	<BusinessDocument name="Product List Distribution" nameID="PIP5C1ProductListDistribution" specificationLocation="urn:rosettanet:specification:interchange:ProductListDistribution:xsd:schema:02.00">
+		<Documentation>A list of products eligible for design registration. The list includes the Product Provider's Global Trade Item Numbers (GTIN) and eligible product descriptions.</Documentation>
+	</BusinessDocument>
+	<Package name="Marketing Information Management" nameID="5">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Design Win Management (EC)" nameID="5C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Distribute Product List" nameID="5C1">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Distribute Product List" nameID="DistributeProductList_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Product List Distribution" nameID="InitiateProductListDistribution" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Product List Distribution" nameID="ProductListDistribution_DE" businessDocument='//BusinessDocument[@name="Product List Distribution"]' businessDocumentIDREF="PIP5C1ProductListDistribution" isAuthenticated="none" isConfidential="transient" isTamperDetectable="none"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Product List Distribution" nameID="ProcessProductListDistribution"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Distribute Product List" nameID="DistributeProductList_BC" initiatingRoleIDREF="ProductProviderID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System and Valid </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System and Valid b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Product Provider" nameID="ProductProviderID"/>
+					<Role name="Demand Creator" nameID="DemandCreatorID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Distibute Product List"]' toBusinessStateIDREF="PIP5C1DistributeProductList"/>
+					<BusinessTransactionActivity name="Distribute Product List" nameID="DistributeProductList_BTA" businessTransaction='//BusinessTransaction[@name="Distribute Product List"]' businessTransactionIDREF="DistributeProductList_BT" fromRole='../Role[@name="ProductProvider"]' fromRoleIDREF="ProductProviderID" toRole='../Role[@name="DemandCreator"]' toRoleIDREF="DemandCreatorID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect 	business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for Distibute Product List-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Product List"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for Notify Of Planning Release Forecast-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Distribute Product List"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

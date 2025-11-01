@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by Hussam (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.01 on 05/16/12 -->
+<ProcessSpecification name="PIP2C7RequestBillOfMaterial" nameID="urn:rosettanet:specification:interchange:2C7:xml:bpss:r11_00" version="R11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>This PIP is designed to easily and efficiently communicate BOM information about the parts that go into a product from engineering to manufacturing. It solves a variety of problems that impact the quality, availability, cost, performance and evolution of the product. Product quality is improved by reducing the occurrence of mismatched materials. Better communication of the materials required enables the manufacturer to have the parts available, improving the availability of the product. Support for regional buying, where equivalent materials need to be sourced in different regions worldwide, also enhances availability. Greater visibility of materials across multiple products allows for greater reuse and economies in purchasing. As the product evolves, changes to the BOM can be communicated efficiently.</Documentation>
+	<!--REM: Bill Of Material Request Document-->
+	<BusinessDocument name="Bill Of Material Request" nameID="PIP2C7BillOfMaterialRequest" specificationLocation="urn:rosettanet:specification:interchange:BillOfMaterialRequest:xsd:schema:01.00">
+		<Documentation>Allows the sender to request Bill Of Material information for a product.  The product being queried can be identified using a Global Trade Item Number (GTIN) or proprietary product identifier.</Documentation>
+	</BusinessDocument>
+	<!--REM: Bill Of Material Confirmation Document-->
+	<BusinessDocument name="Bill Of Material Confirmation" nameID="PIP2C7BillOfMaterialConfirmation" specificationLocation="urn:rosettanet:specification:interchange:BillOfMaterialConfirmation:xsd:schema:01.00">
+		<Documentation>Contains Bill Of Material data for a given product. The Bill Of Material specifies each component part, listing quantities, serial number requirements and potential alternate parts.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Information" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Product Design Information" nameID="2C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Request Bill Of Material" nameID="2C7">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Request Bill Of Material" nameID="RequestBillOfMaterial_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Bill Of Material Request" nameID="InitiateBillOfMaterialRequest" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Bill Of Material Request" nameID="BillOfMaterialRequest_DE" businessDocument='//BusinessDocument[@name="Bill Of Material Request"]' businessDocumentIDREF="PIP2C7BillOfMaterialRequest" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Initiate Bill Of Material Confirmation" nameID="InitiateBillOfMaterialConfirmation" isAuthorizationRequired="false" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="false" isNonRepudiationRequired="false" timeToAcknowledgeReceipt="PT2H">
+						<DocumentEnvelope name="Bill Of Material Confirmation" nameID="BillOfMaterialConfirmation_DE" businessDocument='//BusinessDocument[@name="Bill Of Material Confirmation"]' businessDocumentIDREF="PIP2C7BillOfMaterialConfirmation" isAuthenticated="persistent" isConfidential="transient" isPositiveResponse="true" isTamperDetectable="persistent"/>
+					</RespondingBusinessActivity>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Request Bill Of Material" nameID="RequestBillOfMaterial_BC" initiatingRoleIDREF="IntegratorID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, and Valid Non-Repudiated and Authorized. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, and Valid b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Integrator" nameID="IntegratorID"/>
+					<Role name="Design Owner" nameID="DesignOwnerID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Request Bill Of Material"]' toBusinessStateIDREF="PIP2C7RequestBillOfMaterial"/>
+					<BusinessTransactionActivity name="Request Bill Of Material" nameID="RequestBillOfMaterial_BTA" businessTransaction='//BusinessTransaction[@name="Request Bill Of Material"]' businessTransactionIDREF="RequestBillOfMaterial_BT" fromRole='../Role[@name="Integrator"]' fromRoleIDREF="IntegratorID" toRole='../Role[@name="Design Owner"]' toRoleIDREF="DesignOwnerID" isLegallyBinding="true" isConcurrent="false" timeToPerform="PT24H"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Request Bill Of Material -->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="RequestBillOfMaterial"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Request Bill Of Material-->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Request Bill Of Material"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>

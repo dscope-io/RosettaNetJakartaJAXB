@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by Hussam (RosettaNet) -->
+<!-- Created with RosettaNet UML2BPSS 01.01 on 05/16/12 -->
+<ProcessSpecification name="PIP2C8BillOfMaterialNotification" nameID="urn:rosettanet:specification:interchange:2C8:xml:bpss:r11_00" version="R11.00" xmlns="http://www.ebxml.org/BusinessProcess/1.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ebxml.org/BusinessProcess ebBPSS1.01.xsd">
+	<Documentation>This PIP is designed to easily and efficiently communicate BOM information about the parts that go into a product from engineering to manufacturing. It solves a variety of problems that impact the quality, availability, cost, performance and evolution of the product. Product quality is improved by reducing the occurrence of mismatched materials. Better communication of the materials required enables the manufacturer to have the parts available, improving the availability of the product. Support for regional buying, where equivalent materials need to be sourced in different regions worldwide, also enhances availability. Greater visibility of materials across multiple products allows for greater reuse and economies in purchasing. As the product evolves, changes to the BOM can be communicated efficiently.</Documentation>
+	<!--REM: Bill Of Material Notification Document-->
+	<BusinessDocument name="Bill Of Material Notification" nameID="PIP2C8BillOfMaterialNotification" specificationLocation="urn:rosettanet:specification:interchange:BillOfMaterialNotification:xsd:schema:01.00">
+		<Documentation>Contains Bill Of Material data for a given product. The Bill Of Material specifies each component part, listing quantities, serial number requirements and potential alternate parts.</Documentation>
+	</BusinessDocument>
+	<Package name="Product Introduction" nameID="2">
+		<Documentation>Defines Cluster</Documentation>
+		<Package name="Engineering Change Management" nameID="2C">
+			<Documentation>Defines Segment</Documentation>
+			<Package name="Notify of Bill Of Material" nameID="2C8">
+				<Documentation>Defines PIP</Documentation>
+				<BusinessTransaction name="Notify of Bill Of Material" nameID="NotifyOfBillOfMaterial_BT" isGuaranteedDeliveryRequired="true">
+					<RequestingBusinessActivity name="Initiate Process Bill Of Material Notification" nameID="InitiateProcessBillOfMaterialNotificationID" isAuthorizationRequired="true" isIntelligibleCheckRequired="true" isNonRepudiationReceiptRequired="true" isNonRepudiationRequired="true" timeToAcknowledgeReceipt="PT2H" retryCount="3">
+						<DocumentEnvelope name="Bill Of Material  Notification" nameID="BillOfMaterialNotification_DE" businessDocument='//BusinessDocument[@name="Bill Of Material Notification"]' businessDocumentIDREF="PIP2C8BillOfMaterialNotification" isAuthenticated="persistent" isConfidential="transient" isTamperDetectable="persistent"/>
+					</RequestingBusinessActivity>
+					<RespondingBusinessActivity name="Process Bill Of Material  Notification" nameID="ProcessBillOfMaterialNotification"/>
+				</BusinessTransaction>
+				<!--REM: Binary Collaborations-->
+				<BinaryCollaboration name="Bill Of Material Notification" nameID="BillOfMaterialNotification_BC" initiatingRoleIDREF="DesignOwnerID" preCondition="true" postCondition="true">
+					<Documentation>The PIP Start State is comprised of the following conditions: a. TPA Approved and Exist In Backend System b. Sending Partner Exist as Party and Valid c. Receiving Partner Exist as Party d. Business Document Exist In Backend System, and Valid. </Documentation>
+					<Documentation>The PIP End States are comprised of the following conditions: a. Acknowledgment of Receipt Exist In Backend System, and Valid b. Receiving Partner Authorized ; PIP Failure State: a. NOT Successful b. Retry Count Exceeded</Documentation>
+					<Role name="Design Owner" nameID="DesignOwnerID"/>
+					<Role name="Integrator" nameID="IntegratorID"/>
+					<Start nameID="Start_ST" toBusinessState='../BusinessTransactionActivity[@name="Bill Of Material Notification"]' toBusinessStateIDREF="PIP2C8BillOfMaterialNotification"/>
+					<BusinessTransactionActivity name="Bill Of Material Notification" nameID="BillOfMaterialNotification_BTA" businessTransaction='//BusinessTransaction[@name="Bill Of Material Notification"]' businessTransactionIDREF="BillOfMaterialNotification_BT" fromRole='../Role[@name="Design Owner"]' fromRoleIDREF="DesignOwnerID" toRole='../Role[@name="Integrator"]' toRoleIDREF="IntegratorID" isLegallyBinding="true" isConcurrent="false"/>
+					<!--REM: The following shows a business transaction with two (one-pair) possible responses, each pair with a success and a failure.These are designed to reflect business level conditions only and not message level conditions such as Receipt Acknowledgements (ReceiptAck) and/or Notification of Failures (NoF). -->
+					<!--REM:  Success Condition for  Bill Of Material Notification-->
+					<Success nameID="Success_ST" fromBusinessState='../BusinessTransactionActivity[@name="Bill Of Material Notification"]' conditionGuard="Success">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Success"'/>
+					</Success>
+					<!--REM:  Failure Condition for  Bill Of Material Notification -->
+					<Failure nameID="Failure_ST" fromBusinessState='../BusinessTransactionActivity[@name="Billl Of Material Notification"]' conditionGuard="BusinessFailure">
+						<ConditionExpression expressionLanguage="XPath" expression='//BusinessServiceInformation/ProcessState="Failure"'/>
+					</Failure>
+				</BinaryCollaboration>
+			</Package>
+		</Package>
+	</Package>
+</ProcessSpecification>
