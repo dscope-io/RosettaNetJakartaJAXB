@@ -547,12 +547,17 @@ After successful validation:
 
 The artifacts will sync to Maven Central within 2-4 hours.
 
-### Automated Staging (Optional)
+### Automated Staging (Advanced Alternative)
 
-For fully automated releases, consider using the Nexus Staging Plugin:
+**Note**: The current project uses the standard `maven-publish` plugin with manual OSSRH staging. The following section describes an alternative approach using the Nexus Staging Plugin, which requires additional configuration.
+
+If you want to fully automate staging repository management, you can optionally add the Nexus Staging Plugin to `build.gradle`:
 
 ```gradle
 plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'signing'
     id "io.github.gradle-nexus.publish-plugin" version "1.3.0"
 }
 
@@ -575,6 +580,8 @@ Then use:
 # or for full automation:
 ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
 ```
+
+**Current Workflow**: With the standard `maven-publish` plugin (as currently configured), use `./gradlew publish` to upload artifacts, then manually close and release via the OSSRH web interface.
 
 ## Verification
 

@@ -132,7 +132,7 @@ signing {
         useInMemoryPgpKeys(signingKey, signingPassword)
         sign publishing.publications.mavenJava
     }
-    required { gradle.taskGraph.hasTask("publish") || gradle.taskGraph.hasTask("publishToSonatype") }
+    required { gradle.taskGraph.hasTask("publish") }
 }
 
 tasks.register('install') {
