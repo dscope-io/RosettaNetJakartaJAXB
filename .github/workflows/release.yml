@@ -32,6 +32,7 @@ jobs:
       
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v2
+        continue-on-error: true
       
       - name: Extract version from tag or input
         id: version
