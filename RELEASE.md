@@ -109,7 +109,7 @@ signing {
         sign publishing.publications.mavenJava
     }
     
-    required { gradle.taskGraph.hasTask("publish") || gradle.taskGraph.hasTask("publishToSonatype") }
+    required { gradle.taskGraph.hasTask("publish") }
 }
 ```
 
