@@ -43,6 +43,17 @@ The parameterised test exercises RosettaNet payloads defined in `src/test/resour
 - **JAXB context errors** – Check that the relevant `.properties` files include the correct `packages` entries, and confirm the generated classes are on the classpath.
 - **Spec XML not found** – Verify `src/main/xsd/specs.xml` (or `src/xsd/specs.xml`) lists the desired PIPs and that their `Descriptive` folders contain sample XML files.
 
+## Publishing to Maven Central
+
+For information on publishing releases to Maven Central, see [RELEASE.md](RELEASE.md). This document includes:
+
+- Complete Gradle configuration for publishing and signing
+- Required secrets and credentials setup
+- Step-by-step local release process
+- CI/CD automation with GitHub Actions
+- Validation steps and troubleshooting guidance
+- OSSRH staging and release procedures
+
 ## License
 
 See [LICENSE](LICENSE) for details.
