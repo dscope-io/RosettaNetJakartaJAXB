@@ -61,6 +61,70 @@ task fatJar(type: Jar) {
     with jar
 }
 
+tasks.register("prepareCentralBundle", Zip) {
+    dependsOn("publishToMavenLocal", "signMavenJavaPublication")
+
+    archiveBaseName.set("central-bundle")
+    destinationDirectory.set(layout.buildDirectory.dir("central-upload"))
+
+    // Build Maven repo folder structure: io/dscope/.../0.5.0
+    def groupPath = project.group.toString().replace('.', '/')
+    def artifactPath = "${groupPath}/${project.name}/${project.version}"
+
+    def mavenLocalDir = new File(System.getProperty("user.home"), ".m2/repository")
+    def localArtifactDir = new File(mavenLocalDir, artifactPath)
+
+    doFirst {
+        if (!localArtifactDir.exists()) {
+            throw new GradleException("Expected artifacts not found in local Maven repository at ${localArtifactDir}. Run publishToMavenLocal first.")
+        }
+
+        def baseFiles = [
+            "${project.name}-${project.version}.pom",
+            "${project.name}-${project.version}.jar",
+            "${project.name}-${project.version}-sources.jar",
+            "${project.name}-${project.version}-javadoc.jar"
+        ]
+
+        baseFiles.each { fileName ->
+            def artifactFile = new File(localArtifactDir, fileName)
+            if (!artifactFile.exists()) {
+                throw new GradleException("Missing expected artifact ${artifactFile}. Ensure publishToMavenLocal succeeded.")
+            }
+
+            [['MD5', 'md5'], ['SHA-1', 'sha1']].each { algoPair ->
+                def algorithm = algoPair[0]
+                def extension = algoPair[1]
+                def checksumFile = new File(localArtifactDir, "${fileName}.${extension}")
+                if (!checksumFile.exists()) {
+                    ant.checksum(file: artifactFile, algorithm: algorithm, fileext: ".${extension}")
+                }
+            }
+        }
+    }
+
+    from(localArtifactDir) {
+        include "${project.name}-${project.version}.pom"
+        include "${project.name}-${project.version}.pom.asc"
+        include "${project.name}-${project.version}.pom.md5"
+        include "${project.name}-${project.version}.pom.sha1"
+        include "${project.name}-${project.version}.jar"
+        include "${project.name}-${project.version}.jar.asc"
+        include "${project.name}-${project.version}.jar.md5"
+        include "${project.name}-${project.version}.jar.sha1"
+        include "${project.name}-${project.version}-sources.jar"
+        include "${project.name}-${project.version}-sources.jar.asc"
+        include "${project.name}-${project.version}-sources.jar.md5"
+        include "${project.name}-${project.version}-sources.jar.sha1"
+        include "${project.name}-${project.version}-javadoc.jar"
+        include "${project.name}-${project.version}-javadoc.jar.asc"
+        include "${project.name}-${project.version}-javadoc.jar.md5"
+        include "${project.name}-${project.version}-javadoc.jar.sha1"
+        into artifactPath
+    }
+}
+
+
 tasks.withType(Javadoc).configureEach {
     options.addStringOption('Xdoclint:none', '-quiet')
 }
@@ -83,7 +147,7 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
 
-            artifact tasks.named('fatJar')
+            //artifact tasks.named('fatJar')
 
             pom {
                 name = 'dscope-rosettanet-jakarta-jaxb'
@@ -113,7 +177,7 @@ publishing {
     repositories {
         maven {
             name = "OSSRH"
-            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/rest/v1/staging/deploy/maven2/"
             def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
             credentials {
@@ -132,7 +196,7 @@ signing {
         useInMemoryPgpKeys(signingKey, signingPassword)
         sign publishing.publications.mavenJava
     }
-    required { gradle.taskGraph.hasTask("publish") }
+    //required { gradle.taskGraph.hasTask("publish") }
 }
 
 tasks.register('install') {
